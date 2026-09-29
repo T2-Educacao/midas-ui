@@ -1,0 +1,26 @@
+{
+  "name": "midas-monorepo",
+  "private": true,
+  "description": "Monorepo do Midas, o design system da T2 Educação",
+  "packageManager": "pnpm@10.20.0",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "dev": "pnpm --parallel --filter @t2-educacao/midas --filter docs dev",
+    "build": "pnpm -r build",
+    "build:midas": "pnpm --filter @t2-educacao/midas build",
+    "test": "pnpm --filter @t2-educacao/midas test",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm --filter @t2-educacao/midas check:package",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build:midas && changeset publish"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.14",
+    "@changesets/cli": "^3.0.3"
+  }
+}
