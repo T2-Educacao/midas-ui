@@ -4,7 +4,7 @@ Guia para quem nunca publicou um pacote. A publicação é **manual**, feita do 
 
 ## Conceitos em 1 minuto
 
-- **npm registry**: o "servidor" onde os pacotes ficam. `pnpm add @t2-educacao/midas` baixa de lá.
+- **npm registry**: o "servidor" onde os pacotes ficam. `npm install @t2-educacao/midas` baixa de lá.
 - **Organização (escopo)**: o `@t2-educacao/` do nome. Só membros da org podem publicar pacotes nela. Já criada: `t2-educacao`.
 - **Versão (semver)**: `MAJOR.MINOR.PATCH`. Patch = correção. Minor = coisa nova compatível. Major = quebra. Uma versão publicada **nunca** pode ser alterada, só substituída por outra mais nova.
 - **Changeset**: um arquivinho em `.changeset/` dizendo "o que mudou e se é patch/minor/major". O Changesets junta todos, sobe a versão e escreve o `CHANGELOG.md`.
@@ -21,11 +21,23 @@ npm login
 
 ## Parte 2: primeira publicação
 
+1. Instale as dependências e rode todas as verificações (tem que passar tudo):
+
 ```bash
 pnpm install
-pnpm check                                  # tudo tem que passar
+pnpm check
+```
+
+2. Entre na pasta do pacote e confira a lista de arquivos que vai para o npm:
+
+```bash
 cd packages/midas
-npm pack --dry-run                          # confere a lista de arquivos que VAI para o npm
+npm pack --dry-run
+```
+
+3. Publique:
+
+```bash
 npm publish --access public
 ```
 
@@ -36,15 +48,24 @@ Confira em https://www.npmjs.com/package/@t2-educacao/midas.
 
 ## Parte 3: publicar uma versão nova
 
-```bash
-# 1. durante o trabalho, a cada mudança que afeta quem usa:
-pnpm changeset          # escolha o tipo (patch/minor/major) e escreva o resumo
+1. Durante o trabalho, a cada mudança que afeta quem usa, registre um changeset (escolha patch/minor/major e escreva o resumo):
 
-# 2. na hora de lançar (na main atualizada):
-pnpm version-packages   # sobe a versão e escreve o CHANGELOG.md
-pnpm check              # tudo tem que passar
+```bash
+pnpm changeset
+```
+
+2. Na hora de lançar, com a `main` atualizada, suba a versão e gere o `CHANGELOG.md`:
+
+```bash
+pnpm version-packages
+pnpm check
 git add . && git commit -m "chore: versiona @t2-educacao/midas"
-pnpm release            # build + publica no npm (pede o código 2FA)
+```
+
+3. Faça o build e publique (o npm vai pedir o código 2FA), depois envie a tag:
+
+```bash
+pnpm release
 git push --follow-tags
 ```
 
@@ -52,9 +73,16 @@ git push --follow-tags
 
 ## Parte 4: nos projetos
 
+Para ver se há versão nova:
+
 ```bash
-pnpm add @t2-educacao/midas@latest    # atualizar
-pnpm outdated @t2-educacao/midas      # ver se há versão nova
+npm outdated @t2-educacao/midas
+```
+
+Para atualizar:
+
+```bash
+npm install @t2-educacao/midas@latest
 ```
 
 Enquanto estiver em `0.x`, uma versão minor pode quebrar coisas: leia o CHANGELOG antes de atualizar.

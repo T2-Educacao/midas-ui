@@ -8,7 +8,7 @@
 
 Um pacote npm, `@t2-educacao/midas`, que um projeto novo instala **uma vez** para ter o design system completo. Requisitos:
 
-1. **Simples de usar:** um `pnpm add`, um import de CSS.
+1. **Simples de usar:** um `npm install`, um import de CSS.
 2. **Leve:** o projeto só carrega o que usa.
 3. **Padronizado, mas ajustável:** visual consistente por padrão, com espaço para ajustes (`className`, variantes, `asChild`).
 4. **Tema claro e escuro.**
@@ -44,7 +44,7 @@ Mesmo modelo do shadcn/ui, já conhecido pelo time (a hub usa essas libs) e muit
 ### D5. Duas formas de entregar o CSS
 
 - `theme.css` para projetos com **Tailwind v4**: registra os tokens no Tailwind do projeto e aponta `@source` para o `dist` do Midas. O projeto gera só as classes usadas e pode usar os tokens no próprio código.
-- `styles.css` compilado para projetos com **Tailwind v3 ou sem Tailwind** (ex.: hub em Next 14). Sem preflight, em `@layer`.
+- `styles.css` compilado para projetos com **Tailwind v3** (ex.: hub em Next 14). Sem preflight, em `@layer`.
 
 **Risco conhecido:** em Tailwind v3 com tokens shadcn antigos (`bg-primary` com outra cor), as classes do projeto (fora de layer) vencem as do Midas. Mitigação: remover tokens antigos equivalentes ao adotar o Midas, ou migrar para Tailwind v4. Documentado em `instalacao.md`.
 

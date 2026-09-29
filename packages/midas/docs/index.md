@@ -10,7 +10,7 @@ O **Midas** é o design system da T2 Educação em forma de biblioteca React. Um
 - **Ícones** [Phosphor](https://phosphoricons.com), a biblioteca de ícones oficial do Midas.
 
 ```bash
-pnpm add @t2-educacao/midas
+npm install @t2-educacao/midas
 ```
 
 ```tsx
@@ -36,7 +36,7 @@ export function Cta() {
 
 ## Próximos passos
 
-- [Instalação](./instalacao.md): configurar em Next 16 (Tailwind v4) ou Next 14 (Tailwind v3 / sem Tailwind).
+- [Instalação](./instalacao.md): configurar em Next 16 (Tailwind v4) ou Next 14 (Tailwind v3).
 - [Tema e tokens](./tema.md): claro/escuro e a lista de tokens.
 - [Customização](./customizacao.md): `className`, variantes e `asChild`.
 - [Ícones](./icones.md): Phosphor pelo Midas.
@@ -48,7 +48,7 @@ export function Cta() {
 |---|---|
 | React | 18.2+ e 19 |
 | Next.js | 14, 15 e 16 (App Router e Pages Router) |
-| Tailwind CSS | v4 (recomendado, via `theme.css`) ou qualquer outro setup (via `styles.css`) |
+| Tailwind CSS | v4 (via `theme.css`) ou v3 (via `styles.css`) |
 | Módulos | ESM |
 
-> Status: **pré-lançamento (0.x)**. Os valores dos tokens ainda são provisórios e serão substituídos pelos do Figma do Midas. Os nomes dos tokens e as APIs dos componentes são o contrato.
+> Status: **pré-lançamento (0.x), ainda não publicado no npm**. Os valores dos tokens ainda são provisórios e serão substituídos pelos do Figma do Midas. Os nomes dos tokens e as APIs dos componentes são o contrato.

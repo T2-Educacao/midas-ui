@@ -41,7 +41,7 @@ Checklist da API (todo componente):
 - [ ] só classes de token, `focus-visible` visível, `motion-reduce:transition-none` em transições
 - [ ] interativo complexo? use o primitivo do Radix (`import { Dialog } from "radix-ui"`)
 - [ ] `"use client"` na primeira linha **só** se usa estado/efeito/contexto/Radix interativo
-- [ ] props documentadas com JSDoc (`/** ... */`) quando não forem óbvias
+- [ ] **sem comentários no código** (nem JSDoc): nomes claros são a documentação; explicações vão no `.md` do componente
 
 Componentes compostos (ex.: `Card`, `CardHeader`, `CardTitle`) ficam no mesmo arquivo e são todos exportados.
 
@@ -91,9 +91,11 @@ A `description` do frontmatter é o que agentes de IA leem primeiro: seja espec�
 
 ## 7. Changeset e PR
 
+Registre a mudança (escolha `minor` e descreva, ex.: "Adiciona componente Nome") e rode todas as verificações, que têm que passar inteiras:
+
 ```bash
-pnpm changeset     # escolha "minor" e descreva: "Adiciona componente Nome"
-pnpm check         # tem que passar inteiro
+pnpm changeset
+pnpm check
 ```
 
 Abra o PR.

@@ -60,11 +60,15 @@ Sempre inclua `motion-reduce:transition-none` em animações.
 
 Você quase nunca precisa de `dark:`: os tokens já trocam de valor sozinhos. `bg-surface` é claro no tema claro e escuro no tema escuro.
 
-```tsx
-// Certo: o token muda com o tema
-<div className="bg-surface text-surface-foreground" />
+Certo, o token muda com o tema:
 
-// Evite: duplicar o tema na mão
+```tsx
+<div className="bg-surface text-surface-foreground" />
+```
+
+Evite duplicar o tema na mão:
+
+```tsx
 <div className="bg-white dark:bg-slate-900" />
 ```
 

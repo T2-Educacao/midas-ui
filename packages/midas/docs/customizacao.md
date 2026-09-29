@@ -21,7 +21,7 @@ Todo componente aceita `className`. As classes são mescladas com [`tailwind-mer
 
 ```tsx
 <Button className="w-full">Largura total</Button>
-<Button className="h-14 px-8">Mais alto</Button> {/* h-14 substitui h-10 */}
+<Button className="h-14 px-8">Mais alto</Button>
 ```
 
 Use tokens nas classes (`bg-primary`, `rounded-lg`), nunca valores soltos (`bg-[#0097D9]`).

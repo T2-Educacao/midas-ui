@@ -23,7 +23,8 @@ Este repositório é o **Midas**, design system da T2 Educação, publicado como
 - **Acessibilidade não é opcional:** use primitivos Radix para qualquer coisa interativa complexa (dialog, menu, select, tabs, tooltip...). Todo componente tem teste com `expectNoA11yViolations`.
 - **Ícones:** só Phosphor, importado de `@phosphor-icons/react/ssr` dentro do pacote. Consumidores importam de `@t2-educacao/midas/icons`.
 - **Sem segredos, URLs internas, chamadas de API ou lógica de negócio.** O pacote é PÚBLICO no npm. Só UI.
-- **Português** em docs, mensagens de teste e comentários. Nomes de código (componentes, props) em inglês, como no ecossistema React.
+- **Sem comentários no código** (nem JSDoc, nem em CSS). Nomes claros são a documentação; explicações vão no `.md`.
+- **Português** em docs e mensagens de teste. Nomes de código (componentes, props) em inglês, como no ecossistema React.
 
 ## Documentação é parte da entrega
 

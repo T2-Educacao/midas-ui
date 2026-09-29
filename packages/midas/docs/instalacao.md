@@ -1,26 +1,27 @@
 ---
 title: Instalação
-description: Como instalar e configurar o Midas em Next.js 16 com Tailwind v4, ou em Next.js 14 com Tailwind v3 ou sem Tailwind.
+description: Como instalar e configurar o Midas em projetos Next.js com Tailwind v4 (Next 16) ou Tailwind v3 (Next 14, como a hub).
 ---
+
+> O pacote **ainda não foi publicado no npm**. Estas instruções valem a partir da primeira versão publicada.
 
 ## 1. Instale o pacote
 
 ```bash
-pnpm add @t2-educacao/midas
-# ou: npm install @t2-educacao/midas
+npm install @t2-educacao/midas
 ```
 
 `react` e `react-dom` (18.2+ ou 19) são *peer dependencies*: o projeto já precisa tê-los. Os ícones Phosphor, o Radix e utilitários vêm junto automaticamente.
 
 ## 2. Configure o CSS
 
-Escolha **um** dos caminhos abaixo.
+Escolha o caminho de acordo com a versão do Tailwind do projeto.
 
-### Caminho A: projeto com Tailwind CSS v4 (recomendado)
+### Caminho A: Tailwind CSS v4
 
 Projetos: site, blog, lps, plataforma do aluno (Next 16).
 
-No CSS global (ex.: `app/globals.css`):
+No CSS global do projeto (ex.: `app/globals.css`):
 
 ```css
 @import "tailwindcss";
@@ -33,26 +34,25 @@ Pronto. O `theme.css`:
 - avisa o Tailwind para escanear os componentes do Midas (via `@source`), gerando só as classes usadas;
 - define a variante `dark:` ligada à classe `.dark` (ou `data-theme="dark"`).
 
-### Caminho B: projeto com Tailwind v3 ou sem Tailwind
+### Caminho B: Tailwind CSS v3
 
-Projetos: hub (Next 14 + Tailwind v3), ou qualquer projeto React sem Tailwind.
+Projetos: hub (Next 14 + Tailwind v3).
 
-No layout raiz (ex.: `app/layout.tsx`), importe o CSS já compilado:
+O Tailwind v3 não lê o `theme.css`, então o Midas entrega um CSS já compilado. Importe no layout raiz (ex.: `app/layout.tsx` ou `pages/_app.tsx`):
 
 ```tsx
 import "@t2-educacao/midas/styles.css";
 ```
 
-Ele contém só as classes que os componentes do Midas usam, mais os tokens. Não inclui reset/preflight, para não brigar com o CSS do projeto.
+Ele contém só as classes que os componentes do Midas usam, mais os tokens. Não inclui reset/preflight, para não brigar com o Tailwind do projeto.
 
-> **Atenção no Tailwind v3 com tokens shadcn antigos**: se o projeto já tem classes como `bg-primary` apontando para outras cores, as do projeto podem sobrescrever as do Midas (o CSS do Midas fica em `@layer`). Ao adotar o Midas, remova os tokens antigos equivalentes ou migre o projeto para Tailwind v4 (Caminho A). O objetivo é que todos os projetos cheguem ao Caminho A.
+> **Atenção com tokens shadcn antigos**: se o projeto já tem classes como `bg-primary` apontando para outras cores, as do projeto podem sobrescrever as do Midas (o CSS do Midas fica em `@layer`). Ao adotar o Midas, remova os tokens antigos equivalentes ou migre o projeto para Tailwind v4 (Caminho A).
 
 ## 3. Fontes
 
-O Midas lê as fontes das variáveis `--midas-font-sans` e `--midas-font-mono`. No Next, carregue a fonte com `next/font` e aponte a variável:
+O Midas lê as fontes das variáveis `--midas-font-sans` e `--midas-font-mono`. No Next, carregue a fonte com `next/font` e aponte a variável. Exemplo em `app/layout.tsx`:
 
 ```tsx
-// app/layout.tsx
 import { Geist } from "next/font/google";
 
 const sans = Geist({ subsets: ["latin"], variable: "--midas-font-sans" });

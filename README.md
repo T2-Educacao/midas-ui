@@ -9,7 +9,6 @@
 
 **Biblioteca de componentes React do Midas, o design system da T2 Educação**
 
-[![npm](https://img.shields.io/npm/v/@t2-educacao/midas?style=flat-square&logo=npm&logoColor=white&color=cb3837&label=%40t2-educacao%2Fmidas)](https://www.npmjs.com/package/@t2-educacao/midas)
 [![React](https://img.shields.io/badge/React-18%20%7C%2019-61dafb?style=flat-square&logo=react&logoColor=black)](https://react.dev)
 [![Next.js](https://img.shields.io/badge/Next.js-14%20a%2016-black?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org)
 [![Tailwind](https://img.shields.io/badge/Tailwind-v4-06b6d4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
@@ -27,19 +26,24 @@ O Midas UI é o pacote npm **`@t2-educacao/midas`**: componentes React acessíve
 
 A fonte da verdade visual é o **Figma do Midas**. Este repositório não substitui a página pública de marca (`design-t2`) nem a skill de design (`design-skill`): ele é o **código** que os projetos instalam.
 
-> Status: **pré-lançamento (0.x)**. Estrutura, build, docs e publicação prontos. Os valores dos tokens ainda são provisórios e os componentes serão construídos a partir do Figma. Veja o [roadmap](docs/roadmap.md).
+> Status: **pré-lançamento (0.x), ainda não publicado no npm**. Estrutura, build e docs prontos. Os valores dos tokens ainda são provisórios e os componentes serão construídos a partir do Figma. Veja o [roadmap](docs/roadmap.md).
 
-### Como usar num projeto
+### Como vai ser usado num projeto
+
+Depois da primeira publicação no npm:
 
 ```bash
-pnpm add @t2-educacao/midas
+npm install @t2-educacao/midas
 ```
 
+No CSS global do projeto (Tailwind v4):
+
 ```css
-/* app/globals.css (Tailwind v4) */
 @import "tailwindcss";
 @import "@t2-educacao/midas/theme.css";
 ```
+
+Projeto em Tailwind v3 (ex.: hub): `import "@t2-educacao/midas/styles.css"` no layout raiz. Detalhes em [instalação](packages/midas/docs/instalacao.md).
 
 ```tsx
 import { Button } from "@t2-educacao/midas";
@@ -48,8 +52,6 @@ import { ArrowRight } from "@t2-educacao/midas/icons";
 <Button size="lg">Começar <ArrowRight /></Button>
 ```
 
-Projeto em Tailwind v3 ou sem Tailwind (ex.: hub)? Use `import "@t2-educacao/midas/styles.css"`. Detalhes em [instalação](packages/midas/docs/instalacao.md).
-
 ### O que tem
 
 | Entrada | O que entrega |
@@ -57,7 +59,7 @@ Projeto em Tailwind v3 ou sem Tailwind (ex.: hub)? Use `import "@t2-educacao/mid
 | `@t2-educacao/midas` | Componentes React + utilitário `cn()` |
 | `@t2-educacao/midas/icons` | Ícones Phosphor (funcionam em Server e Client Components) |
 | `@t2-educacao/midas/theme.css` | Tokens para o Tailwind v4 do projeto (claro e escuro) |
-| `@t2-educacao/midas/styles.css` | CSS já compilado para projetos sem Tailwind v4 |
+| `@t2-educacao/midas/styles.css` | CSS já compilado para projetos em Tailwind v3 |
 | `@t2-educacao/midas/docs/*` | Documentação em Markdown, na versão instalada |
 | `@t2-educacao/midas/llms.txt` | Índice das docs para agentes de IA |
 
