@@ -1,0 +1,99 @@
+{
+  "name": "@t2-educacao/midas",
+  "version": "0.0.0",
+  "description": "Midas: o design system da T2 Educação. Componentes React, tokens, tema claro/escuro e ícones Phosphor.",
+  "keywords": [
+    "t2",
+    "t2-educacao",
+    "midas",
+    "design-system",
+    "react",
+    "nextjs",
+    "tailwindcss",
+    "components"
+  ],
+  "license": "MIT",
+  "author": "T2 Educação <tecnologia@t2.com.br>",
+  "homepage": "https://github.com/T2-Educacao/midas-ui#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/T2-Educacao/midas-ui.git",
+    "directory": "packages/midas"
+  },
+  "bugs": {
+    "url": "https://github.com/T2-Educacao/midas-ui/issues"
+  },
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "docs",
+    "llms.txt",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./icons": {
+      "types": "./dist/icons/index.d.ts",
+      "default": "./dist/icons/index.js"
+    },
+    "./theme.css": "./dist/theme.css",
+    "./styles.css": "./dist/styles.css",
+    "./docs/*": "./docs/*",
+    "./llms.txt": "./llms.txt",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "tsdown && pnpm build:css && pnpm build:llms",
+    "build:css": "node scripts/copy-theme.mjs && tailwindcss -i src/styles/styles.css -o dist/styles.css --minify",
+    "build:llms": "node scripts/generate-llms.mjs",
+    "dev": "tsdown --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "check:package": "publint && attw --pack . --profile esm-only --exclude-entrypoints theme.css styles.css llms.txt",
+    "prepublishOnly": "pnpm build"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "radix-ui": "^1.6.7",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@tailwindcss/cli": "^4.3.3",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "axe-core": "^4.13.0",
+    "jsdom": "^30.1.1",
+    "publint": "^0.3.24",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.3",
+    "tsdown": "^0.23.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.2"
+  }
+}

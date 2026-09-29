@@ -1,0 +1,14 @@
+/*
+ * Midas: CSS compilado para projetos SEM Tailwind v4 (ex.: Tailwind v3 ou nenhum).
+ * Gera dist/styles.css. Uso: import "@t2-educacao/midas/styles.css";
+ * Não inclui o preflight (reset) do Tailwind para não conflitar com o projeto.
+ */
+
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+@import "./theme.css";
+
+@source "../components";
+@source not "../**/*.test.tsx";

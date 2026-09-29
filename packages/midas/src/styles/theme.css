@@ -1,0 +1,114 @@
+/*
+ * Midas: tema (tokens) para projetos com Tailwind CSS v4.
+ *
+ * Uso no CSS global do projeto:
+ *   @import "tailwindcss";
+ *   @import "@t2-educacao/midas/theme.css";
+ *
+ * VALORES PROVISÓRIOS: serão substituídos pelos tokens do Figma do Midas.
+ * Os NOMES dos tokens são o contrato público; os valores podem mudar.
+ */
+
+@source "./";
+
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  --midas-background: #ffffff;
+  --midas-foreground: #0f172a;
+  --midas-surface: #f8fafc;
+  --midas-surface-foreground: #0f172a;
+  --midas-muted: #f1f5f9;
+  --midas-muted-foreground: #64748b;
+  --midas-border: #e2e8f0;
+  --midas-input: #e2e8f0;
+  --midas-ring: #0097d9;
+
+  --midas-primary: #0097d9;
+  --midas-primary-hover: #007ab8;
+  --midas-primary-foreground: #ffffff;
+  --midas-secondary: #f1f5f9;
+  --midas-secondary-hover: #e2e8f0;
+  --midas-secondary-foreground: #0f172a;
+  --midas-accent: #36c5fa;
+  --midas-accent-foreground: #0f172a;
+
+  --midas-success: #059669;
+  --midas-success-foreground: #ffffff;
+  --midas-warning: #d97706;
+  --midas-warning-foreground: #ffffff;
+  --midas-danger: #dc2626;
+  --midas-danger-hover: #b91c1c;
+  --midas-danger-foreground: #ffffff;
+
+  --midas-font-sans: ui-sans-serif, system-ui, sans-serif;
+  --midas-font-mono: ui-monospace, SFMono-Regular, monospace;
+
+  --midas-radius-xs: 4px;
+  --midas-radius-sm: 6px;
+  --midas-radius-md: 8px;
+  --midas-radius-lg: 12px;
+  --midas-radius-xl: 16px;
+
+  --midas-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --midas-duration-fast: 120ms;
+  --midas-duration-normal: 160ms;
+}
+
+.dark,
+[data-theme="dark"] {
+  --midas-background: #171b2f;
+  --midas-foreground: #f8f9fc;
+  --midas-surface: #232a47;
+  --midas-surface-foreground: #f8f9fc;
+  --midas-muted: #1c2138;
+  --midas-muted-foreground: #b8c0d4;
+  --midas-border: #2f3654;
+  --midas-input: #2f3654;
+  --midas-ring: #36c5fa;
+
+  --midas-secondary: #232a47;
+  --midas-secondary-hover: #2a3255;
+  --midas-secondary-foreground: #f8f9fc;
+  --midas-accent-foreground: #0f172a;
+}
+
+@theme inline {
+  --color-background: var(--midas-background);
+  --color-foreground: var(--midas-foreground);
+  --color-surface: var(--midas-surface);
+  --color-surface-foreground: var(--midas-surface-foreground);
+  --color-muted: var(--midas-muted);
+  --color-muted-foreground: var(--midas-muted-foreground);
+  --color-border: var(--midas-border);
+  --color-input: var(--midas-input);
+  --color-ring: var(--midas-ring);
+
+  --color-primary: var(--midas-primary);
+  --color-primary-hover: var(--midas-primary-hover);
+  --color-primary-foreground: var(--midas-primary-foreground);
+  --color-secondary: var(--midas-secondary);
+  --color-secondary-hover: var(--midas-secondary-hover);
+  --color-secondary-foreground: var(--midas-secondary-foreground);
+  --color-accent: var(--midas-accent);
+  --color-accent-foreground: var(--midas-accent-foreground);
+
+  --color-success: var(--midas-success);
+  --color-success-foreground: var(--midas-success-foreground);
+  --color-warning: var(--midas-warning);
+  --color-warning-foreground: var(--midas-warning-foreground);
+  --color-danger: var(--midas-danger);
+  --color-danger-hover: var(--midas-danger-hover);
+  --color-danger-foreground: var(--midas-danger-foreground);
+
+  --font-sans: var(--midas-font-sans);
+  --font-mono: var(--midas-font-mono);
+
+  --radius-xs: var(--midas-radius-xs);
+  --radius-sm: var(--midas-radius-sm);
+  --radius-md: var(--midas-radius-md);
+  --radius-lg: var(--midas-radius-lg);
+  --radius-xl: var(--midas-radius-xl);
+
+  --ease-standard: var(--midas-ease-standard);
+}
