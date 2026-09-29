@@ -75,7 +75,7 @@ tsdown (unbundle, ESM)        →  1 arquivo por componente, tree-shaking real
 Vitest + Testing Library + axe → testes de comportamento e acessibilidade
 Biome                         →  lint e formatação
 Fumadocs (Next 16)            →  site de documentação + llms.txt
-Changesets + GitHub Actions   →  versionamento e publicação no npm
+Changesets                    →  versionamento e CHANGELOG
 ```
 
 ---
@@ -91,7 +91,6 @@ packages/midas/        →  O PACOTE publicado no npm (@t2-educacao/midas)
 apps/docs/             →  site de documentação (não publicado)
 docs/                  →  docs internas: decisões e guias de manutenção
 .changeset/            →  mudanças pendentes para a próxima versão
-.github/workflows/     →  CI (checks) e Release (publicação no npm)
 ```
 
 ---
@@ -106,7 +105,7 @@ As regras completas estão em [`AGENTS.md`](AGENTS.md) e nos guias de [`docs/`](
 4. Componente sem `.md` em `packages/midas/docs/components/` não está pronto
 5. Toda mudança que afeta quem usa tem changeset (`pnpm changeset`)
 6. O pacote é público: só UI, nunca segredo, URL interna ou lógica de negócio
-7. Publicação só pelo GitHub Actions, nunca manual (exceto a primeira)
+7. Rode `pnpm check` antes de publicar
 
 ### Guias
 

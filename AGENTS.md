@@ -33,7 +33,7 @@ Um componente sem doc não está pronto. O `.md` do componente (formato em `docs
 
 - Toda mudança no pacote que afeta quem usa precisa de um changeset: `pnpm changeset` (patch = correção, minor = novo componente/prop, major = quebra de API).
 - Enquanto a versão for 0.x, quebras vão como minor, mas documente-as no changeset.
-- Não rode `npm publish` nem `changeset publish` manualmente: a publicação é feita pelo GitHub Actions (ver `docs/guias/publicar-no-npm.md`).
+- Publicar é manual e só quem tem acesso à org `t2-educacao` no npm faz. Agentes de IA não publicam: siga `docs/guias/publicar-no-npm.md` só quando o usuário pedir.
 
 ## Não faça
 

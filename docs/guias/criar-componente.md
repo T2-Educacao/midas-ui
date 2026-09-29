@@ -96,4 +96,4 @@ pnpm changeset     # escolha "minor" e descreva: "Adiciona componente Nome"
 pnpm check         # tem que passar inteiro
 ```
 
-Abra o PR. O CI roda os mesmos checks.
+Abra o PR.

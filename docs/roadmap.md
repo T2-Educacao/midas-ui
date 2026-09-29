@@ -9,13 +9,13 @@
 - [x] `Button` como componente de referência (API, testes, doc)
 - [x] Testes (Vitest + Testing Library + axe), lint (Biome), validação do pacote (publint + attw)
 - [x] Docs no pacote + `llms.txt` + site Fumadocs com `llms.txt`/`llms-full.txt`
-- [x] CI e release (Changesets + GitHub Actions + trusted publishing)
+- [x] Versionamento com Changesets (publicação manual)
 - [x] Organização `t2-educacao` criada no npm
 
 ## Próximos passos
 
 1. [x] Repositório `T2-Educacao/midas-ui` no GitHub
-2. [ ] Primeira publicação manual + configurar trusted publishing ([guia](guias/publicar-no-npm.md))
+2. [ ] Primeira publicação no npm ([guia](guias/publicar-no-npm.md))
 3. [ ] Conectar o MCP do Figma ([guia](guias/conectar-figma-mcp.md))
 4. [ ] Importar os tokens do Figma (cores claro/escuro, tipografia, raios, espaçamento, sombras) e substituir os valores provisórios
 5. [ ] Definir a fonte oficial e como distribuí-la (via `next/font` no projeto, ou arquivos no pacote)
