@@ -1,8 +1,6 @@
-# dependências
 node_modules/
 .pnpm-store/
 
-# build
 dist/
 .next/
 out/
@@ -11,22 +9,18 @@ build/
 *.tsbuildinfo
 next-env.d.ts
 
-# testes
 coverage/
 
-# ambiente e segredos (NUNCA commitar)
 .env
 .env*.local
 *.pem
 .npmrc.local
 
-# logs
 npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# sistema / editor
 .DS_Store
 Thumbs.db
 .vscode/*
@@ -34,9 +28,7 @@ Thumbs.db
 !.vscode/settings.json
 .idea/
 
-# deploy
 .vercel
 *.tgz
 
-# gerado no build do pacote
 packages/midas/llms.txt

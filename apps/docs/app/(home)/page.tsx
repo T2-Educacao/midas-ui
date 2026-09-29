@@ -13,7 +13,7 @@ export default function HomePage() {
         Componentes React, tokens e ícones num único pacote. Instala uma vez e tem tudo.
       </p>
       <pre className="rounded-md bg-muted px-4 py-2 font-mono text-sm">
-        pnpm add @t2-educacao/midas
+        npm install @t2-educacao/midas
       </pre>
       <div className="flex flex-wrap justify-center gap-3">
         <Button asChild size="lg">

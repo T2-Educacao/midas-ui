@@ -5,7 +5,6 @@ export const docsRoute = "/docs";
 export const docsImageRoute = "/og/docs";
 export const docsContentRoute = "/llms.mdx/docs";
 
-// Repositório no GitHub (usado nos links "editar esta página").
 export const gitConfig = {
   user: "T2-Educacao",
   repo: "midas-ui",

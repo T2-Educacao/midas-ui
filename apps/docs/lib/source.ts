@@ -3,7 +3,6 @@ import { metaSchema, pageSchema } from "fumadocs-core/source/schema";
 import { defineDocs } from "fumadocs-mdx/macro";
 import { docsRoute } from "./shared";
 
-// Fonte única: as docs vivem no pacote (packages/midas/docs) e são publicadas no npm junto com ele.
 const docs = defineDocs({
   dir: "../../packages/midas/docs",
   docs: {

@@ -38,7 +38,6 @@ export const buttonVariants = cva(
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  /** Renderiza o filho (ex.: `<Link>` do Next) com o visual de botão, em vez de um `<button>`. */
   asChild?: boolean;
 }
 

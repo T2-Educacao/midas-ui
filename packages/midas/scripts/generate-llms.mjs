@@ -1,5 +1,3 @@
-// Gera packages/midas/llms.txt: índice das docs para agentes de IA.
-// Lê o frontmatter (title/description) de cada .md em docs/.
 import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
 
