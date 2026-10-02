@@ -1,4 +1,20 @@
 {
   "title": "Componentes",
-  "pages": ["button", "button-group", "kbd", "spinner", "toggle", "toggle-group", "tooltip"]
+  "pages": [
+    "badge",
+    "button",
+    "button-group",
+    "combobox",
+    "dropdown-menu",
+    "field",
+    "input",
+    "input-group",
+    "kbd",
+    "popover",
+    "spinner",
+    "toast",
+    "toggle",
+    "toggle-group",
+    "tooltip"
+  ]
 }

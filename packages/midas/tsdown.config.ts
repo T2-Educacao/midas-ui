@@ -16,6 +16,8 @@ export default defineConfig({
       /^radix-ui/,
       /^@phosphor-icons\/react/,
       /^@tabler\/icons-react/,
+      /^cmdk/,
+      /^sonner/,
     ],
   },
 });
