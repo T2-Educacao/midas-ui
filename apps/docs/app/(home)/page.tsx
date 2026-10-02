@@ -23,6 +23,13 @@ import {
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { InstallCommand } from "@/components/install-command";
+import BadgeVariantes from "@/examples/badge/variantes";
+import ComboboxBasico from "@/examples/combobox/basico";
+import DropdownMenuBasico from "@/examples/dropdown-menu/basico";
+import FieldBasico from "@/examples/field/basico";
+import InputGroupBusca from "@/examples/input-group/busca";
+import PopoverBasico from "@/examples/popover/basico";
+import ToastPromise from "@/examples/toast/promise";
 import TooltipDados from "@/examples/tooltip/dados";
 
 const features = [
@@ -113,6 +120,13 @@ const showcase: { name: string; href: string; preview: ReactNode }[] = [
     ),
   },
   { name: "Tooltip", href: "/docs/components/tooltip", preview: <TooltipDados /> },
+  { name: "Input e Field", href: "/docs/components/field", preview: <FieldBasico /> },
+  { name: "InputGroup", href: "/docs/components/input-group", preview: <InputGroupBusca /> },
+  { name: "Combobox", href: "/docs/components/combobox", preview: <ComboboxBasico /> },
+  { name: "DropdownMenu", href: "/docs/components/dropdown-menu", preview: <DropdownMenuBasico /> },
+  { name: "Popover", href: "/docs/components/popover", preview: <PopoverBasico /> },
+  { name: "Toast", href: "/docs/components/toast", preview: <ToastPromise /> },
+  { name: "Badge", href: "/docs/components/badge", preview: <BadgeVariantes /> },
   {
     name: "Kbd",
     href: "/docs/components/kbd",

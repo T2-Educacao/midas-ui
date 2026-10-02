@@ -1,3 +1,4 @@
+import { Toaster } from "@t2-educacao/midas";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -20,6 +21,7 @@ export default function Layout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-screen flex-col bg-background text-foreground">
         <RootProvider>{children}</RootProvider>
+        <Toaster />
       </body>
     </html>
   );
