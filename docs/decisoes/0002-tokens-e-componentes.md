@@ -43,9 +43,17 @@ A página Tooltips do Figma mostra tooltips de gráfico (título, itens com indi
 ### Entrega em lotes
 
 1. Button, ButtonGroup, Spinner, Kbd, Toggle, ToggleGroup, Tooltip
-2. Input, InputGroup, Field, Combobox
+2. Input, InputGroup, Field, Badge, Combobox
 3. DropdownMenu, Popover, Toast
 4. Avatar, Pagination, Carousel, DatePicker
 5. Questionnaire
 
-Dependências previstas para os próximos lotes (as mesmas do shadcn para esses componentes): `cmdk`, `sonner`, `react-day-picker`, `embla-carousel-react`.
+### Lotes 2 e 3
+
+- **Badge** entrou no lote 2: o Figma usa no label dos campos ("Beta").
+- **Combobox** tem API de alto nível (`options`) em vez de composição, para ser simples de usar. Usa `cmdk` para a lista e o teclado, mas o campo é um `<input>` próprio: o input do `cmdk` força `id`, `aria-expanded` e `aria-labelledby`, o que quebrava o `FieldLabel htmlFor` e o leitor de tela.
+- **Toast** usa `sonner`. Como no Figma, todos os tipos (default, success, info, warning, error) têm o mesmo card, sem ícone; só o `promise` mostra o `Spinner` enquanto carrega.
+- **Popover** não nomeia o diálogo sozinho: o `PopoverContent` precisa de `aria-label` ou `aria-labelledby` (documentado).
+- O asterisco de obrigatório no Figma está em vermelho com 10% de opacidade; no Midas usamos `destructive` cheio para ter contraste legível.
+
+Dependências adicionadas: `@tabler/icons-react`, `cmdk`, `sonner`. Previstas para o lote 4: `react-day-picker` e `embla-carousel-react`.

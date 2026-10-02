@@ -18,8 +18,8 @@
 2. [ ] Primeira publicação no npm ([guia](guias/publicar-no-npm.md))
 3. [x] Tokens do Figma (tipografia, espaçamento, raios) + cores da hub + fonte do site
 4. [x] Lote 1: Button, ButtonGroup, Spinner, Kbd, Toggle, ToggleGroup, Tooltip
-5. [ ] Lote 2: Input, InputGroup, Field, Combobox
-6. [ ] Lote 3: DropdownMenu, Popover, Toast
+5. [x] Lote 2: Input, InputGroup, Field, Badge, Combobox
+6. [x] Lote 3: DropdownMenu, Popover, Toast
 7. [ ] Lote 4: Avatar, Pagination, Carousel, DatePicker
 8. [ ] Lote 5: Questionnaire
 9. [x] Site de docs com a cara da T2 e exemplos ao vivo (preview, código, copiar)
