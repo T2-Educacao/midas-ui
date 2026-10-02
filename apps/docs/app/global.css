@@ -3,8 +3,47 @@
 @import "fumadocs-ui/css/preset.css";
 @import "@t2-educacao/midas/theme.css";
 
+@source "../components";
+@source "../examples";
+
+:root,
+.dark,
+.dark #nd-sidebar {
+  --color-fd-background: var(--midas-background);
+  --color-fd-foreground: var(--midas-foreground);
+  --color-fd-muted: var(--midas-muted);
+  --color-fd-muted-foreground: var(--midas-muted-foreground);
+  --color-fd-popover: var(--midas-popover);
+  --color-fd-popover-foreground: var(--midas-popover-foreground);
+  --color-fd-card: var(--midas-card);
+  --color-fd-card-foreground: var(--midas-card-foreground);
+  --color-fd-border: var(--midas-border);
+  --color-fd-primary: var(--midas-primary);
+  --color-fd-primary-foreground: var(--midas-primary-foreground);
+  --color-fd-secondary: var(--midas-secondary);
+  --color-fd-secondary-foreground: var(--midas-secondary-foreground);
+  --color-fd-accent: var(--midas-accent);
+  --color-fd-accent-foreground: var(--midas-accent-foreground);
+  --color-fd-ring: var(--midas-ring);
+}
+
 html {
   scrollbar-gutter: stable;
+}
+
+body {
+  font-family: var(--midas-font-sans);
+}
+
+code,
+pre,
+kbd {
+  font-family: var(--midas-font-mono);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--midas-primary) 45%, transparent) transparent;
 }
 
 html > body[data-scroll-locked] {
