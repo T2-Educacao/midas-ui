@@ -89,7 +89,13 @@ import { Nome } from "@t2-educacao/midas";
 
 A `description` do frontmatter é o que agentes de IA leem primeiro: seja específico.
 
-## 7. Changeset e PR
+## 7. Exemplos no site de docs
+
+Cada exemplo é um arquivo em `apps/docs/examples/<nome>/<exemplo>.tsx` com um `export default` (o código desse arquivo é o que aparece na aba "Código", então escreva como o dev vai copiar). Depois registre os exemplos em `apps/docs/examples/index.ts`, na chave do componente, com `id` (nome do arquivo), `title` e `description` opcional.
+
+Confira em `pnpm dev`, nos temas claro e escuro.
+
+## 8. Changeset e PR
 
 Registre a mudança (escolha `minor` e descreva, ex.: "Adiciona componente Nome") e rode todas as verificações, que têm que passar inteiras:
 

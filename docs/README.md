@@ -5,6 +5,7 @@ Documentação para quem **mantém** o Midas. A documentação de quem **usa** o
 | Documento | Conteúdo |
 |---|---|
 | [decisoes/0001-arquitetura.md](decisoes/0001-arquitetura.md) | Por que o Midas é construído assim (registro de decisões) |
+| [decisoes/0002-tokens-e-componentes.md](decisoes/0002-tokens-e-componentes.md) | Fontes da verdade de tokens, cores, ícones e componentes |
 | [guias/criar-componente.md](guias/criar-componente.md) | Passo a passo e checklist para novos componentes |
 | [guias/publicar-no-npm.md](guias/publicar-no-npm.md) | Primeira publicação, automação e fluxo de versões |
 | [guias/conectar-figma-mcp.md](guias/conectar-figma-mcp.md) | Ligar o Figma ao Claude Code |

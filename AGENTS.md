@@ -6,7 +6,11 @@ Este repositório é o **Midas**, design system da T2 Educação, publicado como
 
 1. Leia `README.md` (estrutura e comandos) e `docs/decisoes/0001-arquitetura.md` (por que as coisas são como são).
 2. Para criar ou alterar componente, siga `docs/guias/criar-componente.md` à risca.
-3. A fonte da verdade visual é o **Figma do Midas** (via MCP do Figma, ver `docs/guias/conectar-figma-mcp.md`). Não use outros design systems da T2 como referência (design-skill, DS-T2 Clareza, site): o Midas substitui todos.
+3. Fontes da verdade (detalhes em `docs/decisoes/0002-tokens-e-componentes.md`):
+   - **componentes, ícones, tipografia, espaçamento e raios**: o Figma do Midas (páginas de componentes, Icons e Design Tokens; ignore Cover, Foundation, Templates e a página Colors);
+   - **cores**: as da hub (`hub-t2/styles/ds-globals.css`), já em `src/styles/theme.css`;
+   - **fonte**: Geist e Geist Mono, como no site.
+   Não use outros design systems da T2 como referência (design-skill, DS-T2 Clareza).
 
 ## Comandos
 
@@ -21,7 +25,7 @@ Este repositório é o **Midas**, design system da T2 Educação, publicado como
 - **API padrão de todo componente:** aceita `className` (mesclado com `cn`, o do usuário vence), repassa `...props` ao elemento, encaminha `ref` com `React.forwardRef` (compatível com React 18), tem `displayName`, `data-slot="<nome>"`. Variantes via `cva`, exportadas (`<nome>Variants`). `asChild` quando fizer sentido.
 - **Server Components:** só coloque `"use client"` no topo do arquivo se o componente usa estado, efeito, contexto ou Radix interativo. O build preserva a diretiva por arquivo.
 - **Acessibilidade não é opcional:** use primitivos Radix para qualquer coisa interativa complexa (dialog, menu, select, tabs, tooltip...). Todo componente tem teste com `expectNoA11yViolations`.
-- **Ícones:** só Phosphor, importado de `@phosphor-icons/react/ssr` dentro do pacote. Consumidores importam de `@t2-educacao/midas/icons`.
+- **Ícones:** Phosphor (padrão, de `@phosphor-icons/react/ssr` dentro do pacote) e Tabler (secundária). Consumidores importam de `@t2-educacao/midas/icons` e `@t2-educacao/midas/icons/tabler`.
 - **Sem segredos, URLs internas, chamadas de API ou lógica de negócio.** O pacote é PÚBLICO no npm. Só UI.
 - **Sem comentários no código** (nem JSDoc, nem em CSS). Nomes claros são a documentação; explicações vão no `.md`.
 - **Português** em docs e mensagens de teste. Nomes de código (componentes, props) em inglês, como no ecossistema React.

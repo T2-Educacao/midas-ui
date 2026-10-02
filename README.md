@@ -114,6 +114,7 @@ As regras completas estão em [`AGENTS.md`](AGENTS.md) e nos guias de [`docs/`](
 | Guia | Quando ler |
 |------|-----------|
 | [Decisões de arquitetura](docs/decisoes/0001-arquitetura.md) | Entender por que cada ferramenta foi escolhida |
+| [Tokens e componentes](docs/decisoes/0002-tokens-e-componentes.md) | De onde vêm cores, fontes, ícones e componentes |
 | [Criar um componente](docs/guias/criar-componente.md) | Antes de adicionar ou alterar componente |
 | [Publicar no npm](docs/guias/publicar-no-npm.md) | Primeira publicação e fluxo de versões |
 | [Conectar o Figma (MCP)](docs/guias/conectar-figma-mcp.md) | Importar tokens e componentes do Figma |

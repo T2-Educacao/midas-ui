@@ -16,17 +16,18 @@
 
 1. [x] Repositório `T2-Educacao/midas-ui` no GitHub
 2. [ ] Primeira publicação no npm ([guia](guias/publicar-no-npm.md))
-3. [ ] Conectar o MCP do Figma ([guia](guias/conectar-figma-mcp.md))
-4. [ ] Importar os tokens do Figma (cores claro/escuro, tipografia, raios, espaçamento, sombras) e substituir os valores provisórios
-5. [ ] Definir a fonte oficial e como distribuí-la (via `next/font` no projeto, ou arquivos no pacote)
-6. [ ] Refazer o `Button` conforme o Figma
-7. [ ] Lista de componentes do Figma, priorizada (sugestão de ordem: Input, Label, Textarea, Checkbox, Switch, Select, Card, Badge, Dialog, Tooltip, Tabs, Dropdown Menu, Toast, Avatar, Skeleton)
-8. [ ] Previews vivos dos componentes no site de docs
-9. [ ] Deploy do site de docs (ex.: Vercel)
+3. [x] Tokens do Figma (tipografia, espaçamento, raios) + cores da hub + fonte do site
+4. [x] Lote 1: Button, ButtonGroup, Spinner, Kbd, Toggle, ToggleGroup, Tooltip
+5. [ ] Lote 2: Input, InputGroup, Field, Combobox
+6. [ ] Lote 3: DropdownMenu, Popover, Toast
+7. [ ] Lote 4: Avatar, Pagination, Carousel, DatePicker
+8. [ ] Lote 5: Questionnaire
+9. [x] Site de docs com a cara da T2 e exemplos ao vivo (preview, código, copiar)
+10. [ ] Deploy do site de docs (ex.: Vercel)
 
 ## Decisões pendentes
 
-- [ ] **Biblioteca de ícones secundária**: qual é e para quê (a design vai passar)
+- [x] **Biblioteca de ícones secundária**: Tabler (`@t2-educacao/midas/icons/tabler`)
 - [ ] **Licença**: está MIT. Confirmar com a T2 (MIT permite que qualquer pessoa reutilize o código; a marca T2 continua protegida)
 - [x] **Repositório no GitHub**: `T2-Educacao/midas-ui`
 - [ ] Adoção na hub (Next 14 + Tailwind v3): usar `styles.css` e remover tokens shadcn antigos, ou migrar para Tailwind v4
