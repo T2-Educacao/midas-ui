@@ -1,6 +1,6 @@
 ---
-title: Guia para agentes de IA
-description: Regras obrigatórias para agentes de IA (Claude, Cursor, Copilot) que geram interface em projetos da T2 usando o Midas.
+title: "Guia para agentes de IA"
+description: "Regras obrigatórias para agentes de IA (Claude, Cursor, Copilot) que geram interface em projetos da T2 usando o Midas."
 ---
 
 Este guia é para **agentes de IA** trabalhando em um projeto que usa `@t2-educacao/midas`. Sugestão: referencie este arquivo no `CLAUDE.md` / `AGENTS.md` do projeto:
@@ -26,9 +26,9 @@ A documentação dentro de `node_modules` corresponde exatamente à versão inst
 1. **Use o componente do Midas quando ele existir.** Não recrie botão, input, modal etc. com HTML e Tailwind.
 2. **Imports:**
    - componentes e `cn`: `import { Button, cn } from "@t2-educacao/midas"`
-   - ícones: `import { ArrowRight } from "@t2-educacao/midas/icons"`
-   - nunca importe de `@t2-educacao/midas/dist/...`, de `@phosphor-icons/react` ou de outra lib de ícones.
-3. **Só tokens.** Cores: `bg-primary`, `text-foreground`, `border-border`, `bg-surface`... Nunca hex, `rgb()`, `bg-[#...]` ou a paleta padrão do Tailwind (`bg-blue-500`, `text-gray-600`).
+   - ícones: `import { ArrowRight } from "@t2-educacao/midas/icons"` (Phosphor, padrão) ou `"@t2-educacao/midas/icons/tabler"` (Tabler, só quando faltar na Phosphor)
+   - nunca importe de `@t2-educacao/midas/dist/...`, de `@phosphor-icons/react`, `@tabler/icons-react` ou de outra lib de ícones.
+3. **Só tokens.** Cores: `bg-primary`, `text-foreground`, `border-border`, `bg-card`, `bg-muted`... Nunca hex, `rgb()`, `bg-[#...]` ou a paleta padrão do Tailwind (`bg-blue-500`, `text-gray-600`).
 4. **Pares de cor.** Fundo colorido sempre com o `-foreground` correspondente: `bg-primary text-primary-foreground`.
 5. **Tema escuro vem de graça.** Não escreva `dark:` para cores que já são tokens.
 6. **Variante antes de className.** Confira as variantes no `.md` do componente antes de sobrescrever estilo.

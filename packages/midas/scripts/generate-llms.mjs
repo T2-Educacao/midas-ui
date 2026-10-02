@@ -21,7 +21,8 @@ function frontmatter(source) {
       data[key.trim()] = rest
         .join(":")
         .trim()
-        .replace(/^["']|["']$/g, "");
+        .replace(/^["']|["']$/g, "")
+        .replace(/\\"/g, '"');
   }
   return data;
 }

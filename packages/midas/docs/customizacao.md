@@ -1,6 +1,6 @@
 ---
-title: Customização
-description: Como ajustar componentes do Midas com className, variantes, asChild e composição, sem quebrar o padrão.
+title: "Customização"
+description: "Como ajustar componentes do Midas com className, variantes, asChild e composição, sem quebrar o padrão."
 ---
 
 Os componentes do Midas são padronizados, mas não engessados. Existem quatro formas de ajustar, **nesta ordem de preferência**:

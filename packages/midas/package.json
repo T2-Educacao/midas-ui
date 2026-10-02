@@ -1,7 +1,7 @@
 {
   "name": "@t2-educacao/midas",
   "version": "0.0.0",
-  "description": "Midas: o design system da T2 Educação. Componentes React, tokens, tema claro/escuro e ícones Phosphor.",
+  "description": "Midas: o design system da T2 Educação. Componentes React, tokens, tema claro/escuro e ícones Phosphor e Tabler.",
   "keywords": [
     "t2",
     "t2-educacao",
@@ -44,6 +44,10 @@
       "types": "./dist/icons/index.d.ts",
       "default": "./dist/icons/index.js"
     },
+    "./icons/tabler": {
+      "types": "./dist/icons/tabler.d.ts",
+      "default": "./dist/icons/tabler.js"
+    },
     "./theme.css": "./dist/theme.css",
     "./styles.css": "./dist/styles.css",
     "./docs/*": "./docs/*",
@@ -72,6 +76,7 @@
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
+    "@tabler/icons-react": "^3.48.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "radix-ui": "^1.6.7",

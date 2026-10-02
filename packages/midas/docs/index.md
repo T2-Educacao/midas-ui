@@ -1,6 +1,6 @@
 ---
-title: Midas
-description: O design system da T2 Educação para React e Next.js. Visão geral e primeiros passos.
+title: "Midas"
+description: "O design system da T2 Educação para React e Next.js. Visão geral e primeiros passos."
 ---
 
 O **Midas** é o design system da T2 Educação em forma de biblioteca React. Um único pacote traz:

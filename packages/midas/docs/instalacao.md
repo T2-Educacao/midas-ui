@@ -1,6 +1,6 @@
 ---
-title: Instalação
-description: Como instalar e configurar o Midas em projetos Next.js com Tailwind v4 (Next 16) ou Tailwind v3 (Next 14, como a hub).
+title: "Instalação"
+description: "Como instalar e configurar o Midas em projetos Next.js com Tailwind v4 (Next 16) ou Tailwind v3 (Next 14, como a hub)."
 ---
 
 > O pacote **ainda não foi publicado no npm**. Estas instruções valem a partir da primeira versão publicada.
@@ -50,23 +50,24 @@ Ele contém só as classes que os componentes do Midas usam, mais os tokens. Nã
 
 ## 3. Fontes
 
-O Midas lê as fontes das variáveis `--midas-font-sans` e `--midas-font-mono`. No Next, carregue a fonte com `next/font` e aponte a variável. Exemplo em `app/layout.tsx`:
+A fonte do Midas é a mesma do site da T2: **Geist** e **Geist Mono**. O Midas lê as variáveis `--font-geist-sans` e `--font-geist-mono`, as mesmas que o site usa. No Next, carregue as fontes com `next/font` em `app/layout.tsx`:
 
 ```tsx
-import { Geist } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 
-const sans = Geist({ subsets: ["latin"], variable: "--midas-font-sans" });
+const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={sans.variable}>
+    <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="bg-background text-foreground font-sans antialiased">{children}</body>
     </html>
   );
 }
 ```
 
-> A fonte oficial do Midas será definida pelo Figma; o exemplo acima é ilustrativo.
+Sem `next/font` (ex.: hub em Pages Router), o Midas tenta a fonte `"Geist"` instalada ou carregada pelo projeto.
 
 ## 4. Tema escuro (opcional)
 

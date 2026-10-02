@@ -1,4 +1,4 @@
 {
   "title": "Componentes",
-  "pages": ["button"]
+  "pages": ["button", "button-group", "kbd", "spinner", "toggle", "toggle-group", "tooltip"]
 }

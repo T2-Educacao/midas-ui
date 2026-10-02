@@ -1,21 +1,25 @@
 ---
-title: Ícones
-description: Ícones Phosphor pelo Midas. Import, tamanhos, pesos, cores e uso em Server Components.
+title: "Ícones"
+description: "Ícones Phosphor (padrão) e Tabler (secundária) pelo Midas. Import, tamanhos, pesos, cores e uso em Server Components."
 ---
 
-O Midas usa [Phosphor Icons](https://phosphoricons.com) como biblioteca oficial e a reexporta em `@t2-educacao/midas/icons`. Você **não** precisa instalar o Phosphor separadamente.
+O Midas traz as duas bibliotecas de ícones do Figma. Você **não** precisa instalá-las separadamente.
+
+| Biblioteca | Import | Quando usar |
+|---|---|---|
+| [Phosphor](https://phosphoricons.com) (padrão) | `@t2-educacao/midas/icons` | Sempre que possível |
+| [Tabler](https://tabler.io/icons) (secundária) | `@t2-educacao/midas/icons/tabler` | Só quando o ícone não existe na Phosphor |
 
 ```tsx
 import { ArrowRight, CheckCircle, MagnifyingGlass } from "@t2-educacao/midas/icons";
+import { IconBrandWhatsapp } from "@t2-educacao/midas/icons/tabler";
 ```
 
-Procure os nomes em [phosphoricons.com](https://phosphoricons.com). O nome do componente é o nome do ícone em PascalCase (`magnifying-glass` → `MagnifyingGlass`).
+Só os ícones importados vão para o bundle do projeto.
 
-## Server e Client Components
+## Phosphor
 
-Os ícones do Midas funcionam nos dois, sem configuração: eles vêm da versão SSR do Phosphor, que não usa contexto React.
-
-## Tamanho, peso e cor
+Procure os nomes em [phosphoricons.com](https://phosphoricons.com). O componente é o nome do ícone em PascalCase (`magnifying-glass` vira `MagnifyingGlass`).
 
 ```tsx
 <CheckCircle size={20} weight="fill" className="text-success" />
@@ -27,8 +31,27 @@ Os ícones do Midas funcionam nos dois, sem configuração: eles vêm da versão
 | `weight` | `regular` | `thin`, `light`, `regular`, `bold`, `fill`, `duotone` |
 | `color` | `currentColor` | prefira `className="text-..."` com tokens |
 
+Funciona em Server e Client Components sem configuração: o Midas usa a versão SSR do Phosphor.
+
+## Tabler
+
+Procure os nomes em [tabler.io/icons](https://tabler.io/icons). O componente tem o prefixo `Icon` e o nome em PascalCase (`brand-whatsapp` vira `IconBrandWhatsapp`).
+
+```tsx
+<IconBrandWhatsapp size={20} stroke={1.5} className="text-success" />
+```
+
+| Prop | Padrão | Valores |
+|---|---|---|
+| `size` | `24` | número (px) |
+| `stroke` | `2` | espessura do traço |
+| `color` | `currentColor` | prefira `className="text-..."` com tokens |
+
+## Regras gerais
+
 - A cor herda o texto (`currentColor`). Use tokens: `text-primary`, `text-muted-foreground`.
-- Dentro de `Button`, o tamanho já é ajustado automaticamente pelo `size` do botão.
+- Dentro de `Button`, `Toggle` e outros componentes, o tamanho é ajustado automaticamente.
+- Na mesma tela, prefira uma biblioteca só. Misture apenas quando faltar um ícone.
 
 ## Acessibilidade
 
@@ -49,7 +72,7 @@ import type { Icon, IconProps, IconWeight } from "@t2-educacao/midas/icons";
 type Item = { label: string; icon: Icon };
 ```
 
-## Regras
+## Não faça
 
-- Use **só** ícones do Midas. Não misture `lucide-react`, `react-icons`, heroicons etc.
-- Não importe de `@phosphor-icons/react` direto: importe de `@t2-educacao/midas/icons`, assim a versão fica sincronizada com o design system.
+- Usar outras bibliotecas (`lucide-react`, `react-icons`, heroicons...).
+- Importar de `@phosphor-icons/react` ou `@tabler/icons-react` direto: importe pelo Midas, assim a versão fica sincronizada com o design system.

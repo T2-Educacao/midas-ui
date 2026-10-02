@@ -1,6 +1,6 @@
 ---
-title: Button
-description: Botão de ação. Variantes primary, secondary, outline, ghost, danger e link; tamanhos sm, md, lg e icon; suporta asChild para links.
+title: "Button"
+description: "Botão de ação. Variantes default, outline, secondary, ghost, destructive e link; tamanhos xs, sm, default e lg; tamanhos de ícone; formato arredondado; estado loading; asChild para links."
 ---
 
 ```tsx
@@ -20,37 +20,42 @@ Aceita todas as props de `<button>` (`onClick`, `disabled`, `type`...) mais:
 
 | Prop | Tipo | Padrão | Descrição |
 |---|---|---|---|
-| `variant` | `"primary" \| "secondary" \| "outline" \| "ghost" \| "danger" \| "link"` | `"primary"` | Estilo visual |
-| `size` | `"sm" \| "md" \| "lg" \| "icon"` | `"md"` | Altura, padding e tamanho do ícone |
+| `variant` | `"default" \| "outline" \| "secondary" \| "ghost" \| "destructive" \| "link"` | `"default"` | Estilo visual |
+| `size` | `"xs" \| "sm" \| "default" \| "lg" \| "icon-xs" \| "icon-sm" \| "icon" \| "icon-lg"` | `"default"` | Altura, padding e tamanho do ícone |
+| `rounded` | `boolean` | `false` | Formato pill (totalmente arredondado) |
+| `loading` | `boolean` | `false` | Mostra o `Spinner`, desabilita o botão e marca `aria-busy` |
 | `asChild` | `boolean` | `false` | Renderiza o filho com o visual de botão |
 | `className` | `string` | | Classes extras, mescladas (as suas vencem) |
 | `ref` | `Ref<HTMLButtonElement>` | | Encaminhada ao elemento |
 
-`type` é `"button"` por padrão (não envia formulários sem querer). Use `type="submit"` em formulários.
+`type` é `"button"` por padrão (não envia formulários sem querer). Use `type="submit"` em formulários. `loading` não tem efeito com `asChild`.
 
 ## Variantes
 
 | Variante | Quando usar |
 |---|---|
-| `primary` | A ação principal da tela. Idealmente **uma** por tela/seção |
-| `secondary` | Ações de apoio ao lado da principal |
+| `default` | A ação principal da tela, na cor primária da T2. Idealmente **uma** por tela ou seção |
 | `outline` | Ações neutras, "Cancelar", filtros |
+| `secondary` | Ações de apoio ao lado da principal |
 | `ghost` | Ações de baixa ênfase, barras de ferramentas, menus |
-| `danger` | Ações destrutivas ("Excluir", "Cancelar assinatura") |
-| `link` | Ação com aparência de link dentro de texto |
+| `destructive` | Ações destrutivas ("Excluir", "Cancelar assinatura") |
+| `link` | Ação com aparência de link |
 
 ## Tamanhos
 
-| Tamanho | Altura | Uso |
+| Tamanho | Medida | Uso |
 |---|---|---|
-| `sm` | 32px | Tabelas, áreas densas |
-| `md` | 40px | Padrão |
-| `lg` | 48px | CTAs de destaque, heros |
-| `icon` | 40×40 | Botão só com ícone (exige `aria-label`) |
+| `xs` | 24px de altura | Áreas muito densas, chips de ação |
+| `sm` | 28px | Tabelas, barras de ferramentas |
+| `default` | 32px | Padrão |
+| `lg` | 36px | CTAs de destaque |
+| `icon-xs` / `icon-sm` / `icon` / `icon-lg` | 24 / 28 / 32 / 36px quadrado | Botão só com ícone (exige `aria-label`) |
 
 ## Exemplos
 
 ### Com ícone
+
+O ícone é dimensionado pelo `size` do botão. Não passe `size` para o ícone.
 
 ```tsx
 import { ArrowRight, Plus } from "@t2-educacao/midas/icons";
@@ -59,8 +64,6 @@ import { ArrowRight, Plus } from "@t2-educacao/midas/icons";
 <Button size="lg">Começar <ArrowRight /></Button>
 ```
 
-O ícone é dimensionado pelo `size` do botão. Não passe `size` para o ícone.
-
 ### Só ícone
 
 ```tsx
@@ -68,6 +71,31 @@ import { Trash } from "@t2-educacao/midas/icons";
 
 <Button size="icon" variant="ghost" aria-label="Excluir">
   <Trash />
+</Button>
+```
+
+### Arredondado
+
+```tsx
+<Button rounded>Inscrever</Button>
+<Button size="icon" rounded aria-label="Adicionar"><Plus /></Button>
+```
+
+### Carregando
+
+```tsx
+<Button loading={isPending} type="submit">
+  {isPending ? "Salvando" : "Salvar"}
+</Button>
+```
+
+### Com atalho de teclado
+
+```tsx
+import { Button, Kbd } from "@t2-educacao/midas";
+
+<Button variant="outline">
+  Buscar <Kbd>⌘K</Kbd>
 </Button>
 ```
 
@@ -81,29 +109,24 @@ import Link from "next/link";
 </Button>
 ```
 
-### Em formulário
-
-```tsx
-<Button type="submit" disabled={isPending}>
-  {isPending ? "Salvando..." : "Salvar"}
-</Button>
-```
-
 ### Largura total
 
 ```tsx
 <Button className="w-full">Continuar</Button>
 ```
 
+Para agrupar botões, veja [ButtonGroup](./button-group.md).
+
 ## Acessibilidade
 
 - Usa `<button>` nativo: foco, `Enter` e `Espaço` funcionam sem configuração.
-- Anel de foco visível (`focus-visible`) com o token `ring`.
+- Anel de foco visível (`focus-visible`) de 3px com o token `ring`.
+- `loading` marca `aria-busy="true"` e desabilita o botão; mantenha um texto que descreva a ação.
 - `disabled` remove o botão da navegação por teclado. Se o usuário precisa saber *por que* está desabilitado, mostre o motivo em texto próximo.
-- `size="icon"` exige `aria-label`.
+- Tamanhos `icon*` exigem `aria-label`.
 
 ## Não faça
 
 - `<Link><Button /></Link>`: gera `<button>` dentro de `<a>` (HTML inválido). Use `asChild`.
-- Vários `primary` lado a lado: só um é o principal.
-- `className="bg-[#0097D9]"`: use a variante ou tokens.
+- Vários `default` lado a lado: só um é o principal.
+- `className="bg-[#009adb]"`: use a variante ou tokens.

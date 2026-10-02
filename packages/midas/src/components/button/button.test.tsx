@@ -11,23 +11,32 @@ describe("Button", () => {
     const button = screen.getByRole("button", { name: "Salvar" });
     expect(button.tagName).toBe("BUTTON");
     expect(button).toHaveAttribute("type", "button");
+    expect(button).toHaveClass("bg-primary", "h-8");
   });
 
-  it("aplica variante e tamanho", () => {
+  it("aplica variante, tamanho e formato arredondado", () => {
     render(
-      <Button variant="danger" size="lg">
+      <Button variant="destructive" size="lg" rounded>
         Excluir
       </Button>,
     );
-    const button = screen.getByRole("button");
-    expect(button).toHaveClass("bg-danger", "h-12");
+    expect(screen.getByRole("button")).toHaveClass("bg-destructive/10", "h-9", "rounded-full");
   });
 
-  it("mescla className sem duplicar classes conflitantes", () => {
+  it("tem tamanhos de ícone quadrados", () => {
+    render(
+      <Button size="icon-sm" aria-label="Buscar">
+        <svg />
+      </Button>,
+    );
+    expect(screen.getByRole("button", { name: "Buscar" })).toHaveClass("size-7");
+  });
+
+  it("mescla className e a classe do usuário vence", () => {
     render(<Button className="h-14 px-8">Grande</Button>);
     const button = screen.getByRole("button");
     expect(button).toHaveClass("h-14", "px-8");
-    expect(button).not.toHaveClass("h-10", "px-4");
+    expect(button).not.toHaveClass("h-8", "px-2.5");
   });
 
   it("chama onClick e respeita disabled", async () => {
@@ -43,6 +52,14 @@ describe("Button", () => {
     );
     await userEvent.click(screen.getByRole("button"));
     expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it("em loading mostra o spinner, fica desabilitado e marca aria-busy", () => {
+    render(<Button loading>Salvando</Button>);
+    const button = screen.getByRole("button", { name: "Salvando" });
+    expect(button).toBeDisabled();
+    expect(button).toHaveAttribute("aria-busy", "true");
+    expect(button.querySelector("[data-slot=spinner]")).not.toBeNull();
   });
 
   it("com asChild renderiza o filho com o visual de botão", () => {
@@ -64,7 +81,12 @@ describe("Button", () => {
   });
 
   it("não tem violações de acessibilidade", async () => {
-    const { container } = render(<Button>Acessível</Button>);
+    const { container } = render(
+      <div>
+        <Button>Acessível</Button>
+        <Button loading>Carregando</Button>
+      </div>,
+    );
     await expectNoA11yViolations(container);
   });
 });

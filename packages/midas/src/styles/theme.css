@@ -3,92 +3,87 @@
 @custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
 
 :root {
-  --midas-background: #ffffff;
-  --midas-foreground: #0f172a;
-  --midas-surface: #f8fafc;
-  --midas-surface-foreground: #0f172a;
-  --midas-muted: #f1f5f9;
-  --midas-muted-foreground: #64748b;
-  --midas-border: #e2e8f0;
-  --midas-input: #e2e8f0;
-  --midas-ring: #0097d9;
+  --midas-background: hsl(0 0% 100%);
+  --midas-foreground: hsl(240 1% 19%);
+  --midas-card: hsl(0 0% 100%);
+  --midas-card-foreground: hsl(240 1% 19%);
+  --midas-popover: hsl(0 0% 100%);
+  --midas-popover-foreground: hsl(240 1% 19%);
+  --midas-primary: hsl(198 100% 43%);
+  --midas-primary-foreground: hsl(0 0% 100%);
+  --midas-secondary: hsl(210 40% 96%);
+  --midas-secondary-foreground: hsl(240 1% 19%);
+  --midas-muted: hsl(210 40% 96%);
+  --midas-muted-foreground: hsl(215 16% 47%);
+  --midas-accent: hsl(210 40% 96%);
+  --midas-accent-foreground: hsl(240 1% 19%);
+  --midas-destructive: hsl(0 72% 51%);
+  --midas-destructive-foreground: hsl(0 0% 100%);
+  --midas-success: hsl(142 76% 36%);
+  --midas-success-foreground: hsl(0 0% 100%);
+  --midas-border: hsl(214 32% 91%);
+  --midas-input: hsl(214 32% 91%);
+  --midas-ring: hsl(198 100% 43%);
 
-  --midas-primary: #0097d9;
-  --midas-primary-hover: #007ab8;
-  --midas-primary-foreground: #ffffff;
-  --midas-secondary: #f1f5f9;
-  --midas-secondary-hover: #e2e8f0;
-  --midas-secondary-foreground: #0f172a;
-  --midas-accent: #36c5fa;
-  --midas-accent-foreground: #0f172a;
-
-  --midas-success: #059669;
-  --midas-success-foreground: #ffffff;
-  --midas-warning: #d97706;
-  --midas-warning-foreground: #ffffff;
-  --midas-danger: #dc2626;
-  --midas-danger-hover: #b91c1c;
-  --midas-danger-foreground: #ffffff;
-
-  --midas-font-sans: ui-sans-serif, system-ui, sans-serif;
-  --midas-font-mono: ui-monospace, SFMono-Regular, monospace;
+  --midas-font-sans: var(--font-geist-sans), "Geist", Inter, -apple-system, system-ui, sans-serif;
+  --midas-font-mono:
+    var(--font-geist-mono), "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
   --midas-radius-xs: 4px;
   --midas-radius-sm: 6px;
   --midas-radius-md: 8px;
-  --midas-radius-lg: 12px;
-  --midas-radius-xl: 16px;
-
-  --midas-ease-standard: cubic-bezier(0.2, 0, 0, 1);
-  --midas-duration-fast: 120ms;
-  --midas-duration-normal: 160ms;
+  --midas-radius-lg: 10px;
+  --midas-radius-xl: 14px;
+  --midas-radius-2xl: 18px;
 }
 
 .dark,
 [data-theme="dark"] {
-  --midas-background: #171b2f;
-  --midas-foreground: #f8f9fc;
-  --midas-surface: #232a47;
-  --midas-surface-foreground: #f8f9fc;
-  --midas-muted: #1c2138;
-  --midas-muted-foreground: #b8c0d4;
-  --midas-border: #2f3654;
-  --midas-input: #2f3654;
-  --midas-ring: #36c5fa;
-
-  --midas-secondary: #232a47;
-  --midas-secondary-hover: #2a3255;
-  --midas-secondary-foreground: #f8f9fc;
-  --midas-accent-foreground: #0f172a;
+  --midas-background: hsl(238 58% 9%);
+  --midas-foreground: hsl(225 40% 98%);
+  --midas-card: hsl(238 58% 16%);
+  --midas-card-foreground: hsl(225 40% 98%);
+  --midas-popover: hsl(238 58% 16%);
+  --midas-popover-foreground: hsl(225 40% 98%);
+  --midas-primary: hsl(198 100% 43%);
+  --midas-primary-foreground: hsl(0 0% 100%);
+  --midas-secondary: hsl(238 58% 11%);
+  --midas-secondary-foreground: hsl(225 40% 98%);
+  --midas-muted: hsl(238 58% 11%);
+  --midas-muted-foreground: hsl(223 25% 78%);
+  --midas-accent: hsl(238 58% 20%);
+  --midas-accent-foreground: hsl(225 40% 98%);
+  --midas-destructive: hsl(0 72% 51%);
+  --midas-destructive-foreground: hsl(0 0% 100%);
+  --midas-success: hsl(142 71% 45%);
+  --midas-success-foreground: hsl(0 0% 100%);
+  --midas-border: hsl(238 45% 19%);
+  --midas-input: hsl(238 45% 22%);
+  --midas-ring: hsl(196 95% 60%);
 }
 
 @theme inline {
   --color-background: var(--midas-background);
   --color-foreground: var(--midas-foreground);
-  --color-surface: var(--midas-surface);
-  --color-surface-foreground: var(--midas-surface-foreground);
+  --color-card: var(--midas-card);
+  --color-card-foreground: var(--midas-card-foreground);
+  --color-popover: var(--midas-popover);
+  --color-popover-foreground: var(--midas-popover-foreground);
+  --color-primary: var(--midas-primary);
+  --color-primary-foreground: var(--midas-primary-foreground);
+  --color-secondary: var(--midas-secondary);
+  --color-secondary-foreground: var(--midas-secondary-foreground);
   --color-muted: var(--midas-muted);
   --color-muted-foreground: var(--midas-muted-foreground);
+  --color-accent: var(--midas-accent);
+  --color-accent-foreground: var(--midas-accent-foreground);
+  --color-destructive: var(--midas-destructive);
+  --color-destructive-foreground: var(--midas-destructive-foreground);
+  --color-success: var(--midas-success);
+  --color-success-foreground: var(--midas-success-foreground);
   --color-border: var(--midas-border);
   --color-input: var(--midas-input);
   --color-ring: var(--midas-ring);
-
-  --color-primary: var(--midas-primary);
-  --color-primary-hover: var(--midas-primary-hover);
-  --color-primary-foreground: var(--midas-primary-foreground);
-  --color-secondary: var(--midas-secondary);
-  --color-secondary-hover: var(--midas-secondary-hover);
-  --color-secondary-foreground: var(--midas-secondary-foreground);
-  --color-accent: var(--midas-accent);
-  --color-accent-foreground: var(--midas-accent-foreground);
-
-  --color-success: var(--midas-success);
-  --color-success-foreground: var(--midas-success-foreground);
-  --color-warning: var(--midas-warning);
-  --color-warning-foreground: var(--midas-warning-foreground);
-  --color-danger: var(--midas-danger);
-  --color-danger-hover: var(--midas-danger-hover);
-  --color-danger-foreground: var(--midas-danger-foreground);
 
   --font-sans: var(--midas-font-sans);
   --font-mono: var(--midas-font-mono);
@@ -98,6 +93,18 @@
   --radius-md: var(--midas-radius-md);
   --radius-lg: var(--midas-radius-lg);
   --radius-xl: var(--midas-radius-xl);
+  --radius-2xl: var(--midas-radius-2xl);
 
-  --ease-standard: var(--midas-ease-standard);
+  --animate-midas-in: midas-in 150ms cubic-bezier(0.2, 0, 0, 1);
+
+  @keyframes midas-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 }

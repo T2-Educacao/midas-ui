@@ -1,56 +1,69 @@
 ---
-title: Tema e tokens
-description: Lista de tokens do Midas (cores, fontes, raios, motion), como funcionam os temas claro e escuro e como sobrescrever valores.
+title: "Tema e tokens"
+description: "Tokens do Midas (cores da T2 em claro e escuro, fontes Geist, raios e animação), como funcionam os temas e como sobrescrever valores."
 ---
 
-Os tokens são **variáveis CSS** com prefixo `--midas-` e viram classes do Tailwind sem prefixo (`--midas-primary` → `bg-primary`, `text-primary`, `border-primary`...).
-
-> Valores atuais são **provisórios** até a importação do Figma. Os **nomes** abaixo são o contrato: use-os à vontade.
+Os tokens são **variáveis CSS** com prefixo `--midas-` e viram classes do Tailwind sem prefixo (`--midas-primary` vira `bg-primary`, `text-primary`, `border-primary`...). Os nomes seguem o padrão do shadcn/ui, o mesmo usado na hub.
 
 ## Cores
 
-Cada cor de "fundo" tem um par `-foreground` para o texto que vai por cima dela. Sempre use os dois juntos: `bg-primary text-primary-foreground`.
+As cores são as da T2 (as mesmas da hub), em tema claro e escuro. Cada cor de fundo tem um par `-foreground` para o texto que vai por cima dela. Sempre use os dois juntos: `bg-primary text-primary-foreground`.
 
-| Token (classe) | Uso |
-|---|---|
-| `background` / `foreground` | Fundo da página e texto principal |
-| `surface` / `surface-foreground` | Cards, painéis, popovers |
-| `muted` / `muted-foreground` | Áreas neutras e texto secundário |
-| `border` | Bordas padrão |
-| `input` | Borda de campos de formulário |
-| `ring` | Anel de foco (acessibilidade) |
-| `primary` / `primary-hover` / `primary-foreground` | Ação principal, links, marca |
-| `secondary` / `secondary-hover` / `secondary-foreground` | Ações secundárias |
-| `accent` / `accent-foreground` | Destaques e seleção |
-| `success` / `success-foreground` | Sucesso, aprovação |
-| `warning` / `warning-foreground` | Atenção |
-| `danger` / `danger-hover` / `danger-foreground` | Erro, ações destrutivas |
+| Token (classe) | Uso | Claro | Escuro |
+|---|---|---|---|
+| `background` / `foreground` | Fundo da página e texto principal | `#ffffff` / `#303031` | `#0a0b24` / `#f8f9fc` |
+| `card` / `card-foreground` | Cards e painéis | `#ffffff` | `#111340` |
+| `popover` / `popover-foreground` | Menus, tooltips, popovers | `#ffffff` | `#111340` |
+| `primary` / `primary-foreground` | Azul T2: ação principal, links, foco | `#009adb` / `#ffffff` | `#009adb` / `#ffffff` |
+| `secondary` / `secondary-foreground` | Ações secundárias | `#f1f5f9` | `#0c0d2c` |
+| `muted` / `muted-foreground` | Áreas neutras e texto secundário | `#f1f5f9` / `#65758b` | `#0c0d2c` / `#b9c1d5` |
+| `accent` / `accent-foreground` | Hover de itens de menu e seleção | `#f1f5f9` | `#151751` |
+| `destructive` / `destructive-foreground` | Erro e ações destrutivas | `#dc2828` | `#dc2828` |
+| `success` / `success-foreground` | Sucesso, status online | `#16a34a` | `#22c55e` |
+| `border` | Bordas padrão | `#e1e7ef` | `#1b1c46` |
+| `input` | Borda de campos | `#e1e7ef` | `#1f2151` |
+| `ring` | Anel de foco | `#009adb` | `#38c6fa` |
 
 ## Tipografia
 
-| Token | Classe |
-|---|---|
-| `--midas-font-sans` | `font-sans` |
-| `--midas-font-mono` | `font-mono` |
+A fonte é a mesma do site da T2: **Geist** e **Geist Mono**.
+
+| Token | Classe | Valor |
+|---|---|---|
+| `--midas-font-sans` | `font-sans` | `var(--font-geist-sans)`, depois `"Geist"` |
+| `--midas-font-mono` | `font-mono` | `var(--font-geist-mono)`, depois `"Geist Mono"` |
+
+Se o projeto carrega a Geist com `next/font` nas variáveis `--font-geist-sans` e `--font-geist-mono` (como o site), o Midas usa a fonte automaticamente. Veja [Instalação](./instalacao.md).
+
+A escala de texto do Figma é a padrão do Tailwind:
+
+| Classe | Tamanho / altura de linha | Uso |
+|---|---|---|
+| `text-xs` | 12 / 16px | Labels, badges, botões pequenos |
+| `text-sm` | 14 / 20px | Texto de interface, botões |
+| `text-base` | 16 / 24px | Corpo |
+| `text-lg` | 18 / 28px | Títulos de card |
+| `text-xl` | 20 / 28px | Subtítulos |
+| `text-2xl` | 24 / 32px | Títulos de seção |
+| `text-3xl` | 30 / 36px | Títulos de página |
+
+Pesos usados: 400 (corpo), 500 (interface e labels) e 600 (títulos).
 
 ## Raios
 
-| Token | Classe | Valor atual |
+| Classe | Valor | Uso |
 |---|---|---|
-| `--midas-radius-xs` | `rounded-xs` | 4px |
-| `--midas-radius-sm` | `rounded-sm` | 6px |
-| `--midas-radius-md` | `rounded-md` | 8px |
-| `--midas-radius-lg` | `rounded-lg` | 12px |
-| `--midas-radius-xl` | `rounded-xl` | 16px |
+| `rounded-xs` | 4px | Detalhes pequenos |
+| `rounded-sm` | 6px | Teclas (`Kbd`), itens de menu |
+| `rounded-md` | 8px | Botões e toggles pequenos |
+| `rounded-lg` | 10px | Botões, campos, tooltips |
+| `rounded-xl` | 14px | Cards |
+| `rounded-2xl` | 18px | Painéis e diálogos |
+| `rounded-full` | 9999px | Pills, avatares |
 
-## Motion
+## Espaçamento
 
-| Token | Classe |
-|---|---|
-| `--midas-ease-standard` | `ease-standard` |
-| `--midas-duration-fast` (120ms) / `--midas-duration-normal` (160ms) | use `duration-150` ou `var(...)` |
-
-Sempre inclua `motion-reduce:transition-none` em animações.
+O Figma usa a escala padrão do Tailwind (4px por unidade): `1` = 4px, `1.5` = 6px, `2` = 8px, `2.5` = 10px, `3` = 12px, `4` = 16px, `6` = 24px.
 
 ## Claro e escuro
 
@@ -58,12 +71,12 @@ Sempre inclua `motion-reduce:transition-none` em animações.
 - **Escuro** ativa com a classe `.dark` ou o atributo `data-theme="dark"` em qualquer ancestral (normalmente o `<html>`).
 - A variante `dark:` do Tailwind segue a mesma regra.
 
-Você quase nunca precisa de `dark:`: os tokens já trocam de valor sozinhos. `bg-surface` é claro no tema claro e escuro no tema escuro.
+Você quase nunca precisa de `dark:`: os tokens já trocam de valor sozinhos.
 
 Certo, o token muda com o tema:
 
 ```tsx
-<div className="bg-surface text-surface-foreground" />
+<div className="bg-card text-card-foreground" />
 ```
 
 Evite duplicar o tema na mão:
@@ -81,10 +94,7 @@ Para ajustar um valor num projeto específico, redefina a variável **depois** d
 @import "@t2-educacao/midas/theme.css";
 
 :root {
-  --midas-primary: #1d69c7;
-}
-.dark {
-  --midas-primary: #36c5fa;
+  --midas-primary: hsl(213 75% 45%);
 }
 ```
 
