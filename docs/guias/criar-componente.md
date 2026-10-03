@@ -38,6 +38,7 @@ Checklist da API (todo componente):
 - [ ] `data-slot="<nome>"` no elemento raiz
 - [ ] variantes com `cva`, exportadas como `<nome>Variants`, com `defaultVariants`
 - [ ] `asChild` (via `Slot.Root` do `radix-ui`) se fizer sentido o componente "virar" outro elemento
+- [ ] classes lógicas para direção (`ps`/`pe`, `ms`/`me`, `start`/`end`, `rounded-s`/`rounded-e`), para funcionar em RTL
 - [ ] só classes de token, `focus-visible` visível, `motion-reduce:transition-none` em transições
 - [ ] interativo complexo? use o primitivo do Radix (`import { Dialog } from "radix-ui"`)
 - [ ] `"use client"` na primeira linha **só** se usa estado/efeito/contexto/Radix interativo

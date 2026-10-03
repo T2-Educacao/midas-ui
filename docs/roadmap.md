@@ -25,7 +25,7 @@
 9. [x] Componentes de apoio: Card, Dialog, Progress, Select, NativeSelect, Checkbox, RadioGroup, Textarea, Separator
 10. [x] Site de docs com a cara da T2 e exemplos ao vivo (preview, código, copiar)
 11. [ ] Deploy do site de docs (ex.: Vercel)
-12. [ ] DatePicker com linguagem natural ("amanhã às 10h"), presente no Figma: depende de uma biblioteca de parsing em português
+12. [x] Exemplo de DatePicker com linguagem natural em português, suporte a RTL e todos os exemplos do Figma
 
 ## Decisões pendentes
 
