@@ -69,7 +69,7 @@ export const AvatarBadge = React.forwardRef<HTMLSpanElement, AvatarBadgeProps>(
       data-slot="avatar-badge"
       data-variant={variant}
       className={cn(
-        "absolute right-0 bottom-0 z-10 inline-flex size-2.5 items-center justify-center rounded-full ring-1 ring-background select-none",
+        "absolute end-0 bottom-0 z-10 inline-flex size-2.5 items-center justify-center rounded-full ring-1 ring-background select-none",
         "group-data-[size=sm]/avatar:size-2 group-data-[size=lg]/avatar:size-3",
         "data-[variant=status]:bg-success",
         "data-[variant=icon]:bg-primary data-[variant=icon]:text-primary-foreground",

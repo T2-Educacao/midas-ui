@@ -73,6 +73,12 @@ export {
   DialogTrigger,
 } from "./components/dialog";
 export {
+  type Direction,
+  DirectionProvider,
+  type DirectionProviderProps,
+  useDirection,
+} from "./components/direction";
+export {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,

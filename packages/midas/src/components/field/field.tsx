@@ -69,14 +69,14 @@ export const FieldLabel = React.forwardRef<
     data-slot="field-label"
     className={cn(
       "w-fit has-[>[data-slot=badge]]:w-full group-data-[disabled=true]/field:opacity-50 group-data-[invalid=true]/field:text-destructive",
-      "[&>[data-slot=badge]]:ml-auto",
+      "[&>[data-slot=badge]]:ms-auto",
       className,
     )}
     {...props}
   >
     {children}
     {required && (
-      <span aria-hidden className="-ml-1 text-destructive">
+      <span aria-hidden className="-ms-1 text-destructive">
         *
       </span>
     )}

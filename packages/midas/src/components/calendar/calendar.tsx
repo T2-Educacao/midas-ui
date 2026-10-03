@@ -93,12 +93,12 @@ export function Calendar({
         week_number: cn("select-none text-xs text-muted-foreground", defaults.week_number),
         day: cn(
           "group/day relative aspect-square h-full w-full select-none p-0 text-center",
-          "[&:first-child[data-selected=true]_button]:rounded-l-lg [&:last-child[data-selected=true]_button]:rounded-r-lg",
+          "[&:first-child[data-selected=true]_button]:rounded-s-lg [&:last-child[data-selected=true]_button]:rounded-e-lg",
           defaults.day,
         ),
-        range_start: cn("rounded-l-lg bg-accent", defaults.range_start),
+        range_start: cn("rounded-s-lg bg-accent", defaults.range_start),
         range_middle: cn("rounded-none", defaults.range_middle),
-        range_end: cn("rounded-r-lg bg-accent", defaults.range_end),
+        range_end: cn("rounded-e-lg bg-accent", defaults.range_end),
         today: cn(
           "rounded-lg bg-accent text-accent-foreground data-[selected=true]:rounded-none",
           defaults.today,

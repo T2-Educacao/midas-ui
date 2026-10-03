@@ -69,10 +69,10 @@ export const PaginationPrevious = React.forwardRef<HTMLAnchorElement, Pagination
       aria-label="Ir para a página anterior"
       size="default"
       rounded
-      className={cn("pl-2", className)}
+      className={cn("ps-2", className)}
       {...props}
     >
-      <CaretLeft />
+      <CaretLeft className="rtl:rotate-180" />
       <span className="hidden sm:block">{label}</span>
     </PaginationLink>
   ),
@@ -86,11 +86,11 @@ export const PaginationNext = React.forwardRef<HTMLAnchorElement, PaginationNavP
       aria-label="Ir para a próxima página"
       size="default"
       rounded
-      className={cn("pr-2", className)}
+      className={cn("pe-2", className)}
       {...props}
     >
       <span className="hidden sm:block">{label}</span>
-      <CaretRight />
+      <CaretRight className="rtl:rotate-180" />
     </PaginationLink>
   ),
 );

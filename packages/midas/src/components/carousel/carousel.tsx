@@ -2,6 +2,7 @@
 
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/ssr";
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react";
+import { Direction } from "radix-ui";
 import * as React from "react";
 import { cn } from "../../lib/cn";
 import { Button, type ButtonProps } from "../button/button";
@@ -41,8 +42,9 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
     { orientation = "horizontal", opts, setApi, plugins, className, children, onKeyDown, ...props },
     ref,
   ) => {
+    const direction = Direction.useDirection();
     const [carouselRef, api] = useEmblaCarousel(
-      { ...opts, axis: orientation === "horizontal" ? "x" : "y" },
+      { direction, ...opts, axis: orientation === "horizontal" ? "x" : "y" },
       plugins,
     );
     const [canScrollPrev, setCanScrollPrev] = React.useState(false);
@@ -92,8 +94,11 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
           data-orientation={orientation}
           onKeyDownCapture={(event) => {
             onKeyDown?.(event);
-            const prevKey = orientation === "horizontal" ? "ArrowLeft" : "ArrowUp";
-            const nextKey = orientation === "horizontal" ? "ArrowRight" : "ArrowDown";
+            const rtl = direction === "rtl";
+            const prevKey =
+              orientation === "vertical" ? "ArrowUp" : rtl ? "ArrowRight" : "ArrowLeft";
+            const nextKey =
+              orientation === "vertical" ? "ArrowDown" : rtl ? "ArrowLeft" : "ArrowRight";
             if (event.key === prevKey) {
               event.preventDefault();
               scrollPrev();
@@ -122,7 +127,7 @@ export const CarouselContent = React.forwardRef<
     <div ref={carouselRef} data-slot="carousel-content" className="overflow-hidden">
       <div
         ref={ref}
-        className={cn("flex", orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col", className)}
+        className={cn("flex", orientation === "horizontal" ? "-ms-4" : "-mt-4 flex-col", className)}
         {...props}
       />
     </div>
@@ -141,7 +146,7 @@ export const CarouselItem = React.forwardRef<HTMLDivElement, React.HTMLAttribute
         data-slot="carousel-item"
         className={cn(
           "min-w-0 shrink-0 grow-0 basis-full",
-          orientation === "horizontal" ? "pl-4" : "pt-4",
+          orientation === "horizontal" ? "ps-4" : "pt-4",
           className,
         )}
         {...props}
@@ -166,13 +171,13 @@ export const CarouselPrevious = React.forwardRef<HTMLButtonElement, ButtonProps>
         className={cn(
           "absolute touch-manipulation",
           orientation === "horizontal"
-            ? "top-1/2 -left-12 -translate-y-1/2"
+            ? "top-1/2 -start-12 -translate-y-1/2"
             : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
           className,
         )}
         {...props}
       >
-        <ArrowLeft />
+        <ArrowLeft className="rtl:rotate-180" />
         <span className="sr-only">Slide anterior</span>
       </Button>
     );
@@ -195,13 +200,13 @@ export const CarouselNext = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(
           "absolute touch-manipulation",
           orientation === "horizontal"
-            ? "top-1/2 -right-12 -translate-y-1/2"
+            ? "top-1/2 -end-12 -translate-y-1/2"
             : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
           className,
         )}
         {...props}
       >
-        <ArrowRight />
+        <ArrowRight className="rtl:rotate-180" />
         <span className="sr-only">Próximo slide</span>
       </Button>
     );

@@ -23,7 +23,7 @@ export const SelectTrigger = React.forwardRef<
     data-slot="select-trigger"
     data-size={size}
     className={cn(
-      "flex w-fit items-center justify-between gap-1.5 whitespace-nowrap rounded-lg border border-input bg-transparent py-1 pr-2 pl-2.5 text-sm text-foreground outline-none select-none",
+      "flex w-fit items-center justify-between gap-1.5 whitespace-nowrap rounded-lg border border-input bg-transparent py-1 pe-2 ps-2.5 text-sm text-foreground outline-none select-none",
       "transition-[color,border-color,box-shadow] duration-150 motion-reduce:transition-none",
       "data-[size=default]:h-8 data-[size=sm]:h-7 data-[size=sm]:rounded-md",
       "data-placeholder:text-muted-foreground",
@@ -103,7 +103,7 @@ export const SelectItem = React.forwardRef<
     ref={ref}
     data-slot="select-item"
     className={cn(
-      "relative flex w-full cursor-default select-none items-center gap-1.5 rounded-md py-1 pr-8 pl-1.5 text-sm outline-none",
+      "relative flex w-full cursor-default select-none items-center gap-1.5 rounded-md py-1 pe-8 ps-1.5 text-sm outline-none",
       "focus:bg-accent focus:text-accent-foreground",
       "data-disabled:pointer-events-none data-disabled:opacity-50",
       "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
@@ -111,7 +111,7 @@ export const SelectItem = React.forwardRef<
     )}
     {...props}
   >
-    <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center">
+    <span className="pointer-events-none absolute end-2 flex size-4 items-center justify-center">
       <SelectPrimitive.ItemIndicator>
         <Check />
       </SelectPrimitive.ItemIndicator>

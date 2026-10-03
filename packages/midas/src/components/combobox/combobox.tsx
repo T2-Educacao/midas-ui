@@ -224,7 +224,7 @@ export function Combobox(props: ComboboxProps) {
               data-slot="combobox-trigger"
               className={cn(
                 fieldClasses,
-                "h-8 cursor-default gap-2 px-2 text-left focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
+                "h-8 cursor-default gap-2 px-2 text-start focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
               )}
             >
               {startAddon && <span className={addonClasses}>{startAddon}</span>}
@@ -269,7 +269,7 @@ export function Combobox(props: ComboboxProps) {
             data-slot="combobox"
             className={cn(fieldClasses, multiple && "flex-wrap gap-1 p-1")}
           >
-            {startAddon && <span className={cn(addonClasses, "pl-2")}>{startAddon}</span>}
+            {startAddon && <span className={cn(addonClasses, "ps-2")}>{startAddon}</span>}
             {multiple &&
               selected.map((value) => (
                 <ComboboxChip
@@ -320,13 +320,13 @@ export function Combobox(props: ComboboxProps) {
                 className={cn(
                   addonClasses,
                   "rounded-md text-foreground hover:text-muted-foreground",
-                  multiple ? "px-1.5" : "pr-2",
+                  multiple ? "px-1.5" : "pe-2",
                 )}
               >
                 <X />
               </button>
             ) : (
-              <span aria-hidden className={cn(addonClasses, multiple ? "px-1.5" : "pr-2")}>
+              <span aria-hidden className={cn(addonClasses, multiple ? "px-1.5" : "pe-2")}>
                 <CaretDown />
               </span>
             )}
@@ -378,7 +378,7 @@ function ComboboxItem({
       data-slot="combobox-item"
       data-checked={checked || undefined}
       className={cn(
-        "relative flex cursor-default select-none items-center gap-2 rounded-md py-1 pr-8 pl-1.5 text-sm outline-none",
+        "relative flex cursor-default select-none items-center gap-2 rounded-md py-1 pe-8 ps-1.5 text-sm outline-none",
         "data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground",
         "data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
         "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
@@ -391,7 +391,7 @@ function ComboboxItem({
           <span className="truncate text-xs text-muted-foreground">{option.description}</span>
         )}
       </span>
-      {checked && <Check aria-hidden className="absolute right-2" />}
+      {checked && <Check aria-hidden className="absolute end-2" />}
     </CommandPrimitive.Item>
   );
 }
@@ -408,7 +408,7 @@ export function ComboboxChip({
   return (
     <span
       data-slot="combobox-chip"
-      className="flex h-5.25 items-center gap-1 rounded-sm bg-muted pl-1.5 text-xs font-medium text-foreground"
+      className="flex h-5.25 items-center gap-1 rounded-sm bg-muted ps-1.5 text-xs font-medium text-foreground"
     >
       {label}
       <button

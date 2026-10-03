@@ -72,6 +72,10 @@ const [periodo, setPeriodo] = useState<DateRange | undefined>();
 </div>
 ```
 
+### Linguagem natural
+
+Campo de texto que entende "amanhã", "próxima sexta", "em 3 dias", "15/05" ou "20 de maio", com o calendário como apoio. É uma composição de `InputGroup`, `Popover` e `Calendar`: o exemplo completo, com o interpretador de datas em português, está no site de docs (DatePicker → Linguagem natural).
+
 ### Formato próprio
 
 ```tsx

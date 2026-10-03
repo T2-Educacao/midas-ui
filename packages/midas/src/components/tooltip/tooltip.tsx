@@ -96,7 +96,7 @@ export const TooltipItem = React.forwardRef<HTMLDivElement, TooltipItemProps>(
       )}
       <span className="text-muted-foreground">{label}</span>
       {value !== undefined && (
-        <span className="ml-auto pl-4 font-medium tabular-nums text-foreground">{value}</span>
+        <span className="ms-auto ps-4 font-medium tabular-nums text-foreground">{value}</span>
       )}
     </div>
   ),

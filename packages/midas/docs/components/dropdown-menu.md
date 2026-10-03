@@ -114,6 +114,17 @@ const [posicao, setPosicao] = useState("topo");
 </DropdownMenuRadioGroup>
 ```
 
+### Checkbox e radio com ícones
+
+```tsx
+<DropdownMenuCheckboxItem checked={email} onCheckedChange={setEmail}>
+  <EnvelopeSimple /> E-mail
+</DropdownMenuCheckboxItem>
+<DropdownMenuRadioItem value="pix">
+  <PixLogo /> Pix
+</DropdownMenuRadioItem>
+```
+
 ### Com avatar
 
 ```tsx

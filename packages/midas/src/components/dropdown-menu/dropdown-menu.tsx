@@ -58,7 +58,7 @@ export const DropdownMenuItem = React.forwardRef<
     data-variant={variant}
     className={cn(
       itemClasses,
-      inset && "pl-7",
+      inset && "ps-7",
       variant === "destructive" &&
         "text-destructive focus:bg-destructive/10 focus:text-destructive dark:focus:bg-destructive/20 [&_svg]:text-destructive",
       className,
@@ -75,11 +75,11 @@ export const DropdownMenuCheckboxItem = React.forwardRef<
   <DropdownMenuPrimitive.CheckboxItem
     ref={ref}
     data-slot="dropdown-menu-checkbox-item"
-    className={cn(itemClasses, "pr-8", className)}
+    className={cn(itemClasses, "pe-8", className)}
     {...props}
   >
     {children}
-    <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center">
+    <span className="pointer-events-none absolute end-2 flex size-4 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
         <Check />
       </DropdownMenuPrimitive.ItemIndicator>
@@ -95,11 +95,11 @@ export const DropdownMenuRadioItem = React.forwardRef<
   <DropdownMenuPrimitive.RadioItem
     ref={ref}
     data-slot="dropdown-menu-radio-item"
-    className={cn(itemClasses, "pr-8", className)}
+    className={cn(itemClasses, "pe-8", className)}
     {...props}
   >
     {children}
-    <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center">
+    <span className="pointer-events-none absolute end-2 flex size-4 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
         <Circle weight="fill" className="size-2" />
       </DropdownMenuPrimitive.ItemIndicator>
@@ -117,7 +117,7 @@ export const DropdownMenuLabel = React.forwardRef<
     data-slot="dropdown-menu-label"
     className={cn(
       "px-1.5 py-1 text-xs font-medium text-muted-foreground",
-      inset && "pl-7",
+      inset && "ps-7",
       className,
     )}
     {...props}
@@ -145,7 +145,7 @@ export function DropdownMenuShortcut({
   return (
     <span
       data-slot="dropdown-menu-shortcut"
-      className={cn("ml-auto pl-1.5 text-xs tracking-widest text-muted-foreground", className)}
+      className={cn("ms-auto ps-1.5 text-xs tracking-widest text-muted-foreground", className)}
       {...props}
     />
   );
@@ -158,11 +158,11 @@ export const DropdownMenuSubTrigger = React.forwardRef<
   <DropdownMenuPrimitive.SubTrigger
     ref={ref}
     data-slot="dropdown-menu-sub-trigger"
-    className={cn(itemClasses, inset && "pl-7", className)}
+    className={cn(itemClasses, inset && "ps-7", className)}
     {...props}
   >
     {children}
-    <CaretRight className="ml-auto" />
+    <CaretRight className="ms-auto rtl:rotate-180" />
   </DropdownMenuPrimitive.SubTrigger>
 ));
 DropdownMenuSubTrigger.displayName = "DropdownMenuSubTrigger";

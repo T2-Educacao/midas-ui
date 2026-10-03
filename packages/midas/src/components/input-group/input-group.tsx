@@ -35,8 +35,8 @@ export const inputGroupAddonVariants = cva(
   {
     variants: {
       align: {
-        start: "order-first pl-2 has-[>button]:-ml-1",
-        end: "order-last pr-2 has-[>button]:-mr-1",
+        start: "order-first ps-2 has-[>button]:-ms-1",
+        end: "order-last pe-2 has-[>button]:-me-1",
       },
     },
     defaultVariants: {

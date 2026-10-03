@@ -71,6 +71,10 @@ Aceita as props do [ToggleGroup do Radix](https://www.radix-ui.com/primitives/do
 </ToggleGroup>
 ```
 
+### RTL
+
+Com `DirectionProvider dir="rtl"` (veja [RTL](../rtl.md)), a ordem visual, os cantos e as setas do teclado se invertem.
+
 ## Acessibilidade
 
 - Setas do teclado movem o foco entre os itens; `Espaço`/`Enter` liga e desliga.

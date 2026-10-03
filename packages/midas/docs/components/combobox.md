@@ -59,6 +59,10 @@ const certificacoes: ComboboxOption[] = [
 
 ## Exemplos
 
+### Destaque automático
+
+O primeiro resultado da busca já vem destacado: digite parte do nome e aperte `Enter` para selecionar, sem usar as setas.
+
 ### Com Field
 
 ```tsx

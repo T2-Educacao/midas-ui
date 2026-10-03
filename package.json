@@ -14,7 +14,7 @@
     "typecheck": "pnpm -r typecheck",
     "lint": "biome check .",
     "format": "biome check --write .",
-    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm --filter @t2-educacao/midas check:package",
+    "check": "pnpm lint && pnpm build:midas && pnpm typecheck && pnpm test && pnpm build && pnpm --filter @t2-educacao/midas check:package",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "pnpm build:midas && changeset publish"

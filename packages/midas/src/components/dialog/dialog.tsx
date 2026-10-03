@@ -51,7 +51,7 @@ export const DialogContent = React.forwardRef<
       {showCloseButton && (
         <DialogPrimitive.Close
           data-slot="dialog-close"
-          className="absolute top-2 right-2 flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+          className="absolute top-2 end-2 flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
         >
           <X className="size-4" />
           <span className="sr-only">Fechar</span>
@@ -67,7 +67,7 @@ export const DialogHeader = React.forwardRef<HTMLDivElement, React.HTMLAttribute
     <div
       ref={ref}
       data-slot="dialog-header"
-      className={cn("flex flex-col gap-1.5 pr-6", className)}
+      className={cn("flex flex-col gap-1.5 pe-6", className)}
       {...props}
     />
   ),

@@ -18,7 +18,7 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
         data-slot="native-select"
         data-size={size}
         className={cn(
-          "w-full min-w-0 appearance-none rounded-lg border border-input bg-transparent py-1 pr-8 pl-2.5 text-sm text-foreground outline-none select-none",
+          "w-full min-w-0 appearance-none rounded-lg border border-input bg-transparent py-1 pe-8 ps-2.5 text-sm text-foreground outline-none select-none",
           "transition-[color,border-color,box-shadow] duration-150 motion-reduce:transition-none",
           "data-[size=default]:h-8 data-[size=sm]:h-7 data-[size=sm]:rounded-md",
           "focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
@@ -31,7 +31,7 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
       />
       <CaretDown
         aria-hidden
-        className="pointer-events-none absolute top-1/2 right-2.5 size-4 -translate-y-1/2 text-muted-foreground"
+        className="pointer-events-none absolute top-1/2 end-2.5 size-4 -translate-y-1/2 text-muted-foreground"
       />
     </div>
   ),

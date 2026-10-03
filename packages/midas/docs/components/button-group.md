@@ -88,6 +88,31 @@ Um `ButtonGroup` dentro de outro ganha espaço entre os grupos automaticamente.
 </ButtonGroup>
 ```
 
+### Com campo, select, menu ou popover
+
+O grupo aceita `Input`, `InputGroup`, `SelectTrigger`, e gatilhos de `DropdownMenu` e `Popover` (com `asChild`). Os cantos e bordas internos se ajustam sozinhos.
+
+```tsx
+<ButtonGroup className="w-full max-w-xs">
+  <Input placeholder="Buscar cursos" aria-label="Buscar cursos" />
+  <Button variant="outline" size="icon" aria-label="Buscar"><MagnifyingGlass /></Button>
+</ButtonGroup>
+
+<ButtonGroup aria-label="Mensagem">
+  <Button variant="outline">Seguir</Button>
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <Button variant="outline" size="icon" aria-label="Mais opções"><CaretDown /></Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent align="end">...</DropdownMenuContent>
+  </DropdownMenu>
+</ButtonGroup>
+```
+
+### RTL
+
+Em direita para esquerda os cantos arredondados trocam de lado sozinhos. Veja [RTL](../rtl.md).
+
 ### Com texto
 
 ```tsx
