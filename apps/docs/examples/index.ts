@@ -15,8 +15,14 @@ import ButtonTamanhos from "./button/tamanhos";
 import ButtonVariantes from "./button/variantes";
 import ButtonGroupAninhado from "./button-group/aninhado";
 import ButtonGroupBasico from "./button-group/basico";
+import ButtonGroupComDropdown from "./button-group/com-dropdown";
+import ButtonGroupComInput from "./button-group/com-input";
+import ButtonGroupComInputGroup from "./button-group/com-input-group";
+import ButtonGroupComPopover from "./button-group/com-popover";
+import ButtonGroupComSelect from "./button-group/com-select";
 import ButtonGroupComTexto from "./button-group/com-texto";
 import ButtonGroupDividido from "./button-group/dividido";
+import ButtonGroupRtl from "./button-group/rtl";
 import ButtonGroupVertical from "./button-group/vertical";
 import CalendarBasico from "./calendar/basico";
 import CalendarIntervalo from "./calendar/intervalo";
@@ -29,6 +35,7 @@ import CarouselVertical from "./carousel/vertical";
 import CheckboxBasico from "./checkbox/basico";
 import ComboboxBasico from "./combobox/basico";
 import ComboboxComIcone from "./combobox/com-icone";
+import ComboboxDestaqueAutomatico from "./combobox/destaque-automatico";
 import ComboboxGrupos from "./combobox/grupos";
 import ComboboxInvalidoEDesabilitado from "./combobox/invalido-e-desabilitado";
 import ComboboxItensComDescricao from "./combobox/itens-com-descricao";
@@ -38,14 +45,19 @@ import ComboboxPopup from "./combobox/popup";
 import DatePickerBasico from "./date-picker/basico";
 import DatePickerComHorario from "./date-picker/com-horario";
 import DatePickerComInput from "./date-picker/com-input";
+import DatePickerLinguagemNatural from "./date-picker/linguagem-natural";
 import DatePickerNascimento from "./date-picker/nascimento";
 import DatePickerPeriodo from "./date-picker/periodo";
 import DialogBasico from "./dialog/basico";
+import DropdownMenuAvatar from "./dropdown-menu/avatar";
 import DropdownMenuBasico from "./dropdown-menu/basico";
 import DropdownMenuCheckboxes from "./dropdown-menu/checkboxes";
+import DropdownMenuCheckboxesComIcones from "./dropdown-menu/checkboxes-com-icones";
+import DropdownMenuComplexo from "./dropdown-menu/complexo";
 import DropdownMenuDestrutivo from "./dropdown-menu/destrutivo";
 import DropdownMenuIconesEAtalhos from "./dropdown-menu/icones-e-atalhos";
 import DropdownMenuRadio from "./dropdown-menu/radio";
+import DropdownMenuRadioComIcones from "./dropdown-menu/radio-com-icones";
 import DropdownMenuSubmenu from "./dropdown-menu/submenu";
 import FieldBasico from "./field/basico";
 import FieldComBadge from "./field/com-badge";
@@ -70,12 +82,16 @@ import PaginationSimples from "./pagination/simples";
 import PaginationSoIcones from "./pagination/so-icones";
 import PopoverBasico from "./popover/basico";
 import ProgressBasico from "./progress/basico";
+import QuestionnaireAtalhos from "./questionnaire/atalhos";
 import QuestionnaireAtalhosEPular from "./questionnaire/atalhos-e-pular";
 import QuestionnaireBasico from "./questionnaire/basico";
 import QuestionnaireCard from "./questionnaire/card";
 import QuestionnaireControlado from "./questionnaire/controlado";
 import QuestionnaireDialog from "./questionnaire/dialog";
+import QuestionnaireEstadoNavegacao from "./questionnaire/estado-navegacao";
 import QuestionnaireMultiplaELivre from "./questionnaire/multipla-e-livre";
+import QuestionnaireProgressoPersonalizado from "./questionnaire/progresso-personalizado";
+import QuestionnaireRetomar from "./questionnaire/retomar";
 import QuestionnaireValidacaoECondicional from "./questionnaire/validacao-e-condicional";
 import RadioGroupBasico from "./radio-group/basico";
 import SelectBasico from "./select/basico";
@@ -92,6 +108,7 @@ import ToggleTamanhos from "./toggle/tamanhos";
 import ToggleGroupEscolhaUnica from "./toggle-group/escolha-unica";
 import ToggleGroupEspacamento from "./toggle-group/espacamento";
 import ToggleGroupMultiplaEscolha from "./toggle-group/multipla-escolha";
+import ToggleGroupRtl from "./toggle-group/rtl";
 import ToggleGroupVertical from "./toggle-group/vertical";
 import TooltipComIcones from "./tooltip/com-icones";
 import TooltipComTotal from "./tooltip/com-total";
@@ -160,6 +177,12 @@ export const examples: Record<string, Example[]> = {
       description: "Composição com InputGroup, Popover e Calendar.",
       Component: DatePickerComInput,
     },
+    {
+      id: "linguagem-natural",
+      title: "Linguagem natural",
+      description: "Digite amanhã, próxima sexta, em 3 dias, 15/05 ou 20 de maio.",
+      Component: DatePickerLinguagemNatural,
+    },
   ],
   dialog: [{ id: "basico", title: "Formulário", Component: DialogBasico }],
   "native-select": [{ id: "basico", title: "Básico", Component: NativeSelectBasico }],
@@ -190,6 +213,7 @@ export const examples: Record<string, Example[]> = {
       title: "Atalhos de teclado e pular",
       Component: QuestionnaireAtalhosEPular,
     },
+    { id: "atalhos", title: "Atalhos com letras ou números", Component: QuestionnaireAtalhos },
     {
       id: "validacao-e-condicional",
       title: "Validação, condicional e barra de progresso",
@@ -200,6 +224,19 @@ export const examples: Record<string, Example[]> = {
       id: "controlado",
       title: "Controlado (salvar e retomar)",
       Component: QuestionnaireControlado,
+    },
+    { id: "retomar", title: "Retomar de onde parou", Component: QuestionnaireRetomar },
+    {
+      id: "estado-navegacao",
+      title: "Estado de navegação",
+      description: "Lendo o status de cada pergunta com isAnswered.",
+      Component: QuestionnaireEstadoNavegacao,
+    },
+    {
+      id: "progresso-personalizado",
+      title: "Progresso personalizado",
+      description: "Usando renderProgress com o componente Progress.",
+      Component: QuestionnaireProgressoPersonalizado,
     },
     { id: "card", title: "Card", Component: QuestionnaireCard },
     { id: "dialog", title: "Dialog", Component: QuestionnaireDialog },
@@ -240,6 +277,12 @@ export const examples: Record<string, Example[]> = {
     { id: "dividido", title: "Botão dividido", Component: ButtonGroupDividido },
     { id: "aninhado", title: "Grupos aninhados", Component: ButtonGroupAninhado },
     { id: "com-texto", title: "Com texto", Component: ButtonGroupComTexto },
+    { id: "com-input", title: "Com Input", Component: ButtonGroupComInput },
+    { id: "com-input-group", title: "Com InputGroup", Component: ButtonGroupComInputGroup },
+    { id: "com-dropdown", title: "Com DropdownMenu", Component: ButtonGroupComDropdown },
+    { id: "com-select", title: "Com Select", Component: ButtonGroupComSelect },
+    { id: "com-popover", title: "Com Popover", Component: ButtonGroupComPopover },
+    { id: "rtl", title: "Direita para esquerda (RTL)", Component: ButtonGroupRtl },
   ],
   combobox: [
     {
@@ -273,6 +316,12 @@ export const examples: Record<string, Example[]> = {
       Component: ComboboxPopup,
     },
     { id: "com-icone", title: "Com ícone", Component: ComboboxComIcone },
+    {
+      id: "destaque-automatico",
+      title: "Destaque automático",
+      description: "O primeiro resultado já vem destacado: digite e aperte Enter.",
+      Component: ComboboxDestaqueAutomatico,
+    },
   ],
   "dropdown-menu": [
     { id: "basico", title: "Básico", Component: DropdownMenuBasico },
@@ -280,7 +329,20 @@ export const examples: Record<string, Example[]> = {
     { id: "icones-e-atalhos", title: "Ícones e atalhos", Component: DropdownMenuIconesEAtalhos },
     { id: "checkboxes", title: "Checkboxes", Component: DropdownMenuCheckboxes },
     { id: "radio", title: "Radio", Component: DropdownMenuRadio },
+    {
+      id: "checkboxes-com-icones",
+      title: "Checkboxes com ícones",
+      Component: DropdownMenuCheckboxesComIcones,
+    },
+    { id: "radio-com-icones", title: "Radio com ícones", Component: DropdownMenuRadioComIcones },
     { id: "destrutivo", title: "Destrutivo", Component: DropdownMenuDestrutivo },
+    { id: "avatar", title: "Com avatar", Component: DropdownMenuAvatar },
+    {
+      id: "complexo",
+      title: "Completo",
+      description: "Grupos, ícones, atalhos, submenus, checkbox e radio juntos.",
+      Component: DropdownMenuComplexo,
+    },
   ],
   field: [
     { id: "basico", title: "Básico", Component: FieldBasico },
@@ -342,6 +404,7 @@ export const examples: Record<string, Example[]> = {
     { id: "multipla-escolha", title: "Múltipla escolha", Component: ToggleGroupMultiplaEscolha },
     { id: "espacamento", title: "Com espaçamento", Component: ToggleGroupEspacamento },
     { id: "vertical", title: "Vertical", Component: ToggleGroupVertical },
+    { id: "rtl", title: "Direita para esquerda (RTL)", Component: ToggleGroupRtl },
   ],
   tooltip: [
     { id: "simples", title: "Texto simples", Component: TooltipSimples },
