@@ -23,12 +23,17 @@ import {
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { InstallCommand } from "@/components/install-command";
+import AvatarGrupo from "@/examples/avatar/grupo";
 import BadgeVariantes from "@/examples/badge/variantes";
 import ComboboxBasico from "@/examples/combobox/basico";
+import DatePickerBasico from "@/examples/date-picker/basico";
+import DialogBasico from "@/examples/dialog/basico";
 import DropdownMenuBasico from "@/examples/dropdown-menu/basico";
 import FieldBasico from "@/examples/field/basico";
 import InputGroupBusca from "@/examples/input-group/busca";
 import PopoverBasico from "@/examples/popover/basico";
+import ProgressBasico from "@/examples/progress/basico";
+import SelectBasico from "@/examples/select/basico";
 import ToastPromise from "@/examples/toast/promise";
 import TooltipDados from "@/examples/tooltip/dados";
 
@@ -127,6 +132,16 @@ const showcase: { name: string; href: string; preview: ReactNode }[] = [
   { name: "Popover", href: "/docs/components/popover", preview: <PopoverBasico /> },
   { name: "Toast", href: "/docs/components/toast", preview: <ToastPromise /> },
   { name: "Badge", href: "/docs/components/badge", preview: <BadgeVariantes /> },
+  { name: "Avatar", href: "/docs/components/avatar", preview: <AvatarGrupo /> },
+  { name: "DatePicker", href: "/docs/components/date-picker", preview: <DatePickerBasico /> },
+  { name: "Select", href: "/docs/components/select", preview: <SelectBasico /> },
+  { name: "Dialog", href: "/docs/components/dialog", preview: <DialogBasico /> },
+  { name: "Progress", href: "/docs/components/progress", preview: <ProgressBasico /> },
+  {
+    name: "Questionnaire",
+    href: "/docs/components/questionnaire",
+    preview: <span className="text-sm text-muted-foreground">Questionário em etapas</span>,
+  },
   {
     name: "Kbd",
     href: "/docs/components/kbd",

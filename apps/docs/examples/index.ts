@@ -1,4 +1,9 @@
 import type { ComponentType } from "react";
+import AvatarBadge from "./avatar/badge";
+import AvatarBasico from "./avatar/basico";
+import AvatarComMenu from "./avatar/com-menu";
+import AvatarGrupo from "./avatar/grupo";
+import AvatarTamanhos from "./avatar/tamanhos";
 import BadgeVariantes from "./badge/variantes";
 import ButtonArredondado from "./button/arredondado";
 import ButtonCarregando from "./button/carregando";
@@ -13,6 +18,15 @@ import ButtonGroupBasico from "./button-group/basico";
 import ButtonGroupComTexto from "./button-group/com-texto";
 import ButtonGroupDividido from "./button-group/dividido";
 import ButtonGroupVertical from "./button-group/vertical";
+import CalendarBasico from "./calendar/basico";
+import CalendarIntervalo from "./calendar/intervalo";
+import CardBasico from "./card/basico";
+import CarouselApi from "./carousel/api";
+import CarouselBasico from "./carousel/basico";
+import CarouselEspacamento from "./carousel/espacamento";
+import CarouselTamanhos from "./carousel/tamanhos";
+import CarouselVertical from "./carousel/vertical";
+import CheckboxBasico from "./checkbox/basico";
 import ComboboxBasico from "./combobox/basico";
 import ComboboxComIcone from "./combobox/com-icone";
 import ComboboxGrupos from "./combobox/grupos";
@@ -21,6 +35,12 @@ import ComboboxItensComDescricao from "./combobox/itens-com-descricao";
 import ComboboxLimpar from "./combobox/limpar";
 import ComboboxMultiplo from "./combobox/multiplo";
 import ComboboxPopup from "./combobox/popup";
+import DatePickerBasico from "./date-picker/basico";
+import DatePickerComHorario from "./date-picker/com-horario";
+import DatePickerComInput from "./date-picker/com-input";
+import DatePickerNascimento from "./date-picker/nascimento";
+import DatePickerPeriodo from "./date-picker/periodo";
+import DialogBasico from "./dialog/basico";
 import DropdownMenuBasico from "./dropdown-menu/basico";
 import DropdownMenuCheckboxes from "./dropdown-menu/checkboxes";
 import DropdownMenuDestrutivo from "./dropdown-menu/destrutivo";
@@ -45,9 +65,24 @@ import InputGroupPrefixo from "./input-group/prefixo";
 import InputGroupTextarea from "./input-group/textarea";
 import KbdBasico from "./kbd/basico";
 import KbdEmTexto from "./kbd/em-texto";
+import NativeSelectBasico from "./native-select/basico";
+import PaginationSimples from "./pagination/simples";
+import PaginationSoIcones from "./pagination/so-icones";
 import PopoverBasico from "./popover/basico";
+import ProgressBasico from "./progress/basico";
+import QuestionnaireAtalhosEPular from "./questionnaire/atalhos-e-pular";
+import QuestionnaireBasico from "./questionnaire/basico";
+import QuestionnaireCard from "./questionnaire/card";
+import QuestionnaireControlado from "./questionnaire/controlado";
+import QuestionnaireDialog from "./questionnaire/dialog";
+import QuestionnaireMultiplaELivre from "./questionnaire/multipla-e-livre";
+import QuestionnaireValidacaoECondicional from "./questionnaire/validacao-e-condicional";
+import RadioGroupBasico from "./radio-group/basico";
+import SelectBasico from "./select/basico";
+import SeparatorBasico from "./separator/basico";
 import SpinnerBasico from "./spinner/basico";
 import SpinnerComTexto from "./spinner/com-texto";
+import TextareaBasico from "./textarea/basico";
 import ToastComDescricaoEAcao from "./toast/com-descricao-e-acao";
 import ToastPromise from "./toast/promise";
 import ToastTipos from "./toast/tipos";
@@ -72,6 +107,107 @@ export interface Example {
 }
 
 export const examples: Record<string, Example[]> = {
+  avatar: [
+    {
+      id: "basico",
+      title: "Básico",
+      description: "Sem imagem, aparece o fallback com as iniciais.",
+      Component: AvatarBasico,
+    },
+    { id: "tamanhos", title: "Tamanhos", Component: AvatarTamanhos },
+    { id: "badge", title: "Badge de status e de ícone", Component: AvatarBadge },
+    { id: "grupo", title: "Grupo com contador e ícone", Component: AvatarGrupo },
+    { id: "com-menu", title: "Com menu", Component: AvatarComMenu },
+  ],
+  calendar: [
+    { id: "basico", title: "Data única", Component: CalendarBasico },
+    { id: "intervalo", title: "Intervalo em dois meses", Component: CalendarIntervalo },
+  ],
+  card: [{ id: "basico", title: "Com ação e rodapé", Component: CardBasico }],
+  carousel: [
+    {
+      id: "basico",
+      title: "Básico",
+      description: "Arraste, use as setas ou o teclado.",
+      Component: CarouselBasico,
+    },
+    { id: "tamanhos", title: "Tamanhos dos itens", Component: CarouselTamanhos },
+    { id: "espacamento", title: "Espaçamento", Component: CarouselEspacamento },
+    { id: "vertical", title: "Vertical", Component: CarouselVertical },
+    {
+      id: "api",
+      title: "API",
+      description: "Lendo o slide atual com setApi.",
+      Component: CarouselApi,
+    },
+  ],
+  checkbox: [
+    { id: "basico", title: "Básico, com descrição e desabilitado", Component: CheckboxBasico },
+  ],
+  "date-picker": [
+    { id: "basico", title: "Básico", Component: DatePickerBasico },
+    { id: "periodo", title: "Período", Component: DatePickerPeriodo },
+    {
+      id: "nascimento",
+      title: "Data de nascimento",
+      description: "Dropdown de mês e ano, sem datas futuras.",
+      Component: DatePickerNascimento,
+    },
+    { id: "com-horario", title: "Data e horário", Component: DatePickerComHorario },
+    {
+      id: "com-input",
+      title: "Digitando a data",
+      description: "Composição com InputGroup, Popover e Calendar.",
+      Component: DatePickerComInput,
+    },
+  ],
+  dialog: [{ id: "basico", title: "Formulário", Component: DialogBasico }],
+  "native-select": [{ id: "basico", title: "Básico", Component: NativeSelectBasico }],
+  pagination: [
+    {
+      id: "simples",
+      title: "Com reticências",
+      description: "Usando getPageRange para calcular as páginas.",
+      Component: PaginationSimples,
+    },
+    { id: "so-icones", title: "Linhas por página", Component: PaginationSoIcones },
+  ],
+  progress: [{ id: "basico", title: "Com rótulo", Component: ProgressBasico }],
+  questionnaire: [
+    {
+      id: "basico",
+      title: "Básico",
+      description: "Responda para habilitar Próxima.",
+      Component: QuestionnaireBasico,
+    },
+    {
+      id: "multipla-e-livre",
+      title: "Múltipla escolha e resposta livre",
+      Component: QuestionnaireMultiplaELivre,
+    },
+    {
+      id: "atalhos-e-pular",
+      title: "Atalhos de teclado e pular",
+      Component: QuestionnaireAtalhosEPular,
+    },
+    {
+      id: "validacao-e-condicional",
+      title: "Validação, condicional e barra de progresso",
+      description: "Escolha CPRO-R para ver a pergunta extra.",
+      Component: QuestionnaireValidacaoECondicional,
+    },
+    {
+      id: "controlado",
+      title: "Controlado (salvar e retomar)",
+      Component: QuestionnaireControlado,
+    },
+    { id: "card", title: "Card", Component: QuestionnaireCard },
+    { id: "dialog", title: "Dialog", Component: QuestionnaireDialog },
+  ],
+  "radio-group": [{ id: "basico", title: "Básico", Component: RadioGroupBasico }],
+  select: [{ id: "basico", title: "Com grupos", Component: SelectBasico }],
+  separator: [{ id: "basico", title: "Horizontal e vertical", Component: SeparatorBasico }],
+  textarea: [{ id: "basico", title: "Básico", Component: TextareaBasico }],
   badge: [{ id: "variantes", title: "Variantes", Component: BadgeVariantes }],
   button: [
     { id: "variantes", title: "Variantes", Component: ButtonVariantes },
