@@ -133,6 +133,8 @@ pnpm dev
 
 `pnpm dev` roda o pacote em modo watch e o site de docs em http://localhost:3000.
 
+> Pare o `pnpm dev` antes de rodar `pnpm build` ou `pnpm check`: os dois usam a pasta `apps/docs/.next` e o build corrompe o cache do servidor de desenvolvimento (as páginas passam a dar 404). Se acontecer, apague `apps/docs/.next` e rode `pnpm dev` de novo.
+
 | Comando | O que faz |
 |---------|-----------|
 | `pnpm dev` | Pacote em watch + site de docs |
