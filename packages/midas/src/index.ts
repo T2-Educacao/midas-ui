@@ -1,3 +1,15 @@
+export {
+  Avatar,
+  AvatarBadge,
+  type AvatarBadgeProps,
+  AvatarFallback,
+  AvatarGroup,
+  AvatarGroupCount,
+  type AvatarGroupCountProps,
+  AvatarImage,
+  type AvatarProps,
+  type AvatarSize,
+} from "./components/avatar";
 export { Badge, type BadgeProps, badgeVariants } from "./components/badge";
 export { Button, type ButtonProps, buttonVariants } from "./components/button";
 export {
@@ -8,6 +20,30 @@ export {
   type ButtonGroupTextProps,
   buttonGroupVariants,
 } from "./components/button-group";
+export { Calendar, CalendarDayButton, type CalendarProps } from "./components/calendar";
+export {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  type CardProps,
+  CardTitle,
+} from "./components/card";
+export {
+  Carousel,
+  type CarouselApi,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  type CarouselOptions,
+  type CarouselPlugin,
+  CarouselPrevious,
+  type CarouselProps,
+  useCarousel,
+} from "./components/carousel";
+export { Checkbox } from "./components/checkbox";
 export {
   Combobox,
   ComboboxChip,
@@ -16,6 +52,26 @@ export {
   type ComboboxProps,
   type ComboboxSingleProps,
 } from "./components/combobox";
+export {
+  DatePicker,
+  type DatePickerProps,
+  type DatePickerRangeProps,
+  type DatePickerSingleProps,
+  type DateRange,
+} from "./components/date-picker";
+export {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  type DialogContentProps,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
+} from "./components/dialog";
 export {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -57,6 +113,20 @@ export {
   inputGroupAddonVariants,
 } from "./components/input-group";
 export { Kbd, KbdGroup } from "./components/kbd";
+export { NativeSelect, type NativeSelectProps } from "./components/native-select";
+export {
+  getPageRange,
+  type PageRangeItem,
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  type PaginationLinkProps,
+  type PaginationNavProps,
+  PaginationNext,
+  PaginationPrevious,
+} from "./components/pagination";
 export {
   Popover,
   PopoverAnchor,
@@ -67,7 +137,35 @@ export {
   PopoverTitle,
   PopoverTrigger,
 } from "./components/popover";
+export { Progress, type ProgressProps } from "./components/progress";
+export {
+  isAnswered,
+  Questionnaire,
+  type QuestionnaireAnswer,
+  type QuestionnaireAnswers,
+  QuestionnaireChoice,
+  type QuestionnaireChoiceProps,
+  type QuestionnaireLabels,
+  type QuestionnaireOption,
+  type QuestionnaireProgressState,
+  type QuestionnaireProps,
+  type QuestionnaireQuestion,
+} from "./components/questionnaire";
+export { RadioGroup, RadioGroupItem } from "./components/radio-group";
+export {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectSeparator,
+  SelectTrigger,
+  type SelectTriggerProps,
+  SelectValue,
+} from "./components/select";
+export { Separator } from "./components/separator";
 export { Spinner, type SpinnerProps } from "./components/spinner";
+export { Textarea } from "./components/textarea";
 export { Toaster, type ToasterProps, toast } from "./components/toast";
 export { Toggle, type ToggleProps, toggleVariants } from "./components/toggle";
 export {

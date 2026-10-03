@@ -18,6 +18,8 @@ export default defineConfig({
       /^@tabler\/icons-react/,
       /^cmdk/,
       /^sonner/,
+      /^embla-carousel/,
+      /^react-day-picker/,
     ],
   },
 });
