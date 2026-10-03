@@ -20,10 +20,12 @@
 4. [x] Lote 1: Button, ButtonGroup, Spinner, Kbd, Toggle, ToggleGroup, Tooltip
 5. [x] Lote 2: Input, InputGroup, Field, Badge, Combobox
 6. [x] Lote 3: DropdownMenu, Popover, Toast
-7. [ ] Lote 4: Avatar, Pagination, Carousel, DatePicker
-8. [ ] Lote 5: Questionnaire
-9. [x] Site de docs com a cara da T2 e exemplos ao vivo (preview, código, copiar)
-10. [ ] Deploy do site de docs (ex.: Vercel)
+7. [x] Lote 4: Avatar, Pagination, Carousel, Calendar, DatePicker
+8. [x] Lote 5: Questionnaire
+9. [x] Componentes de apoio: Card, Dialog, Progress, Select, NativeSelect, Checkbox, RadioGroup, Textarea, Separator
+10. [x] Site de docs com a cara da T2 e exemplos ao vivo (preview, código, copiar)
+11. [ ] Deploy do site de docs (ex.: Vercel)
+12. [ ] DatePicker com linguagem natural ("amanhã às 10h"), presente no Figma: depende de uma biblioteca de parsing em português
 
 ## Decisões pendentes
 

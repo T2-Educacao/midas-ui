@@ -57,3 +57,15 @@ A página Tooltips do Figma mostra tooltips de gráfico (título, itens com indi
 - O asterisco de obrigatório no Figma está em vermelho com 10% de opacidade; no Midas usamos `destructive` cheio para ter contraste legível.
 
 Dependências adicionadas: `@tabler/icons-react`, `cmdk`, `sonner`. Previstas para o lote 4: `react-day-picker` e `embla-carousel-react`.
+
+### Lotes 4 e 5
+
+- **Calendar** usa `react-day-picker` 10 com locale `pt-BR` e células de 28px, como no Figma. "Hoje" e o miolo do intervalo usam `accent` (mesmo motivo dos estados de hover).
+- **DatePicker** tem API de alto nível (`mode="single" | "range"`), formata em pt-BR com `Intl` (sem dependência extra) e cria um `<input type="hidden">` com a data em ISO para formulários. Os exemplos "Input" e "Time Picker" do Figma são composições documentadas. O "Natural Language Picker" ficou fora: depende de uma biblioteca de parsing de datas em português.
+- **Carousel** usa `embla-carousel-react`, com setas redondas de 28px fora da área dos slides, como no Figma.
+- **Pagination** traz o helper `getPageRange`, que devolve `"ellipsis-start"`/`"ellipsis-end"` para servirem de `key` estável.
+- **Questionnaire** é guiado por dados (`questions`), com respostas e etapa controláveis. As opções são `radio`/`checkbox` nativos dentro de um `<fieldset>`: teclado e leitores de tela funcionam sem código extra. Atalhos (letras ou números), "outro", pular, validação, condicionais (`when`), progresso em texto, barra ou fração, variante card e animação cobrem todos os exemplos do Figma.
+- **Componentes de apoio** (Card, Dialog, Progress, Select, NativeSelect, Checkbox, RadioGroup, Textarea, Separator) entraram porque os componentes do Figma dependem deles e porque são reutilizáveis nos projetos.
+- **Contraste no escuro**: a borda `input` da hub tem contraste de cerca de 1,3:1 sobre o fundo escuro. Em Checkbox, RadioGroup e nas opções do Questionnaire, o tema escuro usa `muted-foreground/50` (cerca de 3,5:1), atendendo ao mínimo de 3:1 para controles (WCAG 1.4.11).
+
+Dependências adicionadas: `embla-carousel-react` e `react-day-picker`.
