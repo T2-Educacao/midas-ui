@@ -39,7 +39,7 @@ Um componente sem doc não está pronto. O `.md` do componente (formato em `docs
 
 - Toda mudança no pacote que afeta quem usa precisa de um changeset: `pnpm changeset` (patch = correção, minor = novo componente/prop, major = quebra de API).
 - Enquanto a versão for 0.x, quebras vão como minor, mas documente-as no changeset.
-- Publicar é manual e só quem tem acesso à org `t2-educacao` no npm faz. Agentes de IA não publicam: siga `docs/guias/publicar-no-npm.md` só quando o usuário pedir.
+- Publicar é automático: o merge do PR "chore: versiona @t2-educacao/midas", aberto pelo workflow `release.yml`, publica no npm (veja `docs/guias/publicar-no-npm.md`). Agentes de IA não publicam, não fazem merge desse PR e não rodam `npm publish`.
 
 ## Não faça
 

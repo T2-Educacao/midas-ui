@@ -9,7 +9,7 @@
 - [x] `Button` como componente de referência (API, testes, doc)
 - [x] Testes (Vitest + Testing Library + axe), lint (Biome), validação do pacote (publint + attw)
 - [x] Docs no pacote + `llms.txt` + site Fumadocs com `llms.txt`/`llms-full.txt`
-- [x] Versionamento com Changesets (publicação manual)
+- [x] Versionamento com Changesets (publicação automática pelo GitHub Actions)
 - [x] Organização `t2-educacao` criada no npm
 
 ## Próximos passos

@@ -66,11 +66,13 @@ Tokens em `:root` (claro) e `.dark, [data-theme="dark"]` (escuro). A variante `d
 - **Biome** para lint e formatação (uma ferramenta só, rápida).
 - **publint** e **are-the-types-wrong** validam o pacote antes de publicar (exports e tipos corretos).
 
-### D9. Versionamento com Changesets, publicação manual
+### D9. Versionamento com Changesets, publicação pelo GitHub Actions
 
 - Quem muda o pacote registra a mudança com `pnpm changeset`.
-- Para lançar: `pnpm version-packages` (sobe a versão e escreve o CHANGELOG) e `pnpm release` (build + publica no npm), rodados por quem tem acesso à org `t2-educacao` no npm.
-- Sem automação de CI por enquanto.
+- O workflow `release.yml` abre um PR de versão com o CHANGELOG. O merge desse PR publica no npm e cria a tag.
+- A publicação usa trusted publishing (OIDC): nenhum token do npm fica guardado no GitHub, e cada versão mostra de qual commit saiu.
+- O `ci.yml` roda `pnpm check` em todo PR e push na `main`.
+- A primeira versão (0.1.0) foi publicada manualmente; a publicação manual fica só para emergência.
 
 ### D10. Público no npm
 

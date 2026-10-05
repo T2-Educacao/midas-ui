@@ -1,0 +1,69 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+      - run: npm install -g npm@latest
+      - run: pnpm install --frozen-lockfile
+
+      - name: Abre ou atualiza o PR de versão
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          version: pnpm version-packages
+          commit: "chore: versiona @t2-educacao/midas"
+          title: "chore: versiona @t2-educacao/midas"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verifica se a versão já está no npm
+        id: npm
+        if: steps.changesets.outputs.hasChangesets == 'false'
+        run: |
+          VERSION=$(node -p "require('./packages/midas/package.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          if npm view "@t2-educacao/midas@$VERSION" version > /dev/null 2>&1; then
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Verifica o projeto
+        if: steps.npm.outputs.publish == 'true'
+        run: pnpm check
+
+      - name: Publica no npm
+        if: steps.npm.outputs.publish == 'true'
+        working-directory: packages/midas
+        run: npm publish --access public
+
+      - name: Cria a tag da versão
+        if: steps.npm.outputs.publish == 'true'
+        run: |
+          TAG="@t2-educacao/midas@${{ steps.npm.outputs.version }}"
+          git tag "$TAG"
+          git push origin "$TAG"

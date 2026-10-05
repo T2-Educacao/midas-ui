@@ -91,6 +91,7 @@ packages/midas/        →  O PACOTE publicado no npm (@t2-educacao/midas)
 apps/docs/             →  site de documentação (midas.t2.com.br, não vai para o npm)
 docs/                  →  docs internas: decisões e guias de manutenção
 .changeset/            →  mudanças pendentes para a próxima versão
+.github/workflows/     →  CI (pnpm check) e release (PR de versão e publicação no npm)
 ```
 
 ---
@@ -105,7 +106,7 @@ As regras completas estão em [`AGENTS.md`](AGENTS.md) e nos guias de [`docs/`](
 4. Componente sem `.md` em `packages/midas/docs/components/` não está pronto
 5. Toda mudança que afeta quem usa tem changeset (`pnpm changeset`)
 6. O pacote é público: só UI, nunca segredo, URL interna ou lógica de negócio
-7. Rode `pnpm check` antes de publicar
+7. Rode `pnpm check` antes de abrir PR (o CI roda de novo)
 
 ### Guias
 
@@ -114,7 +115,8 @@ As regras completas estão em [`AGENTS.md`](AGENTS.md) e nos guias de [`docs/`](
 | [Decisões de arquitetura](docs/decisoes/0001-arquitetura.md) | Entender por que cada ferramenta foi escolhida |
 | [Tokens e componentes](docs/decisoes/0002-tokens-e-componentes.md) | De onde vêm cores, fontes, ícones e componentes |
 | [Criar um componente](docs/guias/criar-componente.md) | Antes de adicionar ou alterar componente |
-| [Publicar no npm](docs/guias/publicar-no-npm.md) | Primeira publicação e fluxo de versões |
+| [Publicar no npm](docs/guias/publicar-no-npm.md) | Como lançar versão (automático pelo GitHub Actions) |
+| [Publicar o site](docs/guias/publicar-docs.md) | Site de docs na Vercel |
 | [Conectar o Figma (MCP)](docs/guias/conectar-figma-mcp.md) | Importar tokens e componentes do Figma |
 | [Roadmap](docs/roadmap.md) | O que está pronto e o que vem a seguir |
 
