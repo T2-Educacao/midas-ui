@@ -5,6 +5,9 @@ export const docsRoute = "/docs";
 export const docsImageRoute = "/og/docs";
 export const docsContentRoute = "/llms.mdx/docs";
 
+export const packageName = "@t2-educacao/midas";
+export const npmUrl = `https://www.npmjs.com/package/${packageName}`;
+
 export const gitConfig = {
   user: "T2-Educacao",
   repo: "midas-ui",

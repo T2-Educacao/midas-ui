@@ -20,6 +20,7 @@ import {
   TextAlignRight,
   TextB,
 } from "@t2-educacao/midas/icons";
+import midasPackage from "@t2-educacao/midas/package.json";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { InstallCommand } from "@/components/install-command";
@@ -36,6 +37,7 @@ import ProgressBasico from "@/examples/progress/basico";
 import SelectBasico from "@/examples/select/basico";
 import ToastPromise from "@/examples/toast/promise";
 import TooltipDados from "@/examples/tooltip/dados";
+import { npmUrl, packageName } from "@/lib/shared";
 
 const features = [
   {
@@ -168,9 +170,15 @@ export default function HomePage() {
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,color-mix(in_srgb,var(--midas-primary)_18%,transparent),transparent_60%)]"
         />
         <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 py-24 text-center md:py-32">
-          <span className="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
-            Design system da T2 Educação
-          </span>
+          <a
+            href={npmUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"
+          >
+            <span className="size-1.5 rounded-full bg-success" />
+            Disponível no npm · v{midasPackage.version}
+          </a>
           <h1 className="text-5xl font-semibold tracking-tight md:text-6xl">
             Midas<span className="text-primary">.</span>
           </h1>
@@ -181,7 +189,15 @@ export default function HomePage() {
           <div className="flex flex-col items-center gap-2">
             <InstallCommand command="npm install @t2-educacao/midas" />
             <span className="text-xs text-muted-foreground">
-              Pré-lançamento: o pacote ainda não foi publicado no npm.
+              Design system da T2 Educação ·{" "}
+              <a
+                href={npmUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                {packageName} no npm
+              </a>
             </span>
           </div>
           <div className="flex flex-wrap justify-center gap-3">
