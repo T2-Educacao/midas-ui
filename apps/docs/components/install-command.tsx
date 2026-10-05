@@ -14,7 +14,7 @@ export function InstallCommand({ command }: { command: string }) {
   }
 
   return (
-    <div className="flex items-center gap-2 rounded-lg border border-border bg-card py-1 pr-1 pl-4 font-mono text-sm">
+    <div className="flex items-center gap-2 rounded-lg border border-border bg-card py-1 pe-1 ps-4 font-mono text-sm">
       <span className="text-muted-foreground select-none">$</span>
       <span>{command}</span>
       <Button

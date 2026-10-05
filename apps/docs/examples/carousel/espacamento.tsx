@@ -11,9 +11,9 @@ import {
 export default function CarouselEspacamento() {
   return (
     <Carousel aria-label="Espaçamento" className="mx-12 w-full max-w-sm">
-      <CarouselContent className="-ml-1">
+      <CarouselContent className="-ms-1">
         {[1, 2, 3, 4, 5].map((numero) => (
-          <CarouselItem key={numero} className="basis-1/3 pl-1">
+          <CarouselItem key={numero} className="basis-1/3 ps-1">
             <Card className="py-0">
               <CardContent className="flex aspect-square items-center justify-center p-6">
                 <span className="text-3xl font-semibold">{numero}</span>

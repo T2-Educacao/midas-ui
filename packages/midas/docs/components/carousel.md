@@ -68,8 +68,8 @@ As setas ficam fora do carrossel (48px para cada lado): deixe margem lateral (`m
 O espaço padrão é 16px. Para mudar, ajuste o `-ml` do conteúdo e o `pl` dos itens juntos:
 
 ```tsx
-<CarouselContent className="-ml-2">
-  <CarouselItem className="basis-1/3 pl-2">...</CarouselItem>
+<CarouselContent className="-ms-2">
+  <CarouselItem className="basis-1/3 ps-2">...</CarouselItem>
 </CarouselContent>
 ```
 

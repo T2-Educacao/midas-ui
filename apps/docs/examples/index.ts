@@ -82,6 +82,7 @@ import PaginationSimples from "./pagination/simples";
 import PaginationSoIcones from "./pagination/so-icones";
 import PopoverBasico from "./popover/basico";
 import ProgressBasico from "./progress/basico";
+import QuestionnaireAnimacao from "./questionnaire/animacao";
 import QuestionnaireAtalhos from "./questionnaire/atalhos";
 import QuestionnaireAtalhosEPular from "./questionnaire/atalhos-e-pular";
 import QuestionnaireBasico from "./questionnaire/basico";
@@ -237,6 +238,12 @@ export const examples: Record<string, Example[]> = {
       title: "Progresso personalizado",
       description: "Usando renderProgress com o componente Progress.",
       Component: QuestionnaireProgressoPersonalizado,
+    },
+    {
+      id: "animacao",
+      title: "Animação",
+      description: "A troca de pergunta é animada; animated={false} desliga.",
+      Component: QuestionnaireAnimacao,
     },
     { id: "card", title: "Card", Component: QuestionnaireCard },
     { id: "dialog", title: "Dialog", Component: QuestionnaireDialog },
