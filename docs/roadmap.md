@@ -15,7 +15,7 @@
 ## Próximos passos
 
 1. [x] Repositório `T2-Educacao/midas-ui` no GitHub
-2. [ ] Primeira publicação no npm, versão `0.1.0` ([guia](guias/publicar-no-npm.md))
+2. [x] Primeira publicação no npm, versão `0.1.0` ([guia](guias/publicar-no-npm.md))
 3. [x] Tokens do Figma (tipografia, espaçamento, raios) + cores da hub + fonte do site
 4. [x] Lote 1: Button, ButtonGroup, Spinner, Kbd, Toggle, ToggleGroup, Tooltip
 5. [x] Lote 2: Input, InputGroup, Field, Badge, Combobox
@@ -24,7 +24,7 @@
 8. [x] Lote 5: Questionnaire
 9. [x] Componentes de apoio: Card, Dialog, Progress, Select, NativeSelect, Checkbox, RadioGroup, Textarea, Separator
 10. [x] Site de docs com a cara da T2 e exemplos ao vivo (preview, código, copiar)
-11. [ ] Deploy do site de docs na Vercel ([guia](guias/publicar-docs.md))
+11. [x] Site de docs na Vercel em `midas.t2.com.br` ([guia](guias/publicar-docs.md))
 12. [x] Exemplo de DatePicker com linguagem natural em português, suporte a RTL e todos os exemplos do Figma
 
 ## Decisões pendentes

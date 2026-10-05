@@ -26,11 +26,9 @@ O Midas UI é o pacote npm **`@t2-educacao/midas`**: componentes React acessíve
 
 A fonte da verdade visual é o **Figma do Midas**. Este repositório não substitui a página pública de marca (`design-t2`) nem a skill de design (`design-skill`): ele é o **código** que os projetos instalam.
 
-> Status: **pré-lançamento (0.x), ainda não publicado no npm**. Estrutura, build e docs prontos. Os valores dos tokens ainda são provisórios e os componentes serão construídos a partir do Figma. Veja o [roadmap](docs/roadmap.md).
+> Status: **0.x**, publicado no npm como [@t2-educacao/midas](https://www.npmjs.com/package/@t2-educacao/midas). Documentação com exemplos ao vivo em **https://midas.t2.com.br**. Veja o [roadmap](docs/roadmap.md).
 
 ### Como vai ser usado num projeto
-
-Depois da primeira publicação no npm:
 
 ```bash
 npm install @t2-educacao/midas
@@ -90,7 +88,7 @@ packages/midas/        →  O PACOTE publicado no npm (@t2-educacao/midas)
   src/icons/             reexporta Phosphor
   src/styles/            theme.css (tokens) · styles.css (CSS compilado)
   docs/                  docs em Markdown: vão no npm e alimentam o site
-apps/docs/             →  site de documentação (não publicado)
+apps/docs/             →  site de documentação (midas.t2.com.br, não vai para o npm)
 docs/                  →  docs internas: decisões e guias de manutenção
 .changeset/            →  mudanças pendentes para a próxima versão
 ```

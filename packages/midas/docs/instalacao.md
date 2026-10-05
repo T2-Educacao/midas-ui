@@ -3,8 +3,6 @@ title: "Instalação"
 description: "Como instalar e configurar o Midas em projetos Next.js com Tailwind v4 (Next 16) ou Tailwind v3 (Next 14, como a hub)."
 ---
 
-> O pacote **ainda não foi publicado no npm**. Estas instruções valem a partir da primeira versão publicada.
-
 ## 1. Instale o pacote
 
 ```bash

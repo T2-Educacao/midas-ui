@@ -2,7 +2,7 @@
 
 **Midas**, o design system da T2 Educação: componentes React acessíveis, tokens com tema claro e escuro e ícones Phosphor. Feito para Next.js (14 a 16) e React (18.2+ e 19).
 
-> Ainda não publicado no npm. As instruções abaixo valem a partir da primeira versão.
+Documentação com exemplos ao vivo: **https://midas.t2.com.br**
 
 ```bash
 npm install @t2-educacao/midas
@@ -31,6 +31,8 @@ import { ArrowRight } from "@t2-educacao/midas/icons";
 ```
 
 ## Documentação
+
+Site com exemplos ao vivo e código para copiar: https://midas.t2.com.br
 
 Toda a documentação vem **dentro do pacote**, na versão exata que você instalou:
 

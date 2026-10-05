@@ -51,4 +51,4 @@ export function Cta() {
 | Tailwind CSS | v4 (via `theme.css`) ou v3 (via `styles.css`) |
 | Módulos | ESM |
 
-> Status: **pré-lançamento (0.x), ainda não publicado no npm**. Os valores dos tokens ainda são provisórios e serão substituídos pelos do Figma do Midas. Os nomes dos tokens e as APIs dos componentes são o contrato.
+> Status: **0.x**, publicado no npm como @t2-educacao/midas. Enquanto estiver em 0.x, uma versão minor pode trazer mudança de API: leia o CHANGELOG antes de atualizar. Site com exemplos ao vivo: https://midas.t2.com.br

@@ -1,5 +1,11 @@
 # @t2-educacao/midas
 
+## 0.1.1
+
+### Patch Changes
+
+- README e docs sem o aviso de pré-lançamento, com o link do site de documentação (https://midas.t2.com.br), que também passa a ser a homepage do pacote. Corrige o exemplo de espaçamento do Carousel para classes lógicas.
+
 ## 0.1.0
 
 ### Minor Changes
