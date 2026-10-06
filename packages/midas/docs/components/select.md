@@ -36,7 +36,7 @@ import {
 | Componente | Prop | Descrição |
 |---|---|---|
 | `Select` | `value`, `defaultValue`, `onValueChange`, `disabled`, `name`, `required` | Estado e formulário |
-| `SelectTrigger` | `size` (`"default"` 32px ou `"sm"` 28px), `aria-invalid` | Botão que abre a lista |
+| `SelectTrigger` | `size` (`"default"` 32px ou `"sm"` 28px), `fullWidth` (ocupa a largura toda), `aria-invalid` | Botão que abre a lista |
 | `SelectValue` | `placeholder` | Texto quando vazio |
 | `SelectContent` | `position` (`"item-aligned"` ou `"popper"`) | Posição da lista |
 | `SelectItem` | `value`, `disabled` | Opção |

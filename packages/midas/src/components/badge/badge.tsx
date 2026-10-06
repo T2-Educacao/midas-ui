@@ -12,6 +12,11 @@ export const badgeVariants = cva(
   ],
   {
     variants: {
+      size: {
+        sm: "h-4.5 px-1.5 text-[0.6875rem] [&>svg]:size-2.5",
+        default: "",
+        lg: "h-6.5 px-2.5 text-sm [&>svg]:size-3.5",
+      },
       variant: {
         default: "bg-primary text-primary-foreground [a&]:hover:bg-primary/80",
         secondary: "bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/80",
@@ -46,6 +51,7 @@ export const badgeVariants = cva(
     ],
     defaultVariants: {
       variant: "secondary",
+      size: "default",
       filled: false,
     },
   },
@@ -55,18 +61,28 @@ export interface BadgeProps
   extends React.HTMLAttributes<HTMLSpanElement>,
     VariantProps<typeof badgeVariants> {
   asChild?: boolean;
+  icon?: React.ReactNode;
 }
 
 export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
-  ({ className, variant, filled, asChild = false, ...props }, ref) => {
+  ({ className, variant, size, filled, icon, asChild = false, children, ...props }, ref) => {
     const Comp = asChild ? Slot.Root : "span";
     return (
       <Comp
         ref={ref}
         data-slot="badge"
-        className={cn(badgeVariants({ variant, filled }), className)}
+        className={cn(badgeVariants({ variant, size, filled }), className)}
         {...props}
-      />
+      >
+        {asChild ? (
+          children
+        ) : (
+          <>
+            {icon}
+            {children}
+          </>
+        )}
+      </Comp>
     );
   },
 );

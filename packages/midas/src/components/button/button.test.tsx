@@ -132,4 +132,16 @@ describe("Button", () => {
     expect(excluir).not.toHaveClass("bg-destructive/10", "text-destructive");
     expect(screen.getByRole("button", { name: "Aprovar" })).toHaveClass("bg-success");
   });
+
+  it("loadingText substitui o conteúdo durante o carregamento", () => {
+    const { rerender } = render(
+      <Button loading loadingText="Salvando...">
+        Salvar
+      </Button>,
+    );
+    expect(screen.getByRole("button")).toHaveTextContent("Salvando...");
+    expect(screen.getByRole("button")).not.toHaveTextContent("Salvar");
+    rerender(<Button loadingText="Salvando...">Salvar</Button>);
+    expect(screen.getByRole("button")).toHaveTextContent("Salvar");
+  });
 });

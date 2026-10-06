@@ -30,6 +30,7 @@
   "files": [
     "dist",
     "docs",
+    "tailwind-preset.cjs",
     "llms.txt",
     "README.md",
     "CHANGELOG.md",
@@ -52,7 +53,8 @@
     "./styles.css": "./dist/styles.css",
     "./docs/*": "./docs/*",
     "./llms.txt": "./llms.txt",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./tailwind-preset": "./tailwind-preset.cjs"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -67,7 +69,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "check:package": "publint && attw --pack . --profile esm-only --exclude-entrypoints theme.css styles.css llms.txt",
+    "check:package": "publint && attw --pack . --profile esm-only --exclude-entrypoints theme.css styles.css llms.txt tailwind-preset",
     "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {

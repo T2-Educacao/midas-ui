@@ -17,6 +17,7 @@ export {
   AvatarBadge,
   type AvatarBadgeProps,
   AvatarFallback,
+  type AvatarFallbackProps,
   AvatarGroup,
   AvatarGroupCount,
   type AvatarGroupCountProps,
@@ -25,6 +26,16 @@ export {
   type AvatarSize,
 } from "./components/avatar";
 export { Badge, type BadgeProps, badgeVariants } from "./components/badge";
+export {
+  Breadcrumb,
+  BreadcrumbEllipsis,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  type BreadcrumbLinkProps,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "./components/breadcrumb";
 export { Button, type ButtonProps, buttonVariants } from "./components/button";
 export {
   ButtonGroup,
@@ -122,6 +133,13 @@ export {
   DropdownMenuTrigger,
 } from "./components/dropdown-menu";
 export {
+  EmptyState,
+  EmptyStateActions,
+  EmptyStateDescription,
+  EmptyStateIcon,
+  EmptyStateTitle,
+} from "./components/empty-state";
+export {
   Field,
   FieldDescription,
   FieldError,
@@ -132,6 +150,7 @@ export {
   fieldVariants,
   Label,
 } from "./components/field";
+export { type FileRejection, FileUpload, type FileUploadProps } from "./components/file-upload";
 export { Input } from "./components/input";
 export {
   InputGroup,
@@ -144,6 +163,16 @@ export {
   inputGroupAddonVariants,
 } from "./components/input-group";
 export { Kbd, KbdGroup } from "./components/kbd";
+export {
+  ListItem,
+  ListItemContent,
+  ListItemDescription,
+  ListItemGroup,
+  type ListItemGroupProps,
+  type ListItemProps,
+  ListItemTitle,
+  listItemVariants,
+} from "./components/list-item";
 export { NativeSelect, type NativeSelectProps } from "./components/native-select";
 export {
   getPageRange,
@@ -202,9 +231,43 @@ export {
   SelectValue,
 } from "./components/select";
 export { Separator } from "./components/separator";
+export {
+  NavItem,
+  type NavItemProps,
+  navItemVariants,
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarHeader,
+  type SidebarProps,
+} from "./components/sidebar";
+export { Skeleton, type SkeletonProps } from "./components/skeleton";
 export { Slider, type SliderProps } from "./components/slider";
 export { Spinner, type SpinnerProps } from "./components/spinner";
+export {
+  Stepper,
+  StepperDescription,
+  StepperItem,
+  type StepperItemProps,
+  type StepperProps,
+  StepperTitle,
+} from "./components/stepper";
 export { Switch, type SwitchProps, switchVariants } from "./components/switch";
+export {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  type TableHeadProps,
+  type TableProps,
+  TableRow,
+  tableVariants,
+} from "./components/table";
 export {
   Tabs,
   TabsContent,
@@ -213,7 +276,7 @@ export {
   TabsTrigger,
   tabsListVariants,
 } from "./components/tabs";
-export { Textarea } from "./components/textarea";
+export { Textarea, type TextareaProps } from "./components/textarea";
 export { Toaster, type ToasterProps, toast } from "./components/toast";
 export { Toggle, type ToggleProps, toggleVariants } from "./components/toggle";
 export {
@@ -224,6 +287,7 @@ export {
 } from "./components/toggle-group";
 export {
   Tooltip,
+  Tooltip as MidasTooltip,
   TooltipContent,
   TooltipFooter,
   TooltipItem,
@@ -232,5 +296,4 @@ export {
   TooltipTitle,
   TooltipTrigger,
 } from "./components/tooltip";
-
 export { cn } from "./lib/cn";

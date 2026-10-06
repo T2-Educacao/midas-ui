@@ -91,6 +91,7 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   loading?: boolean;
+  loadingText?: React.ReactNode;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -103,6 +104,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       filled,
       asChild = false,
       loading = false,
+      loadingText,
       disabled,
       type,
       children,
@@ -131,7 +133,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {loading && <Spinner label="" aria-hidden />}
-        {!(loading && size?.startsWith("icon")) && children}
+        {loading && loadingText !== undefined
+          ? loadingText
+          : !(loading && size?.startsWith("icon")) && children}
       </button>
     );
   },

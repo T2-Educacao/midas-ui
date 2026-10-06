@@ -19,6 +19,8 @@ import { Badge } from "@t2-educacao/midas";
 |---|---|---|---|
 | `filled` | `boolean` | `false` | Preenche `destructive`, `success`, `warning` e `info` com a cor cheia em vez do fundo suave |
 | `variant` | `"secondary" \| "default" \| "outline" \| "destructive" \| "success" \| "warning" \| "info"` | `"secondary"` | Estilo visual |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` | 18px, 22px ou 26px de altura |
+| `icon` | `ReactNode` | | Ícone antes do texto, já no tamanho certo (ignorado com `asChild`) |
 | `asChild` | `boolean` | `false` | Renderiza o filho (ex.: link) com o visual de badge |
 
 ## Variantes

@@ -39,4 +39,27 @@ describe("Input", () => {
     const { container } = render(<Input aria-label="Nome" />);
     await expectNoA11yViolations(container);
   });
+
+  it("limita o ano de campos de data por padrão", () => {
+    render(
+      <div>
+        <Input type="date" aria-label="Data" />
+        <Input type="datetime-local" aria-label="Quando" />
+      </div>,
+    );
+    expect(screen.getByLabelText("Data")).toHaveAttribute("min", "1900-01-01");
+    expect(screen.getByLabelText("Data")).toHaveAttribute("max", "2100-12-31");
+    expect(screen.getByLabelText("Quando")).toHaveAttribute("max", "2100-12-31T23:59");
+  });
+
+  it("respeita min e max passados pelo chamador", () => {
+    render(<Input type="date" aria-label="Data" min="2020-01-01" max="2030-01-01" />);
+    expect(screen.getByLabelText("Data")).toHaveAttribute("min", "2020-01-01");
+    expect(screen.getByLabelText("Data")).toHaveAttribute("max", "2030-01-01");
+  });
+
+  it("não aplica limites a outros tipos", () => {
+    render(<Input aria-label="Nome" />);
+    expect(screen.getByLabelText("Nome")).not.toHaveAttribute("max");
+  });
 });

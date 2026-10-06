@@ -63,4 +63,20 @@ describe("Avatar", () => {
     expect(root).toHaveAttribute("data-size", "custom");
     expect(root).toHaveStyle({ width: "56px", height: "56px" });
   });
+
+  it("colorFrom escolhe sempre a mesma cor para o mesmo texto", () => {
+    const { container } = render(
+      <div>
+        <Avatar>
+          <AvatarFallback colorFrom="Maria Souza">MS</AvatarFallback>
+        </Avatar>
+        <Avatar>
+          <AvatarFallback colorFrom="Maria Souza">MS</AvatarFallback>
+        </Avatar>
+      </div>,
+    );
+    const [a, b] = container.querySelectorAll("[data-slot=avatar-fallback]");
+    expect(a?.className).toMatch(/bg-chart-[1-8]/);
+    expect(a?.className).toBe(b?.className);
+  });
 });

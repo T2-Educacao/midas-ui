@@ -25,6 +25,7 @@ Aceita todas as props de `<button>` (`onClick`, `disabled`, `type`...) mais:
 | `filled` | `boolean` | `false` | Preenche `destructive`, `success`, `warning` e `info` com a cor cheia (texto em `*-foreground`) em vez do fundo suave |
 | `rounded` | `boolean` | `false` | Formato pill (totalmente arredondado) |
 | `loading` | `boolean` | `false` | Mostra o `Spinner`, desabilita o botão e marca `aria-busy` |
+| `loadingText` | `ReactNode` | | Texto mostrado no lugar do conteúdo enquanto `loading` (ex.: "Salvando...") |
 | `asChild` | `boolean` | `false` | Renderiza o filho com o visual de botão |
 | `className` | `string` | | Classes extras, mescladas (as suas vencem) |
 | `ref` | `Ref<HTMLButtonElement>` | | Encaminhada ao elemento |

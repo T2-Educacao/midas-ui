@@ -22,10 +22,32 @@ export function Tooltip({
   );
 }
 
+const focusable = { tabIndex: 0 };
+
 export const TooltipTrigger = React.forwardRef<
   React.ComponentRef<typeof TooltipPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Trigger>
->((props, ref) => <TooltipPrimitive.Trigger ref={ref} data-slot="tooltip-trigger" {...props} />);
+>(({ asChild, children, ...props }, ref) => {
+  const child = asChild && React.isValidElement(children) ? children : null;
+  const childDisabled =
+    child !== null && (child.props as { disabled?: boolean } | undefined)?.disabled === true;
+
+  if (childDisabled) {
+    return (
+      <TooltipPrimitive.Trigger asChild ref={ref} data-slot="tooltip-trigger" {...props}>
+        <span {...focusable} className="inline-flex">
+          {children}
+        </span>
+      </TooltipPrimitive.Trigger>
+    );
+  }
+
+  return (
+    <TooltipPrimitive.Trigger asChild={asChild} ref={ref} data-slot="tooltip-trigger" {...props}>
+      {children}
+    </TooltipPrimitive.Trigger>
+  );
+});
 TooltipTrigger.displayName = "TooltipTrigger";
 
 export const TooltipContent = React.forwardRef<

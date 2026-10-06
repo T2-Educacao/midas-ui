@@ -31,7 +31,7 @@ Se a imagem não carregar (ou não existir), aparece o `AvatarFallback`.
 |---|---|
 | `Avatar` | O círculo. `size`: `"sm"`, `"default"`, `"lg"` ou um número em px (ex.: `size={56}`) |
 | `AvatarImage` | A foto (`src`, `alt`) |
-| `AvatarFallback` | Texto ou ícone quando não há foto |
+| `AvatarFallback` | Texto ou ícone quando não há foto. `colorFrom="Maria Souza"` pinta o fundo com uma das 8 cores de série (`chart-1` a `chart-8`), sempre a mesma para o mesmo texto |
 | `AvatarBadge` | Indicador no canto inferior direito. `variant`: `"status"` (verde) ou `"icon"` (azul T2, com ícone) |
 | `AvatarGroup` | Avatares sobrepostos |
 | `AvatarGroupCount` | Círculo "+N" ou ícone no fim do grupo. `size` igual ao dos avatares |

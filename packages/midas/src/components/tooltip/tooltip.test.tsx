@@ -63,4 +63,35 @@ describe("Tooltip", () => {
     await screen.findByRole("tooltip");
     await expectNoA11yViolations(document.body);
   });
+
+  it("abre em botão desabilitado envolvendo-o automaticamente", async () => {
+    render(
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <button type="button" disabled>
+            Publicar
+          </button>
+        </TooltipTrigger>
+        <TooltipContent>Preencha os campos</TooltipContent>
+      </Tooltip>,
+    );
+    const button = screen.getByRole("button", { name: "Publicar" });
+    expect(button.parentElement).toHaveAttribute("tabindex", "0");
+    await userEvent.hover(button.parentElement as HTMLElement);
+    expect((await screen.findAllByText("Preencha os campos")).length).toBeGreaterThan(0);
+  });
+
+  it("não envolve botão habilitado", () => {
+    render(
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <button type="button">Ok</button>
+        </TooltipTrigger>
+        <TooltipContent>Dica</TooltipContent>
+      </Tooltip>,
+    );
+    expect(screen.getByRole("button", { name: "Ok" }).parentElement).not.toHaveAttribute(
+      "tabindex",
+    );
+  });
 });

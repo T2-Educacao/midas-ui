@@ -48,4 +48,14 @@ describe("Badge", () => {
     expect(screen.getByText("Pendente")).toHaveClass("bg-warning", "text-warning-foreground");
     expect(screen.getByText("Pendente")).not.toHaveClass("bg-warning/10");
   });
+
+  it("aceita tamanho e ícone embutido", () => {
+    render(
+      <Badge size="lg" icon={<svg data-testid="icone" />}>
+        Grande
+      </Badge>,
+    );
+    expect(screen.getByText("Grande")).toHaveClass("h-6.5");
+    expect(screen.getByTestId("icone")).toBeInTheDocument();
+  });
 });

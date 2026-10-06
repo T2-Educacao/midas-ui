@@ -35,4 +35,18 @@ describe("Select", () => {
     const { container } = render(<Exemplo />);
     await expectNoA11yViolations(container);
   });
+
+  it("fullWidth ocupa a largura toda", () => {
+    render(
+      <Select>
+        <SelectTrigger aria-label="Estado" fullWidth>
+          <SelectValue placeholder="Escolha" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="sp">SP</SelectItem>
+        </SelectContent>
+      </Select>,
+    );
+    expect(screen.getByRole("combobox", { name: "Estado" })).toHaveClass("w-full");
+  });
 });

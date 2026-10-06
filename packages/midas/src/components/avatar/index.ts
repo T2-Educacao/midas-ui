@@ -3,6 +3,7 @@ export {
   AvatarBadge,
   type AvatarBadgeProps,
   AvatarFallback,
+  type AvatarFallbackProps,
   AvatarGroup,
   AvatarGroupCount,
   type AvatarGroupCountProps,

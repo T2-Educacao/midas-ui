@@ -12,12 +12,13 @@ export const SelectValue = SelectPrimitive.Value;
 export interface SelectTriggerProps
   extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> {
   size?: "sm" | "default";
+  fullWidth?: boolean;
 }
 
 export const SelectTrigger = React.forwardRef<
   React.ComponentRef<typeof SelectPrimitive.Trigger>,
   SelectTriggerProps
->(({ className, size = "default", children, ...props }, ref) => (
+>(({ className, size = "default", fullWidth = false, children, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
     data-slot="select-trigger"
@@ -31,6 +32,7 @@ export const SelectTrigger = React.forwardRef<
       "disabled:cursor-not-allowed disabled:opacity-50",
       "aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20",
       "dark:bg-input/30",
+      fullWidth && "w-full",
       "*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5",
       "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
       className,

@@ -29,6 +29,7 @@ Aceita todas as props de `<input>` (`type`, `value`, `onChange`, `placeholder`, 
 
 | Prop | Tipo | Descrição |
 |---|---|---|
+| `min` / `max` | `string` | Em `type="date"` o padrão é `1900-01-01` a `2100-12-31` (e o equivalente em `datetime-local`), para o navegador não aceitar anos de 5 ou 6 dígitos. Passe os seus para mudar |
 | `aria-invalid` | `boolean` | Mostra o estado de erro (borda e anel vermelhos) |
 | `className` | `string` | Classes extras (as suas vencem) |
 | `ref` | `Ref<HTMLInputElement>` | Encaminhada ao `<input>` |

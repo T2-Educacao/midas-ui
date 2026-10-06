@@ -12,16 +12,26 @@ export const inputClasses = [
   "dark:bg-input/30 dark:disabled:bg-input/80",
 ];
 
+const dateBounds: Record<string, { min: string; max: string } | undefined> = {
+  date: { min: "1900-01-01", max: "2100-12-31" },
+  "datetime-local": { min: "1900-01-01T00:00", max: "2100-12-31T23:59" },
+};
+
 export const Input = React.forwardRef<
   HTMLInputElement,
   React.InputHTMLAttributes<HTMLInputElement>
->(({ className, type = "text", ...props }, ref) => (
-  <input
-    ref={ref}
-    type={type}
-    data-slot="input"
-    className={cn(inputClasses, className)}
-    {...props}
-  />
-));
+>(({ className, type = "text", min, max, ...props }, ref) => {
+  const bounds = dateBounds[type];
+  return (
+    <input
+      ref={ref}
+      type={type}
+      min={min ?? bounds?.min}
+      max={max ?? bounds?.max}
+      data-slot="input"
+      className={cn(inputClasses, className)}
+      {...props}
+    />
+  );
+});
 Input.displayName = "Input";

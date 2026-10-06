@@ -44,6 +44,17 @@ import "@t2-educacao/midas/styles.css";
 
 Ele contém só as classes que os componentes do Midas usam, mais os tokens. Não inclui reset/preflight. Não precisa de plugin PostCSS.
 
+Para alinhar as classes do **seu** código às do Midas (cores, raios, fonte) sem manter tokens paralelos, use o preset no `tailwind.config.js`:
+
+```js
+module.exports = {
+  presets: [require("@t2-educacao/midas/tailwind-preset")],
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
+};
+```
+
+Depois disso `bg-primary`, `text-muted-foreground`, `border-border`, `rounded-lg`, `bg-chart-1` etc. no seu código apontam para as variáveis `--midas-*`, e o modo escuro troca sozinho. Os componentes do Midas continuam vindo do `styles.css`: não precisa pôr `node_modules/@t2-educacao/midas` no `content` nem usar `safelist`.
+
 Pontos de atenção na convivência com o v3:
 
 - **Mesmo nome de classe nos dois lados.** Classes como `-translate-x-1/2` existem no CSS do projeto e no do Midas. Como o Midas gera o mesmo `transform` que o v3, o efeito não dobra. Mesmo assim, não reaplique `translate`/`rotate` por cima dos componentes do Midas.

@@ -53,15 +53,41 @@ export const AvatarImage = React.forwardRef<
 ));
 AvatarImage.displayName = "AvatarImage";
 
+const fallbackColors = [
+  "bg-chart-1",
+  "bg-chart-2",
+  "bg-chart-3",
+  "bg-chart-4",
+  "bg-chart-5",
+  "bg-chart-6",
+  "bg-chart-7",
+  "bg-chart-8",
+];
+
+const colorFor = (source: string) => {
+  let hash = 0;
+  for (const char of source) hash = (hash * 31 + char.charCodeAt(0)) >>> 0;
+  return fallbackColors[hash % fallbackColors.length];
+};
+
+export interface AvatarFallbackProps
+  extends React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback> {
+  colorFrom?: string;
+}
+
 export const AvatarFallback = React.forwardRef<
   React.ComponentRef<typeof AvatarPrimitive.Fallback>,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
->(({ className, ...props }, ref) => (
+  AvatarFallbackProps
+>(({ className, colorFrom, ...props }, ref) => (
   <AvatarPrimitive.Fallback
     ref={ref}
     data-slot="avatar-fallback"
+    data-color-from={colorFrom ? "" : undefined}
     className={cn(
-      "flex size-full items-center justify-center rounded-full bg-muted text-sm text-muted-foreground",
+      "flex size-full items-center justify-center rounded-full text-sm",
+      colorFrom
+        ? [colorFor(colorFrom), "text-primary-foreground"]
+        : "bg-muted text-muted-foreground",
       "group-data-[size=sm]/avatar:text-xs group-data-[size=custom]/avatar:text-[length:calc(var(--midas-avatar-size)*0.4)]",
       className,
     )}

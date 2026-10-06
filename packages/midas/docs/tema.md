@@ -26,6 +26,10 @@ As cores são as da T2 (as mesmas da hub), em tema claro e escuro. Cada cor de f
 | `input` | Borda de campos | `#e1e7ef` | `#1f2151` |
 | `ring` | Anel de foco | `#009adb` | `#38c6fa` |
 
+### Cores de série (gráficos)
+
+`chart-1` a `chart-8` são 8 cores distintas, com versões clara e escura, para séries de gráficos e avatares coloridos. Use como `bg-chart-1`, `text-chart-3` ou direto nas props de cor do Recharts: `fill="var(--midas-chart-1)"`. O `TooltipItem` aceita `color="var(--midas-chart-2)"`.
+
 ### Camadas (z-index)
 
 Os overlays e popups usam variáveis, para encaixar o Midas em projetos com camadas próprias:
