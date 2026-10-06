@@ -11,6 +11,8 @@ import AvatarGrupo from "./avatar/grupo";
 import AvatarTamanhos from "./avatar/tamanhos";
 import BadgePreenchido from "./badge/preenchido";
 import BadgeVariantes from "./badge/variantes";
+import BreadcrumbBasico from "./breadcrumb/basico";
+import BreadcrumbReticencias from "./breadcrumb/reticencias";
 import ButtonArredondado from "./button/arredondado";
 import ButtonCarregando from "./button/carregando";
 import ButtonComAtalho from "./button/com-atalho";
@@ -73,12 +75,15 @@ import DropdownMenuIconesEAtalhos from "./dropdown-menu/icones-e-atalhos";
 import DropdownMenuRadio from "./dropdown-menu/radio";
 import DropdownMenuRadioComIcones from "./dropdown-menu/radio-com-icones";
 import DropdownMenuSubmenu from "./dropdown-menu/submenu";
+import EmptyStateBasico from "./empty-state/basico";
 import FieldBasico from "./field/basico";
 import FieldComBadge from "./field/com-badge";
 import FieldFormulario from "./field/formulario";
 import FieldGrade from "./field/grade";
 import FieldHorizontal from "./field/horizontal";
 import FieldObrigatorio from "./field/obrigatorio";
+import FileUploadBasico from "./file-upload/basico";
+import FileUploadSoImagens from "./file-upload/so-imagens";
 import InputArquivo from "./input/arquivo";
 import InputBasico from "./input/basico";
 import InputComBotao from "./input/com-botao";
@@ -91,6 +96,9 @@ import InputGroupPrefixo from "./input-group/prefixo";
 import InputGroupTextarea from "./input-group/textarea";
 import KbdBasico from "./kbd/basico";
 import KbdEmTexto from "./kbd/em-texto";
+import ListItemBasico from "./list-item/basico";
+import ListItemComoLink from "./list-item/como-link";
+import ListItemSelecionado from "./list-item/selecionado";
 import NativeSelectBasico from "./native-select/basico";
 import PaginationSimples from "./pagination/simples";
 import PaginationSoIcones from "./pagination/so-icones";
@@ -113,17 +121,27 @@ import SegmentedControlBasico from "./segmented-control/basico";
 import SegmentedControlTamanhos from "./segmented-control/tamanhos";
 import SelectBasico from "./select/basico";
 import SeparatorBasico from "./separator/basico";
+import SidebarBasico from "./sidebar/basico";
+import SidebarRecolhido from "./sidebar/recolhido";
+import SkeletonCard from "./skeleton/card";
+import SkeletonLinhasDeTexto from "./skeleton/linhas-de-texto";
 import SliderBasico from "./slider/basico";
 import SliderDesabilitado from "./slider/desabilitado";
 import SliderIntervalo from "./slider/intervalo";
 import SpinnerBasico from "./spinner/basico";
 import SpinnerComTexto from "./spinner/com-texto";
+import StepperBasico from "./stepper/basico";
+import StepperVertical from "./stepper/vertical";
 import SwitchBasico from "./switch/basico";
 import SwitchTamanhos from "./switch/tamanhos";
+import TableBasico from "./table/basico";
+import TableOrdenavel from "./table/ordenavel";
+import TableSelecaoERodape from "./table/selecao-e-rodape";
 import TabsBasico from "./tabs/basico";
 import TabsSublinhado from "./tabs/sublinhado";
 import TabsVertical from "./tabs/vertical";
 import TextareaBasico from "./textarea/basico";
+import TextareaTituloInline from "./textarea/titulo-inline";
 import ToastComDescricaoEAcao from "./toast/com-descricao-e-acao";
 import ToastPromise from "./toast/promise";
 import ToastTipos from "./toast/tipos";
@@ -149,6 +167,42 @@ export interface Example {
 }
 
 export const examples: Record<string, Example[]> = {
+  breadcrumb: [
+    { id: "basico", title: "Básico", Component: BreadcrumbBasico },
+    { id: "reticencias", title: "Com reticências", Component: BreadcrumbReticencias },
+  ],
+  "empty-state": [{ id: "basico", title: "Básico", Component: EmptyStateBasico }],
+  "file-upload": [
+    { id: "basico", title: "Básico", Component: FileUploadBasico },
+    { id: "so-imagens", title: "Só imagens com limite", Component: FileUploadSoImagens },
+  ],
+  "list-item": [
+    { id: "basico", title: "Básico", Component: ListItemBasico },
+    { id: "como-link", title: "Como link", Component: ListItemComoLink },
+    { id: "selecionado", title: "Selecionado", Component: ListItemSelecionado },
+  ],
+  sidebar: [
+    { id: "basico", title: "Básico", Component: SidebarBasico },
+    {
+      id: "recolhido",
+      title: "Recolhido",
+      description: "Recolhida, mostra só os ícones.",
+      Component: SidebarRecolhido,
+    },
+  ],
+  skeleton: [
+    { id: "linhas-de-texto", title: "Linhas de texto", Component: SkeletonLinhasDeTexto },
+    { id: "card", title: "Card", Component: SkeletonCard },
+  ],
+  stepper: [
+    { id: "basico", title: "Básico", Component: StepperBasico },
+    { id: "vertical", title: "Vertical", Component: StepperVertical },
+  ],
+  table: [
+    { id: "basico", title: "Básico", Component: TableBasico },
+    { id: "ordenavel", title: "Ordenável", Component: TableOrdenavel },
+    { id: "selecao-e-rodape", title: "Seleção e rodapé", Component: TableSelecaoERodape },
+  ],
   accordion: [
     { id: "basico", title: "Básico (um aberto por vez)", Component: AccordionBasico },
     { id: "multiplo", title: "Vários abertos", Component: AccordionMultiplo },
@@ -317,7 +371,10 @@ export const examples: Record<string, Example[]> = {
   "radio-group": [{ id: "basico", title: "Básico", Component: RadioGroupBasico }],
   select: [{ id: "basico", title: "Com grupos", Component: SelectBasico }],
   separator: [{ id: "basico", title: "Horizontal e vertical", Component: SeparatorBasico }],
-  textarea: [{ id: "basico", title: "Básico", Component: TextareaBasico }],
+  textarea: [
+    { id: "basico", title: "Básico", Component: TextareaBasico },
+    { id: "titulo-inline", title: "Título inline", Component: TextareaTituloInline },
+  ],
   badge: [
     { id: "variantes", title: "Variantes", Component: BadgeVariantes },
     { id: "preenchido", title: "Preenchido", Component: BadgePreenchido },

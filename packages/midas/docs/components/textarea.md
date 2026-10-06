@@ -23,6 +23,8 @@ Aceita todas as props de `<textarea>` (`rows`, `maxLength`, `value`...). A altur
 | Prop | Tipo | Descrição |
 |---|---|---|
 | `aria-invalid` | `boolean` | Estado de erro |
+| `autoGrow` | `boolean` | Ajusta a altura ao conteúdo (calculada por `scrollHeight`) e desliga o redimensionamento manual. Padrão `false` |
+| `bare` | `boolean` | Sem borda, fundo, anel de foco, altura mínima e padding, para texto inline como títulos. Padrão `false` |
 
 ## Exemplos
 
@@ -37,6 +39,27 @@ const [texto, setTexto] = useState("");
   <FieldDescription>{texto.length}/200</FieldDescription>
 </Field>
 ```
+
+### Título inline
+
+```tsx
+"use client";
+
+const [titulo, setTitulo] = useState("");
+
+<Textarea
+  autoGrow
+  bare
+  rows={1}
+  aria-label="Título"
+  placeholder="Título sem nome"
+  className="text-2xl font-semibold"
+  value={titulo}
+  onChange={(e) => setTitulo(e.target.value)}
+/>
+```
+
+Com `bare` não há anel de foco: dê outra pista visual de foco ao contêiner e sempre use `aria-label` ou um label visível.
 
 Para botões dentro da mesma borda, use `InputGroupTextarea` (veja [InputGroup](./input-group.md)).
 
