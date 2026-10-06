@@ -25,6 +25,11 @@ export const buttonVariants = cva(
           "text-foreground hover:bg-accent hover:text-accent-foreground aria-expanded:bg-accent",
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30",
+        success:
+          "bg-success/10 text-success hover:bg-success/20 focus-visible:border-success/40 focus-visible:ring-success/20 dark:bg-success/20 dark:hover:bg-success/30",
+        warning:
+          "bg-warning/10 text-warning hover:bg-warning/20 focus-visible:border-warning/40 focus-visible:ring-warning/20 dark:bg-warning/20 dark:hover:bg-warning/30",
+        info: "bg-info/10 text-info hover:bg-info/20 focus-visible:border-info/40 focus-visible:ring-info/20 dark:bg-info/20 dark:hover:bg-info/30",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
@@ -94,7 +99,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {loading && <Spinner label="" aria-hidden />}
-        {children}
+        {!(loading && size?.startsWith("icon")) && children}
       </button>
     );
   },

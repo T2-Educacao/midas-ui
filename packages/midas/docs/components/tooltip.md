@@ -114,6 +114,30 @@ import { Calendar, ListBullets } from "@t2-educacao/midas/icons";
 </TooltipContent>
 ```
 
+## Tooltip em botão desabilitado
+
+Elementos `disabled` não recebem eventos do mouse, então o tooltip não abre. Envolva o botão em um elemento focável e ponha o `TooltipTrigger` nele:
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <span tabIndex={0} className="inline-flex">
+      <Button disabled>Publicar</Button>
+    </span>
+  </TooltipTrigger>
+  <TooltipContent>Preencha todos os campos para publicar</TooltipContent>
+</Tooltip>
+```
+
+## Conflito de nome com o recharts
+
+O `recharts` também exporta um `Tooltip`. Em arquivos de gráfico que usam os dois, renomeie na importação:
+
+```tsx
+import { Tooltip as ChartTooltip } from "recharts";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@t2-educacao/midas";
+```
+
 ## Acessibilidade
 
 - Abre com mouse **e** com foco do teclado; fecha com `Esc`.

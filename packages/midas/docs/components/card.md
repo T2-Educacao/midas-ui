@@ -77,6 +77,14 @@ import {
 </Card>
 ```
 
+## Conteúdo que precisa vazar
+
+O `Card` tem `overflow-hidden` e `py-4` para que o rodapé cinza acompanhe os cantos arredondados. Se um filho precisa passar da borda (sombra de popover inline, tooltip, menu), troque pelas suas classes, que vencem as padrão:
+
+```tsx
+<Card className="overflow-visible py-0">...</Card>
+```
+
 ## Acessibilidade
 
 - O Card é só visual. Se o card inteiro for clicável, use um link dentro do título e não aninhe outros elementos interativos.

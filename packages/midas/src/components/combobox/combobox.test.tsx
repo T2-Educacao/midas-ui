@@ -111,4 +111,34 @@ describe("Combobox", () => {
     const { container } = render(<Combobox options={certificacoes} aria-label="Certificação" />);
     await expectNoA11yViolations(container);
   });
+
+  it("ignora acentos e maiúsculas na busca", async () => {
+    const user = userEvent.setup();
+    render(
+      <Combobox
+        aria-label="Cidade"
+        options={[
+          { value: "sp", label: "São Paulo" },
+          { value: "bh", label: "Belo Horizonte" },
+        ]}
+      />,
+    );
+    await user.type(screen.getByRole("combobox", { name: "Cidade" }), "sao");
+    expect(screen.getByRole("option", { name: "São Paulo" })).toBeInTheDocument();
+    expect(screen.queryByRole("option", { name: "Belo Horizonte" })).not.toBeInTheDocument();
+  });
+
+  it("mostra a descrição do item selecionado no gatilho de botão", () => {
+    render(
+      <Combobox
+        trigger="button"
+        aria-label="Plano"
+        showSelectedDescription
+        defaultValue="pro"
+        options={[{ value: "pro", label: "Pro", description: "R$ 99/mês" }]}
+      />,
+    );
+    expect(screen.getByRole("combobox", { name: "Plano" })).toHaveTextContent("Pro");
+    expect(screen.getByText("R$ 99/mês")).toBeInTheDocument();
+  });
 });

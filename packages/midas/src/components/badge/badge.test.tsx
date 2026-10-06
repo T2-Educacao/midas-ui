@@ -27,4 +27,15 @@ describe("Badge", () => {
     const { container } = render(<Badge>Beta</Badge>);
     await expectNoA11yViolations(container);
   });
+
+  it("aplica as variantes warning e info", () => {
+    render(
+      <div>
+        <Badge variant="warning">Pendente</Badge>
+        <Badge variant="info">Dica</Badge>
+      </div>,
+    );
+    expect(screen.getByText("Pendente")).toHaveClass("text-warning");
+    expect(screen.getByText("Dica")).toHaveClass("text-info");
+  });
 });

@@ -17,7 +17,7 @@ import { Badge } from "@t2-educacao/midas";
 
 | Prop | Tipo | Padrão | Descrição |
 |---|---|---|---|
-| `variant` | `"secondary" \| "default" \| "outline" \| "destructive" \| "success"` | `"secondary"` | Estilo visual |
+| `variant` | `"secondary" \| "default" \| "outline" \| "destructive" \| "success" \| "warning" \| "info"` | `"secondary"` | Estilo visual |
 | `asChild` | `boolean` | `false` | Renderiza o filho (ex.: link) com o visual de badge |
 
 ## Variantes
@@ -29,6 +29,8 @@ import { Badge } from "@t2-educacao/midas";
 | `outline` | Filtros e categorias |
 | `destructive` | Erro, expirado, cancelado |
 | `success` | Concluído, aprovado, ativo |
+| `warning` | Pendente, atenção, prazo perto de vencer |
+| `info` | Informação neutra, dica, novidade sem urgência |
 
 ## Exemplos
 

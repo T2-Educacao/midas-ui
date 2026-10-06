@@ -24,6 +24,7 @@ interface ComboboxBaseProps {
   trigger?: "input" | "button";
   startAddon?: React.ReactNode;
   clearable?: boolean;
+  showSelectedDescription?: boolean;
   disabled?: boolean;
   invalid?: boolean;
   open?: boolean;
@@ -56,12 +57,14 @@ export type ComboboxProps = ComboboxSingleProps | ComboboxMultipleProps;
 const normalize = (value: string | string[] | null | undefined) =>
   value == null ? [] : Array.isArray(value) ? value : [value];
 
+const fold = (text: string) => text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLocaleLowerCase("pt-BR");
+
 const matches = (option: ComboboxOption, search: string) => {
-  const term = search.trim().toLocaleLowerCase("pt-BR");
+  const term = fold(search.trim());
   if (!term) return true;
   return [option.label, option.value, option.description, ...(option.keywords ?? [])]
     .filter(Boolean)
-    .some((text) => (text as string).toLocaleLowerCase("pt-BR").includes(term));
+    .some((text) => fold(text as string).includes(term));
 };
 
 const fieldClasses = [
@@ -84,6 +87,7 @@ export function Combobox(props: ComboboxProps) {
     trigger = "input",
     startAddon,
     clearable = false,
+    showSelectedDescription = false,
     disabled = false,
     invalid = false,
     id,
@@ -104,6 +108,10 @@ export function Combobox(props: ComboboxProps) {
   const contentId = React.useId();
 
   const byValue = React.useMemo(() => new Map(options.map((o) => [o.value, o])), [options]);
+  const selectedDescription =
+    showSelectedDescription && !multiple && selected[0]
+      ? byValue.get(selected[0])?.description
+      : undefined;
   const selectedLabel = !multiple && selected[0] ? (byValue.get(selected[0])?.label ?? "") : "";
 
   const setOpen = (next: boolean) => {
@@ -198,7 +206,7 @@ export function Combobox(props: ComboboxProps) {
           if (anchorRef.current?.contains(event.target as Node)) event.preventDefault();
         }}
         className={cn(
-          "z-50 w-(--radix-popover-trigger-width) min-w-48 overflow-hidden rounded-lg border border-border bg-popover p-1 text-popover-foreground shadow-md outline-none",
+          "z-(--midas-z-popup) w-(--radix-popover-trigger-width) min-w-48 overflow-hidden rounded-lg border border-border bg-popover p-1 text-popover-foreground shadow-md outline-none",
           "origin-(--radix-popover-content-transform-origin) animate-midas-in motion-reduce:animate-none",
           contentClassName,
         )}
@@ -234,6 +242,14 @@ export function Combobox(props: ComboboxProps) {
                     ? selected.map((v) => byValue.get(v)?.label ?? v).join(", ")
                     : placeholder
                   : selectedLabel || placeholder}
+                {selectedDescription && (
+                  <span
+                    data-slot="combobox-trigger-description"
+                    className="ms-2 text-muted-foreground"
+                  >
+                    {selectedDescription}
+                  </span>
+                )}
               </span>
               <CaretDown className="size-4 shrink-0 text-muted-foreground" />
             </button>

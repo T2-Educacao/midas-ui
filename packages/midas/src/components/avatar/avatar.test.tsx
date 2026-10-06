@@ -52,4 +52,15 @@ describe("Avatar", () => {
     );
     await expectNoA11yViolations(container);
   });
+
+  it("aceita tamanho livre em pixels", () => {
+    const { container } = render(
+      <Avatar size={56}>
+        <AvatarFallback>RS</AvatarFallback>
+      </Avatar>,
+    );
+    const root = container.querySelector("[data-slot=avatar]");
+    expect(root).toHaveAttribute("data-size", "custom");
+    expect(root).toHaveStyle({ width: "56px", height: "56px" });
+  });
 });

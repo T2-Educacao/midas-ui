@@ -38,7 +38,7 @@ export const TooltipContent = React.forwardRef<
       data-slot="tooltip-content"
       sideOffset={sideOffset}
       className={cn(
-        "z-50 grid w-fit min-w-32 max-w-xs gap-1.5 rounded-lg border border-border/50 bg-popover px-2.5 py-1.5 text-xs text-popover-foreground shadow-xl",
+        "z-(--midas-z-popup) grid w-fit min-w-32 max-w-xs gap-1.5 rounded-lg border border-border/50 bg-popover px-2.5 py-1.5 text-xs text-popover-foreground shadow-xl",
         "origin-(--radix-tooltip-content-transform-origin) animate-midas-in motion-reduce:animate-none",
         className,
       )}

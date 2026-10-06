@@ -19,6 +19,8 @@ import { Progress } from "@t2-educacao/midas";
 |---|---|---|---|
 | `value` | `number \| null` | | Valor atual. `null` = indeterminado |
 | `max` | `number` | `100` | Valor máximo |
+| `variant` | `"default" \| "success" \| "warning" \| "info" \| "destructive"` | `"default"` | Cor da barra, para separar séries ou indicar estado |
+| `indicatorClassName` | `string` | | Classes extras só do indicador (para uma cor própria por série, ex.: `bg-info`) |
 | `aria-label` | `string` | | Nome da barra (obrigatório) |
 
 ## Exemplos

@@ -6,18 +6,30 @@ import { cn } from "../../lib/cn";
 
 export type AvatarSize = "sm" | "default" | "lg";
 
-export interface AvatarProps extends React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root> {
-  size?: AvatarSize;
+const customSize = (size: AvatarSize | number, style?: React.CSSProperties): React.CSSProperties =>
+  typeof size === "number"
+    ? ({
+        "--midas-avatar-size": `${size}px`,
+        width: size,
+        height: size,
+        ...style,
+      } as React.CSSProperties)
+    : (style ?? {});
+
+export interface AvatarProps
+  extends Omit<React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>, "size"> {
+  size?: AvatarSize | number;
 }
 
 export const Avatar = React.forwardRef<
   React.ComponentRef<typeof AvatarPrimitive.Root>,
   AvatarProps
->(({ className, size = "default", ...props }, ref) => (
+>(({ className, size = "default", style, ...props }, ref) => (
   <AvatarPrimitive.Root
     ref={ref}
     data-slot="avatar"
-    data-size={size}
+    data-size={typeof size === "number" ? "custom" : size}
+    style={customSize(size, style)}
     className={cn(
       "group/avatar relative flex size-8 shrink-0 select-none rounded-full",
       "data-[size=sm]:size-6 data-[size=lg]:size-10",
@@ -50,7 +62,7 @@ export const AvatarFallback = React.forwardRef<
     data-slot="avatar-fallback"
     className={cn(
       "flex size-full items-center justify-center rounded-full bg-muted text-sm text-muted-foreground",
-      "group-data-[size=sm]/avatar:text-xs",
+      "group-data-[size=sm]/avatar:text-xs group-data-[size=custom]/avatar:text-[length:calc(var(--midas-avatar-size)*0.4)]",
       className,
     )}
     {...props}
@@ -74,6 +86,7 @@ export const AvatarBadge = React.forwardRef<HTMLSpanElement, AvatarBadgeProps>(
         "data-[variant=status]:bg-success",
         "data-[variant=icon]:bg-primary data-[variant=icon]:text-primary-foreground",
         "[&>svg]:size-2 group-data-[size=sm]/avatar:[&>svg]:hidden group-data-[size=lg]/avatar:[&>svg]:size-2.5",
+        "group-data-[size=custom]/avatar:size-[max(0.5rem,calc(var(--midas-avatar-size)*0.28))]",
         className,
       )}
       {...props}
@@ -97,19 +110,20 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, React.HTMLAttributes
 );
 AvatarGroup.displayName = "AvatarGroup";
 
-export interface AvatarGroupCountProps extends React.HTMLAttributes<HTMLDivElement> {
-  size?: AvatarSize;
+export interface AvatarGroupCountProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "size"> {
+  size?: AvatarSize | number;
 }
 
 export const AvatarGroupCount = React.forwardRef<HTMLDivElement, AvatarGroupCountProps>(
-  ({ className, size = "default", ...props }, ref) => (
+  ({ className, size = "default", style, ...props }, ref) => (
     <div
       ref={ref}
       data-slot="avatar-group-count"
-      data-size={size}
+      data-size={typeof size === "number" ? "custom" : size}
+      style={customSize(size, style)}
       className={cn(
         "relative flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-sm text-muted-foreground ring-2 ring-background",
-        "data-[size=sm]:size-6 data-[size=sm]:text-xs data-[size=lg]:size-10",
+        "data-[size=sm]:size-6 data-[size=sm]:text-xs data-[size=lg]:size-10 data-[size=custom]:text-[length:calc(var(--midas-avatar-size)*0.4)]",
         "[&>svg]:size-4 data-[size=sm]:[&>svg]:size-3.5 data-[size=lg]:[&>svg]:size-4.5",
         className,
       )}

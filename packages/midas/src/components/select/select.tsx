@@ -55,7 +55,7 @@ export const SelectContent = React.forwardRef<
       data-slot="select-content"
       position={position}
       className={cn(
-        "relative z-50 max-h-(--radix-select-content-available-height) min-w-36 overflow-x-hidden overflow-y-auto rounded-lg border border-border bg-popover text-popover-foreground shadow-md",
+        "relative z-(--midas-z-popup) max-h-(--radix-select-content-available-height) min-w-36 overflow-x-hidden overflow-y-auto rounded-lg border border-border bg-popover text-popover-foreground shadow-md",
         "origin-(--radix-select-content-transform-origin) animate-midas-in motion-reduce:animate-none",
         position === "popper" && "data-[side=bottom]:translate-y-1 data-[side=top]:-translate-y-1",
         className,

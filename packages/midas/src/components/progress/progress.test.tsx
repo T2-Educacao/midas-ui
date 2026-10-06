@@ -17,4 +17,15 @@ describe("Progress", () => {
     const { container } = render(<Progress value={70} aria-label="Progresso" />);
     await expectNoA11yViolations(container);
   });
+
+  it("aplica a cor da variante e aceita classe própria no indicador", () => {
+    const { rerender, container } = render(
+      <Progress value={50} variant="warning" aria-label="Série" />,
+    );
+    const indicator = () => container.querySelector("[data-slot=progress-indicator]");
+    expect(indicator()).toHaveClass("bg-warning");
+    rerender(<Progress value={50} indicatorClassName="bg-info" aria-label="Série" />);
+    expect(indicator()).toHaveClass("bg-info");
+    expect(indicator()).not.toHaveClass("bg-primary");
+  });
 });

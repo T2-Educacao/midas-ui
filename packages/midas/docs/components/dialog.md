@@ -48,7 +48,7 @@ import {
 |---|---|
 | `Dialog` | Raiz (`open`, `defaultOpen`, `onOpenChange`) |
 | `DialogTrigger` | Abre o diálogo (use `asChild`) |
-| `DialogContent` | A janela (largura máxima de 448px). `showCloseButton={false}` esconde o X |
+| `DialogContent` | A janela (largura máxima de 448px; passe `max-w-2xl` etc. em `className` para mudar). `overlayClassName` muda o fundo escurecido. `showCloseButton={false}` esconde o X |
 | `DialogHeader` / `DialogTitle` / `DialogDescription` | Cabeçalho. O título dá nome ao diálogo |
 | `DialogFooter` | Rodapé cinza para as ações |
 | `DialogClose` | Fecha o diálogo |

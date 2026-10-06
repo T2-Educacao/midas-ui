@@ -24,6 +24,8 @@ Aceita todas as props de `<select>` mais:
 | Prop | Tipo | Padrão | Descrição |
 |---|---|---|---|
 | `size` | `"default" \| "sm"` | `"default"` | 32px ou 28px de altura |
+| `fullWidth` | `boolean` | `false` | Ocupa a largura toda do container (por padrão o campo tem a largura do conteúdo) |
+| `wrapperClassName` | `string` | | Classes do container que envolve o `select` (`className` vai no `select`) |
 
 ## Exemplos
 

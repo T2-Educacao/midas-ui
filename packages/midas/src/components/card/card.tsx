@@ -93,7 +93,7 @@ export const CardFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<
       ref={ref}
       data-slot="card-footer"
       className={cn(
-        "flex items-center gap-2 border-t border-border bg-muted p-4 group-data-[size=sm]/card:p-3",
+        "flex items-center gap-2 rounded-b-xl border-t border-border bg-muted p-4 group-data-[size=sm]/card:p-3",
         className,
       )}
       {...props}

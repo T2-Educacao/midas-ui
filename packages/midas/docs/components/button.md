@@ -20,7 +20,7 @@ Aceita todas as props de `<button>` (`onClick`, `disabled`, `type`...) mais:
 
 | Prop | Tipo | Padrão | Descrição |
 |---|---|---|---|
-| `variant` | `"default" \| "outline" \| "secondary" \| "ghost" \| "destructive" \| "link"` | `"default"` | Estilo visual |
+| `variant` | `"default" \| "outline" \| "secondary" \| "ghost" \| "destructive" \| "success" \| "warning" \| "info" \| "link"` | `"default"` | Estilo visual |
 | `size` | `"xs" \| "sm" \| "default" \| "lg" \| "icon-xs" \| "icon-sm" \| "icon" \| "icon-lg"` | `"default"` | Altura, padding e tamanho do ícone |
 | `rounded` | `boolean` | `false` | Formato pill (totalmente arredondado) |
 | `loading` | `boolean` | `false` | Mostra o `Spinner`, desabilita o botão e marca `aria-busy` |
@@ -39,6 +39,9 @@ Aceita todas as props de `<button>` (`onClick`, `disabled`, `type`...) mais:
 | `secondary` | Ações de apoio ao lado da principal |
 | `ghost` | Ações de baixa ênfase, barras de ferramentas, menus |
 | `destructive` | Ações destrutivas ("Excluir", "Cancelar assinatura") |
+| `success` | Confirmação positiva, ações que concluem algo ("Aprovar") |
+| `warning` | Ação que pede atenção, mas não destrói nada ("Revisar pendências") |
+| `info` | Ação informativa ou de apoio contextual ("Saiba mais") |
 | `link` | Ação com aparência de link |
 
 ## Tamanhos
@@ -50,6 +53,12 @@ Aceita todas as props de `<button>` (`onClick`, `disabled`, `type`...) mais:
 | `default` | 32px | Padrão |
 | `lg` | 36px | CTAs de destaque |
 | `icon-xs` / `icon-sm` / `icon` / `icon-lg` | 24 / 28 / 32 / 36px quadrado | Botão só com ícone (exige `aria-label`) |
+
+## Comportamentos que você precisa saber
+
+- O `Button` já vem com `type="button"`. Para enviar um formulário, passe `type="submit"` explicitamente. Isso evita envios acidentais, mas quem migra de `<button>` cru (que é `submit` por padrão) precisa revisar os botões de formulário.
+- `loading` desabilita o botão. Em botões só de ícone (`size="icon*"`), o spinner **substitui** o ícone; nos demais, o spinner aparece ao lado do texto.
+- Botão `disabled` não dispara eventos do mouse, então um `Tooltip` direto nele não abre. Veja a solução em [Tooltip](./tooltip.md).
 
 ## Exemplos
 

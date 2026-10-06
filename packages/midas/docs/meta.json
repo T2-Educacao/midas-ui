@@ -3,6 +3,7 @@
   "pages": [
     "index",
     "instalacao",
+    "migracao",
     "tema",
     "customizacao",
     "icones",

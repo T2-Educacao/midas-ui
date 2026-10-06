@@ -1,0 +1,117 @@
+{
+  "numTotalTestSuites": 2,
+  "numPassedTestSuites": 2,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 7,
+  "numPassedTests": 7,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1791268563414,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["Slider"],
+          "fullName": "Slider renderiza um thumb com role slider para valor único",
+          "status": "passed",
+          "title": "renderiza um thumb com role slider para valor único",
+          "duration": 116.93319999999994,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": ["Slider"],
+          "fullName": "Slider renderiza um thumb por valor em intervalos",
+          "status": "passed",
+          "title": "renderiza um thumb por valor em intervalos",
+          "duration": 17.424199999999928,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": ["Slider"],
+          "fullName": "Slider muda o valor pelo teclado",
+          "status": "passed",
+          "title": "muda o valor pelo teclado",
+          "duration": 17.063900000000103,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": ["Slider"],
+          "fullName": "Slider aplica orientação vertical",
+          "status": "passed",
+          "title": "aplica orientação vertical",
+          "duration": 7.427599999999984,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": ["Slider"],
+          "fullName": "Slider fica desabilitado",
+          "status": "passed",
+          "title": "fica desabilitado",
+          "duration": 7.008400000000165,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": ["Slider"],
+          "fullName": "Slider mescla className e encaminha ref",
+          "status": "passed",
+          "title": "mescla className e encaminha ref",
+          "duration": 5.797799999999825,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": ["Slider"],
+          "fullName": "Slider não tem violações de acessibilidade",
+          "status": "passed",
+          "title": "não tem violações de acessibilidade",
+          "duration": 49.24940000000015,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        }
+      ],
+      "startTime": 1791268566182,
+      "endTime": 1791268566403.2495,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/rafck/Downloads/t2/ds-npm/packages/midas/src/components/slider/slider.test.tsx"
+    }
+  ]
+}

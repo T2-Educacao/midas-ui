@@ -5,13 +5,19 @@ import { cn } from "../../lib/cn";
 export interface NativeSelectProps
   extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "size"> {
   size?: "sm" | "default";
+  fullWidth?: boolean;
+  wrapperClassName?: string;
 }
 
 export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProps>(
-  ({ className, size = "default", ...props }, ref) => (
+  ({ className, wrapperClassName, size = "default", fullWidth = false, ...props }, ref) => (
     <div
       data-slot="native-select-wrapper"
-      className="group/native-select relative w-fit has-[select:disabled]:opacity-50"
+      className={cn(
+        "group/native-select relative has-[select:disabled]:opacity-50",
+        fullWidth ? "w-full" : "w-fit",
+        wrapperClassName,
+      )}
     >
       <select
         ref={ref}

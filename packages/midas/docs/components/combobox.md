@@ -37,6 +37,7 @@ const certificacoes: ComboboxOption[] = [
 | `clearable` | `boolean` | `false` | Mostra o `x` para limpar quando há valor |
 | `trigger` | `"input" \| "button"` | `"input"` | `input`: digita no próprio campo. `button`: abre um popup com busca |
 | `searchPlaceholder` | `string` | `"Buscar"` | Placeholder da busca no modo `button` |
+| `showSelectedDescription` | `boolean` | `false` | No modo `button`, mostra a `description` do item selecionado ao lado do nome |
 | `startAddon` | `ReactNode` | | Ícone à esquerda do campo |
 | `invalid` | `boolean` | `false` | Estado de erro |
 | `disabled` | `boolean` | `false` | Desabilita |
@@ -50,7 +51,7 @@ const certificacoes: ComboboxOption[] = [
 | Campo | Tipo | Descrição |
 |---|---|---|
 | `value` | `string` | Identificador único |
-| `label` | `string` | Texto exibido e usado na busca |
+| `label` | `string` | Texto exibido e usado na busca (a busca ignora acentos e maiúsculas: `sao` acha "São Paulo") |
 | `description` | `string` | Segunda linha em cinza |
 | `icon` | `ReactNode` | Ícone antes do texto |
 | `group` | `string` | Nome do grupo (opções com o mesmo grupo ficam juntas, com título) |

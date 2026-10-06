@@ -29,7 +29,7 @@ Se a imagem não carregar (ou não existir), aparece o `AvatarFallback`.
 
 | Componente | O que é |
 |---|---|
-| `Avatar` | O círculo. `size`: `"sm"`, `"default"` ou `"lg"` |
+| `Avatar` | O círculo. `size`: `"sm"`, `"default"`, `"lg"` ou um número em px (ex.: `size={56}`) |
 | `AvatarImage` | A foto (`src`, `alt`) |
 | `AvatarFallback` | Texto ou ícone quando não há foto |
 | `AvatarBadge` | Indicador no canto inferior direito. `variant`: `"status"` (verde) ou `"icon"` (azul T2, com ícone) |

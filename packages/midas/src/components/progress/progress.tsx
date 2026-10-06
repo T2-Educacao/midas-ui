@@ -1,18 +1,39 @@
 "use client";
 
+import { cva, type VariantProps } from "class-variance-authority";
 import { Progress as ProgressPrimitive } from "radix-ui";
 import * as React from "react";
 import { cn } from "../../lib/cn";
 
+export const progressIndicatorVariants = cva(
+  "h-full w-full flex-1 rounded-full transition-transform duration-300 motion-reduce:transition-none",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary",
+        success: "bg-success",
+        warning: "bg-warning",
+        info: "bg-info",
+        destructive: "bg-destructive",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  },
+);
+
 export interface ProgressProps
-  extends React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root> {
+  extends React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>,
+    VariantProps<typeof progressIndicatorVariants> {
   value?: number | null;
+  indicatorClassName?: string;
 }
 
 export const Progress = React.forwardRef<
   React.ComponentRef<typeof ProgressPrimitive.Root>,
   ProgressProps
->(({ className, value, max = 100, ...props }, ref) => (
+>(({ className, indicatorClassName, variant, value, max = 100, ...props }, ref) => (
   <ProgressPrimitive.Root
     ref={ref}
     data-slot="progress"
@@ -23,7 +44,7 @@ export const Progress = React.forwardRef<
   >
     <ProgressPrimitive.Indicator
       data-slot="progress-indicator"
-      className="h-full w-full flex-1 rounded-full bg-primary transition-transform duration-300 motion-reduce:transition-none"
+      className={cn(progressIndicatorVariants({ variant }), indicatorClassName)}
       style={{ transform: `translateX(-${100 - ((value ?? 0) / max) * 100}%)` }}
     />
   </ProgressPrimitive.Root>

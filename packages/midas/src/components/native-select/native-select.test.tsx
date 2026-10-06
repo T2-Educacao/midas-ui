@@ -34,4 +34,15 @@ describe("NativeSelect", () => {
     );
     await expectNoA11yViolations(container);
   });
+
+  it("ocupa a largura toda com fullWidth", () => {
+    const { container } = render(
+      <NativeSelect aria-label="Estado" fullWidth>
+        <option>SP</option>
+      </NativeSelect>,
+    );
+    const wrapper = container.querySelector("[data-slot=native-select-wrapper]");
+    expect(wrapper).toHaveClass("w-full");
+    expect(wrapper).not.toHaveClass("w-fit");
+  });
 });

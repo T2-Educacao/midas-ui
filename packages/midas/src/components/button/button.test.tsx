@@ -89,4 +89,30 @@ describe("Button", () => {
     );
     await expectNoA11yViolations(container);
   });
+
+  it("aplica as variantes warning e info", () => {
+    render(
+      <div>
+        <Button variant="warning">Atenção</Button>
+        <Button variant="info">Info</Button>
+      </div>,
+    );
+    expect(screen.getByRole("button", { name: "Atenção" })).toHaveClass("text-warning");
+    expect(screen.getByRole("button", { name: "Info" })).toHaveClass("text-info");
+  });
+
+  it("em botão só de ícone, loading mostra apenas o spinner", () => {
+    render(
+      <Button size="icon" loading aria-label="Salvar">
+        <svg data-testid="icone" />
+      </Button>,
+    );
+    expect(screen.queryByTestId("icone")).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Salvar" })).toHaveAttribute("aria-busy", "true");
+  });
+
+  it("em botão com texto, loading mantém o conteúdo ao lado do spinner", () => {
+    render(<Button loading>Salvando</Button>);
+    expect(screen.getByRole("button", { name: /Salvando/ })).toBeInTheDocument();
+  });
 });

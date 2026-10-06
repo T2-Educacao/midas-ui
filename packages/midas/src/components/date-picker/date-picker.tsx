@@ -155,7 +155,7 @@ export function DatePicker(props: DatePickerProps) {
           aria-label="Calendário"
           align={align}
           sideOffset={4}
-          className="z-50 w-auto overflow-hidden rounded-lg border border-border bg-popover p-0 text-popover-foreground shadow-md outline-none origin-(--radix-popover-content-transform-origin) animate-midas-in motion-reduce:animate-none"
+          className="z-(--midas-z-popup) w-auto overflow-hidden rounded-lg border border-border bg-popover p-0 text-popover-foreground shadow-md outline-none origin-(--radix-popover-content-transform-origin) animate-midas-in motion-reduce:animate-none"
         >
           {props.mode === "range" ? (
             <Calendar

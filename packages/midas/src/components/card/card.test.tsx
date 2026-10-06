@@ -46,4 +46,11 @@ describe("Card", () => {
     const { container } = render(<Exemplo />);
     await expectNoA11yViolations(container);
   });
+
+  it("deixa o conteúdo vazar quando a classe do usuário pede", () => {
+    const { container } = render(<Card className="overflow-visible py-0">Conteúdo</Card>);
+    const card = container.querySelector("[data-slot=card]");
+    expect(card).toHaveClass("overflow-visible", "py-0");
+    expect(card).not.toHaveClass("overflow-hidden", "py-4");
+  });
 });
