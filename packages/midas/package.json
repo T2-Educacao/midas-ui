@@ -61,7 +61,7 @@
   },
   "scripts": {
     "build": "tsdown && pnpm build:css && pnpm build:llms",
-    "build:css": "node scripts/copy-theme.mjs && tailwindcss -i src/styles/styles.css -o dist/styles.css --minify",
+    "build:css": "node scripts/copy-theme.mjs && tailwindcss -i src/styles/styles.css -o dist/styles.css --minify && node scripts/flatten-styles.mjs",
     "build:llms": "node scripts/generate-llms.mjs",
     "dev": "tsdown --watch",
     "test": "vitest run",
@@ -96,6 +96,7 @@
     "@types/react-dom": "^19.3.0",
     "axe-core": "^4.13.0",
     "jsdom": "^30.1.1",
+    "postcss": "^8.5.23",
     "publint": "^0.3.24",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",

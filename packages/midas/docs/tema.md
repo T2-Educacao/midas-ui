@@ -20,9 +20,29 @@ As cores são as da T2 (as mesmas da hub), em tema claro e escuro. Cada cor de f
 | `accent` / `accent-foreground` | Hover de itens de menu e seleção | `#f1f5f9` | `#151751` |
 | `destructive` / `destructive-foreground` | Erro e ações destrutivas | `#dc2828` | `#dc2828` |
 | `success` / `success-foreground` | Sucesso, status online | `#16a34a` | `#22c55e` |
+| `warning` / `warning-foreground` | Atenção, pendências | `#db7706` | `#f6a822` |
+| `info` / `info-foreground` | Informação neutra, dicas | `#2474f5` | `#61a6fa` |
 | `border` | Bordas padrão | `#e1e7ef` | `#1b1c46` |
 | `input` | Borda de campos | `#e1e7ef` | `#1f2151` |
 | `ring` | Anel de foco | `#009adb` | `#38c6fa` |
+
+### Camadas (z-index)
+
+Os overlays e popups usam variáveis, para encaixar o Midas em projetos com camadas próprias:
+
+| Variável | Padrão | Usada por |
+|---|---|---|
+| `--midas-z-overlay` | `50` | Dialog (fundo e conteúdo) |
+| `--midas-z-popup` | `50` | Select, DropdownMenu, Popover, Combobox, DatePicker, Tooltip |
+
+Para que menus abram acima de modais antigos do projeto, sobrescreva no CSS global:
+
+```css
+:root {
+  --midas-z-overlay: 1000;
+  --midas-z-popup: 1100;
+}
+```
 
 ## Tipografia
 

@@ -21,6 +21,10 @@
   --midas-destructive-foreground: hsl(0 0% 100%);
   --midas-success: hsl(142 76% 36%);
   --midas-success-foreground: hsl(0 0% 100%);
+  --midas-warning: hsl(32 95% 44%);
+  --midas-warning-foreground: hsl(0 0% 100%);
+  --midas-info: hsl(217 91% 55%);
+  --midas-info-foreground: hsl(0 0% 100%);
   --midas-border: hsl(214 32% 91%);
   --midas-input: hsl(214 32% 91%);
   --midas-ring: hsl(198 100% 43%);
@@ -28,6 +32,9 @@
   --midas-font-sans: var(--font-geist-sans), "Geist", Inter, -apple-system, system-ui, sans-serif;
   --midas-font-mono:
     var(--font-geist-mono), "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --midas-z-overlay: 50;
+  --midas-z-popup: 50;
 
   --midas-radius-xs: 4px;
   --midas-radius-sm: 6px;
@@ -57,6 +64,10 @@
   --midas-destructive-foreground: hsl(0 0% 100%);
   --midas-success: hsl(142 71% 45%);
   --midas-success-foreground: hsl(0 0% 100%);
+  --midas-warning: hsl(38 92% 55%);
+  --midas-warning-foreground: hsl(238 58% 9%);
+  --midas-info: hsl(213 94% 68%);
+  --midas-info-foreground: hsl(238 58% 9%);
   --midas-border: hsl(238 45% 19%);
   --midas-input: hsl(238 45% 22%);
   --midas-ring: hsl(196 95% 60%);
@@ -81,6 +92,10 @@
   --color-destructive-foreground: var(--midas-destructive-foreground);
   --color-success: var(--midas-success);
   --color-success-foreground: var(--midas-success-foreground);
+  --color-warning: var(--midas-warning);
+  --color-warning-foreground: var(--midas-warning-foreground);
+  --color-info: var(--midas-info);
+  --color-info-foreground: var(--midas-info-foreground);
   --color-border: var(--midas-border);
   --color-input: var(--midas-input);
   --color-ring: var(--midas-ring);
