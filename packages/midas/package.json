@@ -1,6 +1,6 @@
 {
   "name": "@t2-educacao/midas",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Midas: o design system da T2 Educação. Componentes React, tokens, tema claro/escuro e ícones Phosphor e Tabler.",
   "keywords": [
     "t2",
