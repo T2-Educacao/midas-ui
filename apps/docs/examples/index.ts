@@ -2,18 +2,21 @@ import type { ComponentType } from "react";
 import AccordionBasico from "./accordion/basico";
 import AccordionMultiplo from "./accordion/multiplo";
 import AlertComAcao from "./alert/com-acao";
+import AlertPreenchido from "./alert/preenchido";
 import AlertVariantes from "./alert/variantes";
 import AvatarBadge from "./avatar/badge";
 import AvatarBasico from "./avatar/basico";
 import AvatarComMenu from "./avatar/com-menu";
 import AvatarGrupo from "./avatar/grupo";
 import AvatarTamanhos from "./avatar/tamanhos";
+import BadgePreenchido from "./badge/preenchido";
 import BadgeVariantes from "./badge/variantes";
 import ButtonArredondado from "./button/arredondado";
 import ButtonCarregando from "./button/carregando";
 import ButtonComAtalho from "./button/com-atalho";
 import ButtonComIcone from "./button/com-icone";
 import ButtonComoLink from "./button/como-link";
+import ButtonPreenchido from "./button/preenchido";
 import ButtonSoIcone from "./button/so-icone";
 import ButtonTamanhos from "./button/tamanhos";
 import ButtonVariantes from "./button/variantes";
@@ -152,6 +155,7 @@ export const examples: Record<string, Example[]> = {
   ],
   alert: [
     { id: "variantes", title: "Variantes", Component: AlertVariantes },
+    { id: "preenchido", title: "Preenchido", Component: AlertPreenchido },
     { id: "com-acao", title: "Com ação", Component: AlertComAcao },
   ],
   chip: [
@@ -314,9 +318,13 @@ export const examples: Record<string, Example[]> = {
   select: [{ id: "basico", title: "Com grupos", Component: SelectBasico }],
   separator: [{ id: "basico", title: "Horizontal e vertical", Component: SeparatorBasico }],
   textarea: [{ id: "basico", title: "Básico", Component: TextareaBasico }],
-  badge: [{ id: "variantes", title: "Variantes", Component: BadgeVariantes }],
+  badge: [
+    { id: "variantes", title: "Variantes", Component: BadgeVariantes },
+    { id: "preenchido", title: "Preenchido", Component: BadgePreenchido },
+  ],
   button: [
     { id: "variantes", title: "Variantes", Component: ButtonVariantes },
+    { id: "preenchido", title: "Preenchido", Component: ButtonPreenchido },
     { id: "tamanhos", title: "Tamanhos", Component: ButtonTamanhos },
     { id: "com-icone", title: "Com ícone", Component: ButtonComIcone },
     {

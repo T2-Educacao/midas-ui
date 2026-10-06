@@ -75,4 +75,13 @@ describe("Alert", () => {
     );
     await expectNoA11yViolations(container);
   });
+
+  it("filled preenche o fundo com a cor do estado", () => {
+    render(
+      <Alert variant="info" filled>
+        Aviso
+      </Alert>,
+    );
+    expect(screen.getByRole("status")).toHaveClass("bg-info", "text-info-foreground");
+  });
 });

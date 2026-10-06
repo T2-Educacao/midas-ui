@@ -17,6 +17,7 @@ import { Badge } from "@t2-educacao/midas";
 
 | Prop | Tipo | Padrão | Descrição |
 |---|---|---|---|
+| `filled` | `boolean` | `false` | Preenche `destructive`, `success`, `warning` e `info` com a cor cheia em vez do fundo suave |
 | `variant` | `"secondary" \| "default" \| "outline" \| "destructive" \| "success" \| "warning" \| "info"` | `"secondary"` | Estilo visual |
 | `asChild` | `boolean` | `false` | Renderiza o filho (ex.: link) com o visual de badge |
 

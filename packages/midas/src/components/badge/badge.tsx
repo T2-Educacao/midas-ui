@@ -21,9 +21,32 @@ export const badgeVariants = cva(
         warning: "bg-warning/10 text-warning dark:bg-warning/20",
         info: "bg-info/10 text-info dark:bg-info/20",
       },
+      filled: {
+        true: "",
+        false: "",
+      },
     },
+    compoundVariants: [
+      {
+        filled: true,
+        variant: "destructive",
+        className: "bg-destructive text-destructive-foreground dark:bg-destructive",
+      },
+      {
+        filled: true,
+        variant: "success",
+        className: "bg-success text-success-foreground dark:bg-success",
+      },
+      {
+        filled: true,
+        variant: "warning",
+        className: "bg-warning text-warning-foreground dark:bg-warning",
+      },
+      { filled: true, variant: "info", className: "bg-info text-info-foreground dark:bg-info" },
+    ],
     defaultVariants: {
       variant: "secondary",
+      filled: false,
     },
   },
 );
@@ -35,13 +58,13 @@ export interface BadgeProps
 }
 
 export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
-  ({ className, variant, asChild = false, ...props }, ref) => {
+  ({ className, variant, filled, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot.Root : "span";
     return (
       <Comp
         ref={ref}
         data-slot="badge"
-        className={cn(badgeVariants({ variant }), className)}
+        className={cn(badgeVariants({ variant, filled }), className)}
         {...props}
       />
     );

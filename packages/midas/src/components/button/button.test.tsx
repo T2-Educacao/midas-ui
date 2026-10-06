@@ -115,4 +115,21 @@ describe("Button", () => {
     render(<Button loading>Salvando</Button>);
     expect(screen.getByRole("button", { name: /Salvando/ })).toBeInTheDocument();
   });
+
+  it("filled preenche as variantes de estado", () => {
+    render(
+      <div>
+        <Button variant="destructive" filled>
+          Excluir
+        </Button>
+        <Button variant="success" filled>
+          Aprovar
+        </Button>
+      </div>,
+    );
+    const excluir = screen.getByRole("button", { name: "Excluir" });
+    expect(excluir).toHaveClass("bg-destructive", "text-destructive-foreground");
+    expect(excluir).not.toHaveClass("bg-destructive/10", "text-destructive");
+    expect(screen.getByRole("button", { name: "Aprovar" })).toHaveClass("bg-success");
+  });
 });

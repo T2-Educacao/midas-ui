@@ -17,9 +17,36 @@ export const alertVariants = cva(
         warning: "border-warning/30 bg-warning/10 text-warning",
         destructive: "border-destructive/30 bg-destructive/10 text-destructive",
       },
+      filled: {
+        true: "",
+        false: "",
+      },
     },
+    compoundVariants: [
+      {
+        filled: true,
+        variant: "destructive",
+        className: "border-transparent bg-destructive text-destructive-foreground",
+      },
+      {
+        filled: true,
+        variant: "success",
+        className: "border-transparent bg-success text-success-foreground",
+      },
+      {
+        filled: true,
+        variant: "warning",
+        className: "border-transparent bg-warning text-warning-foreground",
+      },
+      {
+        filled: true,
+        variant: "info",
+        className: "border-transparent bg-info text-info-foreground",
+      },
+    ],
     defaultVariants: {
       variant: "default",
+      filled: false,
     },
   },
 );
@@ -29,14 +56,14 @@ export interface AlertProps
     VariantProps<typeof alertVariants> {}
 
 export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
-  ({ className, variant, role, ...props }, ref) => {
+  ({ className, variant, filled, role, ...props }, ref) => {
     const defaultRole = variant === "destructive" || variant === "warning" ? "alert" : "status";
     return (
       <div
         ref={ref}
         role={role ?? defaultRole}
         data-slot="alert"
-        className={cn(alertVariants({ variant }), className)}
+        className={cn(alertVariants({ variant, filled }), className)}
         {...props}
       />
     );

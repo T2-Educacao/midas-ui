@@ -46,11 +46,42 @@ export const buttonVariants = cva(
         true: "rounded-full",
         false: "",
       },
+      filled: {
+        true: "",
+        false: "",
+      },
     },
+    compoundVariants: [
+      {
+        filled: true,
+        variant: "destructive",
+        className:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90 dark:bg-destructive dark:hover:bg-destructive/90",
+      },
+      {
+        filled: true,
+        variant: "success",
+        className:
+          "bg-success text-success-foreground hover:bg-success/90 dark:bg-success dark:hover:bg-success/90",
+      },
+      {
+        filled: true,
+        variant: "warning",
+        className:
+          "bg-warning text-warning-foreground hover:bg-warning/90 dark:bg-warning dark:hover:bg-warning/90",
+      },
+      {
+        filled: true,
+        variant: "info",
+        className:
+          "bg-info text-info-foreground hover:bg-info/90 dark:bg-info dark:hover:bg-info/90",
+      },
+    ],
     defaultVariants: {
       variant: "default",
       size: "default",
       rounded: false,
+      filled: false,
     },
   },
 );
@@ -69,6 +100,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       variant,
       size,
       rounded,
+      filled,
       asChild = false,
       loading = false,
       disabled,
@@ -78,7 +110,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
-    const classes = cn(buttonVariants({ variant, size, rounded }), className);
+    const classes = cn(buttonVariants({ variant, size, rounded, filled }), className);
 
     if (asChild) {
       return (

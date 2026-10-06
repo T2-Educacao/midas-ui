@@ -38,4 +38,14 @@ describe("Badge", () => {
     expect(screen.getByText("Pendente")).toHaveClass("text-warning");
     expect(screen.getByText("Dica")).toHaveClass("text-info");
   });
+
+  it("filled preenche as variantes de estado", () => {
+    render(
+      <Badge variant="warning" filled>
+        Pendente
+      </Badge>,
+    );
+    expect(screen.getByText("Pendente")).toHaveClass("bg-warning", "text-warning-foreground");
+    expect(screen.getByText("Pendente")).not.toHaveClass("bg-warning/10");
+  });
 });

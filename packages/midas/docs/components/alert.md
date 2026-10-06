@@ -30,6 +30,17 @@ O ícone SVG como primeiro filho ocupa a coluna da esquerda automaticamente.
 
 `AlertTitle`, `AlertDescription` e `AlertAction` aceitam `className` e as props do `div`. `AlertAction` fica no canto superior final do alerta.
 
+## Preenchido
+
+`filled` troca o fundo suave pela cor cheia nas variantes `info`, `success`, `warning` e `destructive`. Use para avisos que não podem passar despercebidos.
+
+```tsx
+<Alert variant="warning" filled>
+  <AlertTitle>Prazo curto</AlertTitle>
+  <AlertDescription>A matrícula fecha amanhã.</AlertDescription>
+</Alert>
+```
+
 ## Variantes
 
 | Variante | Quando usar |

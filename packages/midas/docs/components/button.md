@@ -22,6 +22,7 @@ Aceita todas as props de `<button>` (`onClick`, `disabled`, `type`...) mais:
 |---|---|---|---|
 | `variant` | `"default" \| "outline" \| "secondary" \| "ghost" \| "destructive" \| "success" \| "warning" \| "info" \| "link"` | `"default"` | Estilo visual |
 | `size` | `"xs" \| "sm" \| "default" \| "lg" \| "icon-xs" \| "icon-sm" \| "icon" \| "icon-lg"` | `"default"` | Altura, padding e tamanho do ícone |
+| `filled` | `boolean` | `false` | Preenche `destructive`, `success`, `warning` e `info` com a cor cheia (texto em `*-foreground`) em vez do fundo suave |
 | `rounded` | `boolean` | `false` | Formato pill (totalmente arredondado) |
 | `loading` | `boolean` | `false` | Mostra o `Spinner`, desabilita o botão e marca `aria-busy` |
 | `asChild` | `boolean` | `false` | Renderiza o filho com o visual de botão |

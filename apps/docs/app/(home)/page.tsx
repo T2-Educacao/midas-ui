@@ -1,15 +1,26 @@
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+  Alert,
+  AlertTitle,
   Button,
   ButtonGroup,
+  ChoiceCard,
+  ChoiceCardGroup,
   Kbd,
   KbdGroup,
+  Label,
   Spinner,
+  Switch,
   Toggle,
   ToggleGroup,
   ToggleGroupItem,
 } from "@t2-educacao/midas";
 import {
   ArrowRight,
+  Info,
   Lightning,
   MoonStars,
   PersonArmsSpread,
@@ -26,6 +37,7 @@ import type { ReactNode } from "react";
 import { InstallCommand } from "@/components/install-command";
 import AvatarGrupo from "@/examples/avatar/grupo";
 import BadgeVariantes from "@/examples/badge/variantes";
+import ChipRemovivel from "@/examples/chip/removivel";
 import ComboboxBasico from "@/examples/combobox/basico";
 import DatePickerBasico from "@/examples/date-picker/basico";
 import DialogBasico from "@/examples/dialog/basico";
@@ -34,7 +46,10 @@ import FieldBasico from "@/examples/field/basico";
 import InputGroupBusca from "@/examples/input-group/busca";
 import PopoverBasico from "@/examples/popover/basico";
 import ProgressBasico from "@/examples/progress/basico";
+import SegmentedControlBasico from "@/examples/segmented-control/basico";
 import SelectBasico from "@/examples/select/basico";
+import SliderBasico from "@/examples/slider/basico";
+import TabsBasico from "@/examples/tabs/basico";
 import ToastPromise from "@/examples/toast/promise";
 import TooltipDados from "@/examples/tooltip/dados";
 import { npmUrl, packageName } from "@/lib/shared";
@@ -124,6 +139,60 @@ const showcase: { name: string; href: string; preview: ReactNode }[] = [
           <TextAlignRight />
         </ToggleGroupItem>
       </ToggleGroup>
+    ),
+  },
+  {
+    name: "Switch",
+    href: "/docs/components/switch",
+    preview: (
+      <div className="flex items-center gap-2">
+        <Switch id="home-switch" defaultChecked />
+        <Label htmlFor="home-switch">Avisos por e-mail</Label>
+      </div>
+    ),
+  },
+  { name: "Tabs", href: "/docs/components/tabs", preview: <TabsBasico /> },
+  {
+    name: "Accordion",
+    href: "/docs/components/accordion",
+    preview: (
+      <Accordion type="single" collapsible defaultValue="prazo" className="w-full max-w-xs">
+        <AccordionItem value="prazo" className="border-b-0">
+          <AccordionTrigger>Qual o prazo de acesso?</AccordionTrigger>
+          <AccordionContent>12 meses a partir da compra.</AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    ),
+  },
+  { name: "Slider", href: "/docs/components/slider", preview: <SliderBasico /> },
+  {
+    name: "Alert",
+    href: "/docs/components/alert",
+    preview: (
+      <Alert variant="info" className="max-w-xs">
+        <Info />
+        <AlertTitle>Matrículas abertas</AlertTitle>
+      </Alert>
+    ),
+  },
+  { name: "Chip", href: "/docs/components/chip", preview: <ChipRemovivel /> },
+  {
+    name: "SegmentedControl",
+    href: "/docs/components/segmented-control",
+    preview: <SegmentedControlBasico />,
+  },
+  {
+    name: "ChoiceCard",
+    href: "/docs/components/choice-card",
+    preview: (
+      <ChoiceCardGroup
+        defaultValue="anual"
+        aria-label="Plano"
+        className="w-full max-w-xs grid-cols-2"
+      >
+        <ChoiceCard value="mensal" title="Mensal" />
+        <ChoiceCard value="anual" title="Anual" />
+      </ChoiceCardGroup>
     ),
   },
   { name: "Tooltip", href: "/docs/components/tooltip", preview: <TooltipDados /> },
