@@ -1,4 +1,8 @@
 import type { ComponentType } from "react";
+import AccordionBasico from "./accordion/basico";
+import AccordionMultiplo from "./accordion/multiplo";
+import AlertComAcao from "./alert/com-acao";
+import AlertVariantes from "./alert/variantes";
 import AvatarBadge from "./avatar/badge";
 import AvatarBasico from "./avatar/basico";
 import AvatarComMenu from "./avatar/com-menu";
@@ -33,6 +37,13 @@ import CarouselEspacamento from "./carousel/espacamento";
 import CarouselTamanhos from "./carousel/tamanhos";
 import CarouselVertical from "./carousel/vertical";
 import CheckboxBasico from "./checkbox/basico";
+import ChipDesabilitado from "./chip/desabilitado";
+import ChipRemovivel from "./chip/removivel";
+import ChipVariantes from "./chip/variantes";
+import ChoiceCardBasico from "./choice-card/basico";
+import ChoiceCardComIcone from "./choice-card/com-icone";
+import ChoiceCardMultiplaEscolha from "./choice-card/multipla-escolha";
+import CollapsibleBasico from "./collapsible/basico";
 import ComboboxBasico from "./combobox/basico";
 import ComboboxComIcone from "./combobox/com-icone";
 import ComboboxDestaqueAutomatico from "./combobox/destaque-automatico";
@@ -95,10 +106,20 @@ import QuestionnaireProgressoPersonalizado from "./questionnaire/progresso-perso
 import QuestionnaireRetomar from "./questionnaire/retomar";
 import QuestionnaireValidacaoECondicional from "./questionnaire/validacao-e-condicional";
 import RadioGroupBasico from "./radio-group/basico";
+import SegmentedControlBasico from "./segmented-control/basico";
+import SegmentedControlTamanhos from "./segmented-control/tamanhos";
 import SelectBasico from "./select/basico";
 import SeparatorBasico from "./separator/basico";
+import SliderBasico from "./slider/basico";
+import SliderDesabilitado from "./slider/desabilitado";
+import SliderIntervalo from "./slider/intervalo";
 import SpinnerBasico from "./spinner/basico";
 import SpinnerComTexto from "./spinner/com-texto";
+import SwitchBasico from "./switch/basico";
+import SwitchTamanhos from "./switch/tamanhos";
+import TabsBasico from "./tabs/basico";
+import TabsSublinhado from "./tabs/sublinhado";
+import TabsVertical from "./tabs/vertical";
 import TextareaBasico from "./textarea/basico";
 import ToastComDescricaoEAcao from "./toast/com-descricao-e-acao";
 import ToastPromise from "./toast/promise";
@@ -125,6 +146,47 @@ export interface Example {
 }
 
 export const examples: Record<string, Example[]> = {
+  accordion: [
+    { id: "basico", title: "Básico (um aberto por vez)", Component: AccordionBasico },
+    { id: "multiplo", title: "Vários abertos", Component: AccordionMultiplo },
+  ],
+  alert: [
+    { id: "variantes", title: "Variantes", Component: AlertVariantes },
+    { id: "com-acao", title: "Com ação", Component: AlertComAcao },
+  ],
+  chip: [
+    { id: "variantes", title: "Variantes", Component: ChipVariantes },
+    { id: "removivel", title: "Removível", Component: ChipRemovivel },
+    { id: "desabilitado", title: "Desabilitado", Component: ChipDesabilitado },
+  ],
+  "choice-card": [
+    { id: "basico", title: "Escolha única", Component: ChoiceCardBasico },
+    { id: "com-icone", title: "Com ícone", Component: ChoiceCardComIcone },
+    { id: "multipla-escolha", title: "Múltipla escolha", Component: ChoiceCardMultiplaEscolha },
+  ],
+  collapsible: [{ id: "basico", title: "Controlado", Component: CollapsibleBasico }],
+  "segmented-control": [
+    { id: "basico", title: "Básico", Component: SegmentedControlBasico },
+    { id: "tamanhos", title: "Tamanhos e vertical", Component: SegmentedControlTamanhos },
+  ],
+  slider: [
+    { id: "basico", title: "Básico", Component: SliderBasico },
+    { id: "intervalo", title: "Intervalo", Component: SliderIntervalo },
+    { id: "desabilitado", title: "Desabilitado", Component: SliderDesabilitado },
+  ],
+  switch: [
+    {
+      id: "basico",
+      title: "Básico, com descrição, desabilitado e inválido",
+      Component: SwitchBasico,
+    },
+    { id: "tamanhos", title: "Tamanhos", Component: SwitchTamanhos },
+  ],
+  tabs: [
+    { id: "basico", title: "Básico", Component: TabsBasico },
+    { id: "sublinhado", title: "Sublinhado", Component: TabsSublinhado },
+    { id: "vertical", title: "Vertical", Component: TabsVertical },
+  ],
   avatar: [
     {
       id: "basico",

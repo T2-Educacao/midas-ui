@@ -1,4 +1,18 @@
 export {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "./components/accordion";
+export {
+  Alert,
+  AlertAction,
+  AlertDescription,
+  type AlertProps,
+  AlertTitle,
+  alertVariants,
+} from "./components/alert";
+export {
   Avatar,
   AvatarBadge,
   type AvatarBadgeProps,
@@ -44,6 +58,17 @@ export {
   useCarousel,
 } from "./components/carousel";
 export { Checkbox } from "./components/checkbox";
+export { Chip, type ChipProps, chipVariants } from "./components/chip";
+export {
+  ChoiceCard,
+  ChoiceCardCheckbox,
+  type ChoiceCardCheckboxProps,
+  ChoiceCardGroup,
+  type ChoiceCardGroupProps,
+  type ChoiceCardProps,
+  choiceCardVariants,
+} from "./components/choice-card";
+export { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./components/collapsible";
 export {
   Combobox,
   ComboboxChip,
@@ -159,6 +184,13 @@ export {
 } from "./components/questionnaire";
 export { RadioGroup, RadioGroupItem } from "./components/radio-group";
 export {
+  SegmentedControl,
+  SegmentedControlItem,
+  type SegmentedControlItemProps,
+  type SegmentedControlProps,
+  segmentedControlVariants,
+} from "./components/segmented-control";
+export {
   Select,
   SelectContent,
   SelectGroup,
@@ -170,7 +202,17 @@ export {
   SelectValue,
 } from "./components/select";
 export { Separator } from "./components/separator";
+export { Slider, type SliderProps } from "./components/slider";
 export { Spinner, type SpinnerProps } from "./components/spinner";
+export { Switch, type SwitchProps, switchVariants } from "./components/switch";
+export {
+  Tabs,
+  TabsContent,
+  TabsList,
+  type TabsListProps,
+  TabsTrigger,
+  tabsListVariants,
+} from "./components/tabs";
 export { Textarea } from "./components/textarea";
 export { Toaster, type ToasterProps, toast } from "./components/toast";
 export { Toggle, type ToggleProps, toggleVariants } from "./components/toggle";
@@ -190,4 +232,5 @@ export {
   TooltipTitle,
   TooltipTrigger,
 } from "./components/tooltip";
+
 export { cn } from "./lib/cn";
