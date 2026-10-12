@@ -1,15 +1,15 @@
 import { Button, ButtonGroup } from "@t2-educacao/midas";
-import { ArrowClockwise, ArrowCounterClockwise } from "@t2-educacao/midas/icons";
+import { IconRotate, IconRotateClockwise } from "@t2-educacao/midas/icons";
 
 export default function ButtonGroupAninhado() {
   return (
     <ButtonGroup aria-label="Editor">
       <ButtonGroup aria-label="Histórico">
         <Button variant="outline" size="icon" aria-label="Desfazer">
-          <ArrowCounterClockwise />
+          <IconRotate />
         </Button>
         <Button variant="outline" size="icon" aria-label="Refazer">
-          <ArrowClockwise />
+          <IconRotateClockwise />
         </Button>
       </ButtonGroup>
       <ButtonGroup aria-label="Arquivo">

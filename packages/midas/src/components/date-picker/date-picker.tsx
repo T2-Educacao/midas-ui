@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarBlank } from "@phosphor-icons/react/ssr";
+import { IconCalendar } from "@tabler/icons-react";
 import { Popover as PopoverPrimitive } from "radix-ui";
 import * as React from "react";
 import type { DateRange, Matcher } from "react-day-picker";
@@ -144,7 +144,7 @@ export function DatePicker(props: DatePickerProps) {
             className,
           )}
         >
-          {icon !== false && (icon ?? <CalendarBlank className="text-muted-foreground" />)}
+          {icon !== false && (icon ?? <IconCalendar className="text-muted-foreground" />)}
           <span className="truncate">{label || placeholder}</span>
         </Button>
       </PopoverPrimitive.Trigger>

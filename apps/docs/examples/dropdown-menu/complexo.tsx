@@ -18,14 +18,14 @@ import {
   DropdownMenuTrigger,
 } from "@t2-educacao/midas";
 import {
-  Export,
-  File,
-  FloppyDisk,
-  FolderOpen,
-  Gear,
-  Question,
-  SignOut,
-  User,
+  IconDeviceFloppy,
+  IconFile,
+  IconFolderOpen,
+  IconHelp,
+  IconLogout,
+  IconSettings,
+  IconShare,
+  IconUser,
 } from "@t2-educacao/midas/icons";
 import { useState } from "react";
 
@@ -42,17 +42,17 @@ export default function DropdownMenuComplexo() {
         <DropdownMenuLabel>Arquivo</DropdownMenuLabel>
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <File /> Novo arquivo <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
+            <IconFile /> Novo arquivo <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <FolderOpen /> Abrir recente
+            <IconFolderOpen /> Abrir recente
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <FloppyDisk /> Salvar <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+            <IconDeviceFloppy /> Salvar <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>
-              <Export /> Exportar
+              <IconShare /> Exportar
             </DropdownMenuSubTrigger>
             <DropdownMenuSubContent>
               <DropdownMenuItem>PDF</DropdownMenuItem>
@@ -78,17 +78,17 @@ export default function DropdownMenuComplexo() {
         <DropdownMenuSeparator />
         <DropdownMenuLabel>Conta</DropdownMenuLabel>
         <DropdownMenuItem>
-          <User /> Perfil
+          <IconUser /> Perfil
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Gear /> Configurações
+          <IconSettings /> Configurações
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Question /> Ajuda e suporte
+          <IconHelp /> Ajuda e suporte
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem variant="destructive">
-          <SignOut /> Sair <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+          <IconLogout /> Sair <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

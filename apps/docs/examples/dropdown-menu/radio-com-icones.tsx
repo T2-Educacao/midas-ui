@@ -9,7 +9,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@t2-educacao/midas";
-import { Bank, CreditCard, PixLogo } from "@t2-educacao/midas/icons";
+import { IconBuildingBank, IconCreditCard, IconQrcode } from "@t2-educacao/midas/icons";
 import { useState } from "react";
 
 export default function DropdownMenuRadioComIcones() {
@@ -24,13 +24,13 @@ export default function DropdownMenuRadioComIcones() {
         <DropdownMenuLabel>Selecione</DropdownMenuLabel>
         <DropdownMenuRadioGroup value={pagamento} onValueChange={setPagamento}>
           <DropdownMenuRadioItem value="cartao">
-            <CreditCard /> Cartão de crédito
+            <IconCreditCard /> Cartão de crédito
           </DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="pix">
-            <PixLogo /> Pix
+            <IconQrcode /> Pix
           </DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="boleto">
-            <Bank /> Boleto
+            <IconBuildingBank /> Boleto
           </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>

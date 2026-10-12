@@ -26,11 +26,12 @@ A documentação dentro de `node_modules` corresponde exatamente à versão inst
 1. **Use o componente do Midas quando ele existir.** Não recrie botão, input, modal etc. com HTML e Tailwind.
 2. **Imports:**
    - componentes e `cn`: `import { Button, cn } from "@t2-educacao/midas"`
-   - ícones: `import { ArrowRight } from "@t2-educacao/midas/icons"` (Phosphor, padrão) ou `"@t2-educacao/midas/icons/tabler"` (Tabler, só quando faltar na Phosphor)
-   - nunca importe de `@t2-educacao/midas/dist/...`, de `@phosphor-icons/react`, `@tabler/icons-react` ou de outra lib de ícones.
-3. **Só tokens.** Cores: `bg-primary`, `text-foreground`, `border-border`, `bg-card`, `bg-muted`... Nunca hex, `rgb()`, `bg-[#...]` ou a paleta padrão do Tailwind (`bg-blue-500`, `text-gray-600`).
-4. **Pares de cor.** Fundo colorido sempre com o `-foreground` correspondente: `bg-primary text-primary-foreground`.
-5. **Tema escuro vem de graça.** Não escreva `dark:` para cores que já são tokens.
+   - ícones: `import { IconArrowRight } from "@t2-educacao/midas/icons";` (Tabler, nomes originais; `/icons/tabler` é alias do mesmo conteúdo)
+   - nunca importe de `@t2-educacao/midas/dist/...`, de `@tabler/icons-react` ou de outra lib de ícones.
+3. **Só tokens.** Cores semânticas do Figma: `bg-surface-canvas`, `bg-surface-default`, `text-content-primary`, `text-content-secondary`, `border-border-subtle`, `bg-action-accent-bg`, `bg-status-danger-subtle`... Os nomes antigos (`bg-primary`, `text-foreground`, `border-border`, `bg-card`, `bg-muted`) são aliases e continuam válidos, mas em código novo prefira os semânticos (mapa em `docs/fundamentos/cores.md`). Nunca hex, `rgb()`, `bg-[#...]` ou a paleta padrão do Tailwind (`bg-blue-500`, `text-gray-600`).
+4. **Pares de cor.** Fundo colorido sempre com o conteúdo correspondente: `bg-action-accent-bg text-action-accent-content`, `bg-status-danger-fill text-status-danger-on-fill` (ou, nos aliases, `bg-primary text-primary-foreground`).
+5. **Três temas, de graça.** Light, Dark (`.dark` ou `data-theme="dark"`) e Dark Blue (`data-theme="dark-blue"`) trocam os tokens sozinhos. Não escreva `dark:` para cores que já são tokens.
+5a. **Tipografia, escalas e elevação com tokens.** Texto: `text-heading-xl`, `text-body-md`, `text-label-sm`, `text-mono-md` (escolha pela função; mono só para dado técnico). Alturas de controle: `h-control-md`; ícones: `size-icon-sm`; raios por papel: `rounded-control`, `rounded-container`, `rounded-overlay`, `rounded-pill`; sombras: `shadow-elevation-card`; foco: `focus-ring`. Nada de `text-[15px]`, `h-[34px]` ou `rounded-[7px]`. Detalhes em `docs/fundamentos/`.
 6. **Variante antes de className.** Confira as variantes no `.md` do componente antes de sobrescrever estilo.
 7. **Links com visual de botão:** `<Button asChild><Link href="...">...</Link></Button>`. Nunca `<Link><Button/></Link>`.
 8. **Acessibilidade:** botão só com ícone precisa de `aria-label`; todo campo precisa de label.
@@ -42,7 +43,7 @@ A documentação dentro de `node_modules` corresponde exatamente à versão inst
 ```tsx
 import Link from "next/link";
 import { Button } from "@t2-educacao/midas";
-import { ArrowRight } from "@t2-educacao/midas/icons";
+import { IconArrowRight } from "@t2-educacao/midas/icons";
 
 export function Hero() {
   return (
@@ -52,7 +53,7 @@ export function Hero() {
       <div className="mt-8 flex gap-3">
         <Button asChild size="lg">
           <Link href="/cursos">
-            Ver cursos <ArrowRight />
+            Ver cursos <IconArrowRight />
           </Link>
         </Button>
         <Button variant="outline" size="lg">

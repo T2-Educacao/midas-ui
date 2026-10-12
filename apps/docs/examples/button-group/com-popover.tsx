@@ -9,18 +9,18 @@ import {
   PopoverTrigger,
   Textarea,
 } from "@t2-educacao/midas";
-import { CaretDown, Robot } from "@t2-educacao/midas/icons";
+import { IconChevronDown, IconRobot } from "@t2-educacao/midas/icons";
 
 export default function ButtonGroupComPopover() {
   return (
     <ButtonGroup aria-label="Tati">
       <Button variant="outline">
-        <Robot /> Tati
+        <IconRobot /> Tati
       </Button>
       <Popover>
         <PopoverTrigger asChild>
           <Button variant="outline" size="icon" aria-label="Abrir tarefa">
-            <CaretDown />
+            <IconChevronDown />
           </Button>
         </PopoverTrigger>
         <PopoverContent align="end" aria-labelledby="titulo-tarefa">

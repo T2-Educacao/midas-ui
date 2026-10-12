@@ -7,8 +7,13 @@
 @source "../examples";
 
 :root,
+[data-theme="light"],
 .dark,
-.dark #nd-sidebar {
+[data-theme="dark"],
+[data-theme="dark-blue"],
+.dark #nd-sidebar,
+[data-theme="dark"] #nd-sidebar,
+[data-theme="dark-blue"] #nd-sidebar {
   --color-fd-background: var(--midas-background);
   --color-fd-foreground: var(--midas-foreground);
   --color-fd-muted: var(--midas-muted);

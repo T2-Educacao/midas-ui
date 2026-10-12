@@ -1,14 +1,14 @@
 import { Button } from "@t2-educacao/midas";
-import { GitBranch, Plus } from "@t2-educacao/midas/icons";
+import { IconGitBranch, IconPlus } from "@t2-educacao/midas/icons";
 
 export default function ButtonComIcone() {
   return (
     <>
       <Button>
-        <Plus /> Novo curso
+        <IconPlus /> Novo curso
       </Button>
       <Button variant="outline">
-        <GitBranch /> Nova branch
+        <IconGitBranch /> Nova branch
       </Button>
     </>
   );

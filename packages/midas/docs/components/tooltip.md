@@ -86,10 +86,10 @@ import {
 ### Com ícones
 
 ```tsx
-import { Calendar, ListBullets } from "@t2-educacao/midas/icons";
+import { IconCalendar, IconList } from "@t2-educacao/midas/icons";
 
-<TooltipItem icon={<Calendar />} label="Gestão de risco" value="380" />
-<TooltipItem icon={<ListBullets />} label="Análise de investimentos" value="420" />
+<TooltipItem icon={<IconCalendar />} label="Gestão de risco" value="380" />
+<TooltipItem icon={<IconList />} label="Análise de investimentos" value="420" />
 ```
 
 ### Com total

@@ -197,7 +197,7 @@ export {
   PopoverTitle,
   PopoverTrigger,
 } from "./components/popover";
-export { Progress, type ProgressProps } from "./components/progress";
+export { Progress, type ProgressProps, progressIndicatorVariants } from "./components/progress";
 export {
   isAnswered,
   Questionnaire,

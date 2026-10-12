@@ -1,4 +1,4 @@
-import { SpinnerGap } from "@phosphor-icons/react/ssr";
+import { IconLoader2 } from "@tabler/icons-react";
 import type * as React from "react";
 import { cn } from "../../lib/cn";
 
@@ -8,7 +8,7 @@ export interface SpinnerProps extends React.SVGProps<SVGSVGElement> {
 
 export function Spinner({ className, label = "Carregando", ...props }: SpinnerProps) {
   return (
-    <SpinnerGap
+    <IconLoader2
       role={label ? "status" : undefined}
       aria-label={label || undefined}
       data-slot="spinner"

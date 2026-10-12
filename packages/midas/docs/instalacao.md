@@ -9,7 +9,7 @@ description: "Como instalar e configurar o Midas em projetos Next.js com Tailwin
 npm install @t2-educacao/midas
 ```
 
-`react` e `react-dom` (18.2+ ou 19) são *peer dependencies*: o projeto já precisa tê-los. Os ícones Phosphor, o Radix e utilitários vêm junto automaticamente.
+`react` e `react-dom` (18.2+ ou 19) são *peer dependencies*: o projeto já precisa tê-los. Os ícones Tabler, o Radix e utilitários vêm junto automaticamente.
 
 ## 2. Configure o CSS
 
@@ -30,7 +30,7 @@ Pronto. O `theme.css`:
 
 - registra os tokens do Midas no Tailwind do projeto, então `bg-primary`, `text-muted-foreground`, `rounded-lg` etc. funcionam também no **seu** código;
 - avisa o Tailwind para escanear os componentes do Midas (via `@source`), gerando só as classes usadas;
-- define a variante `dark:` ligada à classe `.dark` (ou `data-theme="dark"`).
+- define a variante `dark:` ligada à classe `.dark` e aos atributos `data-theme="dark"` e `data-theme="dark-blue"`.
 
 ### Caminho B: Tailwind CSS v3
 
@@ -53,7 +53,7 @@ module.exports = {
 };
 ```
 
-Depois disso `bg-primary`, `text-muted-foreground`, `border-border`, `rounded-lg`, `bg-chart-1` etc. no seu código apontam para as variáveis `--midas-*`, e o modo escuro troca sozinho. Os componentes do Midas continuam vindo do `styles.css`: não precisa pôr `node_modules/@t2-educacao/midas` no `content` nem usar `safelist`.
+Depois disso `bg-surface-canvas`, `text-content-secondary`, `border-border-subtle`, `bg-primary` (alias), `rounded-control`, `shadow-elevation-card`, `text-heading-xl`, `h-control-md`, `bg-chart-1` etc. no seu código apontam para as variáveis `--midas-*`, e o modo escuro troca sozinho. Os componentes do Midas continuam vindo do `styles.css`: não precisa pôr `node_modules/@t2-educacao/midas` no `content` nem usar `safelist`.
 
 Pontos de atenção na convivência com o v3:
 
@@ -64,34 +64,36 @@ Pontos de atenção na convivência com o v3:
 
 ## 3. Fontes
 
-A fonte do Midas é a mesma do site da T2: **Geist** e **Geist Mono**. O Midas lê as variáveis `--font-geist-sans` e `--font-geist-mono`, as mesmas que o site usa. No Next, carregue as fontes com `next/font` em `app/layout.tsx`:
+A fonte do Midas é a mesma do site da T2: **Geist** (interface) e **JetBrains Mono** (só dados técnicos: código, IDs, valores). O Midas lê as variáveis `--font-geist-sans` e `--font-jetbrains-mono`. No Next, carregue as fontes com `next/font` em `app/layout.tsx`:
 
 ```tsx
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, JetBrains_Mono } from "next/font/google";
 
 const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
-const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
+const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono" });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="bg-background text-foreground font-sans antialiased">{children}</body>
+    <html lang="pt-BR" className={`${geistSans.variable} ${jetbrainsMono.variable}`}>
+      <body className="bg-surface-canvas text-content-primary font-sans antialiased">{children}</body>
     </html>
   );
 }
 ```
 
-Sem `next/font` (ex.: hub em Pages Router), o Midas tenta a fonte `"Geist"` instalada ou carregada pelo projeto.
+Sem `next/font` (ex.: hub em Pages Router), o Midas tenta as fontes `"Geist"` e `"JetBrains Mono"` instaladas ou carregadas pelo projeto.
 
-## 4. Tema escuro (opcional)
+## 4. Temas escuros (opcional)
 
-Adicione a classe `dark` no `<html>` para ativar o tema escuro. Com [`next-themes`](https://github.com/pacocoursey/next-themes):
+O padrão é **Light**. Para **Dark**, adicione a classe `dark` (ou `data-theme="dark"`) no `<html>`; para **Dark Blue**, `data-theme="dark-blue"`. Com [`next-themes`](https://github.com/pacocoursey/next-themes), use o atributo `data-theme` para ter os três:
 
 ```tsx
-<ThemeProvider attribute="class" defaultTheme="system">{children}</ThemeProvider>
+<ThemeProvider attribute="data-theme" themes={["light", "dark", "dark-blue"]} defaultTheme="system">
+  {children}
+</ThemeProvider>
 ```
 
-Detalhes em [Tema e tokens](./tema.md).
+Com `attribute="class"` só Light e Dark funcionam. Detalhes em [Tema e tokens](./tema.md).
 
 ## 5. Use
 
@@ -112,5 +114,5 @@ Funciona em **Server Components**. Componentes que precisam de estado já vêm m
 | Componente aparece sem estilo | CSS não importado | Faça o passo 2 |
 | Cores erradas no Tailwind v3 | Tokens antigos do projeto com o mesmo nome | Veja os pontos de atenção do Caminho B |
 | Menu ou tooltip aparece atrás de um modal antigo | Camadas de z-index diferentes | Ajuste `--midas-z-popup` |
-| `dark:` não funciona | Classe `dark` ausente no `<html>` | Passo 4 |
+| `dark:` não funciona | Classe `dark` ou `data-theme` ausente no `<html>` | Passo 4 |
 | Erro `ERR_REQUIRE_ESM` em testes (Jest) | O Midas é ESM | Use Vitest, ou configure `transformIgnorePatterns` no Jest |

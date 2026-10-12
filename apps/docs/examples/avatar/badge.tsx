@@ -1,5 +1,5 @@
 import { Avatar, AvatarBadge, AvatarFallback, AvatarImage } from "@t2-educacao/midas";
-import { Plus } from "@t2-educacao/midas/icons";
+import { IconPlus } from "@t2-educacao/midas/icons";
 
 export default function AvatarComBadge() {
   return (
@@ -12,7 +12,7 @@ export default function AvatarComBadge() {
       <Avatar size="lg">
         <AvatarFallback>BR</AvatarFallback>
         <AvatarBadge variant="icon" aria-label="Adicionar">
-          <Plus />
+          <IconPlus />
         </AvatarBadge>
       </Avatar>
     </>

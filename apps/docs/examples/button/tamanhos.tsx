@@ -1,5 +1,5 @@
 import { Button } from "@t2-educacao/midas";
-import { ArrowRight } from "@t2-educacao/midas/icons";
+import { IconArrowRight } from "@t2-educacao/midas/icons";
 
 export default function ButtonTamanhos() {
   return (
@@ -8,7 +8,7 @@ export default function ButtonTamanhos() {
       <Button size="sm">Small</Button>
       <Button>Default</Button>
       <Button size="lg">
-        Large <ArrowRight />
+        Large <IconArrowRight />
       </Button>
     </>
   );

@@ -7,7 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@t2-educacao/midas";
-import { CaretDown } from "@t2-educacao/midas/icons";
+import { IconChevronDown } from "@t2-educacao/midas/icons";
 
 export default function ButtonGroupComDropdown() {
   return (
@@ -16,7 +16,7 @@ export default function ButtonGroupComDropdown() {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="icon" aria-label="Mais opções">
-            <CaretDown />
+            <IconChevronDown />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">

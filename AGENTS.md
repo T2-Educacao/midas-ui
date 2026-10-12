@@ -9,7 +9,7 @@ Este repositório é o **Midas**, design system da T2 Educação, publicado como
 3. Fontes da verdade (detalhes em `docs/decisoes/0002-tokens-e-componentes.md`):
    - **componentes, ícones, tipografia, espaçamento e raios**: o Figma do Midas (páginas de componentes, Icons e Design Tokens; ignore Cover, Foundation, Templates e a página Colors);
    - **cores**: as da hub (`hub-t2/styles/ds-globals.css`), já em `src/styles/theme.css`;
-   - **fonte**: Geist e Geist Mono, como no site.
+   - **fonte**: Geist (interface) e JetBrains Mono (só para técnico: IDs, valores, código), como no Figma.
    Não use outros design systems da T2 como referência (design-skill, DS-T2 Clareza).
 
 ## Comandos
@@ -26,7 +26,7 @@ Este repositório é o **Midas**, design system da T2 Educação, publicado como
 - **RTL:** use classes lógicas (`ps`/`pe`, `ms`/`me`, `start`/`end`, `rounded-s`/`rounded-e`, `border-s`/`border-e`, `text-start`), nunca `pl`/`pr`/`left`/`right`. Ícones de direção levam `rtl:rotate-180`. Veja `packages/midas/docs/rtl.md`.
 - **Server Components:** só coloque `"use client"` no topo do arquivo se o componente usa estado, efeito, contexto ou Radix interativo. O build preserva a diretiva por arquivo.
 - **Acessibilidade não é opcional:** use primitivos Radix para qualquer coisa interativa complexa (dialog, menu, select, tabs, tooltip...). Todo componente tem teste com `expectNoA11yViolations`.
-- **Ícones:** Phosphor (padrão, de `@phosphor-icons/react/ssr` dentro do pacote) e Tabler (secundária). Consumidores importam de `@t2-educacao/midas/icons` e `@t2-educacao/midas/icons/tabler`.
+- **Ícones:** só Tabler Icons (`@tabler/icons-react`, nomes originais `IconArrowRight`...). Dentro do pacote, importe de `@tabler/icons-react`; consumidores importam de `@t2-educacao/midas/icons` (`/icons/tabler` é alias). Traço padrão 2, cor por `currentColor`. Phosphor foi removido (`docs/decisoes/0003-icones-tabler.md`).
 - **Sem segredos, URLs internas, chamadas de API ou lógica de negócio.** O pacote é PÚBLICO no npm. Só UI.
 - **Sem comentários no código** (nem JSDoc, nem em CSS). Nomes claros são a documentação; explicações vão no `.md`.
 - **Português** em docs e mensagens de teste. Nomes de código (componentes, props) em inglês, como no ecossistema React.

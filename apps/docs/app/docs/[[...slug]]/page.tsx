@@ -1,5 +1,5 @@
 import { Button } from "@t2-educacao/midas";
-import { Code } from "@t2-educacao/midas/icons";
+import { IconCode } from "@t2-educacao/midas/icons";
 import {
   DocsBody,
   DocsDescription,
@@ -39,7 +39,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
         {component && (
           <Button asChild variant="outline" size="sm">
             <a href={`${repoUrl}/packages/midas/src/components/${component}/${component}.tsx`}>
-              <Code /> Código-fonte
+              <IconCode /> Código-fonte
             </a>
           </Button>
         )}

@@ -5,7 +5,7 @@ import {
   ListItemGroup,
   ListItemTitle,
 } from "@t2-educacao/midas";
-import { CaretRight, GraduationCap } from "@t2-educacao/midas/icons";
+import { IconChevronRight, IconSchool } from "@t2-educacao/midas/icons";
 
 export default function ListItemComoLink() {
   return (
@@ -13,8 +13,8 @@ export default function ListItemComoLink() {
       <ListItem
         asChild
         interactive
-        leading={<GraduationCap aria-hidden="true" />}
-        trailing={<CaretRight aria-hidden="true" className="rtl:rotate-180" />}
+        leading={<IconSchool aria-hidden="true" />}
+        trailing={<IconChevronRight aria-hidden="true" className="rtl:rotate-180" />}
       >
         <a href="#algebra">
           <ListItemContent>
@@ -26,8 +26,8 @@ export default function ListItemComoLink() {
       <ListItem
         asChild
         interactive
-        leading={<GraduationCap aria-hidden="true" />}
-        trailing={<CaretRight aria-hidden="true" className="rtl:rotate-180" />}
+        leading={<IconSchool aria-hidden="true" />}
+        trailing={<IconChevronRight aria-hidden="true" className="rtl:rotate-180" />}
       >
         <a href="#geometria">
           <ListItemContent>

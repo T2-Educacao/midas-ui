@@ -1,6 +1,6 @@
 "use client";
 
-import { X } from "@phosphor-icons/react/ssr";
+import { IconX } from "@tabler/icons-react";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 import { cn } from "../../lib/cn";
@@ -77,7 +77,7 @@ export const Chip = React.forwardRef<HTMLSpanElement, ChipProps>(
               "disabled:pointer-events-none",
             )}
           >
-            <X aria-hidden="true" className="size-3" />
+            <IconX aria-hidden="true" className="size-3" />
           </button>
         ) : null}
       </span>

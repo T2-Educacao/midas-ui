@@ -1,7 +1,7 @@
 "use client";
 
 import { FileUpload } from "@t2-educacao/midas";
-import { UploadSimple } from "@t2-educacao/midas/icons";
+import { IconUpload } from "@t2-educacao/midas/icons";
 import { useState } from "react";
 
 export default function FileUploadBasico() {
@@ -10,7 +10,7 @@ export default function FileUploadBasico() {
   return (
     <div className="flex w-full max-w-md flex-col gap-3">
       <FileUpload multiple onFilesChange={setArquivos}>
-        <UploadSimple className="size-6" aria-hidden="true" />
+        <IconUpload className="size-6" aria-hidden="true" />
         <span className="font-medium text-foreground">Arraste arquivos ou clique para enviar</span>
         <span>Qualquer formato</span>
       </FileUpload>

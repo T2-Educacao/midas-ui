@@ -1,6 +1,6 @@
 "use client";
 
-import { CaretDown } from "@phosphor-icons/react/ssr";
+import { IconChevronDown } from "@tabler/icons-react";
 import { Accordion as AccordionPrimitive } from "radix-ui";
 import * as React from "react";
 import { cn } from "../../lib/cn";
@@ -49,7 +49,7 @@ export const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <CaretDown
+      <IconChevronDown
         aria-hidden="true"
         className="pointer-events-none mt-0.5 size-4 shrink-0 text-muted-foreground transition-transform duration-200 group-data-[state=open]/accordion-trigger:rotate-180 motion-reduce:transition-none"
       />

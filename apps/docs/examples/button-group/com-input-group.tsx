@@ -5,18 +5,18 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@t2-educacao/midas";
-import { Microphone, Plus } from "@t2-educacao/midas/icons";
+import { IconMicrophone, IconPlus } from "@t2-educacao/midas/icons";
 
 export default function ButtonGroupComInputGroup() {
   return (
     <ButtonGroup className="w-full max-w-sm">
       <Button variant="outline" size="icon" aria-label="Anexar">
-        <Plus />
+        <IconPlus />
       </Button>
       <InputGroup>
         <InputGroupInput placeholder="Pergunte à Tati..." aria-label="Mensagem" />
         <InputGroupAddon align="end">
-          <Microphone />
+          <IconMicrophone />
         </InputGroupAddon>
       </InputGroup>
     </ButtonGroup>

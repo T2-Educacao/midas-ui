@@ -1,17 +1,17 @@
 import { Toggle } from "@t2-educacao/midas";
-import { TextB, TextItalic, TextUnderline } from "@t2-educacao/midas/icons";
+import { IconBold, IconItalic, IconUnderline } from "@t2-educacao/midas/icons";
 
 export default function ToggleBasico() {
   return (
     <>
       <Toggle aria-label="Negrito">
-        <TextB />
+        <IconBold />
       </Toggle>
       <Toggle aria-label="Itálico" defaultPressed>
-        <TextItalic />
+        <IconItalic />
       </Toggle>
       <Toggle aria-label="Sublinhado">
-        <TextUnderline />
+        <IconUnderline />
       </Toggle>
     </>
   );

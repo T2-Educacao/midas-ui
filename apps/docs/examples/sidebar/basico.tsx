@@ -7,7 +7,7 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
 } from "@t2-educacao/midas";
-import { BookOpen, Gear, House } from "@t2-educacao/midas/icons";
+import { IconBook, IconHome, IconSettings } from "@t2-educacao/midas/icons";
 
 export default function SidebarBasico() {
   return (
@@ -16,16 +16,16 @@ export default function SidebarBasico() {
       <SidebarContent aria-label="Navegação">
         <SidebarGroup>
           <SidebarGroupLabel>Geral</SidebarGroupLabel>
-          <NavItem asChild active icon={<House aria-hidden="true" />}>
+          <NavItem asChild active icon={<IconHome aria-hidden="true" />}>
             <a href="#inicio">Início</a>
           </NavItem>
-          <NavItem asChild icon={<BookOpen aria-hidden="true" />} badge="3">
+          <NavItem asChild icon={<IconBook aria-hidden="true" />} badge="3">
             <a href="#cursos">Cursos</a>
           </NavItem>
         </SidebarGroup>
         <SidebarGroup>
           <SidebarGroupLabel>Conta</SidebarGroupLabel>
-          <NavItem asChild icon={<Gear aria-hidden="true" />}>
+          <NavItem asChild icon={<IconSettings aria-hidden="true" />}>
             <a href="#configuracoes">Configurações</a>
           </NavItem>
         </SidebarGroup>

@@ -6,13 +6,13 @@ import {
   EmptyStateIcon,
   EmptyStateTitle,
 } from "@t2-educacao/midas";
-import { Plus, Tray } from "@t2-educacao/midas/icons";
+import { IconInbox, IconPlus } from "@t2-educacao/midas/icons";
 
 export default function EmptyStateBasico() {
   return (
     <EmptyState>
       <EmptyStateIcon>
-        <Tray />
+        <IconInbox />
       </EmptyStateIcon>
       <EmptyStateTitle>Nenhum curso ainda</EmptyStateTitle>
       <EmptyStateDescription>
@@ -20,7 +20,7 @@ export default function EmptyStateBasico() {
       </EmptyStateDescription>
       <EmptyStateActions>
         <Button>
-          <Plus /> Explorar cursos
+          <IconPlus /> Explorar cursos
         </Button>
       </EmptyStateActions>
     </EmptyState>

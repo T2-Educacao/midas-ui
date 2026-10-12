@@ -1,6 +1,6 @@
 "use client";
 
-import { CaretDown, Check, X } from "@phosphor-icons/react/ssr";
+import { IconCheck, IconChevronDown, IconX } from "@tabler/icons-react";
 import { Command as CommandPrimitive, useCommandState } from "cmdk";
 import { Popover as PopoverPrimitive } from "radix-ui";
 import * as React from "react";
@@ -251,7 +251,7 @@ export function Combobox(props: ComboboxProps) {
                   </span>
                 )}
               </span>
-              <CaretDown className="size-4 shrink-0 text-muted-foreground" />
+              <IconChevronDown className="size-4 shrink-0 text-muted-foreground" />
             </button>
           </PopoverPrimitive.Trigger>
           {name && <input type="hidden" name={name} value={selected.join(",")} />}
@@ -339,11 +339,11 @@ export function Combobox(props: ComboboxProps) {
                   multiple ? "px-1.5" : "pe-2",
                 )}
               >
-                <X />
+                <IconX className="size-4" />
               </button>
             ) : (
               <span aria-hidden className={cn(addonClasses, multiple ? "px-1.5" : "pe-2")}>
-                <CaretDown />
+                <IconChevronDown className="size-4" />
               </span>
             )}
           </div>
@@ -407,7 +407,7 @@ function ComboboxItem({
           <span className="truncate text-xs text-muted-foreground">{option.description}</span>
         )}
       </span>
-      {checked && <Check aria-hidden className="absolute end-2" />}
+      {checked && <IconCheck aria-hidden className="absolute end-2" />}
     </CommandPrimitive.Item>
   );
 }
@@ -434,7 +434,7 @@ export function ComboboxChip({
         onClick={onRemove}
         className="flex h-full items-center rounded-sm px-1 text-muted-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-ring disabled:pointer-events-none"
       >
-        <X className="size-3" />
+        <IconX className="size-3" />
       </button>
     </span>
   );

@@ -12,9 +12,9 @@
 |---|---|
 | Componentes (variantes, tamanhos, estados, medidas) | Páginas de componentes do Figma |
 | Tipografia, espaçamento e raios | Página Design Tokens do Figma |
-| Ícones | Página Icons do Figma: Phosphor (padrão) e Tabler (secundária) |
+| Ícones | Página Icons do Figma: Tabler Icons (ver 0003) |
 | Cores | Hub (`hub-t2/styles/ds-globals.css`), claro e escuro |
-| Fonte | Site: Geist e Geist Mono via `--font-geist-sans` / `--font-geist-mono` |
+| Fonte | Figma: Geist (interface) e JetBrains Mono (técnico) via `--font-geist-sans` e `--font-jetbrains-mono` |
 
 Ignorados: Cover, Foundation (vazia), Templates (Login) e a página Colors do Figma.
 

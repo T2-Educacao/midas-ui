@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/ssr";
+import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react";
 import { Direction } from "radix-ui";
 import * as React from "react";
@@ -177,7 +177,7 @@ export const CarouselPrevious = React.forwardRef<HTMLButtonElement, ButtonProps>
         )}
         {...props}
       >
-        <ArrowLeft className="rtl:rotate-180" />
+        <IconArrowLeft className="rtl:rotate-180" />
         <span className="sr-only">Slide anterior</span>
       </Button>
     );
@@ -206,7 +206,7 @@ export const CarouselNext = React.forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         {...props}
       >
-        <ArrowRight className="rtl:rotate-180" />
+        <IconArrowRight className="rtl:rotate-180" />
         <span className="sr-only">Próximo slide</span>
       </Button>
     );

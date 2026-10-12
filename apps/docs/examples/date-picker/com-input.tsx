@@ -12,7 +12,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@t2-educacao/midas";
-import { CalendarBlank } from "@t2-educacao/midas/icons";
+import { IconCalendar } from "@t2-educacao/midas/icons";
 import { useState } from "react";
 
 const formatar = (data: Date) => data.toLocaleDateString("pt-BR");
@@ -40,7 +40,7 @@ export default function DatePickerComInput() {
           <Popover open={aberto} onOpenChange={setAberto}>
             <PopoverTrigger asChild>
               <InputGroupButton size="icon-xs" aria-label="Abrir calendário">
-                <CalendarBlank />
+                <IconCalendar />
               </InputGroupButton>
             </PopoverTrigger>
             <PopoverContent aria-label="Calendário" align="end" className="w-auto p-0">

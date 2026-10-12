@@ -5,7 +5,7 @@ import {
   AvatarGroupCount,
   AvatarImage,
 } from "@t2-educacao/midas";
-import { Plus } from "@t2-educacao/midas/icons";
+import { IconPlus } from "@t2-educacao/midas/icons";
 
 export default function AvatarGrupo() {
   return (
@@ -25,7 +25,7 @@ export default function AvatarGrupo() {
           <AvatarFallback>CL</AvatarFallback>
         </Avatar>
         <AvatarGroupCount aria-label="Convidar">
-          <Plus />
+          <IconPlus />
         </AvatarGroupCount>
       </AvatarGroup>
     </>

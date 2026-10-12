@@ -6,7 +6,7 @@ import {
   InputGroupInput,
   InputGroupText,
 } from "@t2-educacao/midas";
-import { Info } from "@t2-educacao/midas/icons";
+import { IconInfoCircle } from "@t2-educacao/midas/icons";
 
 export default function InputGroupPrefixo() {
   return (
@@ -18,7 +18,7 @@ export default function InputGroupPrefixo() {
         </InputGroupAddon>
         <InputGroupInput id="site" placeholder="t2.com.br" />
         <InputGroupAddon align="end">
-          <Info />
+          <IconInfoCircle />
         </InputGroupAddon>
       </InputGroup>
     </Field>

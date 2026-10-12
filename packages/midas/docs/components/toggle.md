@@ -10,10 +10,10 @@ import { Toggle } from "@t2-educacao/midas";
 ## Uso
 
 ```tsx
-import { TextB } from "@t2-educacao/midas/icons";
+import { IconBold } from "@t2-educacao/midas/icons";
 
 <Toggle aria-label="Negrito">
-  <TextB />
+  <IconBold />
 </Toggle>
 ```
 
@@ -42,10 +42,10 @@ Aceita as props do [Toggle do Radix](https://www.radix-ui.com/primitives/docs/co
 ### Com texto
 
 ```tsx
-import { Star } from "@t2-educacao/midas/icons";
+import { IconStar, IconStarFilled } from "@t2-educacao/midas/icons";
 
 <Toggle variant="outline">
-  <Star /> Favorito
+  <IconStar /> Favorito
 </Toggle>
 ```
 
@@ -55,7 +55,7 @@ import { Star } from "@t2-educacao/midas/icons";
 const [favorito, setFavorito] = useState(false);
 
 <Toggle pressed={favorito} onPressedChange={setFavorito} aria-label="Favoritar curso">
-  <Star weight={favorito ? "fill" : "regular"} />
+  {favorito ? <IconStarFilled /> : <IconStar />}
 </Toggle>
 ```
 

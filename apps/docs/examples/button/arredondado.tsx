@@ -1,5 +1,5 @@
 import { Button } from "@t2-educacao/midas";
-import { Plus } from "@t2-educacao/midas/icons";
+import { IconPlus } from "@t2-educacao/midas/icons";
 
 export default function ButtonArredondado() {
   return (
@@ -9,7 +9,7 @@ export default function ButtonArredondado() {
         Saiba mais
       </Button>
       <Button rounded size="icon" aria-label="Adicionar">
-        <Plus />
+        <IconPlus />
       </Button>
     </>
   );

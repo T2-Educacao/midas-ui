@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Minus } from "@phosphor-icons/react/ssr";
+import { IconCheck, IconMinus } from "@tabler/icons-react";
 import { Checkbox as CheckboxPrimitive } from "radix-ui";
 import * as React from "react";
 import { cn } from "../../lib/cn";
@@ -26,9 +26,9 @@ export const Checkbox = React.forwardRef<
     {...props}
   >
     <CheckboxPrimitive.Indicator className="flex items-center justify-center">
-      <Check weight="bold" className="size-3 group-data-[state=indeterminate]/checkbox:hidden" />
-      <Minus
-        weight="bold"
+      <IconCheck stroke={3} className="size-3 group-data-[state=indeterminate]/checkbox:hidden" />
+      <IconMinus
+        stroke={3}
         className="hidden size-3 group-data-[state=indeterminate]/checkbox:block"
       />
     </CheckboxPrimitive.Indicator>

@@ -69,19 +69,19 @@ Aceita todas as props de `<button>` (`onClick`, `disabled`, `type`...) mais:
 O ícone é dimensionado pelo `size` do botão. Não passe `size` para o ícone.
 
 ```tsx
-import { ArrowRight, Plus } from "@t2-educacao/midas/icons";
+import { IconArrowRight, IconPlus } from "@t2-educacao/midas/icons";
 
-<Button><Plus /> Novo curso</Button>
-<Button size="lg">Começar <ArrowRight /></Button>
+<Button><IconPlus /> Novo curso</Button>
+<Button size="lg">Começar <IconArrowRight /></Button>
 ```
 
 ### Só ícone
 
 ```tsx
-import { Trash } from "@t2-educacao/midas/icons";
+import { IconTrash } from "@t2-educacao/midas/icons";
 
 <Button size="icon" variant="ghost" aria-label="Excluir">
-  <Trash />
+  <IconTrash />
 </Button>
 ```
 
@@ -89,7 +89,7 @@ import { Trash } from "@t2-educacao/midas/icons";
 
 ```tsx
 <Button rounded>Inscrever</Button>
-<Button size="icon" rounded aria-label="Adicionar"><Plus /></Button>
+<Button size="icon" rounded aria-label="Adicionar"><IconPlus /></Button>
 ```
 
 ### Carregando

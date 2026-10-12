@@ -1,7 +1,7 @@
 "use client";
 
 import { FileUpload } from "@t2-educacao/midas";
-import { Image } from "@t2-educacao/midas/icons";
+import { IconPhoto } from "@t2-educacao/midas/icons";
 import { useState } from "react";
 
 const limite = 2 * 1024 * 1024;
@@ -24,7 +24,7 @@ export default function FileUploadSoImagens() {
           setErro(reason === "size" ? "A imagem passa de 2 MB." : "Envie apenas imagens.")
         }
       >
-        <Image className="size-6" aria-hidden="true" />
+        <IconPhoto className="size-6" aria-hidden="true" />
         <span className="font-medium text-foreground">Escolha uma imagem</span>
         <span>PNG ou JPG, até 2 MB</span>
       </FileUpload>

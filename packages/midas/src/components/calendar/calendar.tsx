@@ -1,6 +1,6 @@
 "use client";
 
-import { CaretDown, CaretLeft, CaretRight } from "@phosphor-icons/react/ssr";
+import { IconChevronDown, IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import * as React from "react";
 import {
   type DayButtonProps,
@@ -114,10 +114,10 @@ export function Calendar({
         ),
         Chevron: ({ className: chevronClassName, orientation }) => {
           if (orientation === "left")
-            return <CaretLeft className={cn("size-4", chevronClassName)} />;
+            return <IconChevronLeft className={cn("size-4", chevronClassName)} />;
           if (orientation === "right")
-            return <CaretRight className={cn("size-4", chevronClassName)} />;
-          return <CaretDown className={cn("size-4", chevronClassName)} />;
+            return <IconChevronRight className={cn("size-4", chevronClassName)} />;
+          return <IconChevronDown className={cn("size-4", chevronClassName)} />;
         },
         DayButton: CalendarDayButton,
         ...components,

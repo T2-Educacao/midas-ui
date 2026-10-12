@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@t2-educacao/midas";
-import { Check, Copy } from "@t2-educacao/midas/icons";
+import { IconCheck, IconCopy } from "@t2-educacao/midas/icons";
 import { useState } from "react";
 
 export function InstallCommand({ command }: { command: string }) {
@@ -23,7 +23,7 @@ export function InstallCommand({ command }: { command: string }) {
         onClick={copy}
         aria-label={copied ? "Copiado" : "Copiar comando"}
       >
-        {copied ? <Check className="text-success" /> : <Copy />}
+        {copied ? <IconCheck className="text-success" /> : <IconCopy />}
       </Button>
     </div>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { X } from "@phosphor-icons/react/ssr";
+import { IconX } from "@tabler/icons-react";
 import { Dialog as DialogPrimitive } from "radix-ui";
 import * as React from "react";
 import { cn } from "../../lib/cn";
@@ -54,7 +54,7 @@ export const DialogContent = React.forwardRef<
           data-slot="dialog-close"
           className="absolute top-2 end-2 flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
         >
-          <X className="size-4" />
+          <IconX className="size-4" />
           <span className="sr-only">Fechar</span>
         </DialogPrimitive.Close>
       )}

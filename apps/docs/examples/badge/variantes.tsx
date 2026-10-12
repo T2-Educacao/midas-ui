@@ -1,5 +1,5 @@
 import { Badge } from "@t2-educacao/midas";
-import { CheckCircle } from "@t2-educacao/midas/icons";
+import { IconCircleCheck } from "@t2-educacao/midas/icons";
 
 export default function BadgeVariantes() {
   return (
@@ -9,7 +9,7 @@ export default function BadgeVariantes() {
       <Badge variant="outline">CPA</Badge>
       <Badge variant="destructive">Expirado</Badge>
       <Badge variant="success">
-        <CheckCircle /> Aprovado
+        <IconCircleCheck /> Aprovado
       </Badge>
     </>
   );

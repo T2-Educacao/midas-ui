@@ -1,5 +1,5 @@
 import { DatePicker, Field, FieldLabel } from "@t2-educacao/midas";
-import { CaretDown } from "@t2-educacao/midas/icons";
+import { IconChevronDown } from "@t2-educacao/midas/icons";
 
 export default function DatePickerNascimento() {
   return (
@@ -11,7 +11,7 @@ export default function DatePickerNascimento() {
         startMonth={new Date(1940, 0)}
         endMonth={new Date()}
         disabledDays={{ after: new Date() }}
-        icon={<CaretDown className="order-last ml-auto text-muted-foreground" />}
+        icon={<IconChevronDown className="order-last ml-auto text-muted-foreground" />}
       />
     </Field>
   );

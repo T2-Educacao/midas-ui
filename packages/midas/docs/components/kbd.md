@@ -43,9 +43,9 @@ import { Kbd, KbdGroup } from "@t2-educacao/midas";
 ### Com ícone
 
 ```tsx
-import { ArrowFatUp } from "@t2-educacao/midas/icons";
+import { IconArrowBigUp } from "@t2-educacao/midas/icons";
 
-<Kbd><ArrowFatUp /></Kbd>
+<Kbd><IconArrowBigUp /></Kbd>
 ```
 
 ## Acessibilidade

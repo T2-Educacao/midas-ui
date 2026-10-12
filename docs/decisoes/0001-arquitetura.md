@@ -26,7 +26,7 @@ Opções consideradas: (A) pacote npm clássico, (B) registry com CLI que copia 
 
 Opções: um pacote vs. vários (`/tokens`, `/icons`, `/react`). **Escolhido: um pacote.** A T2 só usa React; separar seria complexidade sem uso. Subcaminhos (`@t2-educacao/midas/icons`, `/theme.css`, `/styles.css`) dão a organização sem múltiplas versões. Separar no futuro é possível sem quebrar quem usa.
 
-Ícones: **Phosphor** (`@phosphor-icons/react`) como dependência do Midas, reexportado em `@t2-educacao/midas/icons` a partir da build SSR (funciona em Server e Client Components). Uma segunda biblioteca de ícones pode ser adicionada depois (ver roadmap).
+Ícones: **Tabler Icons** (`@tabler/icons-react`) como dependência do Midas, reexportado em `@t2-educacao/midas/icons` (funciona em Server e Client Components). A escolha foi revista em `0003-icones-tabler.md` (a versão inicial usava Phosphor).
 
 ### D3. React + Radix UI + CVA + tailwind-merge + Tailwind v4
 

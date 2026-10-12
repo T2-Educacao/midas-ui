@@ -5,7 +5,7 @@
 - [x] Monorepo pnpm: `packages/midas` (pacote) + `apps/docs` (site)
 - [x] Build tree-shakeable (tsdown, 1 arquivo por módulo, ESM, tipos)
 - [x] Tokens com tema claro/escuro (`theme.css` p/ Tailwind v4, `styles.css` compilado)
-- [x] Ícones Phosphor reexportados em `@t2-educacao/midas/icons`
+- [x] Ícones Tabler reexportados em `@t2-educacao/midas/icons`
 - [x] `Button` como componente de referência (API, testes, doc)
 - [x] Testes (Vitest + Testing Library + axe), lint (Biome), validação do pacote (publint + attw)
 - [x] Docs no pacote + `llms.txt` + site Fumadocs com `llms.txt`/`llms-full.txt`

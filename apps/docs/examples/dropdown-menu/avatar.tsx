@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@t2-educacao/midas";
-import { CreditCard, Gear, SignOut, User } from "@t2-educacao/midas/icons";
+import { IconCreditCard, IconLogout, IconSettings, IconUser } from "@t2-educacao/midas/icons";
 
 export default function DropdownMenuAvatar() {
   return (
@@ -38,18 +38,18 @@ export default function DropdownMenuAvatar() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <User /> Conta
+            <IconUser /> Conta
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <CreditCard /> Assinatura
+            <IconCreditCard /> Assinatura
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Gear /> Configurações
+            <IconSettings /> Configurações
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem variant="destructive">
-          <SignOut /> Sair
+          <IconLogout /> Sair
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

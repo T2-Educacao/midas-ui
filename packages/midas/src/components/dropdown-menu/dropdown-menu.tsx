@@ -1,6 +1,6 @@
 "use client";
 
-import { CaretRight, Check, Circle } from "@phosphor-icons/react/ssr";
+import { IconCheck, IconChevronRight, IconCircle } from "@tabler/icons-react";
 import { DropdownMenu as DropdownMenuPrimitive } from "radix-ui";
 import * as React from "react";
 import { cn } from "../../lib/cn";
@@ -81,7 +81,7 @@ export const DropdownMenuCheckboxItem = React.forwardRef<
     {children}
     <span className="pointer-events-none absolute end-2 flex size-4 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        <Check />
+        <IconCheck className="size-4" />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
   </DropdownMenuPrimitive.CheckboxItem>
@@ -101,7 +101,7 @@ export const DropdownMenuRadioItem = React.forwardRef<
     {children}
     <span className="pointer-events-none absolute end-2 flex size-4 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        <Circle weight="fill" className="size-2" />
+        <IconCircle fill="currentColor" className="size-2" />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
   </DropdownMenuPrimitive.RadioItem>
@@ -162,7 +162,7 @@ export const DropdownMenuSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <CaretRight className="ms-auto rtl:rotate-180" />
+    <IconChevronRight className="ms-auto rtl:rotate-180" />
   </DropdownMenuPrimitive.SubTrigger>
 ));
 DropdownMenuSubTrigger.displayName = "DropdownMenuSubTrigger";

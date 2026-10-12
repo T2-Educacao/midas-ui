@@ -19,17 +19,17 @@ import {
   ToggleGroupItem,
 } from "@t2-educacao/midas";
 import {
-  ArrowRight,
-  Info,
-  Lightning,
-  MoonStars,
-  PersonArmsSpread,
-  Robot,
-  Star,
-  TextAlignCenter,
-  TextAlignLeft,
-  TextAlignRight,
-  TextB,
+  IconAccessible,
+  IconAlignCenter,
+  IconAlignLeft,
+  IconAlignRight,
+  IconArrowRight,
+  IconBold,
+  IconBolt,
+  IconInfoCircle,
+  IconMoonStars,
+  IconRobot,
+  IconStar,
 } from "@t2-educacao/midas/icons";
 import midasPackage from "@t2-educacao/midas/package.json";
 import Link from "next/link";
@@ -56,22 +56,22 @@ import { npmUrl, packageName } from "@/lib/shared";
 
 const features = [
   {
-    icon: PersonArmsSpread,
+    icon: IconAccessible,
     title: "Acessível",
     text: "Construído sobre Radix UI: teclado, foco e leitores de tela funcionando por padrão.",
   },
   {
-    icon: Lightning,
+    icon: IconBolt,
     title: "Leve",
     text: "Cada componente é um arquivo separado. O projeto só carrega o que usa.",
   },
   {
-    icon: MoonStars,
+    icon: IconMoonStars,
     title: "Claro e escuro",
     text: "As cores da T2 em tokens. O tema escuro vem de graça, sem escrever dark:.",
   },
   {
-    icon: Robot,
+    icon: IconRobot,
     title: "Pronto para IA",
     text: "Docs em Markdown dentro do pacote e llms.txt para agentes gerarem UI no padrão.",
   },
@@ -110,10 +110,10 @@ const showcase: { name: string; href: string; preview: ReactNode }[] = [
     preview: (
       <>
         <Toggle aria-label="Negrito" defaultPressed>
-          <TextB />
+          <IconBold />
         </Toggle>
         <Toggle variant="outline" aria-label="Favoritar">
-          <Star />
+          <IconStar />
         </Toggle>
       </>
     ),
@@ -130,13 +130,13 @@ const showcase: { name: string; href: string; preview: ReactNode }[] = [
         aria-label="Alinhamento"
       >
         <ToggleGroupItem value="esquerda" aria-label="Esquerda">
-          <TextAlignLeft />
+          <IconAlignLeft />
         </ToggleGroupItem>
         <ToggleGroupItem value="centro" aria-label="Centro">
-          <TextAlignCenter />
+          <IconAlignCenter />
         </ToggleGroupItem>
         <ToggleGroupItem value="direita" aria-label="Direita">
-          <TextAlignRight />
+          <IconAlignRight />
         </ToggleGroupItem>
       </ToggleGroup>
     ),
@@ -170,7 +170,7 @@ const showcase: { name: string; href: string; preview: ReactNode }[] = [
     href: "/docs/components/alert",
     preview: (
       <Alert variant="info" className="max-w-xs">
-        <Info />
+        <IconInfoCircle />
         <AlertTitle>Matrículas abertas</AlertTitle>
       </Alert>
     ),
@@ -272,7 +272,7 @@ export default function HomePage() {
           <div className="flex flex-wrap justify-center gap-3">
             <Button asChild size="lg">
               <Link href="/docs">
-                Começar <ArrowRight />
+                Começar <IconArrowRight />
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline">
@@ -302,7 +302,7 @@ export default function HomePage() {
           </div>
           <Button asChild variant="link">
             <Link href="/docs/components/button">
-              Todos <ArrowRight />
+              Todos <IconArrowRight />
             </Link>
           </Button>
         </div>
@@ -320,7 +320,7 @@ export default function HomePage() {
                 className="flex items-center justify-between border-t border-border px-4 py-3 text-sm font-medium"
               >
                 {name}
-                <ArrowRight className="text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary" />
+                <IconArrowRight className="text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary" />
               </Link>
             </div>
           ))}

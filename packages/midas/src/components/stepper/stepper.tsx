@@ -1,6 +1,6 @@
 "use client";
 
-import { Check } from "@phosphor-icons/react/ssr";
+import { IconCheck } from "@tabler/icons-react";
 import * as React from "react";
 import { cn } from "../../lib/cn";
 
@@ -133,7 +133,7 @@ function StepperIndicator() {
         state === "pending" && "border-border bg-background text-muted-foreground",
       )}
     >
-      {state === "completed" ? <Check className="size-4" weight="bold" /> : step + 1}
+      {state === "completed" ? <IconCheck className="size-4" stroke={3} /> : step + 1}
     </span>
   );
 }

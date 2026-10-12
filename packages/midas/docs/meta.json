@@ -9,6 +9,12 @@
     "icones",
     "rtl",
     "guia-para-ia",
+    "---Fundamentos---",
+    "fundamentos/cores",
+    "fundamentos/tipografia",
+    "fundamentos/escalas",
+    "fundamentos/elevacao-e-foco",
+    "fundamentos/grid",
     "---Componentes---",
     "...components"
   ]

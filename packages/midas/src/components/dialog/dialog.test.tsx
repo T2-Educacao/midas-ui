@@ -57,4 +57,19 @@ describe("Dialog", () => {
     await userEvent.click(screen.getByRole("button", { name: "Editar perfil" }));
     await expectNoA11yViolations(document.body);
   });
+
+  it("aceita largura própria sem prefixo e classe no overlay", async () => {
+    render(
+      <Dialog defaultOpen>
+        <DialogContent className="max-w-2xl" overlayClassName="bg-black/80">
+          <DialogTitle>Largo</DialogTitle>
+          <DialogDescription>Descrição</DialogDescription>
+        </DialogContent>
+      </Dialog>,
+    );
+    const dialog = screen.getByRole("dialog", { name: "Largo" });
+    expect(dialog).toHaveClass("max-w-2xl");
+    expect(dialog).not.toHaveClass("max-w-md", "sm:max-w-md");
+    expect(document.querySelector("[data-slot=dialog-overlay]")).toHaveClass("bg-black/80");
+  });
 });

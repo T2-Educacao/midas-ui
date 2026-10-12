@@ -1,4 +1,4 @@
-import { CaretDown, CaretUp, CaretUpDown } from "@phosphor-icons/react/ssr";
+import { IconChevronDown, IconChevronUp, IconSelector } from "@tabler/icons-react";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 import { cn } from "../../lib/cn";
@@ -119,7 +119,11 @@ export const TableHead = React.forwardRef<HTMLTableCellElement, TableHeadProps>(
     ref,
   ) => {
     const SortIcon =
-      sortDirection === "asc" ? CaretUp : sortDirection === "desc" ? CaretDown : CaretUpDown;
+      sortDirection === "asc"
+        ? IconChevronUp
+        : sortDirection === "desc"
+          ? IconChevronDown
+          : IconSelector;
     return (
       <th
         ref={ref}

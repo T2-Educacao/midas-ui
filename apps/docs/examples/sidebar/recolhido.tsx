@@ -1,7 +1,7 @@
 "use client";
 
 import { NavItem, Sidebar, SidebarContent, SidebarGroup, SidebarHeader } from "@t2-educacao/midas";
-import { BookOpen, House, List } from "@t2-educacao/midas/icons";
+import { IconBook, IconHome, IconMenu2 } from "@t2-educacao/midas/icons";
 import { useState } from "react";
 
 export default function SidebarRecolhido() {
@@ -11,7 +11,7 @@ export default function SidebarRecolhido() {
     <Sidebar collapsed={collapsed} className="h-80" aria-label="Principal">
       <SidebarHeader>
         <NavItem
-          icon={<List aria-hidden="true" />}
+          icon={<IconMenu2 aria-hidden="true" />}
           onClick={() => setCollapsed((atual) => !atual)}
           aria-expanded={!collapsed}
         >
@@ -20,10 +20,10 @@ export default function SidebarRecolhido() {
       </SidebarHeader>
       <SidebarContent aria-label="Navegação">
         <SidebarGroup>
-          <NavItem asChild active icon={<House aria-hidden="true" />}>
+          <NavItem asChild active icon={<IconHome aria-hidden="true" />}>
             <a href="#inicio">Início</a>
           </NavItem>
-          <NavItem asChild icon={<BookOpen aria-hidden="true" />}>
+          <NavItem asChild icon={<IconBook aria-hidden="true" />}>
             <a href="#cursos">Cursos</a>
           </NavItem>
         </SidebarGroup>

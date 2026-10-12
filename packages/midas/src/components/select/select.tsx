@@ -1,6 +1,6 @@
 "use client";
 
-import { CaretDown, CaretUp, Check } from "@phosphor-icons/react/ssr";
+import { IconCheck, IconChevronDown, IconChevronUp } from "@tabler/icons-react";
 import { Select as SelectPrimitive } from "radix-ui";
 import * as React from "react";
 import { cn } from "../../lib/cn";
@@ -41,7 +41,7 @@ export const SelectTrigger = React.forwardRef<
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <CaretDown className="text-muted-foreground" />
+      <IconChevronDown className="text-muted-foreground" />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ));
@@ -65,7 +65,7 @@ export const SelectContent = React.forwardRef<
       {...props}
     >
       <SelectPrimitive.ScrollUpButton className="flex cursor-default items-center justify-center py-1">
-        <CaretUp className="size-4" />
+        <IconChevronUp className="size-4" />
       </SelectPrimitive.ScrollUpButton>
       <SelectPrimitive.Viewport
         className={cn(
@@ -77,7 +77,7 @@ export const SelectContent = React.forwardRef<
         {children}
       </SelectPrimitive.Viewport>
       <SelectPrimitive.ScrollDownButton className="flex cursor-default items-center justify-center py-1">
-        <CaretDown className="size-4" />
+        <IconChevronDown className="size-4" />
       </SelectPrimitive.ScrollDownButton>
     </SelectPrimitive.Content>
   </SelectPrimitive.Portal>
@@ -115,7 +115,7 @@ export const SelectItem = React.forwardRef<
   >
     <span className="pointer-events-none absolute end-2 flex size-4 items-center justify-center">
       <SelectPrimitive.ItemIndicator>
-        <Check />
+        <IconCheck className="size-4" />
       </SelectPrimitive.ItemIndicator>
     </span>
     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>

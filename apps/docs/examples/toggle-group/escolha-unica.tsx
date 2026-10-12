@@ -1,17 +1,17 @@
 import { ToggleGroup, ToggleGroupItem } from "@t2-educacao/midas";
-import { TextAlignCenter, TextAlignLeft, TextAlignRight } from "@t2-educacao/midas/icons";
+import { IconAlignCenter, IconAlignLeft, IconAlignRight } from "@t2-educacao/midas/icons";
 
 export default function ToggleGroupEscolhaUnica() {
   return (
     <ToggleGroup type="single" variant="outline" defaultValue="esquerda" aria-label="Alinhamento">
       <ToggleGroupItem value="esquerda" aria-label="Alinhar à esquerda">
-        <TextAlignLeft />
+        <IconAlignLeft />
       </ToggleGroupItem>
       <ToggleGroupItem value="centro" aria-label="Centralizar">
-        <TextAlignCenter />
+        <IconAlignCenter />
       </ToggleGroupItem>
       <ToggleGroupItem value="direita" aria-label="Alinhar à direita">
-        <TextAlignRight />
+        <IconAlignRight />
       </ToggleGroupItem>
     </ToggleGroup>
   );

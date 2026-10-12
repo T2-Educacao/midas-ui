@@ -24,7 +24,7 @@ Todo componente aceita `className`. As classes são mescladas com [`tailwind-mer
 <Button className="h-14 px-8">Mais alto</Button>
 ```
 
-Use tokens nas classes (`bg-primary`, `rounded-lg`), nunca valores soltos (`bg-[#0097D9]`).
+Use tokens nas classes (`bg-surface-default`, `text-content-secondary`, `rounded-control`), nunca valores soltos (`bg-[#0097D9]`). Os text styles (`text-heading-md`) e as sombras de elevação também são reconhecidos pelo `cn()`: o seu vence sem derrubar a cor.
 
 ## 3. `asChild`
 
@@ -60,8 +60,12 @@ O utilitário `cn` (clsx + tailwind-merge) também é exportado para seus própr
 ```tsx
 import { cn } from "@t2-educacao/midas";
 
-<div className={cn("rounded-lg p-6", isActive && "bg-accent text-accent-foreground")} />
+<div className={cn("rounded-lg p-6", isActive && "bg-selection-bg text-selection-content")} />
 ```
+
+## Temas e tokens
+
+Para mudar uma cor em todo o projeto, sobrescreva a variável (`--midas-action-accent-bg`) no tema desejado (`:root`, `.dark`, `[data-theme="dark-blue"]`), em vez de usar `className` em cada uso. Veja [Tema e tokens](./tema.md) e [Cores](./fundamentos/cores.md).
 
 ## Quando NÃO customizar
 

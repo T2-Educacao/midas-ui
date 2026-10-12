@@ -1,11 +1,11 @@
 import { Alert, AlertAction, AlertDescription, AlertTitle, Button } from "@t2-educacao/midas";
-import { CheckCircle } from "@t2-educacao/midas/icons";
+import { IconCircleCheck } from "@t2-educacao/midas/icons";
 
 export default function AlertComAcao() {
   return (
     <div className="w-full max-w-xl">
       <Alert variant="success">
-        <CheckCircle />
+        <IconCircleCheck />
         <AlertTitle>Curso arquivado</AlertTitle>
         <AlertDescription>Ele não aparece mais na sua lista.</AlertDescription>
         <AlertAction>

@@ -1,7 +1,7 @@
 "use client";
 
 import { Combobox, type ComboboxOption } from "@t2-educacao/midas";
-import { Globe } from "@t2-educacao/midas/icons";
+import { IconWorld } from "@t2-educacao/midas/icons";
 
 const fusos: ComboboxOption[] = [
   { value: "sp", label: "(GMT-3) São Paulo", group: "Américas" },
@@ -16,7 +16,7 @@ export default function ComboboxComIcone() {
   return (
     <Combobox
       className="max-w-60"
-      startAddon={<Globe />}
+      startAddon={<IconWorld />}
       options={fusos}
       placeholder="Selecione o fuso"
       aria-label="Fuso horário"

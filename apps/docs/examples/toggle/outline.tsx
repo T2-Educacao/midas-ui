@@ -1,14 +1,14 @@
 import { Toggle } from "@t2-educacao/midas";
-import { Star } from "@t2-educacao/midas/icons";
+import { IconStar } from "@t2-educacao/midas/icons";
 
 export default function ToggleOutline() {
   return (
     <>
       <Toggle variant="outline" aria-label="Favoritar">
-        <Star />
+        <IconStar />
       </Toggle>
       <Toggle variant="outline">
-        <Star /> Favorito
+        <IconStar /> Favorito
       </Toggle>
     </>
   );

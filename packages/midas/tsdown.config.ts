@@ -14,7 +14,6 @@ export default defineConfig({
       /^react($|\/)/,
       /^react-dom($|\/)/,
       /^radix-ui/,
-      /^@phosphor-icons\/react/,
       /^@tabler\/icons-react/,
       /^cmdk/,
       /^sonner/,

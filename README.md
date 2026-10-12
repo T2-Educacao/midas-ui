@@ -13,7 +13,7 @@
 [![Next.js](https://img.shields.io/badge/Next.js-14%20a%2016-black?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org)
 [![Tailwind](https://img.shields.io/badge/Tailwind-v4-06b6d4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Radix](https://img.shields.io/badge/Radix-UI-161618?style=flat-square&logo=radixui&logoColor=white)](https://www.radix-ui.com)
-[![Phosphor](https://img.shields.io/badge/Phosphor-icons-3d2eff?style=flat-square)](https://phosphoricons.com)
+[![Tabler Icons](https://img.shields.io/badge/Tabler-icons-206bc4?style=flat-square)](https://tabler.io/icons)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 
 </div>
@@ -22,7 +22,7 @@
 
 ## O que é
 
-O Midas UI é o pacote npm **`@t2-educacao/midas`**: componentes React acessíveis, tokens de design com tema claro e escuro e ícones Phosphor, tudo numa única dependência. Um projeto novo da T2 instala **uma vez** e já tem o design system completo, igual em todos os produtos (site, hub, plataforma do aluno).
+O Midas UI é o pacote npm **`@t2-educacao/midas`**: componentes React acessíveis, tokens de design com tema claro e escuro e ícones Tabler, tudo numa única dependência. Um projeto novo da T2 instala **uma vez** e já tem o design system completo, igual em todos os produtos (site, hub, plataforma do aluno).
 
 A fonte da verdade visual é o **Figma do Midas**. Este repositório não substitui a página pública de marca (`design-t2`) nem a skill de design (`design-skill`): ele é o **código** que os projetos instalam.
 
@@ -45,9 +45,9 @@ Projeto em Tailwind v3 (ex.: hub): `import "@t2-educacao/midas/styles.css"` no l
 
 ```tsx
 import { Button } from "@t2-educacao/midas";
-import { ArrowRight } from "@t2-educacao/midas/icons";
+import { IconArrowRight } from "@t2-educacao/midas/icons";
 
-<Button size="lg">Começar <ArrowRight /></Button>
+<Button size="lg">Começar <IconArrowRight /></Button>
 ```
 
 ### O que tem
@@ -55,7 +55,7 @@ import { ArrowRight } from "@t2-educacao/midas/icons";
 | Entrada | O que entrega |
 |---------|--------------|
 | `@t2-educacao/midas` | Componentes React + utilitário `cn()` |
-| `@t2-educacao/midas/icons` | Ícones Phosphor (funcionam em Server e Client Components) |
+| `@t2-educacao/midas/icons` | Ícones Tabler (funcionam em Server e Client Components) |
 | `@t2-educacao/midas/theme.css` | Tokens para o Tailwind v4 do projeto (claro e escuro) |
 | `@t2-educacao/midas/styles.css` | CSS já compilado para projetos em Tailwind v3 |
 | `@t2-educacao/midas/docs/*` | Documentação em Markdown, na versão instalada |
@@ -70,7 +70,7 @@ React 18 | 19 + Radix UI     →  componentes acessíveis (teclado, foco, ARIA)
 class-variance-authority      →  variantes tipadas (variant, size)
 tailwind-merge (cn)           →  className do projeto vence sem conflito
 Tailwind CSS v4 + CSS vars    →  tokens --midas-* com tema claro/escuro
-Phosphor Icons                →  biblioteca de ícones oficial
+Tabler Icons                  →  biblioteca de ícones oficial
 tsdown (unbundle, ESM)        →  1 arquivo por componente, tree-shaking real
 Vitest + Testing Library + axe → testes de comportamento e acessibilidade
 Biome                         →  lint e formatação
@@ -85,7 +85,7 @@ Changesets                    →  versionamento e CHANGELOG
 ```
 packages/midas/        →  O PACOTE publicado no npm (@t2-educacao/midas)
   src/components/        um componente por pasta: .tsx · .test.tsx · index.ts
-  src/icons/             reexporta Phosphor
+  src/icons/             reexporta Tabler
   src/styles/            theme.css (tokens) · styles.css (CSS compilado)
   docs/                  docs em Markdown: vão no npm e alimentam o site
 apps/docs/             →  site de documentação (midas.t2.com.br, não vai para o npm)

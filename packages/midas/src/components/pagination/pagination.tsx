@@ -1,4 +1,4 @@
-import { CaretLeft, CaretRight, DotsThree } from "@phosphor-icons/react/ssr";
+import { IconChevronLeft, IconChevronRight, IconDots } from "@tabler/icons-react";
 import * as React from "react";
 import { cn } from "../../lib/cn";
 import { type ButtonProps, buttonVariants } from "../button/button";
@@ -72,7 +72,7 @@ export const PaginationPrevious = React.forwardRef<HTMLAnchorElement, Pagination
       className={cn("ps-2", className)}
       {...props}
     >
-      <CaretLeft className="rtl:rotate-180" />
+      <IconChevronLeft className="rtl:rotate-180" />
       <span className="hidden sm:block">{label}</span>
     </PaginationLink>
   ),
@@ -90,7 +90,7 @@ export const PaginationNext = React.forwardRef<HTMLAnchorElement, PaginationNavP
       {...props}
     >
       <span className="hidden sm:block">{label}</span>
-      <CaretRight className="rtl:rotate-180" />
+      <IconChevronRight className="rtl:rotate-180" />
     </PaginationLink>
   ),
 );
@@ -104,7 +104,7 @@ export function PaginationEllipsis({ className, ...props }: React.HTMLAttributes
       className={cn("flex size-8 items-center justify-center text-muted-foreground", className)}
       {...props}
     >
-      <DotsThree className="size-4" />
+      <IconDots className="size-4" />
       <span className="sr-only">Mais páginas</span>
     </span>
   );

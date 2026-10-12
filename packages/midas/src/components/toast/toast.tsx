@@ -1,6 +1,6 @@
 "use client";
 
-import { X } from "@phosphor-icons/react/ssr";
+import { IconX } from "@tabler/icons-react";
 import type * as React from "react";
 import { Toaster as Sonner, type ToasterProps as SonnerProps, toast } from "sonner";
 import { cn } from "../../lib/cn";
@@ -15,7 +15,7 @@ export function Toaster({ toastOptions, style, className, ...props }: ToasterPro
     <Sonner
       className={cn("toaster group", className)}
       closeButton
-      icons={{ loading: <Spinner label="" aria-hidden />, close: <X className="size-4" /> }}
+      icons={{ loading: <Spinner label="" aria-hidden />, close: <IconX className="size-4" /> }}
       style={{ "--width": "382px", ...style } as React.CSSProperties}
       toastOptions={{
         unstyled: true,

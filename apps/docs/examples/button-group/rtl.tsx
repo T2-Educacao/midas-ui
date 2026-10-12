@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, ButtonGroup, ButtonGroupSeparator, DirectionProvider } from "@t2-educacao/midas";
-import { ArrowLeft, ArrowRight } from "@t2-educacao/midas/icons";
+import { IconArrowLeft, IconArrowRight } from "@t2-educacao/midas/icons";
 
 export default function ButtonGroupRtl() {
   return (
@@ -9,11 +9,11 @@ export default function ButtonGroupRtl() {
       <DirectionProvider dir="rtl">
         <ButtonGroup aria-label="Navegação">
           <Button variant="outline">
-            <ArrowRight className="rtl:rotate-180" /> السابق
+            <IconArrowRight className="rtl:rotate-180" /> السابق
           </Button>
           <ButtonGroupSeparator />
           <Button variant="outline">
-            التالي <ArrowLeft className="rtl:rotate-180" />
+            التالي <IconArrowLeft className="rtl:rotate-180" />
           </Button>
         </ButtonGroup>
       </DirectionProvider>

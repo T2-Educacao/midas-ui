@@ -1,6 +1,6 @@
 "use client";
 
-import { Check } from "@phosphor-icons/react/ssr";
+import { IconCheck } from "@tabler/icons-react";
 import { cva } from "class-variance-authority";
 import { Checkbox as CheckboxPrimitive, RadioGroup as RadioGroupPrimitive } from "radix-ui";
 import * as React from "react";
@@ -160,7 +160,7 @@ export const ChoiceCardCheckbox = React.forwardRef<
             className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-[4px] border border-input bg-background group-data-[state=checked]/choice-card:border-primary group-data-[state=checked]/choice-card:bg-primary group-data-[state=checked]/choice-card:text-primary-foreground"
           >
             <CheckboxPrimitive.Indicator className="flex items-center justify-center">
-              <Check weight="bold" className="size-3" />
+              <IconCheck stroke={3} className="size-3" />
             </CheckboxPrimitive.Indicator>
           </span>
         }
