@@ -1,0 +1,1550 @@
+[
+  {
+    "token": "surface/canvas",
+    "modes": {
+      "Light": {
+        "hex": "#F8FAFC",
+        "alias": "slate/50"
+      },
+      "Dark": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      },
+      "Dark Blue": {
+        "hex": "#020617",
+        "alias": "slate/950"
+      }
+    },
+    "description": "Fundo da página/aplicação. Camada mais baixa."
+  },
+  {
+    "token": "surface/default",
+    "modes": {
+      "Light": {
+        "hex": "#F8FAFC",
+        "alias": "slate/50"
+      },
+      "Dark": {
+        "hex": "#171717",
+        "alias": "neutral/900"
+      },
+      "Dark Blue": {
+        "hex": "#0F172A",
+        "alias": "slate/900"
+      }
+    },
+    "description": "Superfície padrão de containers (cards, painéis) sobre o canvas."
+  },
+  {
+    "token": "surface/muted",
+    "modes": {
+      "Light": {
+        "hex": "#F5F5F5",
+        "alias": "neutral/100"
+      },
+      "Dark": {
+        "hex": "#262626",
+        "alias": "neutral/800"
+      },
+      "Dark Blue": {
+        "hex": "#1E293B",
+        "alias": "slate/800"
+      }
+    },
+    "description": "Superfície discreta para áreas secundárias, trilhos, fundos de seção e itens desabilitados não interativos."
+  },
+  {
+    "token": "overlay/border",
+    "modes": {
+      "Light": {
+        "hex": "#D4D4D4",
+        "alias": "neutral/300"
+      },
+      "Dark": {
+        "hex": "#404040",
+        "alias": "neutral/700"
+      },
+      "Dark Blue": {
+        "hex": "#334155",
+        "alias": "slate/700"
+      }
+    },
+    "description": "Borda de elementos sobrepostos (overlay/surface)."
+  },
+  {
+    "token": "overlay/hover",
+    "modes": {
+      "Light": {
+        "hex": "#F5F5F5",
+        "alias": "neutral/100"
+      },
+      "Dark": {
+        "hex": "#404040",
+        "alias": "neutral/700"
+      },
+      "Dark Blue": {
+        "hex": "#334155",
+        "alias": "slate/700"
+      }
+    },
+    "description": "Hover de itens dentro de overlays (ex.: item de menu)."
+  },
+  {
+    "token": "overlay/surface",
+    "modes": {
+      "Light": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark": {
+        "hex": "#262626",
+        "alias": "neutral/800"
+      },
+      "Dark Blue": {
+        "hex": "#1E293B",
+        "alias": "slate/800"
+      }
+    },
+    "description": "Fundo de tudo que flutua acima da página: dropdown, popover, combobox, date picker, tooltip, menus. Sempre um nível acima de surface."
+  },
+  {
+    "token": "content/disabled",
+    "modes": {
+      "Light": {
+        "hex": "#A1A1A1",
+        "alias": "neutral/400"
+      },
+      "Dark": {
+        "hex": "#525252",
+        "alias": "neutral/600"
+      },
+      "Dark Blue": {
+        "hex": "#475569",
+        "alias": "slate/600"
+      }
+    },
+    "description": "Texto e ícones de elementos desabilitados (isento de contraste WCAG, nunca como único sinal)."
+  },
+  {
+    "token": "content/inverse",
+    "modes": {
+      "Light": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark": {
+        "hex": "#171717",
+        "alias": "neutral/900"
+      },
+      "Dark Blue": {
+        "hex": "#171717",
+        "alias": "neutral/900"
+      }
+    },
+    "description": "Texto sobre superfícies de cor invertida (ex.: sobre action/primary/bg quando não usar action/primary/content)."
+  },
+  {
+    "token": "content/link",
+    "modes": {
+      "Light": {
+        "hex": "#007595",
+        "alias": "cyan/700"
+      },
+      "Dark": {
+        "hex": "#00D3F2",
+        "alias": "cyan/400"
+      },
+      "Dark Blue": {
+        "hex": "#00D3F2",
+        "alias": "cyan/400"
+      }
+    },
+    "description": "Links de texto. Família Cyan."
+  },
+  {
+    "token": "content/primary",
+    "modes": {
+      "Light": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      },
+      "Dark": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark Blue": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      }
+    },
+    "description": "Texto e ícones principais. Uso padrão para conteúdo."
+  },
+  {
+    "token": "content/secondary",
+    "modes": {
+      "Light": {
+        "hex": "#525252",
+        "alias": "neutral/600"
+      },
+      "Dark": {
+        "hex": "#A1A1A1",
+        "alias": "neutral/400"
+      },
+      "Dark Blue": {
+        "hex": "#94A3B8",
+        "alias": "slate/400"
+      }
+    },
+    "description": "Texto e ícones de apoio: descrições, metadados, placeholders. Contraste ≥ 4,5:1 em todas as superfícies."
+  },
+  {
+    "token": "border/default",
+    "modes": {
+      "Light": {
+        "hex": "#E5E5E5",
+        "alias": "neutral/500"
+      },
+      "Dark": {
+        "hex": "#262626",
+        "alias": "neutral/500"
+      },
+      "Dark Blue": {
+        "hex": "#1E293B",
+        "alias": "slate/500"
+      }
+    },
+    "description": "Limite de controles interativos: inputs, selects, checkbox, radio, switch desligado. Contraste ≥ 3:1 (WCAG 1.4.11)."
+  },
+  {
+    "token": "border/strong",
+    "modes": {
+      "Light": {
+        "hex": "#525252",
+        "alias": "neutral/600"
+      },
+      "Dark": {
+        "hex": "#A1A1A1",
+        "alias": "neutral/400"
+      },
+      "Dark Blue": {
+        "hex": "#94A3B8",
+        "alias": "slate/400"
+      }
+    },
+    "description": "Borda em hover de controles e ênfase."
+  },
+  {
+    "token": "border/subtle",
+    "modes": {
+      "Light": {
+        "hex": "#E5E5E5",
+        "alias": "neutral/200"
+      },
+      "Dark": {
+        "hex": "#262626",
+        "alias": "neutral/800"
+      },
+      "Dark Blue": {
+        "hex": "#1E293B",
+        "alias": "slate/800"
+      }
+    },
+    "description": "Divisores e contornos decorativos (cards, separadores). Não usar como limite de controle."
+  },
+  {
+    "token": "field/bg",
+    "modes": {
+      "Light": {
+        "hex": "#F8FAFC",
+        "alias": "slate/50"
+      },
+      "Dark": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      },
+      "Dark Blue": {
+        "hex": "#020617",
+        "alias": "slate/950"
+      }
+    },
+    "description": "Fundo de campos (input, select, textarea, date picker)."
+  },
+  {
+    "token": "field/bg-hover",
+    "modes": {
+      "Light": {
+        "hex": "#F5F5F5",
+        "alias": "neutral/100"
+      },
+      "Dark": {
+        "hex": "#171717",
+        "alias": "neutral/900"
+      },
+      "Dark Blue": {
+        "hex": "#0F172A",
+        "alias": "slate/900"
+      }
+    },
+    "description": "Fundo de campos em hover."
+  },
+  {
+    "token": "action/accent/bg",
+    "modes": {
+      "Light": {
+        "hex": "#007595",
+        "alias": "cyan/700"
+      },
+      "Dark": {
+        "hex": "#00D3F2",
+        "alias": "cyan/400"
+      },
+      "Dark Blue": {
+        "hex": "#00D3F2",
+        "alias": "cyan/400"
+      }
+    },
+    "description": "Fundo da ação de destaque (Cyan). Contraste com action/accent/content ≥ 5:1."
+  },
+  {
+    "token": "action/accent/bg-hover",
+    "modes": {
+      "Light": {
+        "hex": "#005F78",
+        "alias": "cyan/800"
+      },
+      "Dark": {
+        "hex": "#53EAFD",
+        "alias": "cyan/300"
+      },
+      "Dark Blue": {
+        "hex": "#53EAFD",
+        "alias": "cyan/300"
+      }
+    },
+    "description": "Hover da ação de destaque."
+  },
+  {
+    "token": "action/accent/bg-pressed",
+    "modes": {
+      "Light": {
+        "hex": "#104E64",
+        "alias": "cyan/900"
+      },
+      "Dark": {
+        "hex": "#A2F4FD",
+        "alias": "cyan/200"
+      },
+      "Dark Blue": {
+        "hex": "#A2F4FD",
+        "alias": "cyan/200"
+      }
+    },
+    "description": "Pressed da ação de destaque e fim do degradê accent."
+  },
+  {
+    "token": "action/accent/content",
+    "modes": {
+      "Light": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      },
+      "Dark Blue": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      }
+    },
+    "description": "Texto/ícone sobre action/accent/bg."
+  },
+  {
+    "token": "action/accent/gradient-bottom",
+    "modes": {
+      "Light": {
+        "hex": "#007595",
+        "alias": "cyan/700"
+      },
+      "Dark": {
+        "hex": "#00D3F2",
+        "alias": "cyan/400"
+      },
+      "Dark Blue": {
+        "hex": "#00D3F2",
+        "alias": "cyan/400"
+      }
+    },
+    "description": "Base do degradê accent."
+  },
+  {
+    "token": "action/accent/gradient-top",
+    "modes": {
+      "Light": {
+        "hex": "#0092B8",
+        "alias": "cyan/600"
+      },
+      "Dark": {
+        "hex": "#53EAFD",
+        "alias": "cyan/300"
+      },
+      "Dark Blue": {
+        "hex": "#53EAFD",
+        "alias": "cyan/300"
+      }
+    },
+    "description": "Topo do degradê accent (transição curta, mesma cor)."
+  },
+  {
+    "token": "action/destructive/bg",
+    "modes": {
+      "Light": {
+        "hex": "#E7000B",
+        "alias": "red/600"
+      },
+      "Dark": {
+        "hex": "#E7000B",
+        "alias": "red/600"
+      },
+      "Dark Blue": {
+        "hex": "#E7000B",
+        "alias": "red/600"
+      }
+    },
+    "description": "Fundo de ações destrutivas (excluir, remover)."
+  },
+  {
+    "token": "action/destructive/bg-hover",
+    "modes": {
+      "Light": {
+        "hex": "#C10007",
+        "alias": "red/700"
+      },
+      "Dark": {
+        "hex": "#C10007",
+        "alias": "red/700"
+      },
+      "Dark Blue": {
+        "hex": "#C10007",
+        "alias": "red/700"
+      }
+    },
+    "description": "Hover de ação destrutiva."
+  },
+  {
+    "token": "action/destructive/bg-pressed",
+    "modes": {
+      "Light": {
+        "hex": "#9F0712",
+        "alias": "red/800"
+      },
+      "Dark": {
+        "hex": "#9F0712",
+        "alias": "red/800"
+      },
+      "Dark Blue": {
+        "hex": "#9F0712",
+        "alias": "red/800"
+      }
+    },
+    "description": "Pressed de ação destrutiva."
+  },
+  {
+    "token": "action/destructive/content",
+    "modes": {
+      "Light": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark Blue": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      }
+    },
+    "description": "Texto/ícone sobre action/destructive/bg."
+  },
+  {
+    "token": "action/primary/bg",
+    "modes": {
+      "Light": {
+        "hex": "#171717",
+        "alias": "neutral/900"
+      },
+      "Dark": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark Blue": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      }
+    },
+    "description": "Fundo da ação principal (botão primário)."
+  },
+  {
+    "token": "action/primary/bg-hover",
+    "modes": {
+      "Light": {
+        "hex": "#262626",
+        "alias": "neutral/800"
+      },
+      "Dark": {
+        "hex": "#E5E5E5",
+        "alias": "neutral/200"
+      },
+      "Dark Blue": {
+        "hex": "#E5E5E5",
+        "alias": "neutral/200"
+      }
+    },
+    "description": "Hover da ação principal."
+  },
+  {
+    "token": "action/primary/bg-pressed",
+    "modes": {
+      "Light": {
+        "hex": "#404040",
+        "alias": "neutral/700"
+      },
+      "Dark": {
+        "hex": "#D4D4D4",
+        "alias": "neutral/300"
+      },
+      "Dark Blue": {
+        "hex": "#D4D4D4",
+        "alias": "neutral/300"
+      }
+    },
+    "description": "Pressed da ação principal."
+  },
+  {
+    "token": "action/primary/content",
+    "modes": {
+      "Light": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark": {
+        "hex": "#171717",
+        "alias": "neutral/900"
+      },
+      "Dark Blue": {
+        "hex": "#171717",
+        "alias": "neutral/900"
+      }
+    },
+    "description": "Texto/ícone sobre action/primary/bg."
+  },
+  {
+    "token": "action/primary/gradient-bottom",
+    "modes": {
+      "Light": {
+        "hex": "#171717",
+        "alias": "neutral/900"
+      },
+      "Dark": {
+        "hex": "#E5E5E5",
+        "alias": "neutral/200"
+      },
+      "Dark Blue": {
+        "hex": "#E5E5E5",
+        "alias": "neutral/200"
+      }
+    },
+    "description": "Base do degradê neutro."
+  },
+  {
+    "token": "action/primary/gradient-top",
+    "modes": {
+      "Light": {
+        "hex": "#404040",
+        "alias": "neutral/700"
+      },
+      "Dark": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark Blue": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      }
+    },
+    "description": "Topo do degradê neutro (preto suave no claro, branco no escuro)."
+  },
+  {
+    "token": "action/secondary/bg",
+    "modes": {
+      "Light": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark": {
+        "hex": "#262626",
+        "alias": "neutral/800"
+      },
+      "Dark Blue": {
+        "hex": "#1E293B",
+        "alias": "slate/800"
+      }
+    },
+    "description": "Fundo da ação secundária: superfície clara e elevada (com action/secondary/border + elevation/control). Nunca #FFF puro."
+  },
+  {
+    "token": "action/secondary/bg-hover",
+    "modes": {
+      "Light": {
+        "hex": "#F5F5F5",
+        "alias": "neutral/100"
+      },
+      "Dark": {
+        "hex": "#404040",
+        "alias": "neutral/700"
+      },
+      "Dark Blue": {
+        "hex": "#334155",
+        "alias": "slate/700"
+      }
+    },
+    "description": "Hover da ação secundária."
+  },
+  {
+    "token": "action/secondary/bg-pressed",
+    "modes": {
+      "Light": {
+        "hex": "#E5E5E5",
+        "alias": "neutral/200"
+      },
+      "Dark": {
+        "hex": "#525252",
+        "alias": "neutral/600"
+      },
+      "Dark Blue": {
+        "hex": "#475569",
+        "alias": "slate/600"
+      }
+    },
+    "description": "Pressed da ação secundária."
+  },
+  {
+    "token": "action/secondary/border",
+    "modes": {
+      "Light": {
+        "hex": "#E5E5E5",
+        "alias": "neutral/200"
+      },
+      "Dark": {
+        "hex": "#404040",
+        "alias": "neutral/700"
+      },
+      "Dark Blue": {
+        "hex": "#334155",
+        "alias": "slate/700"
+      }
+    },
+    "description": "Borda da ação secundária (botão claro/elevado)."
+  },
+  {
+    "token": "action/secondary/content",
+    "modes": {
+      "Light": {
+        "hex": "#171717",
+        "alias": "neutral/900"
+      },
+      "Dark": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark Blue": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      }
+    },
+    "description": "Texto/ícone sobre action/secondary/bg."
+  },
+  {
+    "token": "state/hover",
+    "modes": {
+      "Light": {
+        "hex": "#F5F5F5",
+        "alias": "neutral/100"
+      },
+      "Dark": {
+        "hex": "#262626",
+        "alias": "neutral/800"
+      },
+      "Dark Blue": {
+        "hex": "#1E293B",
+        "alias": "slate/800"
+      }
+    },
+    "description": "Hover neutro global: ghost buttons, itens de lista, tabs, sidebar."
+  },
+  {
+    "token": "state/pressed",
+    "modes": {
+      "Light": {
+        "hex": "#E5E5E5",
+        "alias": "neutral/200"
+      },
+      "Dark": {
+        "hex": "#404040",
+        "alias": "neutral/700"
+      },
+      "Dark Blue": {
+        "hex": "#334155",
+        "alias": "slate/700"
+      }
+    },
+    "description": "Pressed/active neutro global."
+  },
+  {
+    "token": "selection/bg",
+    "modes": {
+      "Light": {
+        "hex": "#ECFEFF",
+        "alias": "cyan/50"
+      },
+      "Dark": {
+        "hex": "#053345",
+        "alias": "cyan/950"
+      },
+      "Dark Blue": {
+        "hex": "#053345",
+        "alias": "cyan/950"
+      }
+    },
+    "description": "Fundo de itens selecionados (opções, chips, linhas, menu ativo). Família Cyan."
+  },
+  {
+    "token": "selection/border",
+    "modes": {
+      "Light": {
+        "hex": "#0092B8",
+        "alias": "cyan/600"
+      },
+      "Dark": {
+        "hex": "#00D3F2",
+        "alias": "cyan/400"
+      },
+      "Dark Blue": {
+        "hex": "#00D3F2",
+        "alias": "cyan/400"
+      }
+    },
+    "description": "Borda de itens selecionados. Contraste ≥ 3:1."
+  },
+  {
+    "token": "selection/content",
+    "modes": {
+      "Light": {
+        "hex": "#007595",
+        "alias": "cyan/700"
+      },
+      "Dark": {
+        "hex": "#53EAFD",
+        "alias": "cyan/300"
+      },
+      "Dark Blue": {
+        "hex": "#53EAFD",
+        "alias": "cyan/300"
+      }
+    },
+    "description": "Texto/ícone de itens selecionados sobre selection/bg."
+  },
+  {
+    "token": "selection/fill",
+    "modes": {
+      "Light": {
+        "hex": "#007595",
+        "alias": "cyan/700"
+      },
+      "Dark": {
+        "hex": "#00D3F2",
+        "alias": "cyan/400"
+      },
+      "Dark Blue": {
+        "hex": "#00D3F2",
+        "alias": "cyan/400"
+      }
+    },
+    "description": "Preenchimento sólido de seleção (dia selecionado, chip selecionado com ênfase)."
+  },
+  {
+    "token": "selection/on-fill",
+    "modes": {
+      "Light": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      },
+      "Dark Blue": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      }
+    },
+    "description": "Texto/ícone sobre selection/fill."
+  },
+  {
+    "token": "focus/halo",
+    "modes": {
+      "Light": {
+        "hex": "#06B6D447",
+        "alias": "#00b8db · 35%"
+      },
+      "Dark": {
+        "hex": "#22D3EE4D",
+        "alias": "#00d3f2 · 35%"
+      },
+      "Dark Blue": {
+        "hex": "#22D3EE4D",
+        "alias": "#00d3f2 · 35%"
+      }
+    },
+    "description": "Halo de foco suave (3px, Cyan translúcido) usado pelo effect style focus/ring."
+  },
+  {
+    "token": "focus/ring",
+    "modes": {
+      "Light": {
+        "hex": "#0092B8",
+        "alias": "cyan/600"
+      },
+      "Dark": {
+        "hex": "#00D3F2",
+        "alias": "cyan/400"
+      },
+      "Dark Blue": {
+        "hex": "#00D3F2",
+        "alias": "cyan/400"
+      }
+    },
+    "description": "Cor de foco (Cyan): borda de campos em foco e indicador. Contraste ≥ 3:1 nos 3 temas."
+  },
+  {
+    "token": "disabled/bg",
+    "modes": {
+      "Light": {
+        "hex": "#F5F5F5",
+        "alias": "neutral/100"
+      },
+      "Dark": {
+        "hex": "#262626",
+        "alias": "neutral/800"
+      },
+      "Dark Blue": {
+        "hex": "#1E293B",
+        "alias": "slate/800"
+      }
+    },
+    "description": "Fundo de controles desabilitados."
+  },
+  {
+    "token": "disabled/border",
+    "modes": {
+      "Light": {
+        "hex": "#E5E5E5",
+        "alias": "neutral/200"
+      },
+      "Dark": {
+        "hex": "#262626",
+        "alias": "neutral/800"
+      },
+      "Dark Blue": {
+        "hex": "#1E293B",
+        "alias": "slate/800"
+      }
+    },
+    "description": "Borda de controles desabilitados."
+  },
+  {
+    "token": "status/danger/border",
+    "modes": {
+      "Light": {
+        "hex": "#FFC9C9",
+        "alias": "red/200"
+      },
+      "Dark": {
+        "hex": "#9F0712",
+        "alias": "red/800"
+      },
+      "Dark Blue": {
+        "hex": "#9F0712",
+        "alias": "red/800"
+      }
+    },
+    "description": "Borda de containers de erro/perigo."
+  },
+  {
+    "token": "status/danger/content",
+    "modes": {
+      "Light": {
+        "hex": "#C10007",
+        "alias": "red/700"
+      },
+      "Dark": {
+        "hex": "#FF6467",
+        "alias": "red/400"
+      },
+      "Dark Blue": {
+        "hex": "#FF6467",
+        "alias": "red/400"
+      }
+    },
+    "description": "Texto/ícone de erro/perigo sobre surfaces e sobre status/danger/subtle (≥ 4,5:1)."
+  },
+  {
+    "token": "status/danger/fill",
+    "modes": {
+      "Light": {
+        "hex": "#E7000B",
+        "alias": "red/600"
+      },
+      "Dark": {
+        "hex": "#E7000B",
+        "alias": "red/600"
+      },
+      "Dark Blue": {
+        "hex": "#E7000B",
+        "alias": "red/600"
+      }
+    },
+    "description": "Preenchimento sólido de erro/perigo (badge solid, indicador). Não é cor de texto."
+  },
+  {
+    "token": "status/danger/on-fill",
+    "modes": {
+      "Light": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark Blue": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      }
+    },
+    "description": "Texto/ícone sobre status/danger/fill."
+  },
+  {
+    "token": "status/danger/subtle",
+    "modes": {
+      "Light": {
+        "hex": "#FEF2F2",
+        "alias": "red/50"
+      },
+      "Dark": {
+        "hex": "#460809",
+        "alias": "red/950"
+      },
+      "Dark Blue": {
+        "hex": "#460809",
+        "alias": "red/950"
+      }
+    },
+    "description": "Fundo suave de mensagens de erro/perigo (alerts, badges subtle)."
+  },
+  {
+    "token": "status/info/border",
+    "modes": {
+      "Light": {
+        "hex": "#BEDBFF",
+        "alias": "blue/200"
+      },
+      "Dark": {
+        "hex": "#193CB8",
+        "alias": "blue/800"
+      },
+      "Dark Blue": {
+        "hex": "#193CB8",
+        "alias": "blue/800"
+      }
+    },
+    "description": "Borda de containers de informação."
+  },
+  {
+    "token": "status/info/content",
+    "modes": {
+      "Light": {
+        "hex": "#1447E6",
+        "alias": "blue/700"
+      },
+      "Dark": {
+        "hex": "#51A2FF",
+        "alias": "blue/400"
+      },
+      "Dark Blue": {
+        "hex": "#51A2FF",
+        "alias": "blue/400"
+      }
+    },
+    "description": "Texto/ícone de informação sobre surfaces e sobre status/info/subtle (≥ 4,5:1)."
+  },
+  {
+    "token": "status/info/fill",
+    "modes": {
+      "Light": {
+        "hex": "#155DFC",
+        "alias": "blue/600"
+      },
+      "Dark": {
+        "hex": "#51A2FF",
+        "alias": "blue/400"
+      },
+      "Dark Blue": {
+        "hex": "#51A2FF",
+        "alias": "blue/400"
+      }
+    },
+    "description": "Preenchimento sólido de informação (badge solid, indicador). Não é cor de texto."
+  },
+  {
+    "token": "status/info/on-fill",
+    "modes": {
+      "Light": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      },
+      "Dark Blue": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      }
+    },
+    "description": "Texto/ícone sobre status/info/fill."
+  },
+  {
+    "token": "status/info/subtle",
+    "modes": {
+      "Light": {
+        "hex": "#EFF6FF",
+        "alias": "blue/50"
+      },
+      "Dark": {
+        "hex": "#162456",
+        "alias": "blue/950"
+      },
+      "Dark Blue": {
+        "hex": "#162456",
+        "alias": "blue/950"
+      }
+    },
+    "description": "Fundo suave de mensagens de informação (alerts, badges subtle)."
+  },
+  {
+    "token": "status/success/border",
+    "modes": {
+      "Light": {
+        "hex": "#B9F8CF",
+        "alias": "green/200"
+      },
+      "Dark": {
+        "hex": "#016630",
+        "alias": "green/800"
+      },
+      "Dark Blue": {
+        "hex": "#016630",
+        "alias": "green/800"
+      }
+    },
+    "description": "Borda de containers de sucesso."
+  },
+  {
+    "token": "status/success/content",
+    "modes": {
+      "Light": {
+        "hex": "#008236",
+        "alias": "green/700"
+      },
+      "Dark": {
+        "hex": "#05DF72",
+        "alias": "green/400"
+      },
+      "Dark Blue": {
+        "hex": "#05DF72",
+        "alias": "green/400"
+      }
+    },
+    "description": "Texto/ícone de sucesso sobre surfaces e sobre status/success/subtle (≥ 4,5:1)."
+  },
+  {
+    "token": "status/success/fill",
+    "modes": {
+      "Light": {
+        "hex": "#008236",
+        "alias": "green/700"
+      },
+      "Dark": {
+        "hex": "#05DF72",
+        "alias": "green/400"
+      },
+      "Dark Blue": {
+        "hex": "#05DF72",
+        "alias": "green/400"
+      }
+    },
+    "description": "Preenchimento sólido de sucesso (badge solid, indicador). Não é cor de texto."
+  },
+  {
+    "token": "status/success/on-fill",
+    "modes": {
+      "Light": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      },
+      "Dark Blue": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      }
+    },
+    "description": "Texto/ícone sobre status/success/fill."
+  },
+  {
+    "token": "status/success/subtle",
+    "modes": {
+      "Light": {
+        "hex": "#F0FDF4",
+        "alias": "green/50"
+      },
+      "Dark": {
+        "hex": "#032E15",
+        "alias": "green/950"
+      },
+      "Dark Blue": {
+        "hex": "#032E15",
+        "alias": "green/950"
+      }
+    },
+    "description": "Fundo suave de mensagens de sucesso (alerts, badges subtle)."
+  },
+  {
+    "token": "status/warning/border",
+    "modes": {
+      "Light": {
+        "hex": "#FEE685",
+        "alias": "amber/200"
+      },
+      "Dark": {
+        "hex": "#973C00",
+        "alias": "amber/800"
+      },
+      "Dark Blue": {
+        "hex": "#973C00",
+        "alias": "amber/800"
+      }
+    },
+    "description": "Borda de containers de atenção."
+  },
+  {
+    "token": "status/warning/content",
+    "modes": {
+      "Light": {
+        "hex": "#BB4D00",
+        "alias": "amber/700"
+      },
+      "Dark": {
+        "hex": "#FFB900",
+        "alias": "amber/400"
+      },
+      "Dark Blue": {
+        "hex": "#FFB900",
+        "alias": "amber/400"
+      }
+    },
+    "description": "Texto/ícone de atenção sobre surfaces e sobre status/warning/subtle (≥ 4,5:1)."
+  },
+  {
+    "token": "status/warning/fill",
+    "modes": {
+      "Light": {
+        "hex": "#E17100",
+        "alias": "amber/600"
+      },
+      "Dark": {
+        "hex": "#FFB900",
+        "alias": "amber/400"
+      },
+      "Dark Blue": {
+        "hex": "#FFB900",
+        "alias": "amber/400"
+      }
+    },
+    "description": "Preenchimento sólido de atenção (badge solid, indicador). Não é cor de texto."
+  },
+  {
+    "token": "status/warning/on-fill",
+    "modes": {
+      "Light": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      },
+      "Dark": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      },
+      "Dark Blue": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      }
+    },
+    "description": "Texto/ícone sobre status/warning/fill."
+  },
+  {
+    "token": "status/warning/subtle",
+    "modes": {
+      "Light": {
+        "hex": "#FFFBEB",
+        "alias": "amber/50"
+      },
+      "Dark": {
+        "hex": "#461901",
+        "alias": "amber/950"
+      },
+      "Dark Blue": {
+        "hex": "#461901",
+        "alias": "amber/950"
+      }
+    },
+    "description": "Fundo suave de mensagens de atenção (alerts, badges subtle)."
+  },
+  {
+    "token": "material/glass/bg",
+    "modes": {
+      "Light": {
+        "hex": "#FAFAFA59",
+        "alias": "#fafafa · 35%"
+      },
+      "Dark": {
+        "hex": "#FAFAFA14",
+        "alias": "#fafafa · 8%"
+      },
+      "Dark Blue": {
+        "hex": "#F8FAFC14",
+        "alias": "#f8fafc · 8%"
+      }
+    },
+    "description": "Vidro translúcido (neutral/slate 50 com transparência). Usar com material/glass, glass-strong ou liquid. Só sobre imagem, mídia ou gradiente."
+  },
+  {
+    "token": "material/glass/border",
+    "modes": {
+      "Light": {
+        "hex": "#FAFAFAE5",
+        "alias": "#fafafa · 90%"
+      },
+      "Dark": {
+        "hex": "#FAFAFA47",
+        "alias": "#fafafa · 28%"
+      },
+      "Dark Blue": {
+        "hex": "#F8FAFC47",
+        "alias": "#f8fafc · 28%"
+      }
+    },
+    "description": "Brilho/borda do vidro (highlight)."
+  },
+  {
+    "token": "material/on-media/bg",
+    "modes": {
+      "Light": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark Blue": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      }
+    },
+    "description": "Botão sólido claro sobre mídia (ex.: CTA sobre foto). Fixo nos 3 temas."
+  },
+  {
+    "token": "material/on-media/bg-content",
+    "modes": {
+      "Light": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      },
+      "Dark": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      },
+      "Dark Blue": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      }
+    },
+    "description": "Texto/ícone sobre material/on-media/bg."
+  },
+  {
+    "token": "material/on-media/content",
+    "modes": {
+      "Light": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      },
+      "Dark Blue": {
+        "hex": "#FAFAFA",
+        "alias": "neutral/50"
+      }
+    },
+    "description": "Texto/ícone sobre material/scrim e mídia escura. Fixo nos 3 temas."
+  },
+  {
+    "token": "material/scrim/bg",
+    "modes": {
+      "Light": {
+        "hex": "#0A0A0A73",
+        "alias": "#0a0a0a · 45%"
+      },
+      "Dark": {
+        "hex": "#0A0A0A73",
+        "alias": "#0a0a0a · 45%"
+      },
+      "Dark Blue": {
+        "hex": "#02061773",
+        "alias": "#020617 · 45%"
+      }
+    },
+    "description": "Superfície escura translúcida sobre mídia (frosted). Igual nos 3 temas porque depende da imagem, não do tema."
+  },
+  {
+    "token": "material/scrim/border",
+    "modes": {
+      "Light": {
+        "hex": "#FAFAFA29",
+        "alias": "#fafafa · 16%"
+      },
+      "Dark": {
+        "hex": "#FAFAFA29",
+        "alias": "#fafafa · 16%"
+      },
+      "Dark Blue": {
+        "hex": "#F8FAFC29",
+        "alias": "#f8fafc · 16%"
+      }
+    },
+    "description": "Borda sutil de superfícies frosted."
+  },
+  {
+    "token": "material/sheen",
+    "modes": {
+      "Light": {
+        "hex": "#FAFAFA2E",
+        "alias": "#fafafa · 18%"
+      },
+      "Dark": {
+        "hex": "#FAFAFA59",
+        "alias": "#fafafa · 35%"
+      },
+      "Dark Blue": {
+        "hex": "#FAFAFA59",
+        "alias": "#fafafa · 35%"
+      }
+    },
+    "description": "Brilho de 1px no topo de botões sólidos/degradê (acabamento flat)."
+  },
+  {
+    "token": "material/tint/bg",
+    "modes": {
+      "Light": {
+        "hex": "#00B8DB47",
+        "alias": "#00b8db · 28%"
+      },
+      "Dark": {
+        "hex": "#00D3F238",
+        "alias": "#00d3f2 · 22%"
+      },
+      "Dark Blue": {
+        "hex": "#00D3F238",
+        "alias": "#00d3f2 · 22%"
+      }
+    },
+    "description": "Frosted colorido (Cyan translúcido) sobre mídia. Usar com material/frosted."
+  },
+  {
+    "token": "material/tint/border",
+    "modes": {
+      "Light": {
+        "hex": "#A2F4FD73",
+        "alias": "#a2f4fd · 45%"
+      },
+      "Dark": {
+        "hex": "#53EAFD59",
+        "alias": "#53eafd · 35%"
+      },
+      "Dark Blue": {
+        "hex": "#53EAFD59",
+        "alias": "#53eafd · 35%"
+      }
+    },
+    "description": "Borda/brilho do frosted colorido."
+  },
+  {
+    "token": "brand/content",
+    "modes": {
+      "Light": {
+        "hex": "#007595",
+        "alias": "cyan/700"
+      },
+      "Dark": {
+        "hex": "#00D3F2",
+        "alias": "cyan/400"
+      },
+      "Dark Blue": {
+        "hex": "#00D3F2",
+        "alias": "cyan/400"
+      }
+    },
+    "description": "Texto/ícone na cor de marca (Cyan) sobre superfícies neutras (≥ 4,5:1)."
+  },
+  {
+    "token": "brand/on-primary",
+    "modes": {
+      "Light": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      },
+      "Dark": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      },
+      "Dark Blue": {
+        "hex": "#0A0A0A",
+        "alias": "neutral/950"
+      }
+    },
+    "description": "Texto/ícone sobre brand/primary."
+  },
+  {
+    "token": "brand/primary",
+    "modes": {
+      "Light": {
+        "hex": "#00B8DB",
+        "alias": "cyan/500"
+      },
+      "Dark": {
+        "hex": "#00D3F2",
+        "alias": "cyan/400"
+      },
+      "Dark Blue": {
+        "hex": "#00D3F2",
+        "alias": "cyan/400"
+      }
+    },
+    "description": "Cor de marca principal (Cyan) para destaques de marca, ilustrações e acentos. Ações usam action/accent."
+  },
+  {
+    "token": "chart/1",
+    "modes": {
+      "Light": {
+        "hex": "#00B8DB",
+        "alias": "cyan/500"
+      },
+      "Dark": {
+        "hex": "#00D3F2",
+        "alias": "cyan/400"
+      },
+      "Dark Blue": {
+        "hex": "#00D3F2",
+        "alias": "cyan/400"
+      }
+    },
+    "description": "Série 1 de gráficos (Cyan, cor de marca)."
+  },
+  {
+    "token": "chart/2",
+    "modes": {
+      "Light": {
+        "hex": "#00A6F4",
+        "alias": "sky/500"
+      },
+      "Dark": {
+        "hex": "#00BCFF",
+        "alias": "sky/400"
+      },
+      "Dark Blue": {
+        "hex": "#00BCFF",
+        "alias": "sky/400"
+      }
+    },
+    "description": "Série 2 de gráficos (Sky, apoio)."
+  },
+  {
+    "token": "chart/3",
+    "modes": {
+      "Light": {
+        "hex": "#8E51FF",
+        "alias": "violet/500"
+      },
+      "Dark": {
+        "hex": "#A684FF",
+        "alias": "violet/400"
+      },
+      "Dark Blue": {
+        "hex": "#A684FF",
+        "alias": "violet/400"
+      }
+    },
+    "description": "Série 3 de gráficos."
+  },
+  {
+    "token": "chart/4",
+    "modes": {
+      "Light": {
+        "hex": "#00BC7D",
+        "alias": "emerald/500"
+      },
+      "Dark": {
+        "hex": "#00D492",
+        "alias": "emerald/400"
+      },
+      "Dark Blue": {
+        "hex": "#00D492",
+        "alias": "emerald/400"
+      }
+    },
+    "description": "Série 4 de gráficos."
+  },
+  {
+    "token": "chart/5",
+    "modes": {
+      "Light": {
+        "hex": "#FE9A00",
+        "alias": "amber/500"
+      },
+      "Dark": {
+        "hex": "#FFB900",
+        "alias": "amber/400"
+      },
+      "Dark Blue": {
+        "hex": "#FFB900",
+        "alias": "amber/400"
+      }
+    },
+    "description": "Série 5 de gráficos."
+  }
+]

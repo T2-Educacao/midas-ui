@@ -32,3 +32,4 @@ Thumbs.db
 *.tgz
 
 packages/midas/llms.txt
+packages/midas/.vitest/

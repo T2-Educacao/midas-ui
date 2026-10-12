@@ -1,0 +1,1921 @@
+{
+ "Cover": {
+  "page": "2:28376",
+  "frames": {
+   "T2 educação · Design System · Cover": {
+    "id": "4090:24094",
+    "type": "FRAME",
+    "box": [
+     1600,
+     900
+    ]
+   }
+  }
+ },
+ "Foundation / Colors": {
+  "page": "2:28377",
+  "frames": {
+   "Foundation · Gradientes": {
+    "id": "4002:7471",
+    "type": "FRAME",
+    "box": [
+     1280,
+     9870
+    ]
+   },
+   "Foundation · Cores": {
+    "id": "6038:111",
+    "type": "FRAME",
+    "box": [
+     1440,
+     16193
+    ]
+   }
+  }
+ },
+ "Foundation / Grid": {
+  "page": "6478:24",
+  "frames": {
+   "Grid Overlay": {
+    "id": "6478:79",
+    "type": "COMPONENT_SET",
+    "box": [
+     5782,
+     980
+    ]
+   },
+   "Layout Template": {
+    "id": "6479:336",
+    "type": "COMPONENT_SET",
+    "box": [
+     2790,
+     9856
+    ]
+   },
+   "Viewport": {
+    "id": "6481:127",
+    "type": "COMPONENT_SET",
+    "box": [
+     7676,
+     5129
+    ]
+   },
+   "Grid · Documentação": {
+    "id": "6487:9",
+    "type": "FRAME",
+    "box": [
+     1400,
+     6112
+    ]
+   }
+  }
+ },
+ "Foundation / Logos": {
+  "page": "4001:174",
+  "frames": {
+   "Foundation · Logos": {
+    "id": "4096:2",
+    "type": "FRAME",
+    "box": [
+     1280,
+     2540
+    ]
+   },
+   "Logo": {
+    "id": "6146:18192",
+    "type": "COMPONENT_SET",
+    "box": [
+     504,
+     184
+    ]
+   }
+  }
+ },
+ "Foundation / Scale & Effects": {
+  "page": "11:521",
+  "frames": {
+   "Foundation · Escalas e efeitos": {
+    "id": "6079:9",
+    "type": "FRAME",
+    "box": [
+     1440,
+     4560
+    ]
+   }
+  }
+ },
+ "Foundation / Typography": {
+  "page": "6043:9",
+  "frames": {
+   "Foundation · Tipografia": {
+    "id": "6043:10",
+    "type": "FRAME",
+    "box": [
+     1440,
+     2398
+    ]
+   }
+  }
+ },
+ "Image Gallery": {
+  "page": "6019:34051",
+  "frames": {
+   "Image Gallery": {
+    "id": "6039:34053",
+    "type": "FRAME",
+    "box": [
+     3304,
+     3406
+    ]
+   },
+   "Course Covers": {
+    "id": "6061:39212",
+    "type": "FRAME",
+    "box": [
+     3304,
+     3406
+    ]
+   },
+   "Illustrations/graphs": {
+    "id": "6061:39300",
+    "type": "FRAME",
+    "box": [
+     3304,
+     3406
+    ]
+   },
+   "Avatar": {
+    "id": "6188:41413",
+    "type": "FRAME",
+    "box": [
+     2464,
+     2028
+    ]
+   }
+  }
+ },
+ "Accordion": {
+  "page": "6451:9",
+  "frames": {
+   "Accordion Item": {
+    "id": "6451:427",
+    "type": "COMPONENT_SET",
+    "box": [
+     2944,
+     1346
+    ]
+   },
+   "Accordion": {
+    "id": "6452:698",
+    "type": "COMPONENT_SET",
+    "box": [
+     3440,
+     1200
+    ]
+   },
+   "Accordion · Documentação": {
+    "id": "6452:699",
+    "type": "FRAME",
+    "box": [
+     1400,
+     3594
+    ]
+   }
+  }
+ },
+ "Avatar": {
+  "page": "6113:9",
+  "frames": {
+   "Avatar Face": {
+    "id": "6117:137",
+    "type": "COMPONENT_SET",
+    "box": [
+     1128,
+     392
+    ]
+   },
+   "Avatar Hair": {
+    "id": "6117:234",
+    "type": "COMPONENT_SET",
+    "box": [
+     760,
+     944
+    ]
+   },
+   "Avatar Body": {
+    "id": "6117:327",
+    "type": "COMPONENT_SET",
+    "box": [
+     760,
+     576
+    ]
+   },
+   "Avatar Glasses": {
+    "id": "6117:346",
+    "type": "COMPONENT_SET",
+    "box": [
+     760,
+     208
+    ]
+   },
+   "Avatar Item": {
+    "id": "6117:375",
+    "type": "COMPONENT_SET",
+    "box": [
+     1128,
+     208
+    ]
+   },
+   "Avatar Character": {
+    "id": "6117:7786",
+    "type": "COMPONENT_SET",
+    "box": [
+     392,
+     208
+    ]
+   },
+   "Avatar Badge": {
+    "id": "6118:334",
+    "type": "COMPONENT_SET",
+    "box": [
+     368,
+     192
+    ]
+   },
+   "Avatar": {
+    "id": "6118:947",
+    "type": "COMPONENT_SET",
+    "box": [
+     504,
+     1324
+    ]
+   },
+   "Avatar Group": {
+    "id": "6120:3835",
+    "type": "COMPONENT_SET",
+    "box": [
+     240,
+     552
+    ]
+   },
+   "Avatar Option": {
+    "id": "6120:3911",
+    "type": "COMPONENT_SET",
+    "box": [
+     408,
+     152
+    ]
+   },
+   "Avatar · Documentação": {
+    "id": "6123:3643",
+    "type": "FRAME",
+    "box": [
+     1600,
+     5016
+    ]
+   },
+   "Avatar Builder": {
+    "id": "6148:6305",
+    "type": "COMPONENT_SET",
+    "box": [
+     1134,
+     866
+    ]
+   }
+  }
+ },
+ "Banner": {
+  "page": "6437:9",
+  "frames": {
+   "Banner": {
+    "id": "6437:419",
+    "type": "COMPONENT_SET",
+    "box": [
+     2856,
+     621
+    ]
+   },
+   "Banner · Documentação": {
+    "id": "6444:237",
+    "type": "FRAME",
+    "box": [
+     1400,
+     1745
+    ]
+   }
+  }
+ },
+ "Bottom Navigation": {
+  "page": "6146:69",
+  "frames": {
+   "Bottom Navigation": {
+    "id": "6146:244",
+    "type": "COMPONENT_SET",
+    "box": [
+     470,
+     788
+    ]
+   },
+   "Bottom Navigation · Documentação": {
+    "id": "6150:924",
+    "type": "FRAME",
+    "box": [
+     1600,
+     1928
+    ]
+   }
+  }
+ },
+ "Bottom Sheet": {
+  "page": "6247:12440",
+  "frames": {
+   "Bottom Sheet": {
+    "id": "6247:13554",
+    "type": "COMPONENT_SET",
+    "box": [
+     2604,
+     4944
+    ]
+   },
+   "Bottom Sheet · Documentação": {
+    "id": "6248:529",
+    "type": "FRAME",
+    "box": [
+     1600,
+     2147
+    ]
+   }
+  }
+ },
+ "Breadcrumb": {
+  "page": "6405:9",
+  "frames": {
+   "Breadcrumb Item": {
+    "id": "6405:137",
+    "type": "COMPONENT_SET",
+    "box": [
+     222,
+     496
+    ]
+   },
+   "Breadcrumb Separator": {
+    "id": "6405:148",
+    "type": "COMPONENT_SET",
+    "box": [
+     84,
+     78
+    ]
+   },
+   "Breadcrumb": {
+    "id": "6406:827",
+    "type": "COMPONENT_SET",
+    "box": [
+     1434,
+     808
+    ]
+   },
+   "Breadcrumb · Documentação": {
+    "id": "6424:1055",
+    "type": "FRAME",
+    "box": [
+     1400,
+     1866
+    ]
+   }
+  }
+ },
+ "Buttons": {
+  "page": "6048:9",
+  "frames": {
+   "Button": {
+    "id": "6059:1209",
+    "type": "COMPONENT_SET",
+    "box": [
+     1184,
+     3072
+    ]
+   },
+   "Icon Button": {
+    "id": "6059:1261",
+    "type": "COMPONENT_SET",
+    "box": [
+     512,
+     3072
+    ]
+   },
+   "Button Expressive": {
+    "id": "6059:1262",
+    "type": "COMPONENT_SET",
+    "box": [
+     1060,
+     6768
+    ]
+   },
+   "Buttons · Documentação": {
+    "id": "6073:2235",
+    "type": "FRAME",
+    "box": [
+     1600,
+     8811
+    ]
+   },
+   "Social Logo": {
+    "id": "6223:2345",
+    "type": "COMPONENT_SET",
+    "box": [
+     98,
+     58
+    ]
+   },
+   "Social Button": {
+    "id": "6223:3050",
+    "type": "COMPONENT_SET",
+    "box": [
+     2904,
+     2076
+    ]
+   },
+   "Button Group": {
+    "id": "6246:48368",
+    "type": "COMPONENT_SET",
+    "box": [
+     2832,
+     472
+    ]
+   },
+   "Button Feedback": {
+    "id": "6281:4171",
+    "type": "COMPONENT_SET",
+    "box": [
+     2234,
+     698
+    ]
+   }
+  }
+ },
+ "Calendar": {
+  "page": "6331:9",
+  "frames": {
+   "Calendar Event": {
+    "id": "6331:50",
+    "type": "COMPONENT_SET",
+    "box": [
+     412,
+     464
+    ]
+   },
+   "Calendar Day": {
+    "id": "6331:147",
+    "type": "COMPONENT_SET",
+    "box": [
+     1024,
+     280
+    ]
+   },
+   "Event Calendar": {
+    "id": "6336:3859",
+    "type": "COMPONENT_SET",
+    "box": [
+     3508,
+     3348
+    ]
+   },
+   "Calendar · Documentação": {
+    "id": "6336:87492",
+    "type": "FRAME",
+    "box": [
+     1400,
+     5636
+    ]
+   }
+  }
+ },
+ "Card": {
+  "page": "6083:9",
+  "frames": {
+   "Card": {
+    "id": "6085:3621",
+    "type": "COMPONENT_SET",
+    "box": [
+     3359,
+     15645
+    ]
+   },
+   "Card · Documentação": {
+    "id": "6090:783",
+    "type": "FRAME",
+    "box": [
+     1600,
+     11167
+    ]
+   }
+  }
+ },
+ "Carousel": {
+  "page": "6089:3094",
+  "frames": {
+   "Carousel Dot": {
+    "id": "6089:3097",
+    "type": "COMPONENT_SET",
+    "box": [
+     74,
+     38
+    ]
+   },
+   "Carousel": {
+    "id": "6089:3793",
+    "type": "COMPONENT_SET",
+    "box": [
+     1296,
+     2548
+    ]
+   },
+   "Carousel · Documentação": {
+    "id": "6091:2415",
+    "type": "FRAME",
+    "box": [
+     1600,
+     7782
+    ]
+   }
+  }
+ },
+ "Chart": {
+  "page": "6250:9",
+  "frames": {
+   "Chart": {
+    "id": "6254:1371",
+    "type": "COMPONENT_SET",
+    "box": [
+     3960,
+     8459
+    ]
+   },
+   "Chart · Documentação": {
+    "id": "6254:1372",
+    "type": "FRAME",
+    "box": [
+     1900,
+     5092
+    ]
+   },
+   "Score Bubbles": {
+    "id": "6273:1369",
+    "type": "COMPONENT_SET",
+    "box": [
+     4392,
+     1480
+    ]
+   }
+  }
+ },
+ "Choice": {
+  "page": "6160:4060",
+  "frames": {
+   "Choice Chip": {
+    "id": "6160:4221",
+    "type": "COMPONENT_SET",
+    "box": [
+     706,
+     1560
+    ]
+   },
+   "Choice Card": {
+    "id": "6160:5176",
+    "type": "COMPONENT_SET",
+    "box": [
+     1608,
+     11424
+    ]
+   },
+   "Segment": {
+    "id": "6161:647",
+    "type": "COMPONENT_SET",
+    "box": [
+     448,
+     140
+    ]
+   },
+   "Segmented Control": {
+    "id": "6161:690",
+    "type": "COMPONENT_SET",
+    "box": [
+     1448,
+     154
+    ]
+   },
+   "Answer Option": {
+    "id": "6161:732",
+    "type": "COMPONENT_SET",
+    "box": [
+     608,
+     4304
+    ]
+   },
+   "Choice · Documentação": {
+    "id": "6164:1857",
+    "type": "FRAME",
+    "box": [
+     1600,
+     3828
+    ]
+   },
+   "Seção · Temas (Light · Dark · Dark Blue)": {
+    "id": "6175:4602",
+    "type": "FRAME",
+    "box": [
+     1472,
+     3766
+    ]
+   }
+  }
+ },
+ "Date Picker": {
+  "page": "6224:9",
+  "frames": {
+   "Calendar Day": {
+    "id": "6224:126",
+    "type": "COMPONENT_SET",
+    "box": [
+     600,
+     280
+    ]
+   },
+   "Calendar": {
+    "id": "6225:5046",
+    "type": "COMPONENT_SET",
+    "box": [
+     1512,
+     1480
+    ]
+   },
+   "Date Field": {
+    "id": "6226:2567",
+    "type": "COMPONENT_SET",
+    "box": [
+     4760,
+     1512
+    ]
+   },
+   "Date Picker": {
+    "id": "6227:16389",
+    "type": "COMPONENT_SET",
+    "box": [
+     2592,
+     1209
+    ]
+   },
+   "Wheel Picker": {
+    "id": "6228:7022",
+    "type": "COMPONENT_SET",
+    "box": [
+     790,
+     270
+    ]
+   },
+   "Date Sheet": {
+    "id": "6228:7862",
+    "type": "COMPONENT_SET",
+    "box": [
+     3400,
+     527
+    ]
+   },
+   "Date Picker · Documentação": {
+    "id": "6229:4879",
+    "type": "FRAME",
+    "box": [
+     1600,
+     3442
+    ]
+   }
+  }
+ },
+ "Drawer": {
+  "page": "6461:9",
+  "frames": {
+   "Drawer": {
+    "id": "6463:1501",
+    "type": "COMPONENT_SET",
+    "box": [
+     3280,
+     3400
+    ]
+   },
+   "Drawer · Documentação": {
+    "id": "6463:1502",
+    "type": "FRAME",
+    "box": [
+     1400,
+     2726
+    ]
+   }
+  }
+ },
+ "Dropdown": {
+  "page": "6291:9",
+  "frames": {
+   "Menu Item": {
+    "id": "6291:284",
+    "type": "COMPONENT_SET",
+    "box": [
+     1736,
+     452
+    ]
+   },
+   "Menu Label": {
+    "id": "6291:285",
+    "type": "COMPONENT",
+    "box": [
+     256,
+     28
+    ]
+   },
+   "Menu Divider": {
+    "id": "6291:287",
+    "type": "COMPONENT",
+    "box": [
+     256,
+     9
+    ]
+   },
+   "Dropdown Trigger": {
+    "id": "6316:80938",
+    "type": "COMPONENT_SET",
+    "box": [
+     2216,
+     540
+    ]
+   },
+   "Dropdown": {
+    "id": "6317:1062",
+    "type": "COMPONENT_SET",
+    "box": [
+     2440,
+     605
+    ]
+   },
+   "Combobox": {
+    "id": "6319:1359",
+    "type": "COMPONENT_SET",
+    "box": [
+     2920,
+     615
+    ]
+   },
+   "Dropdown · Documentação": {
+    "id": "6320:995",
+    "type": "FRAME",
+    "box": [
+     1400,
+     3009
+    ]
+   }
+  }
+ },
+ "Empty State": {
+  "page": "6324:9",
+  "frames": {
+   "Empty State": {
+    "id": "6325:84135",
+    "type": "COMPONENT_SET",
+    "box": [
+     3240,
+     6010
+    ]
+   },
+   "Empty State · Documentação": {
+    "id": "6325:84136",
+    "type": "FRAME",
+    "box": [
+     1400,
+     3338
+    ]
+   }
+  }
+ },
+ "Forms": {
+  "page": "6234:23193",
+  "frames": {
+   "Form Template": {
+    "id": "6234:24628",
+    "type": "COMPONENT_SET",
+    "box": [
+     4380,
+     3236
+    ]
+   },
+   "Forms · Documentação": {
+    "id": "6234:46015",
+    "type": "FRAME",
+    "box": [
+     1600,
+     6070
+    ]
+   },
+   "Form Layout": {
+    "id": "6280:67334",
+    "type": "COMPONENT_SET",
+    "box": [
+     8840,
+     4284
+    ]
+   }
+  }
+ },
+ "Header": {
+  "page": "6145:2395",
+  "frames": {
+   "Header": {
+    "id": "6145:2797",
+    "type": "COMPONENT_SET",
+    "box": [
+     1280,
+     840
+    ]
+   },
+   "Header · Documentação": {
+    "id": "6150:180",
+    "type": "FRAME",
+    "box": [
+     1600,
+     2856
+    ]
+   }
+  }
+ },
+ "Hero": {
+  "page": "6340:9",
+  "frames": {
+   "Hero Panel": {
+    "id": "6340:91",
+    "type": "COMPONENT_SET",
+    "box": [
+     944,
+     560
+    ]
+   },
+   "Hero Lesson": {
+    "id": "6341:90",
+    "type": "COMPONENT_SET",
+    "box": [
+     832,
+     216
+    ]
+   },
+   "Hero Hotspot": {
+    "id": "6341:110",
+    "type": "COMPONENT_SET",
+    "box": [
+     332,
+     90
+    ]
+   },
+   "Hero": {
+    "id": "6358:90176",
+    "type": "COMPONENT_SET",
+    "box": [
+     5360,
+     11864
+    ]
+   },
+   "Hero · Documentação": {
+    "id": "6359:2487",
+    "type": "FRAME",
+    "box": [
+     1400,
+     22868
+    ]
+   },
+   "Hero Trailer": {
+    "id": "6375:5405",
+    "type": "COMPONENT_SET",
+    "box": [
+     6688,
+     3040
+    ]
+   },
+   "Wallet Card": {
+    "id": "6386:6197",
+    "type": "COMPONENT_SET",
+    "box": [
+     1840,
+     878
+    ]
+   },
+   "Hero Formats": {
+    "id": "6473:9390",
+    "type": "COMPONENT_SET",
+    "box": [
+     5557,
+     3120
+    ]
+   },
+   "Hero Viewport": {
+    "id": "6484:12243",
+    "type": "COMPONENT_SET",
+    "box": [
+     7825,
+     5024
+    ]
+   }
+  }
+ },
+ "Input": {
+  "page": "6182:9",
+  "frames": {
+   "Select Option": {
+    "id": "6182:28115",
+    "type": "COMPONENT_SET",
+    "box": [
+     2456,
+     600
+    ]
+   },
+   "Input": {
+    "id": "6193:30508",
+    "type": "COMPONENT_SET",
+    "box": [
+     5120,
+     12408
+    ]
+   },
+   "Select Menu": {
+    "id": "6195:6721",
+    "type": "COMPONENT_SET",
+    "box": [
+     2816,
+     1190
+    ]
+   },
+   "Search Bar": {
+    "id": "6196:7498",
+    "type": "COMPONENT_SET",
+    "box": [
+     12080,
+     1010
+    ]
+   },
+   "Textarea": {
+    "id": "6213:6610",
+    "type": "COMPONENT_SET",
+    "box": [
+     5440,
+     1464
+    ]
+   },
+   "Tag Input": {
+    "id": "6213:8843",
+    "type": "COMPONENT_SET",
+    "box": [
+     3904,
+     1824
+    ]
+   },
+   "Code Slot": {
+    "id": "6214:34293",
+    "type": "COMPONENT_SET",
+    "box": [
+     1024,
+     1080
+    ]
+   },
+   "Code Input": {
+    "id": "6215:8844",
+    "type": "COMPONENT_SET",
+    "box": [
+     5074,
+     2904
+    ]
+   },
+   "File Item": {
+    "id": "6216:10376",
+    "type": "COMPONENT_SET",
+    "box": [
+     872,
+     624
+    ]
+   },
+   "File Upload": {
+    "id": "6216:11269",
+    "type": "COMPONENT_SET",
+    "box": [
+     3456,
+     2232
+    ]
+   },
+   "Input · Documentação": {
+    "id": "6217:8054",
+    "type": "FRAME",
+    "box": [
+     1600,
+     11105
+    ]
+   },
+   "RTE Button": {
+    "id": "6409:9292",
+    "type": "COMPONENT_SET",
+    "box": [
+     256,
+     200
+    ]
+   },
+   "Rich Text Editor": {
+    "id": "6421:12521",
+    "type": "COMPONENT_SET",
+    "box": [
+     2960,
+     8256
+    ]
+   }
+  }
+ },
+ "Link": {
+  "page": "6396:9",
+  "frames": {
+   "Link": {
+    "id": "6396:731",
+    "type": "COMPONENT_SET",
+    "box": [
+     787,
+     1280
+    ]
+   },
+   "Link · Documentação": {
+    "id": "6424:324",
+    "type": "FRAME",
+    "box": [
+     1400,
+     1872
+    ]
+   }
+  }
+ },
+ "List": {
+  "page": "6283:9",
+  "frames": {
+   "List Item": {
+    "id": "6283:1008",
+    "type": "COMPONENT_SET",
+    "box": [
+     4560,
+     1122
+    ]
+   },
+   "List": {
+    "id": "6287:1781",
+    "type": "COMPONENT_SET",
+    "box": [
+     5100,
+     4561
+    ]
+   },
+   "List · Documentação": {
+    "id": "6287:1782",
+    "type": "FRAME",
+    "box": [
+     1400,
+     6345
+    ]
+   },
+   "List Card": {
+    "id": "6316:3132",
+    "type": "COMPONENT_SET",
+    "box": [
+     2544,
+     312
+    ]
+   },
+   "Agenda Item": {
+    "id": "6330:4893",
+    "type": "COMPONENT_SET",
+    "box": [
+     1560,
+     686
+    ]
+   }
+  }
+ },
+ "Modal": {
+  "page": "6230:2807",
+  "frames": {
+   "Modal": {
+    "id": "6230:4204",
+    "type": "COMPONENT_SET",
+    "box": [
+     4000,
+     2471
+    ]
+   },
+   "Modal Scrim": {
+    "id": "6231:391",
+    "type": "COMPONENT_SET",
+    "box": [
+     874,
+     350
+    ]
+   },
+   "Modal Overlay": {
+    "id": "6231:432",
+    "type": "COMPONENT_SET",
+    "box": [
+     1792,
+     926
+    ]
+   },
+   "Permission Request": {
+    "id": "6232:3976",
+    "type": "COMPONENT_SET",
+    "box": [
+     1860,
+     2548
+    ]
+   },
+   "Modal · Documentação": {
+    "id": "6233:639",
+    "type": "FRAME",
+    "box": [
+     1600,
+     8363
+    ]
+   },
+   "Profile Menu": {
+    "id": "6292:2179",
+    "type": "COMPONENT_SET",
+    "box": [
+     2620,
+     928
+    ]
+   },
+   "Modal Form": {
+    "id": "6293:3294",
+    "type": "COMPONENT_SET",
+    "box": [
+     4100,
+     2337
+    ]
+   },
+   "Action Menu": {
+    "id": "6299:4033",
+    "type": "COMPONENT_SET",
+    "box": [
+     2720,
+     320
+    ]
+   },
+   "Modal Success": {
+    "id": "6303:3538",
+    "type": "COMPONENT_SET",
+    "box": [
+     2020,
+     2688
+    ]
+   },
+   "Modal Share": {
+    "id": "6305:5417",
+    "type": "COMPONENT_SET",
+    "box": [
+     4100,
+     4330
+    ]
+   },
+   "Modal Error": {
+    "id": "6307:4930",
+    "type": "COMPONENT_SET",
+    "box": [
+     1900,
+     2316
+    ]
+   },
+   "Modal Status": {
+    "id": "6312:4973",
+    "type": "COMPONENT_SET",
+    "box": [
+     2144,
+     888
+    ]
+   }
+  }
+ },
+ "Navigation": {
+  "page": "6140:9",
+  "frames": {
+   "Nav Item": {
+    "id": "6140:187",
+    "type": "COMPONENT_SET",
+    "box": [
+     1424,
+     532
+    ]
+   },
+   "Navigation · Documentação": {
+    "id": "6153:3099",
+    "type": "FRAME",
+    "box": [
+     1600,
+     1342
+    ]
+   }
+  }
+ },
+ "Notification": {
+  "page": "6439:9",
+  "frames": {
+   "Notification Item": {
+    "id": "6439:342",
+    "type": "COMPONENT_SET",
+    "box": [
+     1264,
+     676
+    ]
+   },
+   "Notification Bell": {
+    "id": "6440:171",
+    "type": "COMPONENT_SET",
+    "box": [
+     184,
+     128
+    ]
+   },
+   "Notification Center": {
+    "id": "6440:1639",
+    "type": "COMPONENT_SET",
+    "box": [
+     2724,
+     1816
+    ]
+   },
+   "Notification · Documentação": {
+    "id": "6444:1555",
+    "type": "FRAME",
+    "box": [
+     1400,
+     3133
+    ]
+   }
+  }
+ },
+ "Pagination": {
+  "page": "6270:9",
+  "frames": {
+   "Pagination Item": {
+    "id": "6270:154",
+    "type": "COMPONENT_SET",
+    "box": [
+     680,
+     424
+    ]
+   },
+   "Pagination": {
+    "id": "6271:451",
+    "type": "COMPONENT_SET",
+    "box": [
+     3064,
+     852
+    ]
+   },
+   "Pagination · Documentação": {
+    "id": "6271:65912",
+    "type": "FRAME",
+    "box": [
+     1200,
+     2762
+    ]
+   }
+  }
+ },
+ "Popover": {
+  "page": "6456:9",
+  "frames": {
+   "Popover": {
+    "id": "6456:2243",
+    "type": "COMPONENT_SET",
+    "box": [
+     1374,
+     4060
+    ]
+   },
+   "Popover · Documentação": {
+    "id": "6456:2244",
+    "type": "FRAME",
+    "box": [
+     1400,
+     2142
+    ]
+   }
+  }
+ },
+ "Progress": {
+  "page": "6097:9",
+  "frames": {
+   "Progress": {
+    "id": "6098:9",
+    "type": "COMPONENT_SET",
+    "box": [
+     2649,
+     3956
+    ]
+   },
+   "Progress Line": {
+    "id": "6100:59",
+    "type": "COMPONENT_SET",
+    "box": [
+     1296,
+     611
+    ]
+   },
+   "Progress · Documentação": {
+    "id": "6105:9",
+    "type": "FRAME",
+    "box": [
+     1600,
+     4241
+    ]
+   }
+  }
+ },
+ "Quote": {
+  "page": "6459:9",
+  "frames": {
+   "Quote": {
+    "id": "6459:491",
+    "type": "COMPONENT_SET",
+    "box": [
+     1808,
+     2156
+    ]
+   },
+   "Quote · Documentação": {
+    "id": "6459:492",
+    "type": "FRAME",
+    "box": [
+     1400,
+     1686
+    ]
+   }
+  }
+ },
+ "Rating": {
+  "page": "6129:12",
+  "frames": {
+   "Rating Icon": {
+    "id": "6129:289",
+    "type": "COMPONENT_SET",
+    "box": [
+     528,
+     168
+    ]
+   },
+   "Rating Emoji": {
+    "id": "6130:183",
+    "type": "COMPONENT_SET",
+    "box": [
+     392,
+     464
+    ]
+   },
+   "Rating Number": {
+    "id": "6130:196",
+    "type": "COMPONENT_SET",
+    "box": [
+     240,
+     168
+    ]
+   },
+   "Rating": {
+    "id": "6132:644",
+    "type": "COMPONENT_SET",
+    "box": [
+     2105,
+     1572
+    ]
+   },
+   "Rating Summary": {
+    "id": "6132:673",
+    "type": "COMPONENT_SET",
+    "box": [
+     221,
+     196
+    ]
+   },
+   "Rating · Documentação": {
+    "id": "6133:454",
+    "type": "FRAME",
+    "box": [
+     1600,
+     3832
+    ]
+   }
+  }
+ },
+ "Selection Controls": {
+  "page": "6154:9",
+  "frames": {
+   "Toggle": {
+    "id": "6154:58",
+    "type": "COMPONENT_SET",
+    "box": [
+     320,
+     600
+    ]
+   },
+   "Checkbox": {
+    "id": "6154:164",
+    "type": "COMPONENT_SET",
+    "box": [
+     296,
+     888
+    ]
+   },
+   "Radio": {
+    "id": "6154:210",
+    "type": "COMPONENT_SET",
+    "box": [
+     296,
+     600
+    ]
+   },
+   "Selection Field": {
+    "id": "6156:222",
+    "type": "COMPONENT_SET",
+    "box": [
+     2328,
+     570
+    ]
+   },
+   "Selection Controls · Documentação": {
+    "id": "6162:81",
+    "type": "FRAME",
+    "box": [
+     1600,
+     2682
+    ]
+   }
+  }
+ },
+ "Separator": {
+  "page": "6447:9",
+  "frames": {
+   "Separator": {
+    "id": "6447:71",
+    "type": "COMPONENT_SET",
+    "box": [
+     1944,
+     360
+    ]
+   },
+   "Separator · Documentação": {
+    "id": "6447:72",
+    "type": "FRAME",
+    "box": [
+     1400,
+     1430
+    ]
+   }
+  }
+ },
+ "Sidebar": {
+  "page": "6144:5885",
+  "frames": {
+   "Sidebar": {
+    "id": "6144:7137",
+    "type": "COMPONENT_SET",
+    "box": [
+     2488,
+     1000
+    ]
+   },
+   "Sidebar · Documentação": {
+    "id": "6152:1100",
+    "type": "FRAME",
+    "box": [
+     1600,
+     4388
+    ]
+   }
+  }
+ },
+ "Skeleton": {
+  "page": "6450:9",
+  "frames": {
+   "Skeleton Block": {
+    "id": "6450:19",
+    "type": "COMPONENT_SET",
+    "box": [
+     720,
+     312
+    ]
+   },
+   "Skeleton": {
+    "id": "6450:252",
+    "type": "COMPONENT_SET",
+    "box": [
+     3954,
+     840
+    ]
+   },
+   "Skeleton · Documentação": {
+    "id": "6450:253",
+    "type": "FRAME",
+    "box": [
+     1400,
+     2528
+    ]
+   }
+  }
+ },
+ "Slider": {
+  "page": "6454:9",
+  "frames": {
+   "Slider": {
+    "id": "6454:475",
+    "type": "COMPONENT_SET",
+    "box": [
+     2008,
+     1200
+    ]
+   },
+   "Slider · Documentação": {
+    "id": "6454:476",
+    "type": "FRAME",
+    "box": [
+     1400,
+     1442
+    ]
+   }
+  }
+ },
+ "Spinner": {
+  "page": "6449:9",
+  "frames": {
+   "Spinner": {
+    "id": "6449:116",
+    "type": "COMPONENT_SET",
+    "box": [
+     276,
+     456
+    ]
+   },
+   "Loading State": {
+    "id": "6449:153",
+    "type": "COMPONENT_SET",
+    "box": [
+     1032,
+     736
+    ]
+   },
+   "Spinner · Documentação": {
+    "id": "6449:154",
+    "type": "FRAME",
+    "box": [
+     1400,
+     1504
+    ]
+   }
+  }
+ },
+ "Stepper": {
+  "page": "6102:9",
+  "frames": {
+   "Stepper Step": {
+    "id": "6102:236",
+    "type": "COMPONENT_SET",
+    "box": [
+     3872,
+     320
+    ]
+   },
+   "Stepper": {
+    "id": "6104:202",
+    "type": "COMPONENT_SET",
+    "box": [
+     856,
+     1072
+    ]
+   },
+   "Stepper · Documentação": {
+    "id": "6107:134",
+    "type": "FRAME",
+    "box": [
+     1600,
+     4412
+    ]
+   }
+  }
+ },
+ "Table": {
+  "page": "6258:9",
+  "frames": {
+   "Table Cell": {
+    "id": "6258:229",
+    "type": "COMPONENT_SET",
+    "box": [
+     1816,
+     424
+    ]
+   },
+   "Table Header Cell": {
+    "id": "6259:234",
+    "type": "COMPONENT_SET",
+    "box": [
+     1468,
+     348
+    ]
+   },
+   "Table Header": {
+    "id": "6259:49620",
+    "type": "COMPONENT_SET",
+    "box": [
+     2328,
+     150
+    ]
+   },
+   "Table Row": {
+    "id": "6259:50121",
+    "type": "COMPONENT_SET",
+    "box": [
+     2328,
+     442
+    ]
+   },
+   "Table Toolbar": {
+    "id": "6260:1062",
+    "type": "COMPONENT_SET",
+    "box": [
+     1168,
+     804
+    ]
+   },
+   "Table Pagination": {
+    "id": "6260:1172",
+    "type": "COMPONENT_SET",
+    "box": [
+     1168,
+     324
+    ]
+   },
+   "Table": {
+    "id": "6267:61371",
+    "type": "COMPONENT_SET",
+    "box": [
+     2400,
+     15741
+    ]
+   },
+   "Table · Documentação": {
+    "id": "6267:61372",
+    "type": "FRAME",
+    "box": [
+     1400,
+     10921
+    ]
+   }
+  }
+ },
+ "Tabs": {
+  "page": "6321:9",
+  "frames": {
+   "Tab": {
+    "id": "6321:750",
+    "type": "COMPONENT_SET",
+    "box": [
+     592,
+     1264
+    ]
+   },
+   "Tabs": {
+    "id": "6321:82957",
+    "type": "COMPONENT_SET",
+    "box": [
+     2348,
+     533
+    ]
+   },
+   "Tabs · Documentação": {
+    "id": "6321:82958",
+    "type": "FRAME",
+    "box": [
+     1200,
+     2849
+    ]
+   }
+  }
+ },
+ "Tag & Badge": {
+  "page": "6193:33653",
+  "frames": {
+   "Tag": {
+    "id": "6182:122",
+    "type": "COMPONENT_SET",
+    "box": [
+     2824,
+     1176
+    ]
+   },
+   "Badge": {
+    "id": "6193:33772",
+    "type": "COMPONENT_SET",
+    "box": [
+     408,
+     288
+    ]
+   },
+   "Kbd": {
+    "id": "6195:13",
+    "type": "COMPONENT_SET",
+    "box": [
+     106,
+     58
+    ]
+   },
+   "Tag Detail": {
+    "id": "6212:609",
+    "type": "COMPONENT_SET",
+    "box": [
+     1384,
+     1304
+    ]
+   },
+   "Tag & Badge · Documentação": {
+    "id": "6219:369",
+    "type": "FRAME",
+    "box": [
+     1600,
+     1958
+    ]
+   }
+  }
+ },
+ "Toast": {
+  "page": "6430:9",
+  "frames": {
+   "Toast": {
+    "id": "6430:1618",
+    "type": "COMPONENT_SET",
+    "box": [
+     1700,
+     3372
+    ]
+   },
+   "Toast Stack": {
+    "id": "6435:732",
+    "type": "COMPONENT_SET",
+    "box": [
+     896,
+     690
+    ]
+   },
+   "Toast Placement": {
+    "id": "6435:1027",
+    "type": "COMPONENT_SET",
+    "box": [
+     3520,
+     2160
+    ]
+   },
+   "Toast · Documentação": {
+    "id": "6442:935",
+    "type": "FRAME",
+    "box": [
+     1400,
+     5583
+    ]
+   }
+  }
+ },
+ "Tooltip": {
+  "page": "6109:13",
+  "frames": {
+   "Tooltip": {
+    "id": "6109:230",
+    "type": "COMPONENT_SET",
+    "box": [
+     1500,
+     974
+    ]
+   },
+   "Chart Tooltip": {
+    "id": "6110:102",
+    "type": "COMPONENT_SET",
+    "box": [
+     816,
+     527
+    ]
+   },
+   "Tooltip · Documentação": {
+    "id": "6111:2335",
+    "type": "FRAME",
+    "box": [
+     1600,
+     3975
+    ]
+   }
+  }
+ },
+ "Video Player": {
+  "page": "6464:9",
+  "frames": {
+   "Video Player": {
+    "id": "6467:781",
+    "type": "COMPONENT_SET",
+    "box": [
+     6040,
+     1720
+    ]
+   },
+   "Mini Player": {
+    "id": "6467:919",
+    "type": "COMPONENT_SET",
+    "box": [
+     776,
+     478
+    ]
+   },
+   "Video Player · Documentação": {
+    "id": "6467:920",
+    "type": "FRAME",
+    "box": [
+     1400,
+     4816
+    ]
+   },
+   "Video Formats": {
+    "id": "6471:4217",
+    "type": "COMPONENT_SET",
+    "box": [
+     4952,
+     2760
+    ]
+   }
+  }
+ },
+ "Widgets": {
+  "page": "6237:9",
+  "frames": {
+   "Widget Stat": {
+    "id": "6237:718",
+    "type": "COMPONENT_SET",
+    "box": [
+     2328,
+     1576
+    ]
+   },
+   "Widget Chart": {
+    "id": "6241:2616",
+    "type": "COMPONENT_SET",
+    "box": [
+     4632,
+     1180
+    ]
+   },
+   "Widget Message": {
+    "id": "6243:1720",
+    "type": "COMPONENT_SET",
+    "box": [
+     4632,
+     1314
+    ]
+   },
+   "Widget Filter": {
+    "id": "6244:1699",
+    "type": "COMPONENT_SET",
+    "box": [
+     3104,
+     178
+    ]
+   },
+   "Widget Asset": {
+    "id": "6244:1922",
+    "type": "COMPONENT_SET",
+    "box": [
+     2336,
+     218
+    ]
+   },
+   "Widget Image": {
+    "id": "6244:1969",
+    "type": "COMPONENT_SET",
+    "box": [
+     2138,
+     408
+    ]
+   },
+   "Widget Alert": {
+    "id": "6245:1038",
+    "type": "COMPONENT_SET",
+    "box": [
+     2328,
+     1140
+    ]
+   },
+   "Widgets · Documentação": {
+    "id": "6246:870",
+    "type": "FRAME",
+    "box": [
+     1600,
+     5097
+    ]
+   }
+  }
+ }
+}

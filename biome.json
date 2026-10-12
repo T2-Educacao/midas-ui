@@ -14,7 +14,8 @@
       "!**/dist",
       "!**/.source",
       "!**/coverage",
-      "!**/CHANGELOG.md"
+      "!**/CHANGELOG.md",
+      "!docs/figma"
     ]
   },
   "formatter": {
