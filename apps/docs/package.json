@@ -9,14 +9,14 @@
     "typecheck": "next typegen && tsc --noEmit"
   },
   "dependencies": {
+    "@t2-educacao/midas": "workspace:*",
     "cn": "^0.3.0",
     "fumadocs-core": "16.15.17",
     "fumadocs-mdx": "15.4.5",
     "fumadocs-ui": "npm:@fumadocs/base-ui@16.15.17",
-    "next": "16.3.5",
+    "next": "16.4.0",
     "react": "^19.3.0",
-    "react-dom": "^19.3.0",
-    "@t2-educacao/midas": "workspace:*"
+    "react-dom": "^19.3.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",

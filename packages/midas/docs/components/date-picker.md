@@ -112,3 +112,9 @@ Campo de texto que entende "amanhã", "próxima sexta", "em 3 dias", "15/05" ou 
 - Setas navegam entre dias, Enter seleciona, Esc fecha. Hoje com contorno; indisponíveis riscados.
 - O popover tem nome "Calendário". Permita também digitar a data quando o fluxo exigir (veja Linguagem natural).
 - No mobile use [DateSheet](./date-sheet.md) (bottom sheet com calendário de 44px ou roleta).
+
+## Não faça
+
+- Não use para datas muito distantes (nascimento): ative os dropdowns de mês e ano em vez de navegar mês a mês.
+- Não aceite datas sem validar `min`/`max` no seu formulário: o componente limita a escolha, não valida o texto digitado.
+- Não use `Input type="date"` e `DatePicker` no mesmo fluxo: escolha um padrão por tela.

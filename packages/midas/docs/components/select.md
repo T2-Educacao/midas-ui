@@ -97,3 +97,9 @@ import {
 ```
 
 Menu Multiple (checkbox + Limpar/Aplicar) e Searchable: use [Combobox](./combobox.md). People (avatar): coloque um `Avatar` dentro do `SelectItem`.
+
+## Não faça
+
+- Não use para listas com busca ou mais de ~15 itens: use `Combobox`.
+- Não deixe sem rótulo: ligue a um `FieldLabel` ou passe `aria-label`.
+- Não use para ações (menus): use `DropdownMenu`.

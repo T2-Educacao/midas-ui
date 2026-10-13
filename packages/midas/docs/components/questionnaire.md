@@ -157,3 +157,9 @@ const [etapa, setEtapa] = useState(etapaSalva ?? 0);
 - As opções são inputs nativos (`radio`/`checkbox`) dentro de `radiogroup`/`group` com o título como nome.
 - Erros de validação são anunciados (`role="alert"`).
 - O botão "Próxima" fica desabilitado até a pergunta obrigatória ser respondida.
+
+## Não faça
+
+- Não coloque lógica de negócio ou chamadas de API dentro do componente: ele só coleta respostas e as entrega por `onSubmit`.
+- Não use para formulários curtos de uma tela: use `Field` e `Input`.
+- Não esqueça de tratar respostas obrigatórias: `Próxima` só habilita quando a pergunta está respondida.

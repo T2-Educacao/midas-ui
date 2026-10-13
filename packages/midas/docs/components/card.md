@@ -119,6 +119,16 @@ Prefira imagens médias a escuras no overlay; para imagem clara, use `surface="g
 
 O título deve conter o `<a>` com área clicável estendida (`after:absolute after:inset-0`); botões internos continuam focáveis e não podem ser aninhados dentro de outro `<a>`.
 
+## Conteúdo que precisa vazar
+
+O `Card` tem `overflow-hidden` e padding vertical próprio para que o rodapé acompanhe os cantos arredondados. Se um filho precisa passar da borda (sombra, tooltip, menu inline), troque pelas suas classes, que vencem as padrão:
+
+```tsx
+<Card className="overflow-visible py-0">...</Card>
+```
+
+Tabelas coladas na borda ficam sem padding extra quando você usa `py-0` e não envolve a tabela em `CardContent`.
+
 ## Acessibilidade
 
 - Imagens com `alt` descritivo; decorativas com `alt=""`.

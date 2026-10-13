@@ -53,3 +53,9 @@ Aceita `size` (`"sm" | "md" | "lg"`; `"default"` = `md`), `appearance`, `tone`, 
   <option value="sp">São Paulo</option>
 </NativeSelect>
 ```
+
+## Não faça
+
+- Não use para listas longas ou com busca: use `Combobox`.
+- Não use quando precisa de ícones ou descrição nas opções: use `Select`.
+- Não esconda o rótulo: ligue o campo a um `FieldLabel` com `htmlFor`.
