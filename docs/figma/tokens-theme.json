@@ -381,8 +381,8 @@
     "token": "action/accent/gradient-top",
     "modes": {
       "Light": {
-        "hex": "#0092B8",
-        "alias": "cyan/600"
+        "hex": "#007595",
+        "alias": "cyan/700"
       },
       "Dark": {
         "hex": "#53EAFD",

@@ -121,7 +121,7 @@ Botão de destaque na cor de marca (Cyan). É o que `bg-primary` aponta. Contras
 | `--midas-action-accent-bg-pressed` | `bg-action-accent-bg-pressed` `text-action-accent-bg-pressed` `border-action-accent-bg-pressed` | `#104e64` | `#a2f4fd` | `#a2f4fd` | Pressed da ação de destaque e fim do degradê accent. |
 | `--midas-action-accent-content` | `bg-action-accent-content` `text-action-accent-content` `border-action-accent-content` | `#fafafa` | `#0a0a0a` | `#0a0a0a` | Texto/ícone sobre action/accent/bg. |
 | `--midas-action-accent-gradient-bottom` | `bg-action-accent-gradient-bottom` `text-action-accent-gradient-bottom` `border-action-accent-gradient-bottom` | `#007595` | `#00d3f2` | `#00d3f2` | Base do degradê accent. |
-| `--midas-action-accent-gradient-top` | `bg-action-accent-gradient-top` `text-action-accent-gradient-top` `border-action-accent-gradient-top` | `#0092b8` | `#53eafd` | `#53eafd` | Topo do degradê accent (transição curta, mesma cor). |
+| `--midas-action-accent-gradient-top` | `bg-action-accent-gradient-top` `text-action-accent-gradient-top` `border-action-accent-gradient-top` | `#007595` | `#53eafd` | `#53eafd` | Topo do degradê accent (transição curta, mesma cor). |
 
 **Não faça:** Não use para texto corrido ou links (use `content-link`/`brand-content`).
 
