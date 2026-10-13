@@ -1,6 +1,6 @@
 ---
 title: "File Upload"
-description: "Área de envio de arquivos acessível: clique ou arraste e solte. Valida tipo (accept) e tamanho (maxSize), avisa recusas em onReject e tem estados de arrastando e inválido."
+description: "Área de envio de arquivos (dropzone ou inline) com arrastar e soltar, validação de tipo e tamanho, estados hover/erro/desabilitado, estilos outline/filled/glass, tom e forma. FileItem mostra cada arquivo da fila: enviando (com progresso), concluído ou com erro."
 ---
 
 ```tsx
@@ -82,3 +82,24 @@ const [erro, setErro] = useState<string | null>(null);
 - Não confie só em `accept`/`maxSize` para segurança: valide de novo no servidor.
 - Não deixe a área sem texto (ícone sozinho não nomeia o campo).
 - Não coloque botões ou links dentro de `children`: o clique abre o seletor de arquivos.
+
+## Variantes do Figma
+
+| Prop | Tipo | Padrão | Descrição |
+|---|---|---|---|
+| `layout` | `"dropzone" \| "inline"` | `"dropzone"` | Área tracejada centralizada ou linha com botão "Procurar" |
+| `appearance` | `"outline" \| "filled" \| "glass"` | `"outline"` | Estilo |
+| `tone` | `"brand" \| "neutral"` | `"brand"` | Cor do foco e do estado de arraste |
+| `shape` | `"rounded" \| "pill"` | `"rounded"` | Raio 16 / 28 (dropzone) ou 10 / cápsula (inline) |
+
+## FileItem
+
+```tsx
+import { FileItem } from "@t2-educacao/midas";
+
+<FileItem name="extrato-maio.pdf" state="uploading" progress={50} meta="1,2 MB de 2,4 MB · 50%" onRemove={cancelar} />
+<FileItem name="extrato-maio.pdf" state="done" meta="2,4 MB · Enviado" />
+<FileItem name="extrato-maio.pdf" state="error" meta="Falha no envio · arquivo maior que 10 MB" />
+```
+
+Props: `name`, `meta`, `type` (`"document" | "image"`), `state` (`"uploading" | "done" | "error"`), `progress` (0-100), `thumbnail`, `onRemove`, `removeLabel`. O erro usa ícone + texto, nunca só cor.

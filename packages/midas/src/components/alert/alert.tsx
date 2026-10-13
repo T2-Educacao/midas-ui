@@ -4,18 +4,21 @@ import { cn } from "../../lib/cn";
 
 export const alertVariants = cva(
   [
-    "relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-lg border px-4 py-3 text-sm",
+    "relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-container border px-4 py-3 text-body-sm",
     "has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
     "has-[[data-slot=alert-action]]:pe-24",
   ],
   {
     variants: {
       variant: {
-        default: "border-border bg-card text-card-foreground",
-        info: "border-info/30 bg-info/10 text-info",
-        success: "border-success/30 bg-success/10 text-success",
-        warning: "border-warning/30 bg-warning/10 text-warning",
-        destructive: "border-destructive/30 bg-destructive/10 text-destructive",
+        default: "border-border-default bg-surface-default text-content-primary",
+        info: "border-status-info-border bg-status-info-subtle text-status-info-content",
+        success:
+          "border-status-success-border bg-status-success-subtle text-status-success-content",
+        warning:
+          "border-status-warning-border bg-status-warning-subtle text-status-warning-content",
+        destructive:
+          "border-status-danger-border bg-status-danger-subtle text-status-danger-content",
       },
       filled: {
         true: "",
@@ -26,22 +29,22 @@ export const alertVariants = cva(
       {
         filled: true,
         variant: "destructive",
-        className: "border-transparent bg-destructive text-destructive-foreground",
+        className: "border-transparent bg-status-danger-fill text-status-danger-on-fill",
       },
       {
         filled: true,
         variant: "success",
-        className: "border-transparent bg-success text-success-foreground",
+        className: "border-transparent bg-status-success-fill text-status-success-on-fill",
       },
       {
         filled: true,
         variant: "warning",
-        className: "border-transparent bg-warning text-warning-foreground",
+        className: "border-transparent bg-status-warning-fill text-status-warning-on-fill",
       },
       {
         filled: true,
         variant: "info",
-        className: "border-transparent bg-info text-info-foreground",
+        className: "border-transparent bg-status-info-fill text-status-info-on-fill",
       },
     ],
     defaultVariants: {
@@ -76,7 +79,7 @@ export const AlertTitle = React.forwardRef<HTMLDivElement, React.HTMLAttributes<
     <div
       ref={ref}
       data-slot="alert-title"
-      className={cn("col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight", className)}
+      className={cn("col-start-2 line-clamp-1 min-h-4 text-label-md", className)}
       {...props}
     />
   ),
@@ -91,7 +94,7 @@ export const AlertDescription = React.forwardRef<
     ref={ref}
     data-slot="alert-description"
     className={cn(
-      "col-start-2 grid justify-items-start gap-1 text-sm text-current/80 [&_p]:leading-relaxed",
+      "col-start-2 grid justify-items-start gap-1 text-body-sm text-current/80 [&_p]:leading-relaxed",
       className,
     )}
     {...props}

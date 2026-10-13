@@ -4,7 +4,9 @@ import { Slider as SliderPrimitive } from "radix-ui";
 import * as React from "react";
 import { cn } from "../../lib/cn";
 
-export type SliderProps = React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>;
+export type SliderProps = React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> & {
+  tone?: "brand" | "neutral";
+};
 
 const rangeSuffixes = ["mínimo", "máximo"];
 
@@ -21,6 +23,7 @@ export const Slider = React.forwardRef<
   (
     {
       className,
+      tone = "brand",
       value,
       defaultValue,
       min = 0,
@@ -41,24 +44,29 @@ export const Slider = React.forwardRef<
       <SliderPrimitive.Root
         ref={ref}
         data-slot="slider"
+        data-tone={tone}
         value={value}
         defaultValue={value === undefined && defaultValue === undefined ? [min] : defaultValue}
         min={min}
         className={cn(
-          "relative flex w-full touch-none select-none items-center",
+          "group/slider relative flex min-h-10 w-full touch-none select-none items-center",
           "data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-40 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
-          "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
+          "data-[disabled]:cursor-not-allowed",
           className,
         )}
         {...props}
       >
         <SliderPrimitive.Track
           data-slot="slider-track"
-          className="relative grow overflow-hidden rounded-full bg-muted data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5"
+          className="relative grow overflow-hidden rounded-pill bg-border-subtle data-[orientation=horizontal]:h-1 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1"
         >
           <SliderPrimitive.Range
             data-slot="slider-range"
-            className="absolute bg-primary data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full"
+            className={cn(
+              "absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full",
+              tone === "neutral" ? "bg-action-primary-bg" : "bg-action-accent-bg",
+              "group-data-[disabled]/slider:bg-content-disabled",
+            )}
           />
         </SliderPrimitive.Track>
         {thumbs.map((thumb) => (
@@ -68,10 +76,11 @@ export const Slider = React.forwardRef<
             aria-labelledby={ariaLabelledBy}
             data-slot="slider-thumb"
             className={cn(
-              "block size-4 shrink-0 rounded-full border border-primary bg-background shadow-sm outline-none",
-              "transition-[color,box-shadow] duration-150 motion-reduce:transition-none",
-              "hover:ring-4 hover:ring-ring/30 focus-visible:ring-4 focus-visible:ring-ring/50",
-              "disabled:pointer-events-none",
+              "block size-icon-md shrink-0 rounded-pill border border-border-subtle bg-surface-canvas shadow-elevation-card outline-none",
+              "transition-[border-color,box-shadow] duration-150 motion-reduce:transition-none",
+              "hover:border-border-default",
+              tone === "neutral" ? "focus-visible:focus-ring-neutral" : "focus-visible:focus-ring",
+              "data-[disabled]:pointer-events-none data-[disabled]:border-disabled-border data-[disabled]:bg-disabled-bg data-[disabled]:shadow-none",
             )}
           />
         ))}

@@ -1,105 +1,136 @@
 ---
 title: "ListItem"
-description: "Linha ou card de lista com conteúdo à esquerda (leading), à direita (trailing), título e descrição. Variante interactive para itens clicáveis e selected para o item ativo; asChild transforma em link ou botão."
+description: "Item de lista (List Item do Figma): leading, título, descrição, meta mono e ações; tamanhos sm/md/lg, orientação vertical, estados hover e selected (brand ou neutral), skeleton; ListItemGroup com variantes basic, bordered e cards. asChild transforma em link ou botão."
 ---
 
 ```tsx
 import {
   ListItem,
+  ListItemActions,
   ListItemContent,
   ListItemDescription,
   ListItemGroup,
+  ListItemMeta,
+  ListItemSkeleton,
   ListItemTitle,
 } from "@t2-educacao/midas";
+import { IconBook } from "@t2-educacao/midas/icons";
 ```
+
+## Quando usar
+
+- Listas de atividades, aulas, resultados e feeds: Simple (leading + título), Meta (avatar + título + descrição + tempo), Actions (Editar + mais), Vertical (artigo com imagem extra) e Skeleton.
+- Ação principal no clique da linha; ações secundárias à direita.
+- Até 7 itens visíveis: depois use `PaginationLoadMore`/`PaginationShowMore` ou Pagination.
+
+## Não use
+
+- Para dados tabulares comparáveis (use Table).
+- Para cards de destaque com várias informações (use [List Card](./list-card.md) ou Card).
 
 ## Uso
 
 ```tsx
-<ListItemGroup>
-  <ListItem leading={<BookOpen />} trailing={<span>12 aulas</span>}>
+<ListItemGroup variant="bordered">
+  <ListItem leading={<IconBook />} trailing={<ListItemMeta>12 aulas</ListItemMeta>}>
     <ListItemContent>
-      <ListItemTitle>Módulo 1</ListItemTitle>
-      <ListItemDescription>Fundamentos de álgebra</ListItemDescription>
+      <ListItemTitle>Renda fixa do zero</ListItemTitle>
+      <ListItemDescription>Fundamentos de CDB e Tesouro</ListItemDescription>
     </ListItemContent>
   </ListItem>
 </ListItemGroup>
 ```
 
-Sem `asChild`, `ListItem` renderiza um `<div>` e não é interativo. Para um item clicável, use `asChild` com `<button>` ou `<a>` e a variante `interactive`.
+Sem `asChild`, `ListItem` renderiza um `<div>` e não é interativo. Para item clicável use `asChild` com `<button>` ou `<a>` e `interactive`.
+
+## Anatomia
+
+`ListItemGroup` > `ListItem` (`leading` | `ListItemContent` (`ListItemTitle`, `ListItemDescription`) | `ListItemMeta` | `ListItemActions` | `trailing`). Divisores de 1px `border-subtle` entre itens no `bordered`.
 
 ## Props
 
-`ListItem`:
+Todas as partes aceitam `className` (o seu vence), `ref` e repassam as props.
+
+### ListItem
 
 | Prop | Tipo | Padrão | Descrição |
 |---|---|---|---|
-| `asChild` | `boolean` | `false` | Renderiza o filho (`<a>`, `<button>`, `<li>`) no lugar do `<div>` |
-| `interactive` | `boolean` | `false` | Hover, `focus-visible` e cursor de clique |
-| `selected` | `boolean` | `false` | Marca com `data-selected="true"` e destaca o item |
-| `leading` | `ReactNode` | - | Conteúdo no início (ícone, avatar, número) |
-| `trailing` | `ReactNode` | - | Conteúdo no fim (badge, ícone de seta, valor) |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Espaçamento: 8/12/16px (small/default/large do Ant) |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Vertical: conteúdo empilhado (artigo com imagem) |
+| `tone` | `"brand" \| "neutral"` | `"brand"` | Selecionado em `selection-bg` + borda (brand) ou `surface-muted` |
+| `asChild` | `boolean` | `false` | Renderiza o filho (`<a>`, `<button>`, `<li>`) |
+| `interactive` | `boolean` | `false` | Hover (`state-hover`), foco e cursor de clique |
+| `selected` | `boolean` | `false` | `data-selected="true"` e destaque |
+| `leading` / `trailing` | `ReactNode` | | Conteúdo no início/fim (ícone, avatar, valor) |
 
-`ListItemContent` agrupa título e descrição em coluna. `ListItemTitle` e `ListItemDescription` aceitam `className` e as props do `span`. `ListItemGroup` aceita `asChild` e as props do `div`; empilha os itens com espaçamento.
+### Outras partes
 
-## Variantes
-
-| Variante | Quando usar |
+| Componente | Descrição |
 |---|---|
-| padrão | Linha só de leitura |
-| `interactive` | Item que navega ou executa ação (sempre com `asChild` em `<a>` ou `<button>`) |
-| `selected` | Item atual em uma lista de seleção ou navegação |
+| `ListItemMeta` | Texto curto em mono (tempo, contagem) |
+| `ListItemActions` | Grupo de botões à direita (`ms-auto`) |
+| `ListItemSkeleton` | Placeholder de carregamento (`role="status"`) |
+
+### ListItemGroup
+
+| Prop | Tipo | Padrão | Descrição |
+|---|---|---|---|
+| `variant` | `"basic" \| "bordered" \| "cards"` | `"basic"` | Basic: sem contêiner (listas dentro de páginas). Bordered: em card com divisores. Cards: itens espaçados |
+| `asChild` | `boolean` | `false` | Renderiza o filho (ex.: `<ul>`) |
+
+Também exportados: `listItemVariants`, `listItemGroupVariants`.
+
+## Estados
+
+Default; Hover `state-hover`; Selected (`selection-bg` + borda 1px no brand, `surface-muted` no neutral); Focus `focus-ring`; Disabled `content-disabled`.
 
 ## Exemplos
 
-Como link:
+### Como link
 
 ```tsx
-<ListItem asChild interactive trailing={<CaretRight className="rtl:rotate-180" />}>
+<ListItem asChild interactive trailing={<IconChevronRight className="rtl:rotate-180" />}>
   <a href="/cursos/algebra">
     <ListItemContent>
       <ListItemTitle>Álgebra</ListItemTitle>
-      <ListItemDescription>Continue de onde parou</ListItemDescription>
     </ListItemContent>
   </a>
 </ListItem>
 ```
 
-Como botão selecionável:
+### Meta e ações
 
 ```tsx
-<ListItem asChild interactive selected={ativo === "a"}>
-  <button type="button" aria-pressed={ativo === "a"} onClick={() => setAtivo("a")}>
-    <ListItemTitle>Opção A</ListItemTitle>
-  </button>
+<ListItem leading={<Avatar size="sm"><AvatarFallback>AS</AvatarFallback></Avatar>}>
+  <ListItemContent>
+    <ListItemTitle>Ana Souza</ListItemTitle>
+    <ListItemDescription>Concluiu o módulo Renda fixa do zero</ListItemDescription>
+  </ListItemContent>
+  <ListItemMeta>há 2h</ListItemMeta>
+  <ListItemActions>
+    <Button size="icon-sm" variant="ghost" aria-label="Mais ações"><IconDots /></Button>
+  </ListItemActions>
 </ListItem>
 ```
 
-Lista semântica:
+### Carregando
 
 ```tsx
-<ListItemGroup asChild>
-  <ul>
-    <ListItem asChild>
-      <li>Primeiro</li>
-    </ListItem>
-    <ListItem asChild>
-      <li>Segundo</li>
-    </ListItem>
-  </ul>
+<ListItemGroup variant="bordered">
+  <ListItemSkeleton />
+  <ListItemSkeleton />
 </ListItemGroup>
 ```
 
 ## Acessibilidade
 
-- Item interativo precisa ser `<a>` ou `<button>` (via `asChild`): assim recebe foco e responde a Enter/Espaço. `interactive` em um `<div>` é só visual.
-- `selected` é visual. Comunique o estado com `aria-pressed` (botão), `aria-current="page"` (link) ou `aria-selected` conforme o padrão usado.
-- Para lista semântica use `ul`/`li` com `asChild`. Não coloque `role="list"` sem `role="listitem"` nos filhos.
-- Ícones decorativos em `leading` e `trailing` levam `aria-hidden="true"`.
+- Para listas semânticas use `ListItemGroup asChild` em `<ul>` e `ListItem asChild` em `<li>`.
+- Item clicável: elemento nativo (`<a>`/`<button>`) com `asChild`; `selected` em navegação deve acompanhar `aria-current`.
+- Botões só com ícone precisam de `aria-label`.
+- Skeleton usa `role="status"` e `aria-busy`.
 
 ## Não faça
 
-- Usar `interactive` em `<div>` com `onClick`: não é focável nem acessível por teclado.
-- Aninhar botões ou links dentro de um `ListItem` que já é `<a>` ou `<button>`.
-- Esquecer `rtl:rotate-180` em setas de direção no `trailing`.
-- Colocar muito conteúdo no `trailing`. Para ações múltiplas, prefira um menu.
+- `div` clicável sem papel: use `asChild`.
+- Bordas fortes: divisores são 1px `border-subtle`.
+- Cores soltas e `dark:`.

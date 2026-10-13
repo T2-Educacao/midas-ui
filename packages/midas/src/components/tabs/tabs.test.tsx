@@ -9,7 +9,7 @@ function Exemplo({
   variant,
   orientation,
 }: {
-  variant?: "default" | "line";
+  variant?: "default" | "line" | "underline" | "pill" | "segmented" | "plain";
   orientation?: "horizontal" | "vertical";
 }) {
   return (
@@ -59,10 +59,42 @@ describe("Tabs", () => {
   it("aplica a variante da lista", () => {
     const { rerender } = render(<Exemplo />);
     expect(screen.getByRole("tablist")).toHaveAttribute("data-variant", "default");
-    expect(screen.getByRole("tablist")).toHaveClass("bg-muted");
+    expect(screen.getByRole("tablist")).toHaveClass("bg-surface-muted");
     rerender(<Exemplo variant="line" />);
     expect(screen.getByRole("tablist")).toHaveAttribute("data-variant", "line");
     expect(screen.getByRole("tablist")).toHaveClass("bg-transparent");
+  });
+
+  it.each(["underline", "pill", "segmented", "plain"] as const)(
+    "aplica o tipo %s com tamanho e tom",
+    (variant) => {
+      render(
+        <Tabs defaultValue="a">
+          <TabsList variant={variant} size="sm" tone="neutral" aria-label="Seções">
+            <TabsTrigger value="a" icon={<svg aria-hidden="true" />} count={24}>
+              Aulas
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>,
+      );
+      const list = screen.getByRole("tablist");
+      expect(list).toHaveAttribute("data-variant", variant);
+      expect(list).toHaveAttribute("data-size", "sm");
+      expect(list).toHaveAttribute("data-tone", "neutral");
+      expect(screen.getByRole("tab")).toHaveClass("h-control-md");
+      expect(screen.getByText("24")).toHaveAttribute("data-slot", "tabs-count");
+    },
+  );
+
+  it("usa vidro na superfície glass", () => {
+    render(
+      <Tabs defaultValue="a">
+        <TabsList variant="pill" surface="glass" aria-label="Seções">
+          <TabsTrigger value="a">A</TabsTrigger>
+        </TabsList>
+      </Tabs>,
+    );
+    expect(screen.getByRole("tablist")).toHaveClass("material-glass");
   });
 
   it("suporta orientação vertical", () => {

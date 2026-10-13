@@ -27,6 +27,38 @@ describe("Checkbox", () => {
     expect(screen.getByRole("checkbox")).toHaveAttribute("aria-checked", "mixed");
   });
 
+  it("aplica tamanhos e tom do Figma com tokens", () => {
+    render(
+      <div>
+        <Checkbox aria-label="P" size="sm" />
+        <Checkbox aria-label="M" />
+        <Checkbox aria-label="G" size="lg" tone="neutral" />
+      </div>,
+    );
+    expect(screen.getByRole("checkbox", { name: "P" })).toHaveClass("size-4", "rounded-xs");
+    expect(screen.getByRole("checkbox", { name: "M" })).toHaveClass(
+      "size-5",
+      "bg-field-bg",
+      "data-[state=checked]:bg-selection-fill",
+    );
+    expect(screen.getByRole("checkbox", { name: "G" })).toHaveClass(
+      "size-6",
+      "data-[state=checked]:bg-action-primary-bg",
+    );
+  });
+
+  it("aria-invalid ativa os tokens de erro", () => {
+    render(<Checkbox aria-label="Erro" aria-invalid />);
+    expect(screen.getByRole("checkbox")).toHaveClass("aria-invalid:border-status-danger-fill");
+  });
+
+  it("desabilitado não alterna", async () => {
+    const onCheckedChange = vi.fn();
+    render(<Checkbox aria-label="Off" disabled onCheckedChange={onCheckedChange} />);
+    await userEvent.click(screen.getByRole("checkbox"));
+    expect(onCheckedChange).not.toHaveBeenCalled();
+  });
+
   it("não tem violações de acessibilidade", async () => {
     const { container } = render(<Checkbox aria-label="Lembrar de mim" />);
     await expectNoA11yViolations(container);

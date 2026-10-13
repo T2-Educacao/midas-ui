@@ -1,6 +1,6 @@
 ---
 title: "Dialog"
-description: "Janela modal sobre a página para tarefas focadas (formulários curtos, confirmações, questionários). Dialog, DialogTrigger, DialogContent (com botão fechar), DialogHeader, DialogTitle, DialogDescription, DialogFooter e DialogClose."
+description: "Janela modal sobre a página (base de Modal, Modal Form e Modal Overlay do Figma). DialogContent com Style (solid | glass), tamanhos sm/md/lg/xl (400, 520, 720, 960) e Device (responsive, desktop, mobile: no mobile vira bottom sheet com alça). Scrim com blur opcional. Para modais prontos (confirmar, sucesso, erro, status, permissão, compartilhar) veja Modal."
 ---
 
 ```tsx
@@ -16,7 +16,50 @@ import {
 } from "@t2-educacao/midas";
 ```
 
-## Uso
+## Quando usar
+
+- Decisão ou aviso que interrompe o fluxo (confirmar, salvar, formulário curto).
+- Modal Form: formulário em janela (`size` sm 400, md 520, lg 720, xl 960).
+
+## Quando não usar
+
+- Mensagem que não exige ação: use [Toast](./toast.md).
+- Tarefa de apoio em que a pessoa precisa ver a página: use [Drawer](./drawer.md).
+- Conteúdo curto com ação perto do gatilho: use [Popover](./popover.md).
+- Mobile com conteúdo complementar: use [BottomSheet](./bottom-sheet.md).
+
+## Anatomia
+
+Scrim (`bg-material-scrim-bg`, mais forte no Dark, com blur 8) + superfície (`overlay-surface`, borda `border-subtle`, `elevation-modal`, raio grande) com `DialogHeader` (título `heading-md` + descrição `body-md`), conteúdo, `DialogFooter` (ações; no mobile em coluna, principal em cima) e botão fechar.
+
+## Props
+
+### DialogContent
+
+| Prop | Tipo | Padrão | Descrição |
+|---|---|---|---|
+| `appearance` | `"solid" \| "glass"` | `"solid"` | Style do Figma. Glass (blur 40) só sobre mídia/telas coloridas |
+| `size` | `"sm" \| "md" \| "lg" \| "xl"` | `"md"` | Largura máxima 400 / 520 / 720 / 960 |
+| `device` | `"responsive" \| "desktop" \| "mobile"` | `"responsive"` | `responsive` centraliza no desktop e vira bottom sheet abaixo de `sm`; `desktop` sempre centralizado; `mobile` sempre no rodapé |
+| `blur` | `boolean` | `true` | Blur do scrim (Modal Scrim `Blur`) |
+| `showCloseButton` | `boolean` | `true` | Botão X |
+| `overlayClassName` | `string` | | Classes do scrim |
+| `className` | `string` | | Mesclada (a sua vence) |
+
+`dialogContentVariants` e `dialogOverlayVariants` são exportados. O scrim sozinho é o `DialogOverlay` (Modal Scrim).
+
+## Componentes
+
+| Componente | O que é |
+|---|---|
+| `Dialog` | Raiz (`open`, `defaultOpen`, `onOpenChange`) |
+| `DialogTrigger` | Abre (use `asChild`) |
+| `DialogContent` | A janela |
+| `DialogHeader` / `DialogTitle` / `DialogDescription` | Cabeçalho; o título dá nome ao diálogo |
+| `DialogFooter` | Linha de ações (direita no desktop, coluna no mobile) |
+| `DialogClose` | Fecha |
+
+## Exemplos
 
 ```tsx
 <Dialog>
@@ -34,48 +77,32 @@ import {
     </Field>
     <DialogFooter>
       <DialogClose asChild>
-        <Button variant="outline">Cancelar</Button>
+        <Button variant="secondary" size="lg">Cancelar</Button>
       </DialogClose>
-      <Button>Salvar</Button>
+      <Button variant="accent" size="lg">Salvar</Button>
     </DialogFooter>
   </DialogContent>
 </Dialog>
 ```
 
-## Componentes
-
-| Componente | O que é |
-|---|---|
-| `Dialog` | Raiz (`open`, `defaultOpen`, `onOpenChange`) |
-| `DialogTrigger` | Abre o diálogo (use `asChild`) |
-| `DialogContent` | A janela (largura máxima de 448px; passe `max-w-2xl` etc. em `className` para mudar). `overlayClassName` muda o fundo escurecido. `showCloseButton={false}` esconde o X |
-| `DialogHeader` / `DialogTitle` / `DialogDescription` | Cabeçalho. O título dá nome ao diálogo |
-| `DialogFooter` | Rodapé cinza para as ações |
-| `DialogClose` | Fecha o diálogo |
-
-## Exemplos
-
-### Controlado
+Modal Form grande com vidro:
 
 ```tsx
-const [aberto, setAberto] = useState(false);
-
-<Dialog open={aberto} onOpenChange={setAberto}>
-  <DialogContent>...</DialogContent>
-</Dialog>
+<DialogContent size="lg" appearance="glass">...</DialogContent>
 ```
-
-### Com Questionnaire
-
-Veja o exemplo "Dialog" em [Questionnaire](./questionnaire.md).
 
 ## Acessibilidade
 
-- Foco fica preso dentro do diálogo e volta ao gatilho ao fechar.
-- `Esc` fecha. O fundo fica inerte para leitores de tela.
-- `DialogTitle` é obrigatório (pode ficar visualmente escondido com `className="sr-only"`).
+- Foco preso dentro do modal; `Esc` fecha; o foco volta ao gatilho.
+- `DialogTitle` é obrigatório (pode ficar `sr-only`). Descrição ligada por `aria-describedby`.
+- Ação destrutiva com texto claro ("Excluir"), nunca só cor. Mobile: alvo de 48px (botões `xl`).
 
 ## Não faça
 
-- Abrir diálogo dentro de diálogo.
-- Usar diálogo para mensagens que não exigem ação: use [Toast](./toast.md).
+- Abrir modal dentro de modal.
+- Usar `glass` sobre fundo liso ou sem scrim.
+- Esconder o fechar sem outra forma clara de sair.
+
+## Mudanças desta versão
+
+Fundo `bg-overlay-surface` + `elevation-modal` (antes `bg-popover`), rodapé sem faixa cinza, largura padrão 520 (antes 448) e, no mobile, o modal vira bottom sheet.

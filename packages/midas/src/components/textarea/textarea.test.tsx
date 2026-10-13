@@ -19,14 +19,19 @@ describe("Textarea", () => {
 
   it("mantém o visual padrão com borda, fundo e altura mínima", () => {
     render(<Textarea aria-label="Mensagem" />);
-    expect(screen.getByRole("textbox")).toHaveClass("min-h-16", "border", "rounded-lg");
+    expect(screen.getByRole("textbox")).toHaveClass(
+      "min-h-24",
+      "border",
+      "rounded-control",
+      "border-border-subtle",
+    );
   });
 
   it("bare remove borda, fundo, anel, altura mínima e padding", () => {
     render(<Textarea aria-label="Título" bare />);
     const campo = screen.getByRole("textbox");
     expect(campo).toHaveClass("border-0", "bg-transparent", "p-0", "min-h-0");
-    expect(campo).not.toHaveClass("min-h-16", "border-input");
+    expect(campo).not.toHaveClass("min-h-24", "border-border-subtle");
   });
 
   it("className do usuário vence", () => {
@@ -62,5 +67,19 @@ describe("Textarea", () => {
   it("não tem violações de acessibilidade", async () => {
     const { container } = render(<Textarea aria-label="Mensagem" />);
     await expectNoA11yViolations(container);
+  });
+});
+
+describe("Textarea (Figma)", () => {
+  it("aplica estilo, tom e forma pill com raio grande", () => {
+    render(
+      <div>
+        <Textarea aria-label="filled" appearance="filled" />
+        <Textarea aria-label="pill" shape="pill" tone="neutral" />
+      </div>,
+    );
+    expect(screen.getByLabelText("filled")).toHaveClass("bg-surface-muted");
+    expect(screen.getByLabelText("pill")).toHaveClass("rounded-3xl");
+    expect(screen.getByLabelText("pill").className).toContain("focus-ring-neutral");
   });
 });

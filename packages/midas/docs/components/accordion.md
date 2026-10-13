@@ -1,6 +1,6 @@
 ---
 title: "Accordion"
-description: "Lista de seções que abrem e fecham (perguntas frequentes, detalhes). Modo single (um aberto por vez) ou multiple, com ícone CaretDown que gira."
+description: "Agrupa conteúdo em seções que abrem e fecham (FAQ, grade do curso, configurações). Variantes faq, cards, filled, glass e module (lista de módulos); tom brand/neutral; ícone e meta no gatilho; single ou multiple."
 ---
 
 ```tsx
@@ -12,77 +12,98 @@ import {
 } from "@t2-educacao/midas";
 ```
 
+## Quando usar
+
+- FAQs, grade do curso (módulos com progresso) e configurações longas.
+- Por padrão um item aberto por vez (`type="single"`); em configurações pode permitir vários (`type="multiple"`).
+- Na grade do curso, mostre progresso e deixe o módulo atual aberto (`defaultValue`).
+
+## Não use
+
+- Para esconder informação crítica (prazo, preço, erro) em item fechado.
+- Para uma única região que abre e fecha (use Collapsible).
+- Para alternar vistas do mesmo contexto (use Tabs).
+
 ## Uso
 
 ```tsx
-<Accordion type="single" collapsible>
+<Accordion type="single" collapsible defaultValue="prazo">
   <AccordionItem value="prazo">
     <AccordionTrigger>Qual o prazo de acesso?</AccordionTrigger>
     <AccordionContent>O acesso dura 12 meses.</AccordionContent>
   </AccordionItem>
-  <AccordionItem value="certificado">
-    <AccordionTrigger>Recebo certificado?</AccordionTrigger>
-    <AccordionContent>Sim, ao concluir o curso.</AccordionContent>
-  </AccordionItem>
 </Accordion>
 ```
 
+## Anatomia
+
+`Accordion` > `AccordionItem` > `AccordionTrigger` (ícone opcional, título, meta opcional em mono e chevron sempre à direita) + `AccordionContent`. Título em forma de pergunta ou nome claro da seção.
+
 ## Props
 
-Baseado no [Accordion do Radix](https://www.radix-ui.com/primitives/docs/components/accordion). Todas as partes aceitam `className`.
+Baseado no [Accordion do Radix](https://www.radix-ui.com/primitives/docs/components/accordion). Todas as partes aceitam `className` (o seu vence) e `ref`.
 
 ### Accordion
 
 | Prop | Tipo | Padrão | Descrição |
 |---|---|---|---|
-| `type` | `"single" \| "multiple"` | obrigatória | Um item aberto por vez ou vários |
-| `collapsible` | `boolean` | `false` | Só em `single`: permite fechar o item aberto |
-| `defaultValue` / `value` | `string` ou `string[]` | | Item(ns) abertos inicial / controlado |
-| `onValueChange` | `(value) => void` | | Chamado ao mudar |
-| `disabled` | `boolean` | `false` | Desabilita todos os itens |
+| `type` | `"single" \| "multiple"` | | Obrigatório (Radix). `single` aceita `collapsible` |
+| `variant` | `"faq" \| "cards" \| "filled" \| "glass" \| "module"` | `"faq"` | Aparência do Figma |
+| `tone` | `"brand" \| "neutral"` | `"brand"` | Cor do chevron aberto: `selection-content` ou `content-primary` |
+| `value` / `defaultValue` / `onValueChange` | | | Estado aberto (string ou array, conforme `type`) |
 
-### AccordionItem
+### AccordionTrigger
 
 | Prop | Tipo | Descrição |
 |---|---|---|
-| `value` | `string` | Identificador do item (obrigatório) |
-| `disabled` | `boolean` | Desabilita este item |
+| `icon` | `ReactNode` | Ícone Tabler antes do título |
+| `meta` | `ReactNode` | Texto curto em mono antes do chevron (ex.: "3 aulas") |
+| `disabled` | `boolean` | Item desabilitado |
 
-`AccordionTrigger` é o botão com o título e o ícone; `AccordionContent` é o painel (o `className` vai no conteúdo interno).
+`AccordionItem` exige `value`. Também exportado: `accordionVariants`.
 
 ## Variantes
 
-| Modo | Quando usar |
+| Variante | Quando usar |
 |---|---|
-| `type="single" collapsible` | Perguntas frequentes e seções independentes |
-| `type="single"` | Quando sempre deve haver um item aberto |
-| `type="multiple"` | Quando o usuário compara seções ao mesmo tempo |
+| `faq` | Perguntas frequentes: lista com divisores `border-subtle` |
+| `cards` | Cada item num card (`surface-default`, `elevation-card`) |
+| `filled` | Cada item com fundo `surface-muted` |
+| `glass` | Sobre imagem ou aurora (vidro) |
+| `module` | Lista de módulos do curso dentro de um contêiner único |
+
+## Estados
+
+Collapsed, Hover (`state-hover` nas variantes com contêiner), Expanded (chevron girado e colorido), Focus (borda 1px + halo 4px do `focus-ring`), Disabled (`content-disabled`).
 
 ## Exemplos
 
-### Vários abertos
+### Módulos do curso
 
 ```tsx
-<Accordion type="multiple" defaultValue={["modulo-1"]}>
-  <AccordionItem value="modulo-1">
-    <AccordionTrigger>Módulo 1</AccordionTrigger>
-    <AccordionContent>Introdução e conceitos.</AccordionContent>
-  </AccordionItem>
-  <AccordionItem value="modulo-2">
-    <AccordionTrigger>Módulo 2</AccordionTrigger>
-    <AccordionContent>Prática guiada.</AccordionContent>
+<Accordion type="single" collapsible variant="module" defaultValue="m2">
+  <AccordionItem value="m2">
+    <AccordionTrigger icon={<IconBook />} meta="8 aulas">Módulo 2 · Ética e regulação</AccordionTrigger>
+    <AccordionContent>Lista de aulas do módulo.</AccordionContent>
   </AccordionItem>
 </Accordion>
 ```
 
+### Vários abertos
+
+```tsx
+<Accordion type="multiple" variant="cards" tone="neutral">...</Accordion>
+```
+
 ## Acessibilidade
 
-- Cada título é um `button` dentro de um heading, com `aria-expanded` e `aria-controls`.
-- `Enter` e `Espaço` abrem e fecham; `Tab` percorre os títulos; setas, `Home` e `End` movem entre eles.
-- O ícone é decorativo (`aria-hidden`). O componente não anima a altura; a rotação do ícone respeita `prefers-reduced-motion`.
+- O gatilho é um `button` dentro de um cabeçalho, com `aria-expanded` e `aria-controls` automáticos.
+- Setas, `Home` e `End` navegam entre gatilhos; `Enter` e `Espaço` alternam.
+- O chevron é decorativo (`aria-hidden`); a animação respeita `motion-reduce`.
+- Variantes `glass` só sobre mídia, para manter contraste.
 
 ## Não faça
 
-- Esconder no Accordion informação essencial que todo mundo precisa ler.
-- Usar Accordion para um único bloco: use [Collapsible](./collapsible.md).
-- Aninhar Accordions em vários níveis.
+- Esconder informação crítica em item fechado.
+- Aninhar Accordion dentro de Accordion.
+- Cores soltas e `dark:`.

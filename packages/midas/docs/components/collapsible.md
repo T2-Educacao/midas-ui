@@ -14,7 +14,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@t2-educaca
   <CollapsibleTrigger asChild>
     <Button variant="outline">Mostrar detalhes</Button>
   </CollapsibleTrigger>
-  <CollapsibleContent className="pt-2 text-sm">
+  <CollapsibleContent className="pt-2 text-body-sm">
     Carga horária de 40 horas, com certificado.
   </CollapsibleContent>
 </Collapsible>

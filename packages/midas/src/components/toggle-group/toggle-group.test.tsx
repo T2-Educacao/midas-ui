@@ -50,7 +50,10 @@ describe("ToggleGroup", () => {
 
   it("repassa variante e tamanho do grupo para os itens", () => {
     render(<Alinhamento />);
-    expect(screen.getByRole("radio", { name: "Esquerda" })).toHaveClass("border-input", "h-8");
+    expect(screen.getByRole("radio", { name: "Esquerda" })).toHaveClass(
+      "border-border-default",
+      "h-control-md",
+    );
   });
 
   it("aplica espaçamento entre itens quando spacing > 0", () => {

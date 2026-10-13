@@ -6,6 +6,7 @@ import {
   Popover,
   PopoverContent,
   PopoverDescription,
+  PopoverFooter,
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
@@ -38,5 +39,21 @@ describe("Popover", () => {
     render(<Exemplo />);
     await userEvent.click(screen.getByRole("button", { name: "Dimensões" }));
     await expectNoA11yViolations(document.body);
+  });
+});
+
+describe("Popover (Figma)", () => {
+  it("mostra seta e rodapé e aceita appearance glass", async () => {
+    render(
+      <Popover defaultOpen>
+        <PopoverTrigger>Abrir</PopoverTrigger>
+        <PopoverContent appearance="glass" aria-label="Info">
+          <PopoverFooter>Ações</PopoverFooter>
+        </PopoverContent>
+      </Popover>,
+    );
+    expect(document.querySelector("[data-slot=popover-arrow]")).not.toBeNull();
+    expect(document.querySelector("[data-slot=popover-footer]")).not.toBeNull();
+    expect(screen.getByRole("dialog")).toHaveClass("backdrop-blur-midas-lg");
   });
 });

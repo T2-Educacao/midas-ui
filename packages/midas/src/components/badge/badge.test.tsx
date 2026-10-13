@@ -6,12 +6,12 @@ import { Badge } from "./badge";
 describe("Badge", () => {
   it("renderiza a variante secondary por padrão", () => {
     render(<Badge>Beta</Badge>);
-    expect(screen.getByText("Beta")).toHaveClass("bg-secondary", "rounded-full");
+    expect(screen.getByText("Beta")).toHaveClass("bg-surface-muted", "rounded-pill");
   });
 
   it("aplica outras variantes", () => {
     render(<Badge variant="destructive">Erro</Badge>);
-    expect(screen.getByText("Erro")).toHaveClass("text-destructive");
+    expect(screen.getByText("Erro")).toHaveClass("text-status-danger-content");
   });
 
   it("com asChild vira link", () => {
@@ -35,8 +35,8 @@ describe("Badge", () => {
         <Badge variant="info">Dica</Badge>
       </div>,
     );
-    expect(screen.getByText("Pendente")).toHaveClass("text-warning");
-    expect(screen.getByText("Dica")).toHaveClass("text-info");
+    expect(screen.getByText("Pendente")).toHaveClass("text-status-warning-content");
+    expect(screen.getByText("Dica")).toHaveClass("text-status-info-content");
   });
 
   it("filled preenche as variantes de estado", () => {
@@ -45,8 +45,10 @@ describe("Badge", () => {
         Pendente
       </Badge>,
     );
-    expect(screen.getByText("Pendente")).toHaveClass("bg-warning", "text-warning-foreground");
-    expect(screen.getByText("Pendente")).not.toHaveClass("bg-warning/10");
+    expect(screen.getByText("Pendente")).toHaveClass(
+      "bg-status-warning-fill",
+      "text-status-warning-on-fill",
+    );
   });
 
   it("aceita tamanho e ícone embutido", () => {
@@ -57,5 +59,28 @@ describe("Badge", () => {
     );
     expect(screen.getByText("Grande")).toHaveClass("h-6.5");
     expect(screen.getByTestId("icone")).toBeInTheDocument();
+  });
+
+  it("count mostra o número e limita em 99+", () => {
+    render(
+      <>
+        <Badge type="count" count={3} />
+        <Badge type="count" count={120} />
+      </>,
+    );
+    expect(screen.getByText("3")).toHaveClass("bg-action-accent-bg", "h-5");
+    expect(screen.getByText("99+")).toBeInTheDocument();
+  });
+
+  it("count aceita tons e tamanhos", () => {
+    render(<Badge type="count" count={7} tone="danger" size="lg" />);
+    expect(screen.getByText("7")).toHaveClass("bg-status-danger-fill", "h-6");
+  });
+
+  it("dot é um ponto com anel e sem conteúdo", () => {
+    render(<Badge type="dot" tone="success" data-testid="dot" />);
+    const dot = screen.getByTestId("dot");
+    expect(dot).toHaveClass("bg-status-success-fill", "border-surface-canvas");
+    expect(dot).toBeEmptyDOMElement();
   });
 });

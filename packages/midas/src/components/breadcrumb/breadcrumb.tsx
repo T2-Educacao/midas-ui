@@ -1,11 +1,69 @@
-import { IconChevronRight, IconDots } from "@tabler/icons-react";
+import { IconArrowLeft, IconChevronRight, IconDots, IconHome } from "@tabler/icons-react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { Slot } from "radix-ui";
 import * as React from "react";
 import { cn } from "../../lib/cn";
 
-export const Breadcrumb = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
-  ({ "aria-label": ariaLabel = "Trilha de navegação", ...props }, ref) => (
-    <nav ref={ref} aria-label={ariaLabel} data-slot="breadcrumb" {...props} />
+export const breadcrumbVariants = cva("group/breadcrumb", {
+  variants: {
+    contained: {
+      true: "inline-flex h-control-md items-center rounded-pill border px-3",
+      false: "",
+    },
+    tone: {
+      neutral: "",
+      brand: "",
+      media: "",
+    },
+  },
+  compoundVariants: [
+    {
+      contained: true,
+      tone: ["neutral", "brand"],
+      className: "border-border-subtle bg-surface-default shadow-elevation-control",
+    },
+    {
+      contained: true,
+      tone: "media",
+      className: "material-frosted border-material-scrim-border bg-material-scrim-bg",
+    },
+  ],
+  defaultVariants: {
+    contained: false,
+    tone: "neutral",
+  },
+});
+
+export type BreadcrumbSeparatorType = "chevron" | "slash";
+
+export interface BreadcrumbProps
+  extends React.HTMLAttributes<HTMLElement>,
+    VariantProps<typeof breadcrumbVariants> {
+  separator?: BreadcrumbSeparatorType;
+}
+
+export const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
+  (
+    {
+      "aria-label": ariaLabel = "Trilha de navegação",
+      className,
+      tone,
+      contained,
+      separator = "chevron",
+      ...props
+    },
+    ref,
+  ) => (
+    <nav
+      ref={ref}
+      aria-label={ariaLabel}
+      data-slot="breadcrumb"
+      data-tone={tone ?? "neutral"}
+      data-separator={separator}
+      data-contained={contained ? "true" : undefined}
+      className={cn(breadcrumbVariants({ tone, contained }), className)}
+      {...props}
+    />
   ),
 );
 Breadcrumb.displayName = "Breadcrumb";
@@ -18,7 +76,8 @@ export const BreadcrumbList = React.forwardRef<
     ref={ref}
     data-slot="breadcrumb-list"
     className={cn(
-      "flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground",
+      "flex flex-wrap items-center gap-1.5 break-words text-body-sm text-content-secondary",
+      "group-data-[tone=media]/breadcrumb:text-material-on-media-content",
       className,
     )}
     {...props}
@@ -43,6 +102,14 @@ export interface BreadcrumbLinkProps extends React.AnchorHTMLAttributes<HTMLAnch
   asChild?: boolean;
 }
 
+const breadcrumbLinkClasses = [
+  "inline-flex items-center gap-1.5 rounded-xs text-label-md outline-none transition-colors motion-reduce:transition-none",
+  "hover:text-content-primary focus-visible:focus-ring",
+  "group-data-[tone=brand]/breadcrumb:hover:text-content-link",
+  "group-data-[tone=media]/breadcrumb:text-material-on-media-content/80 group-data-[tone=media]/breadcrumb:hover:text-material-on-media-content",
+  "[&_svg:not([class*='size-'])]:size-icon-sm",
+];
+
 export const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
   ({ className, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot.Root : "a";
@@ -50,16 +117,53 @@ export const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, BreadcrumbLink
       <Comp
         ref={ref}
         data-slot="breadcrumb-link"
-        className={cn(
-          "rounded-sm outline-none transition-colors hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50 motion-reduce:transition-none",
-          className,
-        )}
+        className={cn(breadcrumbLinkClasses, className)}
         {...props}
       />
     );
   },
 );
 BreadcrumbLink.displayName = "BreadcrumbLink";
+
+export const BreadcrumbHome = React.forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
+  ({ className, asChild = false, children, "aria-label": ariaLabel = "Início", ...props }, ref) => {
+    const Comp = asChild ? Slot.Root : "a";
+    return (
+      <Comp
+        ref={ref}
+        data-slot="breadcrumb-home"
+        aria-label={ariaLabel}
+        className={cn(breadcrumbLinkClasses, className)}
+        {...props}
+      >
+        {children ?? <IconHome aria-hidden="true" />}
+      </Comp>
+    );
+  },
+);
+BreadcrumbHome.displayName = "BreadcrumbHome";
+
+export const BreadcrumbBack = React.forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
+  ({ className, asChild = false, children, ...props }, ref) => {
+    const Comp = asChild ? Slot.Root : "a";
+    return (
+      <Comp
+        ref={ref}
+        data-slot="breadcrumb-back"
+        className={cn(
+          breadcrumbLinkClasses,
+          "h-control-md text-content-primary group-data-[tone=media]/breadcrumb:text-material-on-media-content",
+          className,
+        )}
+        {...props}
+      >
+        <IconArrowLeft aria-hidden="true" className="rtl:rotate-180" />
+        {children}
+      </Comp>
+    );
+  },
+);
+BreadcrumbBack.displayName = "BreadcrumbBack";
 
 export const BreadcrumbPage = React.forwardRef<
   HTMLSpanElement,
@@ -69,7 +173,11 @@ export const BreadcrumbPage = React.forwardRef<
     ref={ref}
     data-slot="breadcrumb-page"
     aria-current="page"
-    className={cn("font-medium text-foreground", className)}
+    className={cn(
+      "text-label-md text-content-primary",
+      "group-data-[tone=media]/breadcrumb:text-material-on-media-content",
+      className,
+    )}
     {...props}
   />
 ));
@@ -84,10 +192,21 @@ export const BreadcrumbSeparator = React.forwardRef<
     role="presentation"
     aria-hidden="true"
     data-slot="breadcrumb-separator"
-    className={cn("inline-flex items-center [&>svg]:size-3.5", className)}
+    className={cn(
+      "inline-flex items-center text-content-secondary [&>svg]:size-icon-xs",
+      "group-data-[tone=media]/breadcrumb:text-material-on-media-content/70",
+      className,
+    )}
     {...props}
   >
-    {children ?? <IconChevronRight className="rtl:rotate-180" />}
+    {children ?? (
+      <>
+        <IconChevronRight className="rtl:rotate-180 group-data-[separator=slash]/breadcrumb:hidden" />
+        <span className="hidden text-label-md group-data-[separator=slash]/breadcrumb:inline">
+          /
+        </span>
+      </>
+    )}
   </li>
 ));
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
@@ -104,7 +223,7 @@ export const BreadcrumbEllipsis = React.forwardRef<
     className={cn("inline-flex size-6 items-center justify-center", className)}
     {...props}
   >
-    <IconDots className="size-4" />
+    <IconDots className="size-icon-sm" />
   </span>
 ));
 BreadcrumbEllipsis.displayName = "BreadcrumbEllipsis";

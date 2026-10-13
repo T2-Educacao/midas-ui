@@ -1,6 +1,6 @@
 ---
 title: "Checkbox"
-description: "Caixa de seleção de 16px para escolhas independentes (aceitar termos, filtros). Estados marcado, desmarcado, indeterminado, desabilitado e inválido."
+description: "Caixa de seleção para escolhas independentes (aceitar termos, filtros). Tamanhos sm, md e lg; tons brand e neutral; estados marcado, desmarcado, indeterminado, hover, foco, desabilitado e erro. Para rótulo com descrição veja SelectionField."
 ---
 
 ```tsx
@@ -24,7 +24,10 @@ Aceita as props do [Checkbox do Radix](https://www.radix-ui.com/primitives/docs/
 |---|---|---|
 | `checked` / `defaultChecked` | `boolean \| "indeterminate"` | Estado controlado / inicial |
 | `onCheckedChange` | `(checked) => void` | Chamado ao mudar |
-| `disabled` | `boolean` | Desabilita |
+| `size` | `"sm" \| "md" \| "lg"` | 16, 20 (padrão) ou 24px; raios 4, 4 e 6 |
+| `tone` | `"brand" \| "neutral"` | Marcado em Cyan (`selection-fill`) ou preto no claro e branco nos escuros (`action-primary-bg`) |
+| `aria-invalid` | `boolean` | Estado de erro (`status-danger-fill`); mostre a mensagem ligada por `aria-describedby` |
+| `disabled` | `boolean` | Desabilita (`opacity-disabled`) |
 | `required` / `name` / `value` | | Para formulários |
 
 ## Exemplos

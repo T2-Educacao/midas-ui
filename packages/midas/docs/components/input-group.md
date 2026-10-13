@@ -1,6 +1,6 @@
 ---
 title: "InputGroup"
-description: "Campo com ícones, textos ou botões dentro da mesma borda (ex.: prefixo https://, ícone de busca, botão de copiar). InputGroup, InputGroupAddon (start ou end), InputGroupInput, InputGroupTextarea, InputGroupText e InputGroupButton."
+description: "Container de campo com ícones, texto e botões (addons) ao redor de um input ou textarea. Mesmas variantes do Input: size sm/md/lg, appearance outline/filled/glass, tone brand/neutral, shape rounded/pill, success. Use para ícone de busca, mostrar senha, prefixos (R$) e stepper numérico."
 ---
 
 ```tsx
@@ -115,3 +115,21 @@ Coloque `aria-invalid` no `InputGroupInput`: a borda do grupo inteiro fica verme
 
 - Usar `Input` dentro de `InputGroup`: use `InputGroupInput`, que não tem borda própria.
 - Colocar mais de um campo no mesmo grupo.
+
+## Variantes do Figma
+
+O `InputGroup` aceita as mesmas props do [Input](./input.md): `size` (40/48/56), `appearance`, `tone`, `shape` e `success`. A altura, a borda e o foco ficam no container; o `InputGroupInput` herda o tamanho do texto. Exporta `inputGroupVariants`.
+
+```tsx
+import { IconEye, IconSearch } from "@t2-educacao/midas/icons";
+
+<InputGroup size="lg" shape="pill">
+  <InputGroupAddon><IconSearch /></InputGroupAddon>
+  <InputGroupInput placeholder="Buscar" aria-label="Buscar" />
+  <InputGroupAddon align="end">
+    <InputGroupButton aria-label="Mostrar senha"><IconEye /></InputGroupButton>
+  </InputGroupAddon>
+</InputGroup>
+```
+
+Tipos do Figma montados com InputGroup: Password (botão de olho), Search (botão de limpar), Number (botões − e +). Para busca principal use [SearchBar](./search-bar.md).

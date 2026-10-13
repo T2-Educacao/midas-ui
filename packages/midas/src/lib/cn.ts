@@ -20,6 +20,18 @@ const textStyles = [
   "mono-md",
 ];
 
+const controlSizes = [
+  "control-xs",
+  "control-sm",
+  "control-md",
+  "control-lg",
+  "control-xl",
+  "control-2xl",
+  "control-3xl",
+  "control-4xl",
+];
+const iconSizes = ["icon-xs", "icon-sm", "icon-md", "icon-lg", "icon-xl"];
+
 const twMerge = extendTailwindMerge<"midas-text-style">({
   extend: {
     classGroups: {
@@ -39,6 +51,9 @@ const twMerge = extendTailwindMerge<"midas-text-style">({
         },
       ],
       rounded: [{ rounded: ["control", "container", "overlay", "pill", "3xl"] }],
+      h: [{ h: controlSizes }],
+      "min-h": [{ "min-h": controlSizes }],
+      size: [{ size: [...controlSizes, ...iconSizes] }],
     },
     conflictingClassGroups: {
       "midas-text-style": ["font-size", "leading", "font-weight", "tracking"],

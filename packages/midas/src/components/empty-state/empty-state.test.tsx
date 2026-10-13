@@ -44,16 +44,31 @@ describe("EmptyState", () => {
     );
   });
 
-  it("ícone fica em círculo muted e escondido de leitores de tela", () => {
+  it("ícone é a ilustração com anéis, escondida de leitores de tela", () => {
     render(<Exemplo />);
-    expect(screen.getByTestId("icone")).toHaveClass("rounded-full", "bg-muted");
+    expect(screen.getByTestId("icone")).toHaveClass("size-28");
+    expect(screen.getByTestId("icone").querySelector(".bg-surface-muted")).toBeInTheDocument();
     expect(screen.getByTestId("icone")).toHaveAttribute("aria-hidden", "true");
+  });
+
+  it("container card, plain e glass", () => {
+    render(
+      <>
+        <EmptyState container="card" data-testid="card" />
+        <EmptyState data-testid="plain" />
+        <EmptyState container="glass" tone="neutral" data-testid="glass" />
+      </>,
+    );
+    expect(screen.getByTestId("card")).toHaveClass("bg-surface-default", "border-border-default");
+    expect(screen.getByTestId("plain")).toHaveAttribute("data-container", "plain");
+    expect(screen.getByTestId("glass")).toHaveClass("material-glass");
+    expect(screen.getByTestId("glass")).toHaveAttribute("data-tone", "neutral");
   });
 
   it("mescla className com a do usuário vencendo", () => {
     render(<Exemplo className="py-2" />);
     expect(screen.getByTestId("raiz")).toHaveClass("py-2");
-    expect(screen.getByTestId("raiz")).not.toHaveClass("py-10");
+    expect(screen.getByTestId("raiz")).not.toHaveClass("py-6");
   });
 
   it("encaminha a ref", () => {

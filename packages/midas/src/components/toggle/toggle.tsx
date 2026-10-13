@@ -7,24 +7,28 @@ import { cn } from "../../lib/cn";
 
 export const toggleVariants = cva(
   [
-    "inline-flex shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-lg text-sm font-medium text-foreground outline-none",
-    "transition-[color,background-color,box-shadow] duration-150 motion-reduce:transition-none",
-    "hover:bg-accent hover:text-accent-foreground data-[state=on]:bg-accent data-[state=on]:text-accent-foreground",
-    "focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
-    "disabled:pointer-events-none disabled:opacity-50",
-    "aria-invalid:border-destructive aria-invalid:ring-destructive/20",
-    "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+    "inline-flex shrink-0 items-center justify-center whitespace-nowrap border border-transparent text-content-primary outline-none",
+    "transition-[color,background-color,border-color,box-shadow] duration-150 motion-reduce:transition-none",
+    "hover:bg-state-hover active:bg-state-pressed data-[state=on]:bg-selection-bg data-[state=on]:text-selection-content",
+    "focus-visible:focus-ring aria-invalid:focus-ring-danger",
+    "disabled:pointer-events-none disabled:opacity-disabled",
+    "[&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],
   {
     variants: {
       variant: {
         ghost: "bg-transparent",
-        outline: "border border-input bg-background dark:bg-input/30",
+        outline:
+          "border-border-default bg-surface-default shadow-elevation-control data-[state=on]:border-selection-border",
       },
       size: {
-        sm: "h-7 min-w-7 rounded-md px-2.5 text-xs",
-        default: "h-8 min-w-8 px-2.5",
-        lg: "h-9 min-w-9 px-2.5",
+        xs: "h-control-xs min-w-control-xs gap-1 rounded-xs px-2 text-label-sm [&_svg:not([class*='size-'])]:size-icon-sm",
+        sm: "h-control-sm min-w-control-sm gap-1.5 rounded-xs px-2.5 text-label-sm [&_svg:not([class*='size-'])]:size-icon-sm",
+        default:
+          "h-control-md min-w-control-md gap-1.5 rounded-control px-3 text-label-md [&_svg:not([class*='size-'])]:size-icon-sm",
+        md: "h-control-md min-w-control-md gap-1.5 rounded-control px-3 text-label-md [&_svg:not([class*='size-'])]:size-icon-sm",
+        lg: "h-control-lg min-w-control-lg gap-2 rounded-control px-4 text-label-md [&_svg:not([class*='size-'])]:size-icon-md",
+        xl: "h-control-xl min-w-control-xl gap-2 rounded-md px-5 text-label-lg [&_svg:not([class*='size-'])]:size-icon-md",
       },
     },
     defaultVariants: {

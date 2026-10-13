@@ -7,6 +7,17 @@
       "runtimeArgs": ["--filter", "docs", "dev"],
       "port": 3100,
       "autoPort": true
+    },
+    {
+      "name": "design-t2",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/rafck/Downloads/t2/design-t2/node_modules/vite/bin/vite.js",
+        "C:/Users/rafck/Downloads/t2/design-t2",
+        "--port",
+        "5177"
+      ],
+      "port": 5177
     }
   ]
 }

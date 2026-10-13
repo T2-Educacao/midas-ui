@@ -51,4 +51,34 @@ describe("ButtonGroup", () => {
     );
     await expectNoA11yViolations(container);
   });
+
+  it("layout attached cria o contêiner segmentado do Figma", () => {
+    render(
+      <ButtonGroup layout="attached" aria-label="Período">
+        <Button variant="ghost">Dia</Button>
+        <ButtonGroupSeparator />
+        <Button variant="secondary">Semana</Button>
+      </ButtonGroup>,
+    );
+    const group = screen.getByRole("group", { name: "Período" });
+    expect(group).toHaveAttribute("data-layout", "attached");
+    expect(group).toHaveClass("rounded-overlay", "border-border-default", "p-0.5");
+  });
+
+  it("layout spaced afasta os botões e stacked empilha em largura total", () => {
+    render(
+      <div>
+        <ButtonGroup layout="spaced" aria-label="Ações">
+          <Button>Salvar</Button>
+        </ButtonGroup>
+        <ButtonGroup layout="stacked" aria-label="Pilha">
+          <Button>Continuar</Button>
+        </ButtonGroup>
+      </div>,
+    );
+    expect(screen.getByRole("group", { name: "Ações" })).toHaveClass("gap-2");
+    const stacked = screen.getByRole("group", { name: "Pilha" });
+    expect(stacked).toHaveClass("flex-col", "w-full");
+    expect(stacked).toHaveAttribute("data-orientation", "vertical");
+  });
 });

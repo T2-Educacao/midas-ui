@@ -1,6 +1,6 @@
 ---
 title: "Combobox"
-description: "Campo de seleção com busca. Passe options e ele cuida de filtrar, navegar pelo teclado e selecionar. Seleção única ou múltipla (chips), botão de limpar, grupos, itens com descrição e ícone, ícone à esquerda, modo popup (botão com busca), estados inválido e desabilitado."
+description: "Campo com busca e seleção (única ou múltipla): input ou botão como gatilho, grupos, descrição, ícones, limpar. Mesmas variantes do Input (size, appearance, tone, shape); menu em superfície overlay."
 ---
 
 ```tsx
@@ -151,3 +151,11 @@ const [certificacao, setCertificacao] = useState<string | null>(null);
 
 - Usar Combobox para menos de 5 opções fixas: um `ToggleGroup` ou radio é mais rápido.
 - Usar Combobox para ações (ex.: "Editar", "Excluir"): use [DropdownMenu](./dropdown-menu.md).
+
+## Lista (Figma Dropdown › Combobox)
+
+A lista segue o mesmo visual do [DropdownMenu](./dropdown-menu.md): superfície `overlay-surface`, borda `border-subtle`, `elevation-overlay`, itens de 36px com hover `overlay-hover`, check à direita em `selection-content` e títulos de grupo em mono (`text-mono-overline`). Estado vazio: use `emptyMessage` (ex.: `Nenhum resultado para “cripto”`) e, para criar um item, mostre um botão dentro dele que adiciona a opção a `options`. O trecho digitado em destaque e o Style glass do Figma não são aplicados à lista.
+
+## Variantes do Figma
+
+`Combobox` aceita `size` (`"sm" | "md" | "lg"` = 40/48/56), `appearance`, `tone` e `shape` como o [Input](./input.md). O menu usa o recibo de overlay (`bg-overlay-surface`, `shadow-elevation-overlay`, `rounded-overlay`); opções marcadas usam `selection-bg` e os chips do modo múltiplo são pílulas `bg-surface-muted`. É o caminho para os menus Multiple e Searchable do Figma.

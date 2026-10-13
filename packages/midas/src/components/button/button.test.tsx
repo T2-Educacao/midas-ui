@@ -11,7 +11,7 @@ describe("Button", () => {
     const button = screen.getByRole("button", { name: "Salvar" });
     expect(button.tagName).toBe("BUTTON");
     expect(button).toHaveAttribute("type", "button");
-    expect(button).toHaveClass("bg-primary", "h-8");
+    expect(button).toHaveClass("bg-action-primary-bg", "h-control-md");
   });
 
   it("aplica variante, tamanho e formato arredondado", () => {
@@ -20,7 +20,11 @@ describe("Button", () => {
         Excluir
       </Button>,
     );
-    expect(screen.getByRole("button")).toHaveClass("bg-destructive/10", "h-9", "rounded-full");
+    expect(screen.getByRole("button")).toHaveClass(
+      "bg-action-destructive-bg",
+      "h-control-lg",
+      "rounded-pill",
+    );
   });
 
   it("tem tamanhos de ícone quadrados", () => {
@@ -29,14 +33,14 @@ describe("Button", () => {
         <svg />
       </Button>,
     );
-    expect(screen.getByRole("button", { name: "Buscar" })).toHaveClass("size-7");
+    expect(screen.getByRole("button", { name: "Buscar" })).toHaveClass("size-control-sm");
   });
 
   it("mescla className e a classe do usuário vence", () => {
     render(<Button className="h-14 px-8">Grande</Button>);
     const button = screen.getByRole("button");
     expect(button).toHaveClass("h-14", "px-8");
-    expect(button).not.toHaveClass("h-8", "px-2.5");
+    expect(button).not.toHaveClass("h-control-md", "px-3");
   });
 
   it("chama onClick e respeita disabled", async () => {
@@ -70,7 +74,7 @@ describe("Button", () => {
     );
     const link = screen.getByRole("link", { name: "Ver cursos" });
     expect(link).toHaveAttribute("href", "/cursos");
-    expect(link).toHaveClass("bg-primary");
+    expect(link).toHaveClass("bg-action-primary-bg");
     expect(link).not.toHaveAttribute("type");
   });
 
@@ -97,8 +101,10 @@ describe("Button", () => {
         <Button variant="info">Info</Button>
       </div>,
     );
-    expect(screen.getByRole("button", { name: "Atenção" })).toHaveClass("text-warning");
-    expect(screen.getByRole("button", { name: "Info" })).toHaveClass("text-info");
+    expect(screen.getByRole("button", { name: "Atenção" })).toHaveClass(
+      "text-status-warning-content",
+    );
+    expect(screen.getByRole("button", { name: "Info" })).toHaveClass("text-status-info-content");
   });
 
   it("em botão só de ícone, loading mostra apenas o spinner", () => {
@@ -128,9 +134,11 @@ describe("Button", () => {
       </div>,
     );
     const excluir = screen.getByRole("button", { name: "Excluir" });
-    expect(excluir).toHaveClass("bg-destructive", "text-destructive-foreground");
-    expect(excluir).not.toHaveClass("bg-destructive/10", "text-destructive");
-    expect(screen.getByRole("button", { name: "Aprovar" })).toHaveClass("bg-success");
+    expect(excluir).toHaveClass("bg-action-destructive-bg", "text-action-destructive-content");
+    expect(screen.getByRole("button", { name: "Aprovar" })).toHaveClass(
+      "bg-status-success-fill",
+      "text-status-success-on-fill",
+    );
   });
 
   it("loadingText substitui o conteúdo durante o carregamento", () => {
@@ -143,5 +151,63 @@ describe("Button", () => {
     expect(screen.getByRole("button")).not.toHaveTextContent("Salvar");
     rerender(<Button loadingText="Salvando...">Salvar</Button>);
     expect(screen.getByRole("button")).toHaveTextContent("Salvar");
+  });
+
+  it("aplica as variantes do Figma (accent, secondary, outline, ghost)", () => {
+    render(
+      <div>
+        <Button variant="accent">Assinar</Button>
+        <Button variant="secondary">Voltar</Button>
+        <Button variant="outline">Filtrar</Button>
+        <Button variant="ghost">Mais</Button>
+      </div>,
+    );
+    expect(screen.getByRole("button", { name: "Assinar" })).toHaveClass("bg-action-accent-bg");
+    expect(screen.getByRole("button", { name: "Voltar" })).toHaveClass("bg-action-secondary-bg");
+    expect(screen.getByRole("button", { name: "Filtrar" })).toHaveClass(
+      "border-border-default",
+      "shadow-elevation-control",
+    );
+    expect(screen.getByRole("button", { name: "Mais" })).toHaveClass("hover:bg-state-hover");
+  });
+
+  it("aplica a escala de tamanhos do Figma (xs a xl) com raios por tamanho", () => {
+    render(
+      <div>
+        <Button size="xs">XS</Button>
+        <Button size="md">MD</Button>
+        <Button size="xl">XL</Button>
+      </div>,
+    );
+    expect(screen.getByRole("button", { name: "XS" })).toHaveClass("h-control-xs", "rounded-xs");
+    expect(screen.getByRole("button", { name: "MD" })).toHaveClass(
+      "h-control-md",
+      "rounded-control",
+    );
+    expect(screen.getByRole("button", { name: "XL" })).toHaveClass("h-control-xl", "rounded-md");
+  });
+
+  it("aplica variantes expressivas sobre mídia", () => {
+    render(
+      <div>
+        <Button variant="glass" size="2xl">
+          Glass
+        </Button>
+        <Button variant="gradient-accent">Gradiente</Button>
+      </div>,
+    );
+    expect(screen.getByRole("button", { name: "Glass" })).toHaveClass(
+      "material-glass",
+      "h-control-2xl",
+    );
+    expect(screen.getByRole("button", { name: "Gradiente" })).toHaveClass("material-sheen");
+  });
+
+  it("não tem hover quando desabilitado", () => {
+    render(<Button disabled>Desabilitado</Button>);
+    expect(screen.getByRole("button")).toHaveClass(
+      "disabled:pointer-events-none",
+      "disabled:opacity-disabled",
+    );
   });
 });

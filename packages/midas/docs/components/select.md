@@ -1,6 +1,6 @@
 ---
 title: "Select"
-description: "Lista de opções fechada, com visual do Midas (Radix Select). Para poucas opções sem busca; tamanhos default e sm, grupos, separador e itens desabilitados."
+description: "Seletor com menu (Radix Select) do Midas: gatilho com os mesmos tamanhos, estilos, tons e formas do Input (sm 40, md 48, lg 56), menu em superfície overlay com sombra de elevação, itens com descrição opcional e estado selecionado."
 ---
 
 ```tsx
@@ -77,3 +77,23 @@ import {
 
 - Teclado: setas, `Enter`, digitar a inicial pula para a opção.
 - Dê nome ao trigger (`FieldLabel htmlFor` + `id`, ou `aria-label`).
+
+## Variantes do Figma
+
+`SelectTrigger` aceita `size` (`"sm" | "md" | "lg"`; `"default"` = `md`), `appearance`, `tone`, `shape` e `success` como o [Input](./input.md). O menu usa `bg-overlay-surface`, `border-overlay-border`, `shadow-elevation-overlay` e `rounded-overlay`; o item selecionado usa `selection-bg` e o foco `state-hover`.
+
+`SelectItem` aceita `description` (linha de apoio, formato Rich do Select Menu):
+
+```tsx
+<Select defaultValue="rf">
+  <SelectTrigger aria-label="Perfil" size="lg" fullWidth>
+    <SelectValue placeholder="Selecione" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="rf" description="Para quem busca previsibilidade">Renda fixa</SelectItem>
+    <SelectItem value="acoes" description="Maior risco e retorno">Ações</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+Menu Multiple (checkbox + Limpar/Aplicar) e Searchable: use [Combobox](./combobox.md). People (avatar): coloque um `Avatar` dentro do `SelectItem`.

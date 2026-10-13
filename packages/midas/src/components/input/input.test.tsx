@@ -6,11 +6,48 @@ import { expectNoA11yViolations } from "../../test/axe";
 import { Input } from "./input";
 
 describe("Input", () => {
-  it("renderiza um campo de texto com 32px de altura", () => {
+  it("renderiza um campo de texto com 48px de altura e raio de controle", () => {
     render(<Input aria-label="Nome" placeholder="Seu nome" />);
     const input = screen.getByRole("textbox", { name: "Nome" });
     expect(input).toHaveAttribute("type", "text");
-    expect(input).toHaveClass("h-8", "rounded-lg");
+    expect(input).toHaveClass("h-control-xl", "rounded-control", "border-border-subtle");
+  });
+
+  it("aplica tamanhos SM e LG do Figma", () => {
+    render(
+      <div>
+        <Input aria-label="sm" size="sm" />
+        <Input aria-label="lg" size="lg" />
+      </div>,
+    );
+    expect(screen.getByLabelText("sm")).toHaveClass("h-control-lg");
+    expect(screen.getByLabelText("lg")).toHaveClass("h-control-2xl");
+  });
+
+  it("aplica estilo filled, glass, tom neutro e forma pill", () => {
+    render(
+      <div>
+        <Input aria-label="filled" appearance="filled" />
+        <Input aria-label="glass" appearance="glass" />
+        <Input aria-label="neutro" tone="neutral" />
+        <Input aria-label="pill" shape="pill" />
+      </div>,
+    );
+    expect(screen.getByLabelText("filled")).toHaveClass("bg-surface-muted");
+    expect(screen.getByLabelText("glass")).toHaveClass("bg-material-glass-surface");
+    expect(screen.getByLabelText("neutro").className).toContain("focus-ring-neutral");
+    expect(screen.getByLabelText("pill")).toHaveClass("rounded-pill");
+  });
+
+  it("marca sucesso com data-success", () => {
+    render(<Input aria-label="ok" success />);
+    expect(screen.getByLabelText("ok")).toHaveAttribute("data-success", "true");
+  });
+
+  it("mescla className com a do usuário vencendo", () => {
+    render(<Input aria-label="x" className="h-10" />);
+    expect(screen.getByLabelText("x")).toHaveClass("h-10");
+    expect(screen.getByLabelText("x")).not.toHaveClass("h-control-xl");
   });
 
   it("aceita digitação", async () => {

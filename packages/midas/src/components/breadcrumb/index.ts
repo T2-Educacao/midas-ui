@@ -1,10 +1,15 @@
 export {
   Breadcrumb,
+  BreadcrumbBack,
   BreadcrumbEllipsis,
+  BreadcrumbHome,
   BreadcrumbItem,
   BreadcrumbLink,
   type BreadcrumbLinkProps,
   BreadcrumbList,
   BreadcrumbPage,
+  type BreadcrumbProps,
   BreadcrumbSeparator,
+  type BreadcrumbSeparatorType,
+  breadcrumbVariants,
 } from "./breadcrumb";

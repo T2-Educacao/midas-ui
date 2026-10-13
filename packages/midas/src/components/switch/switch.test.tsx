@@ -55,6 +55,25 @@ describe("Switch", () => {
     expect(ref.current).toHaveAttribute("data-slot", "switch");
   });
 
+  it("aplica tamanho lg e tom neutral com tokens", () => {
+    render(<Switch aria-label="Grande" size="lg" tone="neutral" />);
+    expect(screen.getByRole("switch")).toHaveClass(
+      "h-6",
+      "w-11",
+      "data-[state=checked]:bg-action-primary-bg",
+    );
+  });
+
+  it("usa os tokens do trilho desligado e ligado (brand)", () => {
+    render(<Switch aria-label="Padrão" />);
+    expect(screen.getByRole("switch")).toHaveClass(
+      "data-[state=unchecked]:bg-border-strong",
+      "data-[state=checked]:bg-selection-fill",
+      "h-5",
+      "w-9",
+    );
+  });
+
   it("não tem violações de acessibilidade", async () => {
     const { container } = render(<Switch aria-label="Receber avisos" />);
     await expectNoA11yViolations(container);

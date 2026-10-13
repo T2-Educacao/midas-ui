@@ -35,7 +35,7 @@ describe("ChoiceCard", () => {
     render(<Grupo />);
     const marcado = screen.getByRole("radio", { name: "Mensal" });
     expect(marcado).toHaveAttribute("data-state", "checked");
-    expect(marcado.className).toContain("data-[state=checked]:border-primary");
+    expect(marcado.className).toContain("data-[state=checked]:border-selection-border");
   });
 
   it("respeita disabled", async () => {

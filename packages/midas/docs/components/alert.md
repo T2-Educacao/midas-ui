@@ -7,6 +7,8 @@ description: "Mensagem destacada em bloco para informar, confirmar, avisar ou re
 import { Alert, AlertAction, AlertDescription, AlertTitle } from "@t2-educacao/midas";
 ```
 
+Alert é mensagem em bloco dentro do conteúdo (raio de container, cores de status suaves). Aviso persistente de página ou conta: use [Banner](./banner.md). Aviso temporário: [Toast](./toast.md).
+
 ## Uso
 
 ```tsx

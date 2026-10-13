@@ -1,6 +1,6 @@
 ---
 title: "DropdownMenu"
-description: "Menu de ações aberto por um botão. Itens com ícone e atalho, labels, separadores, submenus, itens de checkbox e radio, item destrutivo e itens desabilitados."
+description: "Menu aberto por um gatilho (Dropdown do Figma): itens com ícone, atalho e check, labels em mono, separadores, submenus, checkbox/radio, item destrutivo, rodapé Limpar/Aplicar. DropdownTrigger traz os gatilhos Prefix, Simple, Icon e Ghost. appearance solid|glass e tone brand|neutral."
 ---
 
 ```tsx
@@ -8,6 +8,7 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
+  DropdownMenuFooter,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
@@ -19,129 +20,89 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
+  DropdownTrigger,
 } from "@t2-educacao/midas";
 ```
 
-## Uso
+## Quando usar
+
+Até 7 opções conhecidas (ordenar, filtrar, ações de linha, menu de perfil). Mais que isso ou lista dinâmica: [Combobox](./combobox.md).
+
+## Quando não usar
+
+Navegação principal; escolha de valor em formulário ([Select](./select.md)); conteúdo rico ([Popover](./popover.md)).
+
+## Anatomia
+
+`DropdownMenuContent` (`overlay-surface`, borda `border-subtle`, `elevation-overlay`, padding 6, largura mín. 224), itens de 36px (`body-sm`, ícone à esquerda em `content-secondary`, hover `overlay-hover`), `DropdownMenuLabel` (`text-mono-overline`), `DropdownMenuSeparator`.
+
+## Props
+
+### DropdownMenuContent
+
+| Prop | Tipo | Padrão | Descrição |
+|---|---|---|---|
+| `appearance` | `"solid" \| "glass"` | `"solid"` | Style |
+| `tone` | `"brand" \| "neutral"` | `"brand"` | Cor do check de seleção: cyan ou preto/branco |
+| `align`, `sideOffset` | | `"start"`, `6` | Posição |
+
+### DropdownMenuItem
+
+| Prop | Tipo | Padrão | Descrição |
+|---|---|---|---|
+| `variant` | `"default" \| "destructive"` | `"default"` | Kind do Figma. Destrutivo em vermelho suave, por último e separado |
+| `inset` | `boolean` | `false` | Alinha com itens que têm ícone |
+| `disabled` | `boolean` | | Texto `content-disabled` |
+
+### DropdownTrigger
+
+| Prop | Tipo | Padrão | Descrição |
+|---|---|---|---|
+| `kind` | `"prefix" \| "simple" \| "icon" \| "ghost"` | `"prefix"` | Prefix mostra `prefix` ("Ordenar:") + valor |
+| `size` | `"md" \| "sm"` | `"md"` | 40 / 32px |
+| `tone` | `"brand" \| "neutral"` | `"brand"` | Anel de foco/aberto |
+| `prefix`, `icon` | `ReactNode` | | Prefixo e ícone |
+
+Estado aberto e foco usam borda 1px + halo de 4px. Funções exportadas: `dropdownMenuContentVariants`, `dropdownMenuItemVariants`, `dropdownTriggerVariants`.
+
+## Exemplos
+
+Single com check na opção ativa:
 
 ```tsx
 <DropdownMenu>
   <DropdownMenuTrigger asChild>
-    <Button variant="outline">Abrir</Button>
+    <DropdownTrigger prefix="Ordenar:">Último acesso</DropdownTrigger>
   </DropdownMenuTrigger>
   <DropdownMenuContent>
-    <DropdownMenuLabel>Minha conta</DropdownMenuLabel>
-    <DropdownMenuGroup>
-      <DropdownMenuItem>Perfil</DropdownMenuItem>
-      <DropdownMenuItem>Assinatura</DropdownMenuItem>
-      <DropdownMenuItem>Configurações</DropdownMenuItem>
-    </DropdownMenuGroup>
-    <DropdownMenuSeparator />
-    <DropdownMenuItem>Suporte</DropdownMenuItem>
-    <DropdownMenuItem disabled>API</DropdownMenuItem>
+    <DropdownMenuRadioGroup value={ordem} onValueChange={setOrdem}>
+      <DropdownMenuRadioItem value="acesso">Último acesso</DropdownMenuRadioItem>
+      <DropdownMenuRadioItem value="nome">Nome A–Z</DropdownMenuRadioItem>
+    </DropdownMenuRadioGroup>
   </DropdownMenuContent>
 </DropdownMenu>
 ```
 
-## Componentes
-
-| Componente | O que é |
-|---|---|
-| `DropdownMenu` | Raiz |
-| `DropdownMenuTrigger` | Botão que abre o menu (use `asChild`) |
-| `DropdownMenuContent` | O menu (mínimo de 128px de largura) |
-| `DropdownMenuItem` | Ação. `variant="destructive"` para ações perigosas, `inset` para alinhar com itens que têm ícone |
-| `DropdownMenuLabel` | Título de uma seção (texto pequeno em cinza) |
-| `DropdownMenuGroup` | Agrupa itens relacionados |
-| `DropdownMenuSeparator` | Linha entre seções |
-| `DropdownMenuShortcut` | Atalho de teclado alinhado à direita |
-| `DropdownMenuCheckboxItem` | Item liga/desliga, com check à direita |
-| `DropdownMenuRadioGroup` / `DropdownMenuRadioItem` | Escolha única dentro do menu |
-| `DropdownMenuSub` / `DropdownMenuSubTrigger` / `DropdownMenuSubContent` | Submenu |
-
-## Props principais
-
-| Componente | Prop | Descrição |
-|---|---|---|
-| `DropdownMenuContent` | `align` (`"start"` padrão), `side`, `sideOffset` | Posição |
-| `DropdownMenuItem` | `onSelect`, `disabled`, `variant`, `inset` | Ação e estado |
-| `DropdownMenuCheckboxItem` | `checked`, `onCheckedChange` | Estado |
-| `DropdownMenuRadioGroup` | `value`, `onValueChange` | Valor escolhido |
-
-## Exemplos
-
-### Com ícones e atalhos
+Menu de ações (Action Menu / Profile Menu):
 
 ```tsx
-<DropdownMenuItem>
-  <User /> Perfil <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-</DropdownMenuItem>
-<DropdownMenuItem variant="destructive">
-  <SignOut /> Sair <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-</DropdownMenuItem>
+<DropdownMenuContent>
+  <DropdownMenuLabel>Conta</DropdownMenuLabel>
+  <DropdownMenuItem><IconUser /> Meu perfil <DropdownMenuShortcut>⌘P</DropdownMenuShortcut></DropdownMenuItem>
+  <DropdownMenuItem><IconSettings /> Configurações</DropdownMenuItem>
+  <DropdownMenuSeparator />
+  <DropdownMenuItem variant="destructive"><IconLogout /> Sair</DropdownMenuItem>
+</DropdownMenuContent>
 ```
 
-### Submenu
-
-```tsx
-<DropdownMenuSub>
-  <DropdownMenuSubTrigger>Convidar</DropdownMenuSubTrigger>
-  <DropdownMenuSubContent>
-    <DropdownMenuItem>E-mail</DropdownMenuItem>
-    <DropdownMenuItem>WhatsApp</DropdownMenuItem>
-  </DropdownMenuSubContent>
-</DropdownMenuSub>
-```
-
-### Checkbox
-
-```tsx
-const [barra, setBarra] = useState(true);
-
-<DropdownMenuCheckboxItem checked={barra} onCheckedChange={setBarra}>
-  Barra de status
-</DropdownMenuCheckboxItem>
-```
-
-### Radio
-
-```tsx
-const [posicao, setPosicao] = useState("topo");
-
-<DropdownMenuRadioGroup value={posicao} onValueChange={setPosicao}>
-  <DropdownMenuRadioItem value="topo">Topo</DropdownMenuRadioItem>
-  <DropdownMenuRadioItem value="base">Base</DropdownMenuRadioItem>
-</DropdownMenuRadioGroup>
-```
-
-### Checkbox e radio com ícones
-
-```tsx
-<DropdownMenuCheckboxItem checked={email} onCheckedChange={setEmail}>
-  <EnvelopeSimple /> E-mail
-</DropdownMenuCheckboxItem>
-<DropdownMenuRadioItem value="pix">
-  <PixLogo /> Pix
-</DropdownMenuRadioItem>
-```
-
-### Com avatar
-
-```tsx
-<DropdownMenuTrigger asChild>
-  <Button variant="ghost" size="icon" rounded aria-label="Conta">
-    <img src="/ana.jpg" alt="" className="size-8 rounded-full" />
-  </Button>
-</DropdownMenuTrigger>
-```
+Multi com Limpar/Aplicar: `DropdownMenuCheckboxItem` (use `onSelect={(e) => e.preventDefault()}` para não fechar) e `DropdownMenuFooter` com dois `Button size="sm"`.
 
 ## Acessibilidade
 
-- Teclado completo: setas navegam, `Enter`/`Espaço` selecionam, `→` abre submenu, `Esc` fecha.
-- Digitar uma letra pula para o item que começa com ela.
-- Gatilho só com ícone precisa de `aria-label`.
+Radix: setas, Home/End, type-ahead, `Esc`, foco volta ao gatilho. Opção ativa com check à direita, nunca só cor. Atalhos de teclado são só visuais (implemente o atalho).
 
 ## Não faça
 
-- Usar DropdownMenu para escolher um valor de formulário: use [Combobox](./combobox.md).
-- Esconder a única forma de fazer uma ação importante dentro de um menu.
+- Ação destrutiva sem separador ou sem texto claro.
+- Aninhar mais de um nível de submenu.
+- Usar para navegar entre páginas principais.

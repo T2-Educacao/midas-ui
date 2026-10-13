@@ -5,6 +5,7 @@ import { Command as CommandPrimitive, useCommandState } from "cmdk";
 import { Popover as PopoverPrimitive } from "radix-ui";
 import * as React from "react";
 import { cn } from "../../lib/cn";
+import { type FieldControlVariantProps, fieldControlVariants } from "../../lib/field-styles";
 
 export interface ComboboxOption {
   value: string;
@@ -27,6 +28,10 @@ interface ComboboxBaseProps {
   showSelectedDescription?: boolean;
   disabled?: boolean;
   invalid?: boolean;
+  size?: FieldControlVariantProps["size"];
+  appearance?: FieldControlVariantProps["appearance"];
+  tone?: FieldControlVariantProps["tone"];
+  shape?: FieldControlVariantProps["shape"];
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
   id?: string;
@@ -67,16 +72,30 @@ const matches = (option: ComboboxOption, search: string) => {
     .some((text) => fold(text as string).includes(term));
 };
 
-const fieldClasses = [
-  "group/combobox relative flex min-h-8 w-full min-w-0 items-center rounded-lg border border-input bg-transparent text-sm outline-none",
-  "transition-[color,border-color,box-shadow] duration-150 motion-reduce:transition-none dark:bg-input/30",
-  "focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/50",
-  "has-[[aria-invalid=true]]:border-destructive has-[[aria-invalid=true]]:ring-3 has-[[aria-invalid=true]]:ring-destructive/20",
-  "has-disabled:pointer-events-none has-disabled:bg-input/50 has-disabled:opacity-50",
-];
+const heightClasses = {
+  sm: "min-h-control-lg",
+  md: "min-h-control-xl",
+  lg: "min-h-control-2xl",
+};
+
+function fieldClasses({
+  size = "md",
+  appearance,
+  tone,
+  shape,
+}: Pick<FieldControlVariantProps, "size" | "appearance" | "tone" | "shape">) {
+  return cn(
+    fieldControlVariants({ size, appearance, tone, shape }),
+    "group/combobox relative flex h-auto w-full items-center",
+    heightClasses[size ?? "md"],
+    tone === "neutral" ? "focus-within:focus-ring-neutral" : "focus-within:focus-ring",
+    "has-[[aria-invalid=true]]:border-status-danger-border has-[[aria-invalid=true]]:bg-status-danger-subtle",
+    "has-disabled:pointer-events-none has-disabled:border-disabled-border has-disabled:bg-disabled-bg has-disabled:text-content-disabled has-disabled:shadow-none",
+  );
+}
 
 const addonClasses =
-  "flex shrink-0 items-center text-muted-foreground [&_svg:not([class*='size-'])]:size-4";
+  "flex shrink-0 items-center text-content-secondary [&_svg:not([class*='size-'])]:size-icon-md";
 
 export function Combobox(props: ComboboxProps) {
   const {
@@ -90,6 +109,10 @@ export function Combobox(props: ComboboxProps) {
     showSelectedDescription = false,
     disabled = false,
     invalid = false,
+    size,
+    appearance,
+    tone,
+    shape,
     id,
     name,
     className,
@@ -164,18 +187,21 @@ export function Combobox(props: ComboboxProps) {
       className="max-h-72 scroll-py-1 overflow-y-auto overflow-x-hidden"
     >
       {filtered.length === 0 && (
-        <div data-slot="combobox-empty" className="py-6 text-center text-sm text-muted-foreground">
+        <div
+          data-slot="combobox-empty"
+          className="py-6 text-center text-body-sm text-content-secondary"
+        >
           {emptyMessage}
         </div>
       )}
       {[...groups.entries()].map(([group, items], index) => (
         <React.Fragment key={group || "sem-grupo"}>
           {index > 0 && group && (
-            <CommandPrimitive.Separator className="-mx-1 my-1 h-px bg-border" />
+            <CommandPrimitive.Separator className="-mx-1.5 my-1 h-px bg-border-subtle" />
           )}
           <CommandPrimitive.Group
             heading={group || undefined}
-            className="**:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-xs **:[[cmdk-group-heading]]:text-muted-foreground"
+            className="**:[[cmdk-group-heading]]:px-2.5 **:[[cmdk-group-heading]]:pt-2 **:[[cmdk-group-heading]]:pb-1 **:[[cmdk-group-heading]]:text-mono-overline **:[[cmdk-group-heading]]:text-content-secondary"
           >
             {items.map((option) => (
               <ComboboxItem
@@ -206,7 +232,7 @@ export function Combobox(props: ComboboxProps) {
           if (anchorRef.current?.contains(event.target as Node)) event.preventDefault();
         }}
         className={cn(
-          "z-(--midas-z-popup) w-(--radix-popover-trigger-width) min-w-48 overflow-hidden rounded-lg border border-border bg-popover p-1 text-popover-foreground shadow-md outline-none",
+          "z-(--midas-z-popup) w-(--radix-popover-trigger-width) min-w-48 overflow-hidden rounded-overlay border border-border-subtle bg-overlay-surface p-1.5 text-content-primary shadow-elevation-overlay outline-none",
           "origin-(--radix-popover-content-transform-origin) animate-midas-in motion-reduce:animate-none",
           contentClassName,
         )}
@@ -231,12 +257,15 @@ export function Combobox(props: ComboboxProps) {
               aria-describedby={props["aria-describedby"]}
               data-slot="combobox-trigger"
               className={cn(
-                fieldClasses,
-                "h-8 cursor-default gap-2 px-2 text-start focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
+                fieldClasses({ size, appearance, tone, shape }),
+                "cursor-default gap-2 text-start",
+                tone === "neutral"
+                  ? "focus-visible:focus-ring-neutral"
+                  : "focus-visible:focus-ring",
               )}
             >
               {startAddon && <span className={addonClasses}>{startAddon}</span>}
-              <span className={cn("flex-1 truncate", !selected.length && "text-muted-foreground")}>
+              <span className={cn("flex-1 truncate", !selected.length && "text-content-secondary")}>
                 {multiple
                   ? selected.length
                     ? selected.map((v) => byValue.get(v)?.label ?? v).join(", ")
@@ -245,13 +274,13 @@ export function Combobox(props: ComboboxProps) {
                 {selectedDescription && (
                   <span
                     data-slot="combobox-trigger-description"
-                    className="ms-2 text-muted-foreground"
+                    className="ms-2 text-content-secondary"
                   >
                     {selectedDescription}
                   </span>
                 )}
               </span>
-              <IconChevronDown className="size-4 shrink-0 text-muted-foreground" />
+              <IconChevronDown className="size-icon-md shrink-0 text-content-secondary" />
             </button>
           </PopoverPrimitive.Trigger>
           {name && <input type="hidden" name={name} value={selected.join(",")} />}
@@ -266,7 +295,10 @@ export function Combobox(props: ComboboxProps) {
               }}
               placeholder={searchPlaceholder}
               data-slot="combobox-search"
-              className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 dark:bg-input/30"
+              className={cn(
+                fieldControlVariants({ size: "sm", appearance: "outline", tone, shape: "rounded" }),
+                "shadow-none",
+              )}
             />
             {list}
           </CommandPrimitive>,
@@ -283,7 +315,10 @@ export function Combobox(props: ComboboxProps) {
           <div
             ref={anchorRef}
             data-slot="combobox"
-            className={cn(fieldClasses, multiple && "flex-wrap gap-1 p-1")}
+            className={cn(
+              fieldClasses({ size, appearance, tone, shape }),
+              multiple && "flex-wrap gap-1 py-1.5",
+            )}
           >
             {startAddon && <span className={cn(addonClasses, "ps-2")}>{startAddon}</span>}
             {multiple &&
@@ -323,7 +358,7 @@ export function Combobox(props: ComboboxProps) {
                 }
               }}
               className={cn(
-                "h-full min-w-16 flex-1 bg-transparent py-1.5 text-sm text-foreground outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed",
+                "h-full min-w-16 flex-1 bg-transparent py-1.5 text-[length:inherit] text-content-primary outline-none placeholder:text-content-secondary disabled:cursor-not-allowed",
                 multiple ? "h-6 px-1.5 py-0" : "px-2",
               )}
             />
@@ -335,15 +370,15 @@ export function Combobox(props: ComboboxProps) {
                 onClick={clear}
                 className={cn(
                   addonClasses,
-                  "rounded-md text-foreground hover:text-muted-foreground",
+                  "rounded-control text-content-primary hover:text-content-secondary",
                   multiple ? "px-1.5" : "pe-2",
                 )}
               >
-                <IconX className="size-4" />
+                <IconX className="size-icon-md" />
               </button>
             ) : (
               <span aria-hidden className={cn(addonClasses, multiple ? "px-1.5" : "pe-2")}>
-                <IconChevronDown className="size-4" />
+                <IconChevronDown className="size-icon-md" />
               </span>
             )}
           </div>
@@ -394,20 +429,22 @@ function ComboboxItem({
       data-slot="combobox-item"
       data-checked={checked || undefined}
       className={cn(
-        "relative flex cursor-default select-none items-center gap-2 rounded-md py-1 pe-8 ps-1.5 text-sm outline-none",
-        "data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground",
-        "data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
-        "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative flex cursor-default select-none items-center gap-2 rounded-lg py-2 pe-9 ps-2.5 text-body-sm text-content-primary outline-none",
+        "data-[selected=true]:bg-overlay-hover",
+        "data-[disabled=true]:pointer-events-none data-[disabled=true]:text-content-disabled",
+        "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-icon-md",
       )}
     >
       {option.icon}
       <span className="flex min-w-0 flex-col">
-        <span className={cn("truncate", option.description && "font-medium")}>{option.label}</span>
+        <span className={cn("truncate", option.description && "text-label-md")}>
+          {option.label}
+        </span>
         {option.description && (
-          <span className="truncate text-xs text-muted-foreground">{option.description}</span>
+          <span className="truncate text-caption text-content-secondary">{option.description}</span>
         )}
       </span>
-      {checked && <IconCheck aria-hidden className="absolute end-2" />}
+      {checked && <IconCheck aria-hidden className="absolute end-2.5 text-selection-content" />}
     </CommandPrimitive.Item>
   );
 }
@@ -424,7 +461,7 @@ export function ComboboxChip({
   return (
     <span
       data-slot="combobox-chip"
-      className="flex h-5.25 items-center gap-1 rounded-sm bg-muted ps-1.5 text-xs font-medium text-foreground"
+      className="flex h-6 items-center gap-1 rounded-pill bg-surface-muted ps-2.5 text-label-sm text-content-primary"
     >
       {label}
       <button
@@ -432,9 +469,9 @@ export function ComboboxChip({
         disabled={disabled}
         aria-label={`Remover ${label}`}
         onClick={onRemove}
-        className="flex h-full items-center rounded-sm px-1 text-muted-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-ring disabled:pointer-events-none"
+        className="flex h-full items-center rounded-pill pe-2 ps-1 text-content-secondary hover:text-content-primary focus-visible:focus-ring disabled:pointer-events-none"
       >
-        <IconX className="size-3" />
+        <IconX className="size-icon-xs" />
       </button>
     </span>
   );

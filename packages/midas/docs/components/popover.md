@@ -1,92 +1,78 @@
 ---
 title: "Popover"
-description: "Painel flutuante aberto por clique, para conteúdo rico e interativo (formulários curtos, detalhes, filtros). Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverTitle, PopoverDescription, PopoverClose e PopoverAnchor."
+description: "Conteúdo curto e interativo que abre ao clicar num gatilho, sem sair da página (Info, Actions, Form, Profile, Tour). Seta apontando ao gatilho, appearance solid|glass, largura 300. Tooltip só explica no hover; Modal pede decisão que bloqueia."
 ---
 
 ```tsx
 import {
   Popover,
+  PopoverAnchor,
   PopoverClose,
   PopoverContent,
   PopoverDescription,
+  PopoverFooter,
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
 } from "@t2-educacao/midas";
 ```
 
-## Uso
+## Quando usar
+
+Explicação com link, confirmação leve, formulário mínimo, cartão de perfil, passo de tour.
+
+## Quando não usar
+
+Só texto no hover ([Tooltip](./tooltip.md)); decisão importante ([Modal](./modal.md)); lista de ações ([DropdownMenu](./dropdown-menu.md)); conteúdo longo com rolagem.
+
+## Props (`PopoverContent`)
+
+| Prop | Tipo | Padrão | Descrição |
+|---|---|---|---|
+| `side` | `"top" \| "bottom" \| "left" \| "right"` | `"bottom"` | Placement. Vira de lado sozinho se não houver espaço |
+| `align` | `"start" \| "center" \| "end"` | `"center"` | Alinhamento |
+| `sideOffset` | `number` | `8` | Distância do gatilho |
+| `appearance` | `"solid" \| "glass"` | `"solid"` | Glass só sobre mídia |
+| `arrow` | `boolean` | `true` | Seta |
+
+Partes: `PopoverHeader`, `PopoverTitle` (`label-md`), `PopoverDescription` (`body-sm`), `PopoverFooter` (ações à direita, no máximo duas), `PopoverClose`, `PopoverAnchor`. `popoverContentVariants` é exportado.
+
+## Exemplos
+
+Info:
 
 ```tsx
 <Popover>
   <PopoverTrigger asChild>
-    <Button variant="outline">Abrir</Button>
+    <Button variant="outline" size="icon" aria-label="O que é suitability?">
+      <IconInfoCircle />
+    </Button>
   </PopoverTrigger>
-  <PopoverContent aria-labelledby="titulo-dimensoes">
+  <PopoverContent aria-labelledby="sui">
     <PopoverHeader>
-      <PopoverTitle id="titulo-dimensoes">Dimensões</PopoverTitle>
-      <PopoverDescription>Defina o tamanho da camada.</PopoverDescription>
+      <PopoverTitle id="sui">O que é suitability?</PopoverTitle>
+      <PopoverDescription>Análise do seu perfil de investidor.</PopoverDescription>
     </PopoverHeader>
+    <a className="text-label-sm text-content-link" href="/aula">Ver aula sobre o tema</a>
   </PopoverContent>
 </Popover>
 ```
 
-## Componentes
-
-| Componente | O que é |
-|---|---|
-| `Popover` | Raiz (controla aberto/fechado) |
-| `PopoverTrigger` | Abre e fecha ao clicar. Use `asChild` com seu botão |
-| `PopoverContent` | O painel (288px de largura, padding de 16px) |
-| `PopoverHeader` / `PopoverTitle` / `PopoverDescription` | Cabeçalho opcional |
-| `PopoverClose` | Fecha o popover (use `asChild` com um botão) |
-| `PopoverAnchor` | Posiciona o painel em relação a outro elemento |
-
-## Props
-
-### Popover
-
-| Prop | Tipo | Descrição |
-|---|---|---|
-| `open` / `defaultOpen` / `onOpenChange` | | Controle do estado |
-| `modal` | `boolean` | Bloqueia a interação fora enquanto aberto |
-
-### PopoverContent
-
-| Prop | Tipo | Padrão | Descrição |
-|---|---|---|---|
-| `side` | `"top" \| "right" \| "bottom" \| "left"` | `"bottom"` | Lado |
-| `align` | `"start" \| "center" \| "end"` | `"center"` | Alinhamento |
-| `sideOffset` | `number` | `4` | Distância do gatilho |
-| `aria-label` / `aria-labelledby` | `string` | | Nome do painel (obrigatório para acessibilidade) |
-
-## Exemplos
-
-### Formulário curto
+Actions:
 
 ```tsx
-<Popover>
-  <PopoverTrigger asChild>
-    <Button variant="outline">Definir meta</Button>
-  </PopoverTrigger>
-  <PopoverContent aria-label="Meta de estudo" align="start">
-    <Field>
-      <FieldLabel htmlFor="horas">Horas por semana</FieldLabel>
-      <Input id="horas" type="number" defaultValue={5} />
-    </Field>
-    <PopoverClose asChild>
-      <Button size="sm">Salvar</Button>
-    </PopoverClose>
-  </PopoverContent>
-</Popover>
+<PopoverFooter>
+  <PopoverClose asChild><Button variant="ghost" size="sm">Cancelar</Button></PopoverClose>
+  <Button variant="destructive" size="sm">Excluir</Button>
+</PopoverFooter>
 ```
 
 ## Acessibilidade
 
-- O painel tem `role="dialog"`: dê um nome com `aria-labelledby` (apontando para o `PopoverTitle`) ou `aria-label`.
-- `Esc` fecha e o foco volta ao gatilho.
+Abre com clique ou Enter/Espaço; `Esc` e clique fora fecham; foco vai para dentro e volta ao gatilho. Dê nome ao conteúdo (`aria-label` ou `aria-labelledby`).
 
 ## Não faça
 
-- Usar Popover para dicas de texto ao passar o mouse: use [Tooltip](./tooltip.md).
-- Usar Popover para listas de ações: use [DropdownMenu](./dropdown-menu.md).
+- Mais de duas ações.
+- Conteúdo longo com rolagem.
+- Abrir por hover.

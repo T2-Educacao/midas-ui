@@ -1,22 +1,43 @@
 ---
 title: "Stepper"
-description: "Indicador de progresso em etapas, horizontal ou vertical, com passos concluídos (ícone de check), atual e pendentes, título e descrição por passo."
+description: "Mostra em qual etapa a pessoa está num fluxo com etapas nomeadas. Estados completed, current, pending (upcoming) e error; indicador number, icon ou dot; tipos default, segmented e compact (mobile); horizontal ou vertical."
 ---
 
 ```tsx
-import { Stepper, StepperDescription, StepperItem, StepperTitle } from "@t2-educacao/midas";
+import {
+  Stepper,
+  StepperCompact,
+  StepperDescription,
+  StepperItem,
+  StepperTitle,
+} from "@t2-educacao/midas";
 ```
+
+## Quando usar
+
+- Fluxos com etapas nomeadas (checkout, matrícula, onboarding). 3 a 7 etapas, nomes curtos.
+- Horizontal para fluxos curtos (3 a 5) no desktop; vertical para fluxos longos, trilhas e checklists (aceita descrição).
+- `segmented`: uma barra por etapa, bom para checkout e formulários longos.
+- `StepperCompact` no mobile ("Etapa 3 de 5", etapa atual e próxima).
+
+## Não use
+
+- Para progresso contínuo (use Progress).
+- Com mais de 7 etapas na horizontal.
+- Misturando indicadores `number` e `icon` no mesmo Stepper.
+- Com vários brilhos: só a etapa atual se destaca.
 
 ## Uso
 
 ```tsx
-<Stepper value={1}>
+<Stepper value={1} aria-label="Matrícula">
   <StepperItem>
     <StepperTitle>Conta</StepperTitle>
     <StepperDescription>Dados básicos</StepperDescription>
   </StepperItem>
   <StepperItem>
     <StepperTitle>Pagamento</StepperTitle>
+    <StepperDescription>Cartão ou Pix</StepperDescription>
   </StepperItem>
   <StepperItem>
     <StepperTitle>Confirmação</StepperTitle>
@@ -24,89 +45,94 @@ import { Stepper, StepperDescription, StepperItem, StepperTitle } from "@t2-educ
 </Stepper>
 ```
 
-O índice de cada `StepperItem` vem da ordem entre os filhos diretos do `Stepper`. Se envolver os itens em outro componente, passe `step` explicitamente.
+## Anatomia
+
+`Stepper` (`<ol>`) > `StepperItem` (`<li>`: indicador, linha de ligação e corpo) > `StepperTitle` + `StepperDescription`. O indicador é gerado pelo item. O estado vem da posição do item em relação a `value`, ou da prop `state`.
 
 ## Props
 
-### Stepper
+Todas as partes aceitam `className` (o seu vence), `ref` e repassam as demais props ao elemento.
 
-Renderiza um `<ol>`. Aceita `className` e as props de `ol`.
+### Stepper
 
 | Prop | Tipo | Padrão | Descrição |
 |---|---|---|---|
-| `value` | `number` | `0` | Passo atual, começando em 0 |
-| `onValueChange` | `(value: number) => void` | | Se informado, clicar num passo chama a função com o índice dele |
-| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Direção da lista |
+| `value` | `number` | `0` | Índice (base 0) da etapa atual |
+| `onValueChange` | `(value: number) => void` | | Torna as etapas botões clicáveis |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Direção |
+| `type` | `"default" \| "segmented"` | `"default"` | Círculos ligados por linhas, ou uma barra por etapa |
 
 ### StepperItem
 
 | Prop | Tipo | Padrão | Descrição |
 |---|---|---|---|
-| `step` | `number` | ordem | Índice do passo. Só necessário se os itens não forem filhos diretos do `Stepper` |
+| `step` | `number` | posição | Índice da etapa (normalmente automático) |
+| `state` | `"completed" \| "current" \| "pending" \| "error"` | derivado de `value` | Force `error` na etapa que falhou. `pending` é o Upcoming do Figma |
+| `indicator` | `"number" \| "icon" \| "dot"` | `"number"` | Tipo de indicador |
+| `icon` | `ReactNode` | | Ícone Tabler para `indicator="icon"` |
 
-`StepperTitle` e `StepperDescription` aceitam `className` e as props do elemento.
+### StepperCompact
 
-## Variantes
+| Prop | Tipo | Descrição |
+|---|---|---|
+| `value` | `number` | Índice (base 0) da etapa atual |
+| `total` | `number` | Total de etapas |
+| `title` | `ReactNode` | Nome da etapa atual |
+| `nextTitle` | `ReactNode` | Nome da próxima (opcional) |
 
-O estado vem de `value` e fica em `data-state` no item.
+## Estados
 
-| Estado | Quando |
+| Estado | Visual |
 |---|---|
-| `completed` | Índice menor que `value`: mostra o ícone de check |
-| `current` | Índice igual a `value`: recebe `aria-current="step"` |
-| `pending` | Índice maior que `value`: mostra o número, com texto atenuado |
+| completed | `action-accent-bg` com check; linha em `action-accent-bg` |
+| current | `selection-bg` + `selection-border` + halo; é o único destaque do fluxo |
+| pending | contorno `border-strong` (3:1), texto `content-secondary`; linha em `border-default` |
+| error | `status-danger-*` com ícone de alerta e texto (nunca só cor) |
 
 ## Exemplos
 
-### Vertical
+### Erro e ícone
 
 ```tsx
-<Stepper value={2} orientation="vertical" className="max-w-xs">
-  <StepperItem>
-    <StepperTitle>Matrícula</StepperTitle>
-  </StepperItem>
-  <StepperItem>
+import { IconCreditCard } from "@t2-educacao/midas/icons";
+
+<Stepper value={1}>
+  <StepperItem indicator="icon" icon={<IconCreditCard />}>
     <StepperTitle>Pagamento</StepperTitle>
   </StepperItem>
-  <StepperItem>
-    <StepperTitle>Acesso liberado</StepperTitle>
+  <StepperItem state="error" indicator="icon">
+    <StepperTitle>Pagamento recusado</StepperTitle>
+    <StepperDescription>Revise o cartão</StepperDescription>
   </StepperItem>
 </Stepper>
 ```
 
-### Controlado
+### Vertical clicável
 
 ```tsx
-"use client";
+<Stepper orientation="vertical" value={step} onValueChange={setStep}>
+  ...
+</Stepper>
+```
 
-import { useState } from "react";
+### Segmented e compact
 
-export default function Fluxo() {
-  const [passo, setPasso] = useState(0);
-  return (
-    <Stepper value={passo} onValueChange={setPasso}>
-      <StepperItem>
-        <StepperTitle>Dados</StepperTitle>
-      </StepperItem>
-      <StepperItem>
-        <StepperTitle>Revisão</StepperTitle>
-      </StepperItem>
-    </Stepper>
-  );
-}
+```tsx
+<Stepper type="segmented" value={1}>...</Stepper>
+
+<StepperCompact value={2} total={5} title="Pagamento" nextTitle="Confirmação" />
 ```
 
 ## Acessibilidade
 
-- Lista ordenada (`<ol>`), então leitores de tela anunciam a posição de cada passo.
-- O passo atual tem `aria-current="step"`.
-- O indicador (número ou check) é `aria-hidden`: o estado é comunicado pela ordem e por `aria-current`. Se o estado concluído precisa ser falado, inclua texto no título (por exemplo, "Conta (concluído)") ou na descrição.
-- Dê um `aria-label` ao `Stepper` quando houver mais de um na página.
-- Com `onValueChange`, o clique é só um atalho de mouse. Se o fluxo for navegável por teclado, ofereça botões "Voltar" e "Continuar" ao lado.
+- `<ol>` com cada etapa em `<li>`; a atual com `aria-current="step"`.
+- Etapas concluídas podem ser links/botões (`onValueChange`) para voltar; etapas futuras não deveriam ser clicáveis.
+- O estado nunca depende só de cor: check, número com anel, contorno e ícone de alerta.
+- Não esconda o rótulo da etapa atual no mobile (o Compact mantém o nome).
+- Dê `aria-label` ao Stepper.
 
 ## Não faça
 
-- Usar Stepper como navegação por abas ou seções livres: use [Tabs](./tabs.md).
-- Usar para mostrar o caminho do usuário no site: use o [Breadcrumb](./breadcrumb.md).
-- Passar `value` fora do intervalo dos passos sem intenção: acima do total, todos aparecem como concluídos.
-- Escrever títulos longos: use `StepperDescription` para o detalhe.
+- Usar Stepper para progresso contínuo.
+- Cores soltas ou `dark:`: tudo vem de tokens.
+- Esconder o erro: marque `state="error"` na etapa que falhou.

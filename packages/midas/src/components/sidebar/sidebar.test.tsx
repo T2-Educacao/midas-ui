@@ -43,7 +43,7 @@ describe("Sidebar", () => {
     render(<Exemplo />);
     const link = screen.getByRole("link", { name: /Início/ });
     expect(link).toHaveAttribute("aria-current", "page");
-    expect(link).toHaveClass("bg-accent");
+    expect(link).toHaveClass("text-selection-content");
     expect(screen.getByRole("button", { name: "Cursos" })).not.toHaveAttribute("aria-current");
   });
 
@@ -55,6 +55,54 @@ describe("Sidebar", () => {
     expect(screen.getByText("Início")).toHaveClass("sr-only");
     expect(screen.queryByText("3")).not.toBeInTheDocument();
     expect(screen.getByText("Geral")).toHaveClass("sr-only");
+  });
+
+  it("tipo e superfície viram atributos; inverse força o tema dark", () => {
+    render(<Sidebar type="minimal" surface="inverse" aria-label="Lateral" />);
+    const aside = screen.getByRole("complementary");
+    expect(aside).toHaveAttribute("data-type", "minimal");
+    expect(aside).toHaveAttribute("data-surface", "inverse");
+    expect(aside).toHaveAttribute("data-theme", "dark");
+  });
+
+  it("superfície glass usa material de vidro", () => {
+    render(<Sidebar surface="glass" aria-label="Lateral" />);
+    expect(screen.getByRole("complementary")).toHaveClass("material-glass-strong");
+  });
+
+  it.each(["sidebar", "sub", "rail", "header", "bottom", "bottom-icon"] as const)(
+    "NavItem tipo %s",
+    (type) => {
+      render(
+        <NavItem type={type} active icon={<svg aria-hidden="true" />} badge="3">
+          Início
+        </NavItem>,
+      );
+      const item = screen.getByRole("button", { name: /Início/ });
+      expect(item).toHaveAttribute("data-type", type);
+      expect(item).toHaveAttribute("aria-current", "page");
+    },
+  );
+
+  it("NavItem com chevron expõe aria-expanded e emphasis neutral", () => {
+    render(
+      <NavItem showChevron expanded active emphasis="neutral">
+        Trilhas
+      </NavItem>,
+    );
+    const item = screen.getByRole("button", { name: "Trilhas" });
+    expect(item).toHaveAttribute("aria-expanded", "true");
+    expect(item).toHaveClass("bg-state-pressed");
+  });
+
+  it("NavItem só ícone usa o rótulo como title e esconde o texto", () => {
+    render(
+      <NavItem type="rail" icon={<svg aria-hidden="true" />}>
+        Início
+      </NavItem>,
+    );
+    expect(screen.getByRole("button", { name: "Início" })).toHaveAttribute("title", "Início");
+    expect(screen.getByText("Início")).toHaveClass("sr-only");
   });
 
   it("className mescla e a do usuário vence", () => {

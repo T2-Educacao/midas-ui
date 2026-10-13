@@ -1,70 +1,55 @@
 ---
-title: "Skeleton"
-description: "Bloco cinza pulsante que representa conteúdo ainda carregando. Escondido de leitores de tela; o tamanho e o formato vêm de className."
+title: Skeleton
+description: "Forma do conteúdo enquanto ele carrega: bloco Skeleton (line, circle, rect, pill; shimmer ou static) e padrões prontos SkeletonText, SkeletonListItem, SkeletonCard, SkeletonCourseCard, SkeletonNotification, SkeletonProfile, SkeletonTable e SkeletonHero."
 ---
 
 ```tsx
-import { Skeleton } from "@t2-educacao/midas";
+import { Skeleton, SkeletonCard } from "@t2-educacao/midas";
 ```
+
+Mostra a forma do conteúdo para a página não "pular" quando os dados chegam.
 
 ## Uso
 
 ```tsx
-<Skeleton className="h-4 w-48" />
-```
+<div aria-busy="true" aria-live="polite">
+  <Skeleton />
+  <Skeleton shape="circle" />
+  <Skeleton shape="rect" className="h-40" />
+</div>
 
-Dê largura e altura com classes de tamanho. Para círculos use `rounded-full`.
+<SkeletonCourseCard />
+```
 
 ## Props
 
-Aceita todas as props de `<div>`.
+Skeleton (bloco):
 
 | Prop | Tipo | Padrão | Descrição |
 |---|---|---|---|
-| `className` | `string` | | Tamanho e formato; mesclado, a sua vence |
+| `shape` | `"line" \| "circle" \| "rect" \| "pill"` | `"line"` | Line 12px de altura, circle 40px, rect 120px, pill 24x80 |
+| `animation` | `"shimmer" \| "static"` | `"shimmer"` | `static` sem movimento |
+| `className` | `string` | | Dimensões e raio próprios (a sua vence) |
 
-## Variantes
+Padrões (`SkeletonText`, `SkeletonListItem`, `SkeletonCard`, `SkeletonCourseCard`, `SkeletonNotification`, `SkeletonProfile`, `SkeletonTable`, `SkeletonHero`): aceitam `animation` e `className`. Use o padrão que tem a mesma forma do conteúdo real.
 
-| Variante | Quando usar |
-|---|---|
-| Linha (`h-4 w-*`) | Placeholder de texto |
-| Círculo (`size-10 rounded-full`) | Placeholder de avatar |
-| Retângulo (`h-32 w-full`) | Placeholder de imagem ou card |
+## Regras
 
-## Exemplos
+- O skeleton deve ter a mesma estrutura do conteúdo real (alturas e espaçamentos).
+- `static` quando houver muitos blocos na tela ou com movimento reduzido.
+- Se carregar em menos de 300 ms, não mostre skeleton.
+- Não misture com [Spinner](./spinner.md) na mesma área.
 
-### Linhas de texto
+## Limitação
 
-```tsx
-<div className="flex w-72 flex-col gap-2">
-  <Skeleton className="h-4 w-full" />
-  <Skeleton className="h-4 w-5/6" />
-  <Skeleton className="h-4 w-2/3" />
-</div>
-```
-
-### Card
-
-```tsx
-<div className="flex w-72 flex-col gap-3 rounded-xl border p-4">
-  <div className="flex items-center gap-3">
-    <Skeleton className="size-10 rounded-full" />
-    <div className="flex flex-1 flex-col gap-2">
-      <Skeleton className="h-4 w-3/4" />
-      <Skeleton className="h-3 w-1/2" />
-    </div>
-  </div>
-  <Skeleton className="h-24 w-full" />
-</div>
-```
+O shimmer é implementado como pulso de opacidade (`animate-pulse`); a faixa de brilho do Figma exige um keyframe que ainda não existe em `theme.css`.
 
 ## Acessibilidade
 
-- Tem `aria-hidden`: não é lido por leitores de tela.
-- Avise o estado de carregamento no contêiner com `aria-busy="true"` ou uma região `role="status"` com texto oculto.
-- A animação é desligada com `prefers-reduced-motion`.
+- Os blocos são `aria-hidden`. Marque o container com `aria-busy="true"` e anuncie o fim do carregamento.
+- `motion-reduce` desliga a animação.
 
 ## Não faça
 
-- Não use para carregamentos curtos (menos de 300ms); prefira nada ou um `Spinner`.
-- Não deixe o esqueleto com formato muito diferente do conteúdo final.
+- Usar skeleton para ações de botão (use o `loading` do Button).
+- Deixar o skeleton com dimensões diferentes do conteúdo final.

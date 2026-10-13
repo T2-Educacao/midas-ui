@@ -1,1 +1,1 @@
-export { Calendar, CalendarDayButton, type CalendarProps } from "./calendar";
+export { Calendar, CalendarDayButton, type CalendarProps, calendarVariants } from "./calendar";

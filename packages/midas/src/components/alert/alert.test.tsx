@@ -13,16 +13,16 @@ describe("Alert", () => {
     );
     const alert = screen.getByRole("status");
     expect(alert).toHaveAttribute("data-slot", "alert");
-    expect(alert).toHaveClass("bg-card");
+    expect(alert).toHaveClass("bg-surface-default");
     expect(screen.getByText("Aviso")).toHaveAttribute("data-slot", "alert-title");
     expect(screen.getByText("Corpo")).toHaveAttribute("data-slot", "alert-description");
   });
 
   it.each([
-    ["info", "status", "text-info"],
-    ["success", "status", "text-success"],
-    ["warning", "alert", "text-warning"],
-    ["destructive", "alert", "text-destructive"],
+    ["info", "status", "text-status-info-content"],
+    ["success", "status", "text-status-success-content"],
+    ["warning", "alert", "text-status-warning-content"],
+    ["destructive", "alert", "text-status-danger-content"],
   ] as const)("variante %s usa role %s", (variant, role, cls) => {
     render(<Alert variant={variant}>Mensagem</Alert>);
     expect(screen.getByRole(role)).toHaveClass(cls);
@@ -82,6 +82,9 @@ describe("Alert", () => {
         Aviso
       </Alert>,
     );
-    expect(screen.getByRole("status")).toHaveClass("bg-info", "text-info-foreground");
+    expect(screen.getByRole("status")).toHaveClass(
+      "bg-status-info-fill",
+      "text-status-info-on-fill",
+    );
   });
 });

@@ -5,6 +5,35 @@ import { Tabs as TabsPrimitive } from "radix-ui";
 import * as React from "react";
 import { cn } from "../../lib/cn";
 
+export type TabsType = "underline" | "pill" | "segmented" | "plain";
+export type TabsVariant = TabsType | "default" | "line";
+export type TabsSize = "md" | "sm";
+export type TabsTone = "brand" | "neutral";
+export type TabsSurface = "solid" | "glass";
+
+interface TabsListContextValue {
+  type: TabsType;
+  size: TabsSize;
+  tone: TabsTone;
+  surface: TabsSurface;
+}
+
+const TabsListContext = React.createContext<TabsListContextValue>({
+  type: "segmented",
+  size: "md",
+  tone: "brand",
+  surface: "solid",
+});
+
+const typeByVariant: Record<TabsVariant, TabsType> = {
+  default: "segmented",
+  line: "underline",
+  underline: "underline",
+  pill: "pill",
+  segmented: "segmented",
+  plain: "plain",
+};
+
 export const Tabs = React.forwardRef<
   React.ComponentRef<typeof TabsPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>
@@ -21,71 +50,190 @@ Tabs.displayName = "Tabs";
 
 export const tabsListVariants = cva(
   [
-    "group/tabs-list inline-flex w-fit items-center justify-center text-muted-foreground",
+    "group/tabs-list inline-flex w-fit items-center justify-center text-content-secondary",
     "group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col group-data-[orientation=vertical]/tabs:items-stretch",
   ],
   {
     variants: {
-      variant: {
-        default: "h-9 gap-1 rounded-lg bg-muted p-[3px]",
-        line: [
-          "h-9 gap-1 rounded-none bg-transparent p-0",
-          "group-data-[orientation=horizontal]/tabs:border-b group-data-[orientation=horizontal]/tabs:border-border",
-          "group-data-[orientation=vertical]/tabs:border-e group-data-[orientation=vertical]/tabs:border-border",
+      type: {
+        underline: [
+          "gap-0 rounded-none bg-transparent",
+          "group-data-[orientation=horizontal]/tabs:border-b group-data-[orientation=horizontal]/tabs:border-border-subtle",
+          "group-data-[orientation=vertical]/tabs:border-e group-data-[orientation=vertical]/tabs:border-border-subtle",
         ],
+        pill: "gap-1 bg-transparent",
+        segmented: "gap-1 rounded-control bg-surface-muted p-1",
+        plain: "gap-0 bg-transparent",
+      },
+      surface: {
+        solid: "",
+        glass: "",
       },
     },
+    compoundVariants: [
+      {
+        type: ["pill", "segmented"],
+        surface: "glass",
+        className: "material-glass rounded-pill bg-material-glass-surface p-1",
+      },
+    ],
     defaultVariants: {
-      variant: "default",
+      type: "segmented",
+      surface: "solid",
     },
   },
 );
 
 export interface TabsListProps
-  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>,
-    VariantProps<typeof tabsListVariants> {}
+  extends Omit<React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>, "type">,
+    Omit<VariantProps<typeof tabsListVariants>, "type"> {
+  variant?: TabsVariant;
+  size?: TabsSize;
+  tone?: TabsTone;
+}
 
 export const TabsList = React.forwardRef<
   React.ComponentRef<typeof TabsPrimitive.List>,
   TabsListProps
->(({ className, variant, ...props }, ref) => (
-  <TabsPrimitive.List
-    ref={ref}
-    data-slot="tabs-list"
-    data-variant={variant ?? "default"}
-    className={cn(tabsListVariants({ variant }), className)}
-    {...props}
-  />
-));
+>(({ className, variant = "default", size = "md", tone = "brand", surface, ...props }, ref) => {
+  const type = typeByVariant[variant];
+  const resolvedSurface = surface ?? "solid";
+  const context = React.useMemo(
+    () => ({ type, size, tone, surface: resolvedSurface }),
+    [type, size, tone, resolvedSurface],
+  );
+  return (
+    <TabsListContext.Provider value={context}>
+      <TabsPrimitive.List
+        ref={ref}
+        data-slot="tabs-list"
+        data-variant={variant}
+        data-size={size}
+        data-tone={tone}
+        data-surface={resolvedSurface}
+        className={cn(tabsListVariants({ type, surface: resolvedSurface }), className)}
+        {...props}
+      />
+    </TabsListContext.Provider>
+  );
+});
 TabsList.displayName = "TabsList";
+
+export const tabsTriggerVariants = cva(
+  [
+    "relative inline-flex flex-1 items-center justify-center whitespace-nowrap border border-transparent text-content-secondary outline-none",
+    "transition-[color,background-color,border-color,box-shadow] duration-150 motion-reduce:transition-none",
+    "hover:text-content-primary focus-visible:focus-ring",
+    "disabled:pointer-events-none disabled:text-content-disabled",
+    "[&_svg]:pointer-events-none [&_svg]:shrink-0",
+    "group-data-[orientation=vertical]/tabs:justify-start",
+    "data-[state=active]:text-content-primary",
+  ],
+  {
+    variants: {
+      type: {
+        underline: [
+          "rounded-none hover:bg-state-hover",
+          "after:absolute after:bg-transparent after:transition-colors motion-reduce:after:transition-none",
+          "group-data-[orientation=horizontal]/tabs:after:inset-x-0 group-data-[orientation=horizontal]/tabs:after:-bottom-px group-data-[orientation=horizontal]/tabs:after:h-0.5",
+          "group-data-[orientation=vertical]/tabs:after:inset-y-0 group-data-[orientation=vertical]/tabs:after:-end-px group-data-[orientation=vertical]/tabs:after:w-0.5",
+        ],
+        pill: "rounded-pill hover:bg-state-hover",
+        segmented: "rounded-control hover:bg-state-hover",
+        plain: "rounded-control hover:bg-state-hover",
+      },
+      size: {
+        md: "h-control-lg gap-2 px-4 text-label-md [&_svg:not([class*='size-'])]:size-icon-md",
+        sm: "h-control-md gap-1.5 px-3 text-label-sm [&_svg:not([class*='size-'])]:size-icon-sm",
+      },
+      tone: {
+        brand: "",
+        neutral: "",
+      },
+    },
+    compoundVariants: [
+      {
+        type: "underline",
+        tone: "brand",
+        className:
+          "data-[state=active]:text-selection-content data-[state=active]:after:bg-action-accent-bg",
+      },
+      {
+        type: "underline",
+        tone: "neutral",
+        className: "data-[state=active]:after:bg-content-primary",
+      },
+      {
+        type: "pill",
+        tone: "brand",
+        className:
+          "data-[state=active]:border-selection-border data-[state=active]:bg-selection-bg data-[state=active]:text-selection-content",
+      },
+      {
+        type: "pill",
+        tone: "neutral",
+        className:
+          "data-[state=active]:bg-action-primary-bg data-[state=active]:text-action-primary-content",
+      },
+      {
+        type: "segmented",
+        tone: "brand",
+        className:
+          "data-[state=active]:border-border-subtle data-[state=active]:bg-surface-default data-[state=active]:text-selection-content data-[state=active]:shadow-elevation-control",
+      },
+      {
+        type: "segmented",
+        tone: "neutral",
+        className:
+          "data-[state=active]:border-border-subtle data-[state=active]:bg-surface-default data-[state=active]:shadow-elevation-control",
+      },
+      {
+        type: "plain",
+        tone: "brand",
+        className: "data-[state=active]:bg-selection-bg data-[state=active]:text-selection-content",
+      },
+      {
+        type: "plain",
+        tone: "neutral",
+        className: "data-[state=active]:bg-state-pressed",
+      },
+    ],
+    defaultVariants: {
+      type: "segmented",
+      size: "md",
+      tone: "brand",
+    },
+  },
+);
+
+export interface TabsTriggerProps
+  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger> {
+  icon?: React.ReactNode;
+  count?: React.ReactNode;
+}
 
 export const TabsTrigger = React.forwardRef<
   React.ComponentRef<typeof TabsPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
->(({ className, ...props }, ref) => (
-  <TabsPrimitive.Trigger
-    ref={ref}
-    data-slot="tabs-trigger"
-    className={cn(
-      "relative inline-flex h-full flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-md border border-transparent px-3 py-1 text-sm font-medium text-muted-foreground outline-none",
-      "transition-[color,background-color,border-color,box-shadow] duration-150 motion-reduce:transition-none",
-      "hover:text-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
-      "disabled:pointer-events-none disabled:opacity-50",
-      "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-      "group-data-[orientation=vertical]/tabs:justify-start",
-      "data-[state=active]:text-foreground",
-      "group-data-[variant=default]/tabs-list:data-[state=active]:bg-background group-data-[variant=default]/tabs-list:data-[state=active]:shadow-sm",
-      "dark:group-data-[variant=default]/tabs-list:data-[state=active]:border-input dark:group-data-[variant=default]/tabs-list:data-[state=active]:bg-input/30",
-      "group-data-[variant=line]/tabs-list:rounded-none group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:shadow-none",
-      "group-data-[variant=line]/tabs-list:after:absolute group-data-[variant=line]/tabs-list:after:bg-foreground group-data-[variant=line]/tabs-list:after:opacity-0 group-data-[variant=line]/tabs-list:after:transition-opacity motion-reduce:group-data-[variant=line]/tabs-list:after:transition-none",
-      "group-data-[variant=line]/tabs-list:group-data-[orientation=horizontal]/tabs:after:inset-x-0 group-data-[variant=line]/tabs-list:group-data-[orientation=horizontal]/tabs:after:-bottom-px group-data-[variant=line]/tabs-list:group-data-[orientation=horizontal]/tabs:after:h-0.5",
-      "group-data-[variant=line]/tabs-list:group-data-[orientation=vertical]/tabs:after:inset-y-0 group-data-[variant=line]/tabs-list:group-data-[orientation=vertical]/tabs:after:-end-px group-data-[variant=line]/tabs-list:group-data-[orientation=vertical]/tabs:after:w-0.5",
-      "group-data-[variant=line]/tabs-list:data-[state=active]:after:opacity-100",
-      className,
-    )}
-    {...props}
-  />
-));
+  TabsTriggerProps
+>(({ className, icon, count, children, ...props }, ref) => {
+  const { type, size, tone } = React.useContext(TabsListContext);
+  return (
+    <TabsPrimitive.Trigger
+      ref={ref}
+      data-slot="tabs-trigger"
+      className={cn(tabsTriggerVariants({ type, size, tone }), className)}
+      {...props}
+    >
+      {icon}
+      {children}
+      {count !== undefined && count !== null ? (
+        <span data-slot="tabs-count" className="text-mono-sm">
+          {count}
+        </span>
+      ) : null}
+    </TabsPrimitive.Trigger>
+  );
+});
 TabsTrigger.displayName = "TabsTrigger";
 
 export const TabsContent = React.forwardRef<
@@ -96,7 +244,7 @@ export const TabsContent = React.forwardRef<
     ref={ref}
     data-slot="tabs-content"
     className={cn(
-      "flex-1 rounded-md text-sm outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
+      "flex-1 rounded-control text-body-md outline-none focus-visible:focus-ring",
       className,
     )}
     {...props}

@@ -1,6 +1,6 @@
 ---
 title: "SegmentedControl"
-description: "Seletor de escolha única em botões agrupados que nunca fica sem valor (clicar no item ativo não desmarca). Tamanhos sm e default, horizontal ou vertical."
+description: "Alternância entre 2 a 4 opções exclusivas (radiogroup) no estilo Figma: trilho muted com segmento selecionado elevado. Tamanhos sm (28) e md (36), largura total opcional."
 ---
 
 ```tsx
@@ -87,3 +87,7 @@ const [visao, setVisao] = useState("lista");
 - Usar para navegar entre páginas ou painéis de conteúdo: use Tabs ou links.
 - Mais de 5 opções ou rótulos longos: use [Select](./select.md) ou [RadioGroup](./radio-group.md).
 - Deixar sem valor inicial e sem `aria-label`.
+
+## Figma
+
+Visual: container `surface-muted` com padding de 3px, segmento selecionado em `surface-canvas` com `shadow-elevation-control`. `size`: `"sm"` (segmento 28px, texto 12) ou `"md"` (36px, texto 14; `"default"` equivale a `md`, antes era 32px). `fullWidth` divide a largura igualmente. Use 2 a 4 itens para trocar a visão (Dia, Semana, Mês) ou um atributo.

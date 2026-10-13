@@ -22,6 +22,16 @@ import { RadioGroup, RadioGroupItem } from "@t2-educacao/midas";
 </RadioGroup>
 ```
 
+## Tamanhos, tons e estados (Figma Radio)
+
+`RadioGroupItem` aceita `size` (`"sm"` 16px, `"md"` 20px padrão, `"lg"` 24px; ponto de 6, 8 e 10px) e `tone` (`"brand"` Cyan, `"neutral"` preto no claro e branco nos escuros). Desmarcado: fundo `field-bg` e borda `border-default`; hover: borda `selection-border`; marcado: `selection-fill` (hover `action-accent-bg-hover`); erro com `aria-invalid` (`status-danger-fill`); foco com `focus-ring`; desabilitado com `opacity-disabled`. Exporta `radioGroupItemVariants` e `RadioGroupItemProps`. Para radio com rótulo e descrição, use [SelectionField](./selection-field.md).
+
+```tsx
+<RadioGroup defaultValue="a" aria-label="Plano">
+  <RadioGroupItem value="a" size="lg" tone="neutral" aria-label="Mensal" />
+</RadioGroup>
+```
+
 ## Props
 
 ### RadioGroup

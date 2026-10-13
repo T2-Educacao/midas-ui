@@ -22,7 +22,8 @@ Aceita as props do [Switch do Radix](https://www.radix-ui.com/primitives/docs/co
 
 | Prop | Tipo | Padrão | Descrição |
 |---|---|---|---|
-| `size` | `"default" \| "sm"` | `"default"` | Tamanho do alternador |
+| `size` | `"sm" \| "default" \| "md" \| "lg"` | `"default"` | Tamanho do alternador (`default` = `md`) |
+| `tone` | `"brand" \| "neutral"` | `"brand"` | Ligado em Cyan (`selection-fill`) ou preto no claro e branco nos escuros |
 | `checked` / `defaultChecked` | `boolean` | `false` | Estado controlado / inicial |
 | `onCheckedChange` | `(checked: boolean) => void` | | Chamado ao mudar |
 | `disabled` | `boolean` | `false` | Desabilita |
@@ -32,8 +33,11 @@ Aceita as props do [Switch do Radix](https://www.radix-ui.com/primitives/docs/co
 
 | Tamanho | Quando usar |
 |---|---|
-| `default` (36x20px) | Padrão em configurações e formulários |
+| `md` / `default` (36x20px) | Padrão em configurações e formulários |
 | `sm` (28x16px) | Listas densas e tabelas |
+| `lg` (44x24px) | Mobile e alvos de toque maiores |
+
+Este é o "Toggle" do Figma (Selection Controls). Trilho desligado em `border-strong` (contraste de 3:1 ou mais), ligado em `selection-fill`, pino em `surface-default` com `shadow-elevation-control`; foco com halo `focus-ring`. Para rótulo, descrição e cartão de configurações use [SelectionField](./selection-field.md) com `control="toggle"`.
 
 ## Exemplos
 

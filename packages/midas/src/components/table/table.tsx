@@ -3,39 +3,78 @@ import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 import { cn } from "../../lib/cn";
 
-export const tableVariants = cva("group/table w-full caption-bottom border-collapse text-sm", {
+export const tableVariants = cva(
+  "group/table w-full caption-bottom border-collapse text-body-md text-content-primary",
+  {
+    variants: {
+      size: {
+        default: "",
+        sm: "",
+      },
+    },
+    defaultVariants: {
+      size: "default",
+    },
+  },
+);
+
+export const tableContainerVariants = cva("relative w-full overflow-x-auto", {
   variants: {
-    size: {
-      default: "",
-      sm: "",
+    surface: {
+      solid:
+        "rounded-container border border-border-subtle bg-surface-default shadow-elevation-card",
+      glass: "material-glass rounded-container border border-material-glass-border",
+      plain: "",
     },
   },
   defaultVariants: {
-    size: "default",
+    surface: "solid",
   },
 });
 
 export interface TableProps
-  extends React.TableHTMLAttributes<HTMLTableElement>,
-    VariantProps<typeof tableVariants> {
+  extends Omit<React.TableHTMLAttributes<HTMLTableElement>, "surface">,
+    VariantProps<typeof tableVariants>,
+    VariantProps<typeof tableContainerVariants> {
   containerClassName?: string;
+  density?: "default" | "compact";
+  tone?: "brand" | "neutral";
+  striped?: boolean;
 }
 
 export const Table = React.forwardRef<HTMLTableElement, TableProps>(
-  ({ className, containerClassName, size, ...props }, ref) => (
-    <div
-      data-slot="table-container"
-      className={cn("relative w-full overflow-x-auto", containerClassName)}
-    >
-      <table
-        ref={ref}
-        data-slot="table"
-        data-size={size ?? "default"}
-        className={cn(tableVariants({ size }), className)}
-        {...props}
-      />
-    </div>
-  ),
+  (
+    {
+      className,
+      containerClassName,
+      size,
+      density,
+      surface,
+      tone = "brand",
+      striped = false,
+      ...props
+    },
+    ref,
+  ) => {
+    const resolvedSize = size ?? (density === "compact" ? "sm" : "default");
+    return (
+      <div
+        data-slot="table-container"
+        data-surface={surface ?? "solid"}
+        className={cn(tableContainerVariants({ surface }), containerClassName)}
+      >
+        <table
+          ref={ref}
+          data-slot="table"
+          data-size={resolvedSize}
+          data-tone={tone}
+          data-striped={striped ? "true" : undefined}
+          className={cn(tableVariants({ size: resolvedSize }), className)}
+          {...props}
+        />
+      </div>
+    );
+  },
 );
 Table.displayName = "Table";
 
@@ -46,7 +85,7 @@ export const TableHeader = React.forwardRef<
   <thead
     ref={ref}
     data-slot="table-header"
-    className={cn("[&_tr]:border-b", className)}
+    className={cn("[&_tr]:border-b [&_tr]:border-border-subtle", className)}
     {...props}
   />
 ));
@@ -72,7 +111,10 @@ export const TableFooter = React.forwardRef<
   <tfoot
     ref={ref}
     data-slot="table-footer"
-    className={cn("border-t bg-muted/50 font-medium [&>tr]:last:border-b-0", className)}
+    className={cn(
+      "border-t border-border-subtle bg-surface-muted text-label-md [&>tr]:last:border-b-0",
+      className,
+    )}
     {...props}
   />
 ));
@@ -86,7 +128,10 @@ export const TableRow = React.forwardRef<
     ref={ref}
     data-slot="table-row"
     className={cn(
-      "border-b transition-colors hover:bg-muted/50 motion-reduce:transition-none data-[state=selected]:bg-muted",
+      "h-14 border-b border-border-subtle transition-colors motion-reduce:transition-none",
+      "hover:bg-state-hover group-data-[size=sm]/table:h-10",
+      "group-data-[striped=true]/table:even:bg-surface-muted",
+      "data-[state=selected]:bg-selection-bg group-data-[tone=neutral]/table:data-[state=selected]:bg-surface-muted",
       className,
     )}
     {...props}
@@ -94,10 +139,33 @@ export const TableRow = React.forwardRef<
 ));
 TableRow.displayName = "TableRow";
 
-export interface TableHeadProps extends React.ThHTMLAttributes<HTMLTableCellElement> {
+export const TableGroupRow = React.forwardRef<
+  HTMLTableRowElement,
+  React.ThHTMLAttributes<HTMLTableCellElement> & { colSpan: number }
+>(({ className, colSpan, children, ...props }, ref) => (
+  <tr
+    ref={ref}
+    data-slot="table-group-row"
+    className="h-10 border-b border-border-subtle bg-surface-muted"
+  >
+    <th
+      colSpan={colSpan}
+      scope="colgroup"
+      className={cn("px-4 text-start text-mono-overline text-content-secondary", className)}
+      {...props}
+    >
+      {children}
+    </th>
+  </tr>
+));
+TableGroupRow.displayName = "TableGroupRow";
+
+export interface TableHeadProps
+  extends Omit<React.ThHTMLAttributes<HTMLTableCellElement>, "align"> {
   sortable?: boolean;
   sortDirection?: "asc" | "desc" | false;
   onSort?: () => void;
+  align?: "start" | "end";
 }
 
 const ariaSortByDirection = {
@@ -113,6 +181,7 @@ export const TableHead = React.forwardRef<HTMLTableCellElement, TableHeadProps>(
       sortable = false,
       sortDirection = false,
       onSort,
+      align = "start",
       "aria-sort": ariaSort,
       ...props
     },
@@ -132,7 +201,8 @@ export const TableHead = React.forwardRef<HTMLTableCellElement, TableHeadProps>(
           sortable ? (sortDirection ? ariaSortByDirection[sortDirection] : "none") : ariaSort
         }
         className={cn(
-          "h-10 whitespace-nowrap px-3 text-start align-middle font-medium text-muted-foreground group-data-[size=sm]/table:h-8 group-data-[size=sm]/table:px-2 group-data-[size=sm]/table:text-xs",
+          "h-10 whitespace-nowrap px-4 align-middle text-mono-overline text-content-secondary group-data-[size=sm]/table:h-8",
+          align === "end" ? "text-end" : "text-start",
           className,
         )}
         {...props}
@@ -142,10 +212,15 @@ export const TableHead = React.forwardRef<HTMLTableCellElement, TableHeadProps>(
             type="button"
             data-slot="table-sort"
             onClick={onSort}
-            className="-mx-1 inline-flex items-center gap-1 rounded-md px-1 py-0.5 font-medium outline-none transition-colors hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50 motion-reduce:transition-none"
+            className={cn(
+              "-mx-1 inline-flex items-center gap-1 rounded-xs px-1 py-0.5 text-mono-overline outline-none transition-colors",
+              "hover:text-content-primary focus-visible:focus-ring motion-reduce:transition-none",
+              sortDirection && "text-content-primary",
+              align === "end" && "flex-row-reverse",
+            )}
           >
             {children}
-            <SortIcon aria-hidden="true" className="size-3.5 shrink-0" />
+            <SortIcon aria-hidden="true" className="size-icon-xs shrink-0" />
           </button>
         ) : (
           children
@@ -156,20 +231,24 @@ export const TableHead = React.forwardRef<HTMLTableCellElement, TableHeadProps>(
 );
 TableHead.displayName = "TableHead";
 
-export const TableCell = React.forwardRef<
-  HTMLTableCellElement,
-  React.TdHTMLAttributes<HTMLTableCellElement>
->(({ className, ...props }, ref) => (
-  <td
-    ref={ref}
-    data-slot="table-cell"
-    className={cn(
-      "p-3 align-middle group-data-[size=sm]/table:p-2 group-data-[size=sm]/table:text-xs",
-      className,
-    )}
-    {...props}
-  />
-));
+export interface TableCellProps extends React.TdHTMLAttributes<HTMLTableCellElement> {
+  numeric?: boolean;
+}
+
+export const TableCell = React.forwardRef<HTMLTableCellElement, TableCellProps>(
+  ({ className, numeric = false, ...props }, ref) => (
+    <td
+      ref={ref}
+      data-slot="table-cell"
+      className={cn(
+        "px-4 py-3 align-middle group-data-[size=sm]/table:py-2 group-data-[size=sm]/table:text-body-sm",
+        numeric && "text-end text-mono-md tabular-nums",
+        className,
+      )}
+      {...props}
+    />
+  ),
+);
 TableCell.displayName = "TableCell";
 
 export const TableCaption = React.forwardRef<
@@ -179,7 +258,7 @@ export const TableCaption = React.forwardRef<
   <caption
     ref={ref}
     data-slot="table-caption"
-    className={cn("mt-3 text-sm text-muted-foreground", className)}
+    className={cn("mt-3 text-body-sm text-content-secondary", className)}
     {...props}
   />
 ));

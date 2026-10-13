@@ -57,7 +57,7 @@ describe("InputGroup", () => {
     );
     await userEvent.click(screen.getByRole("button", { name: "Buscar" }));
     expect(onClick).toHaveBeenCalledTimes(1);
-    expect(screen.getByRole("button")).toHaveClass("h-6");
+    expect(screen.getByRole("button")).toHaveClass("h-control-xs");
   });
 
   it("aceita textarea", () => {

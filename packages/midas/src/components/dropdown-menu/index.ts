@@ -2,6 +2,8 @@ export {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
+  type DropdownMenuContentProps,
+  DropdownMenuFooter,
   DropdownMenuGroup,
   DropdownMenuItem,
   type DropdownMenuItemProps,
@@ -15,4 +17,9 @@ export {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
+  DropdownTrigger,
+  type DropdownTriggerProps,
+  dropdownMenuContentVariants,
+  dropdownMenuItemVariants,
+  dropdownTriggerVariants,
 } from "./dropdown-menu";

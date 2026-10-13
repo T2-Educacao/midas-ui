@@ -39,4 +39,26 @@ describe("Toast", () => {
     await screen.findByText("Com fechar");
     expect(screen.getByRole("button", { name: /close|fechar/i })).toBeInTheDocument();
   });
+
+  it("aplica o estilo escolhido no Toaster", async () => {
+    render(<Toaster toastStyle="inverse" />);
+    act(() => {
+      toast("Escuro");
+    });
+    await screen.findByText("Escuro");
+    expect(document.querySelector("[data-sonner-toast]")).toHaveClass("bg-action-primary-bg");
+  });
+
+  it("usa raio de container e largura de 400px", async () => {
+    render(<Toaster />);
+    act(() => {
+      toast("Padrão");
+    });
+    await screen.findByText("Padrão");
+    expect(document.querySelector("[data-sonner-toast]")).toHaveClass(
+      "rounded-container",
+      "bg-surface-default",
+    );
+    expect(document.querySelector("[data-sonner-toaster]")).toHaveStyle("--width: 400px");
+  });
 });

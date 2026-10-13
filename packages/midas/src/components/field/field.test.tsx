@@ -3,7 +3,15 @@ import { describe, expect, it } from "vitest";
 import { expectNoA11yViolations } from "../../test/axe";
 import { Badge } from "../badge/badge";
 import { Input } from "../input/input";
-import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "./field";
+import {
+  Field,
+  FieldCounter,
+  FieldDescription,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+  FieldSuccess,
+} from "./field";
 
 describe("Field", () => {
   it("liga label e campo pelo htmlFor", () => {
@@ -77,5 +85,18 @@ describe("Field", () => {
       </Field>,
     );
     await expectNoA11yViolations(container);
+  });
+});
+
+describe("Field (Figma)", () => {
+  it("FieldSuccess e FieldCounter renderizam", () => {
+    render(
+      <Field>
+        <FieldSuccess>Tudo certo</FieldSuccess>
+        <FieldCounter>0/200</FieldCounter>
+      </Field>,
+    );
+    expect(screen.getByText("Tudo certo")).toBeInTheDocument();
+    expect(screen.getByText("0/200")).toHaveClass("text-mono-sm");
   });
 });

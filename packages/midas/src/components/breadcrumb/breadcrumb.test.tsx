@@ -4,7 +4,9 @@ import { describe, expect, it } from "vitest";
 import { expectNoA11yViolations } from "../../test/axe";
 import {
   Breadcrumb,
+  BreadcrumbBack,
   BreadcrumbEllipsis,
+  BreadcrumbHome,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
@@ -79,9 +81,41 @@ describe("Breadcrumb", () => {
   });
 
   it("className mescla e a do usuário vence", () => {
-    render(<BreadcrumbPage className="font-bold text-destructive">Aqui</BreadcrumbPage>);
-    expect(screen.getByText("Aqui")).toHaveClass("font-bold", "text-destructive");
-    expect(screen.getByText("Aqui")).not.toHaveClass("text-foreground");
+    render(<BreadcrumbPage className="font-bold text-status-danger-content">Aqui</BreadcrumbPage>);
+    expect(screen.getByText("Aqui")).toHaveClass("font-bold", "text-status-danger-content");
+    expect(screen.getByText("Aqui")).not.toHaveClass("text-content-primary");
+  });
+
+  it("aplica tom, separador e contêiner pelos atributos do nav", () => {
+    render(
+      <Breadcrumb tone="media" separator="slash" contained aria-label="Sobre o hero">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbHome href="/" />
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>Aula</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>,
+    );
+    const nav = screen.getByRole("navigation", { name: "Sobre o hero" });
+    expect(nav).toHaveAttribute("data-tone", "media");
+    expect(nav).toHaveAttribute("data-separator", "slash");
+    expect(nav).toHaveAttribute("data-contained", "true");
+    expect(nav).toHaveClass("rounded-pill");
+    expect(screen.getByRole("link", { name: "Início" })).toHaveAttribute(
+      "data-slot",
+      "breadcrumb-home",
+    );
+  });
+
+  it("BreadcrumbBack mostra ícone invertido em RTL", () => {
+    render(<BreadcrumbBack href="/modulo">Módulo 3</BreadcrumbBack>);
+    const link = screen.getByRole("link", { name: "Módulo 3" });
+    expect(link).toHaveAttribute("data-slot", "breadcrumb-back");
+    expect(link.querySelector("svg")).toHaveClass("rtl:rotate-180");
   });
 
   it("encaminha ref", () => {

@@ -1,58 +1,45 @@
 ---
-title: "Spinner"
-description: "Indicador de carregamento animado. Anuncia \"Carregando\" para leitores de tela; usado sozinho ou dentro de botões (Button loading)."
+title: Spinner
+description: "Indicador de carregamento de duração desconhecida: Ring (padrão) ou Dots, tamanhos xs a xl (12 a 48px), tons current (padrão), brand, neutral e media. Role status com rótulo acessível."
 ---
 
 ```tsx
 import { Spinner } from "@t2-educacao/midas";
 ```
 
+Mostra que algo está acontecendo quando não sabemos quanto tempo vai levar. Tempo conhecido: [Progress](./progress.md). Carregamento de página: [Skeleton](./skeleton.md). Spinner com mensagem: [LoadingState](./loading-state.md).
+
 ## Uso
 
 ```tsx
 <Spinner />
+<Spinner size="lg" tone="brand" />
+<Spinner variant="dots" size="md" label="Assistente digitando" />
+<Spinner label="" aria-hidden="true" />
 ```
 
 ## Props
 
-Aceita as props de `<svg>` mais:
-
 | Prop | Tipo | Padrão | Descrição |
 |---|---|---|---|
-| `label` | `string` | `"Carregando"` | Texto lido por leitores de tela. Com `""`, o spinner vira decorativo |
-| `className` | `string` | | Tamanho e cor (ex.: `size-6 text-primary`) |
+| `variant` | `"ring" \| "dots"` | `"ring"` | Ring é o padrão; Dots para contextos de conversa (digitando, IA pensando) |
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` | `"sm"` | 12, 16, 24, 32 e 48px |
+| `tone` | `"current" \| "brand" \| "neutral" \| "media"` | `"current"` | `current` herda a cor do texto (ideal dentro de botões); `brand` ciano; `neutral` escuro; `media` branco sobre imagem |
+| `label` | `string` | `"Carregando"` | Nome acessível. Vazio (`""`) deixa decorativo (sem `role="status"`) |
 
-## Exemplos
+O padrão do Figma é `brand`; aqui o padrão é `current` para o Spinner funcionar dentro de botões coloridos. Passe `tone="brand"` fora deles.
 
-### Tamanho e cor
+## Regras
 
-```tsx
-<Spinner className="size-6 text-primary" />
-```
-
-### Com texto
-
-```tsx
-<div className="flex items-center gap-2 text-sm text-muted-foreground">
-  <Spinner label="" aria-hidden />
-  Gerando relatório
-</div>
-```
-
-### Em botão
-
-Prefira a prop `loading` do [Button](./button.md):
-
-```tsx
-<Button loading>Salvando</Button>
-```
+- Botões usam o próprio estado `loading` do [Button](./button.md): não coloque Spinner solto ao lado.
+- Se a espera passar de 2 s, mostre uma mensagem dizendo o que está acontecendo ([LoadingState](./loading-state.md)).
 
 ## Acessibilidade
 
-- Com `label`, recebe `role="status"` e é anunciado por leitores de tela.
-- Quando já existe texto visível descrevendo o carregamento, use `label=""` e `aria-hidden` para não anunciar duas vezes.
-- A animação para quando o usuário pede menos movimento (`prefers-reduced-motion`).
+- `role="status"` com `aria-label`. Quando houver texto visível ao lado, use `label=""` e `aria-hidden`.
+- Com `prefers-reduced-motion` o giro e o salto dos pontos são desligados (`motion-reduce`).
 
 ## Não faça
 
-- Vários spinners na mesma tela para o mesmo carregamento.
+- Usar vários spinners na mesma área.
+- Usar Spinner para páginas inteiras (use Skeleton).

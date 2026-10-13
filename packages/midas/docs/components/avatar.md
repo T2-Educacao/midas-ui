@@ -1,101 +1,93 @@
 ---
-title: "Avatar"
-description: "Foto de perfil redonda com fallback (iniciais). Tamanhos sm (24px), default (32px) e lg (40px); AvatarBadge de status ou ícone; AvatarGroup sobreposto com AvatarGroupCount (+3)."
+title: Avatar
+description: "Representa uma pessoa: foto (AvatarImage), iniciais ou ícone (AvatarFallback) e botão de adicionar (AvatarAdd). Tamanhos xs a 2xl (24 a 96px), forma circle ou rounded, anel, AvatarBadge de status (online, away, busy, offline, verified, count), AvatarGroup com +N e AvatarOption para escolher avatar."
 ---
 
 ```tsx
 import {
   Avatar,
+  AvatarAdd,
   AvatarBadge,
   AvatarFallback,
   AvatarGroup,
   AvatarGroupCount,
   AvatarImage,
+  AvatarOption,
 } from "@t2-educacao/midas";
 ```
+
+Ordem de prioridade: foto do usuário, iniciais, ícone. `AvatarAdd` é um espaço vazio para convidar alguém.
 
 ## Uso
 
 ```tsx
-<Avatar>
-  <AvatarImage src="/alunos/ana.jpg" alt="Ana Souza" />
+<Avatar size="md">
+  <AvatarImage src="/ana.jpg" alt="Ana Souza" />
   <AvatarFallback>AS</AvatarFallback>
+  <AvatarBadge status="online" />
 </Avatar>
+
+<Avatar shape="rounded" size="lg"><AvatarFallback><IconBuilding /></AvatarFallback></Avatar>
+
+<AvatarGroup size="md">
+  <Avatar><AvatarFallback>RM</AvatarFallback></Avatar>
+  <Avatar><AvatarFallback>CR</AvatarFallback></Avatar>
+  <AvatarGroupCount asChild>
+    <button type="button" aria-label="Ver mais 5 pessoas">+5</button>
+  </AvatarGroupCount>
+</AvatarGroup>
+
+<AvatarAdd aria-label="Convidar pessoa" />
 ```
 
-Se a imagem não carregar (ou não existir), aparece o `AvatarFallback`.
+## Props
 
-## Componentes
+Avatar:
 
-| Componente | O que é |
+| Prop | Tipo | Padrão | Descrição |
+|---|---|---|---|
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "2xl" \| "default" \| number` | `"default"` | 24, 32, 40, 48, 64, 96px. `default` = 32px (igual a `sm`, nome legado). Número em px |
+| `shape` | `"circle" \| "rounded"` | `"circle"` | `rounded` com raio proporcional, para marcas, empresas e contas. Pessoas usam circle |
+| `ring` | `boolean` | `false` | Anel de 2px na cor do fundo (para sobreposição) |
+
+Outros:
+
+| Componente | Prop | Descrição |
+|---|---|---|
+| `AvatarFallback` | `colorFrom?: string` | Cor estável derivada do texto (paleta de gráficos) em vez de `surface-muted` |
+| `AvatarBadge` | `status?: "online" \| "away" \| "busy" \| "offline" \| "verified" \| "count"` | Padrão `online`. `variant="icon"` (legado) vira `verified`. Com `count`, o número vai em `children` |
+| `AvatarAdd` | `size`, `shape` | Botão tracejado com ícone de mais; passe `aria-label` |
+| `AvatarGroup` | `size?: "sm" \| "md" \| "lg"` | Sobreposição de ¼ do tamanho; o primeiro fica por cima |
+| `AvatarGroupCount` | `size`, `asChild` | O "+N". Use `asChild` com um botão para torná-lo interativo |
+| `AvatarOption` | `selected?: boolean` | Tile 104px de escolha (Avatar Builder), com estados padrão, hover e selecionado |
+
+## Variantes: quando usar
+
+| Item | Quando usar |
 |---|---|
-| `Avatar` | O círculo. `size`: `"sm"`, `"default"`, `"lg"` ou um número em px (ex.: `size={56}`) |
-| `AvatarImage` | A foto (`src`, `alt`) |
-| `AvatarFallback` | Texto ou ícone quando não há foto. `colorFrom="Maria Souza"` pinta o fundo com uma das 8 cores de série (`chart-1` a `chart-8`), sempre a mesma para o mesmo texto |
-| `AvatarBadge` | Indicador no canto inferior direito. `variant`: `"status"` (verde) ou `"icon"` (azul T2, com ícone) |
-| `AvatarGroup` | Avatares sobrepostos |
-| `AvatarGroupCount` | Círculo "+N" ou ícone no fim do grupo. `size` igual ao dos avatares |
-
-## Exemplos
-
-### Badge de status
-
-```tsx
-<Avatar>
-  <AvatarImage src="/alunos/ana.jpg" alt="Ana Souza" />
-  <AvatarFallback>AS</AvatarFallback>
-  <AvatarBadge aria-label="Online" />
-</Avatar>
-```
-
-### Badge com ícone
-
-```tsx
-<Avatar size="lg">
-  <AvatarFallback>AS</AvatarFallback>
-  <AvatarBadge variant="icon">
-    <Plus />
-  </AvatarBadge>
-</Avatar>
-```
-
-### Grupo com contador
-
-```tsx
-<AvatarGroup>
-  <Avatar><AvatarFallback>AS</AvatarFallback></Avatar>
-  <Avatar><AvatarFallback>BR</AvatarFallback></Avatar>
-  <AvatarGroupCount>+3</AvatarGroupCount>
-</AvatarGroup>
-```
-
-### Grupo com ícone
-
-```tsx
-<AvatarGroup>
-  <Avatar><AvatarFallback>AS</AvatarFallback></Avatar>
-  <AvatarGroupCount><Plus /></AvatarGroupCount>
-</AvatarGroup>
-```
-
-### Com menu
-
-```tsx
-<DropdownMenu>
-  <DropdownMenuTrigger asChild>
-    <Button variant="ghost" size="icon" rounded aria-label="Minha conta">
-      <Avatar><AvatarImage src="/alunos/ana.jpg" alt="" /><AvatarFallback>AS</AvatarFallback></Avatar>
-    </Button>
-  </DropdownMenuTrigger>
-  <DropdownMenuContent>
-    <DropdownMenuItem>Perfil</DropdownMenuItem>
-    <DropdownMenuSeparator />
-    <DropdownMenuItem variant="destructive">Sair</DropdownMenuItem>
-  </DropdownMenuContent>
-</DropdownMenu>
-```
+| `xs` 24 | Tabelas densas |
+| `sm` 32 | Listas e comentários |
+| `md` 40 | Padrão do Figma |
+| `lg` 48 | Cards |
+| `xl` 64 / `2xl` 96 | Perfil |
+| Badge `online`/`away`/`busy` | Presença (verde, âmbar, vermelho com barra) |
+| Badge `offline` | Contorno vazado |
+| Badge `verified` | Conta verificada (ciano com check) |
+| Badge `count` | Notificações |
 
 ## Acessibilidade
 
-- `AvatarImage` precisa de `alt` (o nome da pessoa). Dentro de um botão com `aria-label`, use `alt=""`.
-- `AvatarBadge` de status precisa de `aria-label` ("Online") para não depender só da cor.
+- Foto: `alt` com o nome ("Ana Souza"); se o nome já está ao lado, `alt=""`.
+- `AvatarBadge` tem `role="img"` e nome acessível do status ("Online", "Ausente"...). Para contador, passe `aria-label="3 notificações"`.
+- O "+N" deve ser um botão com `aria-label="Ver mais 5 pessoas"` (`asChild`). Para mostrar o nome no hover, envolva com [Tooltip](./tooltip.md).
+- Alvos de toque ≥ 44px quando clicável (xs/sm precisam de área estendida).
+
+## Limitações
+
+O Avatar Builder do Figma (personagem doodle com Face, Hair, Body, Glasses e Item e o modal de montagem) não foi portado. `AvatarOption` entrega só o tile de escolha; o desenho das peças fica a cargo do projeto.
+
+## Não faça
+
+- Misturar `circle` e `rounded` para pessoas.
+- Badge em `xs` (fica ilegível).
+- Usar ícone genérico quando há iniciais disponíveis.

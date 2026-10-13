@@ -1,68 +1,66 @@
 ---
-title: "Textarea"
-description: "Campo de texto de várias linhas que cresce com o conteúdo. Mesmos estados do Input: foco, desabilitado e inválido."
+title: Textarea
+description: "Campo de texto longo do Midas. Mesmos estilos do Input (outline, filled, glass), tom brand/neutral e forma rounded/pill (raio grande), estados de erro e sucesso, autoGrow e modo bare. Contador em fonte mono via FieldCounter."
 ---
 
 ```tsx
 import { Textarea } from "@t2-educacao/midas";
 ```
 
-## Uso
+## Quando usar
 
-```tsx
-<Field>
-  <FieldLabel htmlFor="duvida">Sua dúvida</FieldLabel>
-  <Textarea id="duvida" placeholder="Escreva aqui" />
-</Field>
-```
+Comentários, mensagens, descrições. Para uma linha use [Input](./input.md); para texto formatado, um editor rico.
 
 ## Props
 
-Aceita todas as props de `<textarea>` (`rows`, `maxLength`, `value`...). A altura mínima é 64px e cresce com o texto (`field-sizing: content`).
+Aceita as props de `<textarea>`.
 
-| Prop | Tipo | Descrição |
-|---|---|---|
-| `aria-invalid` | `boolean` | Estado de erro |
-| `autoGrow` | `boolean` | Ajusta a altura ao conteúdo (calculada por `scrollHeight`) e desliga o redimensionamento manual. Padrão `false` |
-| `bare` | `boolean` | Sem borda, fundo, anel de foco, altura mínima e padding, para texto inline como títulos. Padrão `false` |
+| Prop | Tipo | Padrão | Descrição |
+|---|---|---|---|
+| `appearance` | `"outline" \| "filled" \| "glass"` | `"outline"` | Estilo do campo |
+| `tone` | `"brand" \| "neutral"` | `"brand"` | Cor do foco |
+| `shape` | `"rounded" \| "pill"` | `"rounded"` | No pill o raio é grande (`rounded-3xl`), porque cápsula não funciona em área alta |
+| `success` | `boolean` | `false` | Borda de sucesso |
+| `autoGrow` | `boolean` | `false` | Cresce com o conteúdo |
+| `bare` | `boolean` | `false` | Sem borda, fundo e padding (para compor dentro de outro container) |
+| `aria-invalid` | `boolean` | | Estado de erro |
+| `className` | `string` | | Classes extras (as suas vencem) |
+
+Altura mínima de 96px (`min-h-24`).
 
 ## Exemplos
 
-### Com contador
+### Com contador e apoio
 
 ```tsx
-const [texto, setTexto] = useState("");
+import { Field, FieldCounter, FieldDescription, FieldLabel, Textarea } from "@t2-educacao/midas";
 
-<Field>
-  <FieldLabel htmlFor="bio">Bio</FieldLabel>
-  <Textarea id="bio" maxLength={200} value={texto} onChange={(e) => setTexto(e.target.value)} />
-  <FieldDescription>{texto.length}/200</FieldDescription>
-</Field>
+function Mensagem() {
+  const [texto, setTexto] = useState("");
+  return (
+    <Field>
+      <FieldLabel htmlFor="msg">Mensagem</FieldLabel>
+      <Textarea id="msg" maxLength={200} value={texto} onChange={(e) => setTexto(e.target.value)} />
+      <div className="flex">
+        <FieldDescription>Máximo de 200 caracteres.</FieldDescription>
+        <FieldCounter>{texto.length}/200</FieldCounter>
+      </div>
+    </Field>
+  );
+}
 ```
 
-### Título inline
+### Erro
 
 ```tsx
-"use client";
-
-const [titulo, setTitulo] = useState("");
-
-<Textarea
-  autoGrow
-  bare
-  rows={1}
-  aria-label="Título"
-  placeholder="Título sem nome"
-  className="text-2xl font-semibold"
-  value={titulo}
-  onChange={(e) => setTitulo(e.target.value)}
-/>
+<Textarea aria-label="Comentário" aria-invalid />
 ```
-
-Com `bare` não há anel de foco: dê outra pista visual de foco ao contêiner e sempre use `aria-label` ou um label visível.
-
-Para botões dentro da mesma borda, use `InputGroupTextarea` (veja [InputGroup](./input-group.md)).
 
 ## Acessibilidade
 
-- Precisa de label (`FieldLabel htmlFor` ou `aria-label`).
+Rótulo visível, erro com ícone e texto (`FieldError`), foco com borda 1px + halo 4px.
+
+## Não faça
+
+- Não use `shape="pill"` com `rounded` na mesma tela.
+- Não coloque o contador só em cor: mostre o número (`0/200`).

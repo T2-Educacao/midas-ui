@@ -1,1 +1,11 @@
-export { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./accordion";
+export {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  type AccordionProps,
+  type AccordionTone,
+  AccordionTrigger,
+  type AccordionTriggerProps,
+  type AccordionVariant,
+  accordionVariants,
+} from "./accordion";

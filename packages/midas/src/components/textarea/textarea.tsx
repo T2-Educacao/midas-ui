@@ -2,14 +2,20 @@
 
 import * as React from "react";
 import { cn } from "../../lib/cn";
+import { type FieldControlVariantProps, fieldControlVariants } from "../../lib/field-styles";
 
-export type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
-  autoGrow?: boolean;
-  bare?: boolean;
-};
+export type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> &
+  Omit<FieldControlVariantProps, "size"> & {
+    autoGrow?: boolean;
+    bare?: boolean;
+    success?: boolean;
+  };
 
 export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, autoGrow, bare, onInput, ...props }, forwardedRef) => {
+  (
+    { className, autoGrow, bare, success, appearance, tone, shape, onInput, ...props },
+    forwardedRef,
+  ) => {
     const innerRef = React.useRef<HTMLTextAreaElement | null>(null);
 
     const setRefs = React.useCallback(
@@ -36,24 +42,19 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       <textarea
         ref={setRefs}
         data-slot="textarea"
+        data-success={success ? "true" : undefined}
         onInput={(event) => {
           onInput?.(event);
           if (autoGrow) resize();
         }}
         className={cn(
-          "flex w-full text-sm text-foreground outline-none",
-          "placeholder:text-muted-foreground",
-          "disabled:cursor-not-allowed disabled:opacity-50",
           autoGrow ? "field-sizing-fixed resize-none overflow-hidden" : "field-sizing-content",
           bare
-            ? "min-h-0 border-0 bg-transparent p-0 focus-visible:ring-0"
+            ? "flex w-full min-h-0 border-0 bg-transparent p-0 text-body-md text-content-primary outline-none placeholder:text-content-secondary focus-visible:ring-0 disabled:cursor-not-allowed disabled:text-content-disabled"
             : [
-                "min-h-16 rounded-lg border border-input bg-transparent px-2.5 py-2",
-                "transition-[color,border-color,box-shadow] duration-150 motion-reduce:transition-none",
-                "focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
-                "disabled:bg-input/50",
-                "aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20",
-                "dark:bg-input/30",
+                fieldControlVariants({ appearance, tone, shape }),
+                "flex h-auto min-h-24 px-3.5 py-3",
+                shape === "pill" && "rounded-3xl px-5",
               ],
           className,
         )}

@@ -33,7 +33,8 @@ Os botões ficam encostados: o primeiro e o último mantêm os cantos arredondad
 
 | Prop | Tipo | Padrão | Descrição |
 |---|---|---|---|
-| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Direção do grupo |
+| `layout` | `"joined" \| "attached" \| "spaced" \| "stacked"` | `"joined"` | `joined`: botões encostados com bordas fundidas. `attached` (Figma Attached/Icons): contêiner segmentado com borda, `p-0.5` e raio `overlay`, item ativo em `secondary` e os demais em `ghost`, com `ButtonGroupSeparator` entre eles. `spaced`: botões separados por 8px. `stacked`: vertical em largura total (mobile) |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Direção do grupo (`stacked` é sempre vertical) |
 | `aria-label` | `string` | | Nome do grupo para leitores de tela (recomendado) |
 | `className` | `string` | | Classes extras |
 

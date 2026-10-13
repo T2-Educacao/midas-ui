@@ -23,6 +23,20 @@ describe("RadioGroup", () => {
     expect(onValueChange).toHaveBeenCalledWith("anual");
   });
 
+  it("aplica tamanho e tom com tokens", () => {
+    render(
+      <RadioGroup aria-label="Plano">
+        <RadioGroupItem value="a" aria-label="A" size="sm" />
+        <RadioGroupItem value="b" aria-label="B" tone="neutral" />
+      </RadioGroup>,
+    );
+    expect(screen.getByRole("radio", { name: "A" })).toHaveClass("size-4", "bg-field-bg");
+    expect(screen.getByRole("radio", { name: "B" })).toHaveClass(
+      "size-5",
+      "data-[state=checked]:bg-action-primary-bg",
+    );
+  });
+
   it("não tem violações de acessibilidade", async () => {
     const { container } = render(<Exemplo />);
     await expectNoA11yViolations(container);

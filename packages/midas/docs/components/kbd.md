@@ -1,6 +1,6 @@
 ---
-title: "Kbd"
-description: "Exibe teclas e atalhos de teclado (ex.: Ctrl + K). Kbd para uma tecla, KbdGroup para um atalho com várias teclas."
+title: Kbd
+description: "Tecla ou atalho de teclado em JetBrains Mono (Kbd) e agrupamento de teclas (KbdGroup), tamanhos sm (20px) e md (24px)."
 ---
 
 ```tsx
@@ -10,7 +10,7 @@ import { Kbd, KbdGroup } from "@t2-educacao/midas";
 ## Uso
 
 ```tsx
-<Kbd>Esc</Kbd>
+<p>Pressione <Kbd>⌘K</Kbd> para buscar.</p>
 
 <KbdGroup>
   <Kbd>Ctrl</Kbd>
@@ -20,39 +20,19 @@ import { Kbd, KbdGroup } from "@t2-educacao/midas";
 
 ## Props
 
-`Kbd` e `KbdGroup` aceitam as props de `<kbd>` e `className`.
+| Prop | Tipo | Padrão | Descrição |
+|---|---|---|---|
+| `size` | `"sm" \| "md"` | `"sm"` | 20px ou 24px de altura |
+| `className` | `string` | | Mesclada com `cn` |
 
-## Exemplos
-
-### Dentro de um botão
-
-```tsx
-<Button variant="outline">
-  Buscar <Kbd>⌘K</Kbd>
-</Button>
-```
-
-### Dentro de um tooltip
-
-```tsx
-<TooltipContent>
-  Salvar <Kbd>Ctrl</Kbd> <Kbd>S</Kbd>
-</TooltipContent>
-```
-
-### Com ícone
-
-```tsx
-import { IconArrowBigUp } from "@t2-educacao/midas/icons";
-
-<Kbd><IconArrowBigUp /></Kbd>
-```
+`KbdGroup` agrupa várias `Kbd` com espaçamento de 4px.
 
 ## Acessibilidade
 
-- Usa o elemento semântico `<kbd>`.
-- Para símbolos (⌘, ⇧), escreva o nome da tecla em texto próximo quando o atalho for importante.
+- Renderiza `<kbd>`, semântica nativa para entrada de teclado.
+- Em atalhos com símbolos (`⌘`), descreva também em texto no contexto ("Command + K").
 
 ## Não faça
 
-- Usar `Kbd` para destacar texto que não é tecla: use `Badge` ou texto em negrito.
+- Usar Kbd como botão (tem `pointer-events-none`).
+- Usar para código: use `font-mono` com `text-mono-md`.

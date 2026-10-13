@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { createRef } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { expectNoA11yViolations } from "../../test/axe";
-import { Stepper, StepperDescription, StepperItem, StepperTitle } from "./stepper";
+import { Stepper, StepperCompact, StepperDescription, StepperItem, StepperTitle } from "./stepper";
 
 function Exemplo({
   value = 1,
@@ -86,6 +86,63 @@ describe("Stepper", () => {
     render(<Exemplo onValueChange={onValueChange} />);
     fireEvent.click(screen.getByText("Confirmação"));
     expect(onValueChange).toHaveBeenCalledWith(2);
+  });
+
+  it("estado error mostra ícone de alerta e usa token de perigo", () => {
+    const { container } = render(
+      <Stepper value={1}>
+        <StepperItem>
+          <StepperTitle>Conta</StepperTitle>
+        </StepperItem>
+        <StepperItem state="error">
+          <StepperTitle>Pagamento recusado</StepperTitle>
+          <StepperDescription>Revise o cartão</StepperDescription>
+        </StepperItem>
+      </Stepper>,
+    );
+    expect(screen.getAllByRole("listitem")[1]).toHaveAttribute("data-state", "error");
+    const indicador = container.querySelectorAll("[data-slot=stepper-indicator]")[1];
+    expect(indicador?.querySelector("svg")).toBeInTheDocument();
+    expect(indicador).toHaveClass("text-status-danger-content");
+  });
+
+  it("indicador dot e icon", () => {
+    const { container } = render(
+      <Stepper value={0}>
+        <StepperItem indicator="dot">
+          <StepperTitle>A</StepperTitle>
+        </StepperItem>
+        <StepperItem indicator="icon" icon={<svg data-testid="meu-icone" />}>
+          <StepperTitle>B</StepperTitle>
+        </StepperItem>
+      </Stepper>,
+    );
+    const indicadores = container.querySelectorAll("[data-slot=stepper-indicator]");
+    expect(indicadores[0]).toHaveAttribute("data-indicator", "dot");
+    expect(indicadores[1]).toContainElement(screen.getByTestId("meu-icone"));
+  });
+
+  it("tipo segmented renderiza barras no lugar dos círculos", () => {
+    const { container } = render(
+      <Stepper type="segmented" value={1}>
+        <StepperItem>
+          <StepperTitle>A</StepperTitle>
+        </StepperItem>
+        <StepperItem>
+          <StepperTitle>B</StepperTitle>
+        </StepperItem>
+      </Stepper>,
+    );
+    expect(screen.getByRole("list")).toHaveAttribute("data-type", "segmented");
+    expect(container.querySelectorAll("[data-slot=stepper-bar]")).toHaveLength(2);
+    expect(container.querySelector("[data-slot=stepper-indicator]")).toBeNull();
+  });
+
+  it("StepperCompact mostra etapa atual, total e próxima", () => {
+    render(<StepperCompact value={2} total={5} title="Pagamento" nextTitle="Confirmação" />);
+    expect(screen.getByRole("group", { name: "Etapa 3 de 5" })).toBeInTheDocument();
+    expect(screen.getByText("Pagamento")).toHaveAttribute("aria-current", "step");
+    expect(screen.getByText("Próxima: Confirmação")).toBeInTheDocument();
   });
 
   it("className mescla e a do usuário vence", () => {

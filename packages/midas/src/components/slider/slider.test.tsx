@@ -51,3 +51,24 @@ describe("Slider", () => {
     await expectNoA11yViolations(container);
   });
 });
+
+describe("Slider (Figma)", () => {
+  it("usa trilho de 4px, thumb de 20px e preenchimento accent", () => {
+    const { container } = render(<Slider defaultValue={[50]} aria-label="Meta" />);
+    expect(container.querySelector("[data-slot='slider-track']")).toHaveClass(
+      "rounded-pill",
+      "data-[orientation=horizontal]:h-1",
+    );
+    expect(container.querySelector("[data-slot='slider-range']")).toHaveClass(
+      "bg-action-accent-bg",
+    );
+    expect(container.querySelector("[data-slot='slider-thumb']")).toHaveClass("size-icon-md");
+  });
+
+  it("tom neutro usa o preenchimento primário", () => {
+    const { container } = render(<Slider defaultValue={[50]} tone="neutral" aria-label="Meta" />);
+    expect(container.querySelector("[data-slot='slider-range']")).toHaveClass(
+      "bg-action-primary-bg",
+    );
+  });
+});

@@ -11,7 +11,7 @@ export default function CollapsibleBasico() {
       <CollapsibleTrigger asChild>
         <Button variant="outline">{aberto ? "Ver menos" : "Ver mais"}</Button>
       </CollapsibleTrigger>
-      <CollapsibleContent className="pt-3 text-sm text-muted-foreground">
+      <CollapsibleContent className="pt-3 text-body-sm text-content-secondary">
         Carga horária de 40 horas, com certificado de conclusão e acesso por 12 meses.
       </CollapsibleContent>
     </Collapsible>

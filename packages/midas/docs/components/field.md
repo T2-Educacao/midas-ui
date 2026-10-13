@@ -1,6 +1,6 @@
 ---
 title: "Field"
-description: "Estrutura de campo de formulário: Field, FieldLabel (com required e badge), FieldDescription, FieldError e FieldGroup. Orientação vertical ou horizontal, estados inválido e desabilitado."
+description: "Agrupa rótulo, controle e mensagens de um campo de formulário. FieldLabel (com required), FieldDescription (apoio), FieldError (erro com ícone), FieldSuccess (sucesso com ícone), FieldCounter (contador em fonte mono) e FieldGroup (espaço de 20px entre campos)."
 ---
 
 ```tsx
@@ -135,3 +135,24 @@ import {
 
 - Mostrar erro só com cor: sempre escreva a mensagem em `FieldError`.
 - Esconder o label e deixar só o placeholder.
+
+## Mensagens e contador (Figma)
+
+- `FieldDescription`: texto de apoio (caption, `content-secondary`).
+- `FieldError`: ícone + texto em `status-danger-content` (nunca só cor); some quando vazio.
+- `FieldSuccess`: ícone + texto em `status-success-content`.
+- `FieldCounter`: contador em JetBrains Mono (`0/200`), alinhado à direita com `ms-auto`; fica vermelho com `invalid`.
+
+```tsx
+<Field invalid={erro}>
+  <FieldLabel htmlFor="bio" required>Bio</FieldLabel>
+  <Textarea id="bio" aria-invalid={erro} />
+  <div className="flex">
+    <FieldDescription>Máximo de 200 caracteres.</FieldDescription>
+    <FieldCounter>{texto.length}/200</FieldCounter>
+  </div>
+  <FieldError>{erro && "Texto muito longo."}</FieldError>
+</Field>
+```
+
+Espaçamento: 6px entre rótulo, controle e apoio; `FieldGroup` dá 20px entre campos. Rótulo sempre acima do campo (use `orientation="horizontal"` só em configurações lado a lado).

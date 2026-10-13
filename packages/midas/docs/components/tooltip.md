@@ -1,157 +1,98 @@
 ---
 title: "Tooltip"
-description: "Balão de informação que aparece ao passar o mouse ou focar um elemento. Aceita texto simples ou conteúdo de dados com título, itens (rótulo, valor e indicador em ponto ou linha) e rodapé de total."
+description: "Rótulo curto no hover ou foco (Label, Shortcut, Rich) com estilos inverse (padrão), light e glass, seta e abertura após 400ms. Inclui ChartTooltip (single, multi, delta) para valores de gráficos: ChartTooltip, TooltipItem, TooltipFooter, TooltipDelta."
 ---
 
 ```tsx
 import {
+  ChartTooltip,
   Tooltip,
   TooltipContent,
+  TooltipDelta,
+  TooltipDescription,
   TooltipFooter,
   TooltipItem,
+  TooltipShortcut,
   TooltipTitle,
   TooltipTrigger,
 } from "@t2-educacao/midas";
 ```
 
-## Uso
+## Quando usar
 
-```tsx
-<Tooltip>
-  <TooltipTrigger asChild>
-    <Button variant="outline" size="icon" aria-label="Ajuda"><Question /></Button>
-  </TooltipTrigger>
-  <TooltipContent>Tire dúvidas sobre a plataforma</TooltipContent>
-</Tooltip>
-```
+Nomear botões só de ícone, mostrar nome completo (avatar, texto truncado), atalhos, explicar um termo (Rich), valores de gráfico (Chart Tooltip).
 
-## Componentes
+## Quando não usar
 
-| Componente | O que é |
+Informação essencial (ponha na tela); links/botões/formulário (use [Popover](./popover.md)); mensagens de erro (texto de ajuda do campo); única forma de ver algo no mobile.
+
+## Tipos de conteúdo
+
+| Conteúdo | Como |
 |---|---|
-| `Tooltip` | Raiz. Já inclui o `TooltipProvider` |
-| `TooltipTrigger` | O elemento que abre o tooltip. Use `asChild` para usar seu próprio botão |
-| `TooltipContent` | O balão (card com borda e sombra) |
-| `TooltipTitle` | Título em destaque (ex.: a data de um ponto do gráfico) |
-| `TooltipItem` | Linha com indicador, rótulo e valor |
-| `TooltipFooter` | Linha de total, separada por uma borda |
-| `TooltipProvider` | Opcional: envolve a aplicação para compartilhar o atraso entre tooltips |
+| Label | `<TooltipContent>Copiar link</TooltipContent>` (1 a 4 palavras, sem ponto final) |
+| Shortcut | Rótulo + `<TooltipShortcut>⌘ K</TooltipShortcut>` |
+| Rich | `<TooltipContent rich>` com `TooltipTitle` + `TooltipDescription` (largura máx. 240) |
 
 ## Props
 
-### Tooltip
+### Tooltip / TooltipProvider
 
 | Prop | Tipo | Padrão | Descrição |
 |---|---|---|---|
-| `delayDuration` | `number` | `0` | Atraso em ms para abrir |
-| `open` / `defaultOpen` / `onOpenChange` | | | Controle do estado aberto |
+| `delayDuration` | `number` | `400` | Atraso para abrir no hover (foco abre na hora). Era `0` antes |
+| `open` / `defaultOpen` / `onOpenChange` | | | Controle |
 
 ### TooltipContent
 
 | Prop | Tipo | Padrão | Descrição |
 |---|---|---|---|
-| `side` | `"top" \| "right" \| "bottom" \| "left"` | `"top"` | Lado em relação ao gatilho |
-| `sideOffset` | `number` | `6` | Distância do gatilho em px |
-| `align` | `"start" \| "center" \| "end"` | `"center"` | Alinhamento |
+| `appearance` | `"inverse" \| "light" \| "glass"` | `"inverse"` | Estilo. Inverse usa `action/primary` (escuro no Light, claro nos temas escuros); Glass só sobre mídia |
+| `side` | `"top" \| "bottom" \| "left" \| "right"` | `"top"` | Placement; vira para o lado oposto se não couber |
+| `sideOffset` | `number` | `6` | Distância |
+| `arrow` | `boolean` | `true` | Seta (`false` = Placement None) |
+| `rich` | `boolean` | `false` | Layout em coluna com padding maior |
 
-### TooltipItem
+## Chart Tooltip
 
-| Prop | Tipo | Padrão | Descrição |
-|---|---|---|---|
-| `label` | `ReactNode` | obrigatório | Nome da série ou item |
-| `value` | `ReactNode` | | Valor alinhado à direita |
-| `indicator` | `"dot" \| "line" \| "none"` | `"dot"` | Formato do indicador de cor |
-| `color` | `string` | cor primária | Cor do indicador (ex.: a cor da série no gráfico) |
-| `icon` | `ReactNode` | | Ícone no lugar do indicador |
-
-## Exemplos
-
-### Tooltip de dados (gráficos)
+`ChartTooltip` (`appearance`, `title`) é o painel que segue o cursor (não é Radix); use com `TooltipItem` (`label`, `value`, `color`, `indicator` dot|line|none), `TooltipFooter` (total) ou `TooltipDelta` (`value`, `change`, `trend` up|down, `caption`; sempre com ▲/▼ além da cor). Use as cores `chart-1…5` na mesma ordem do gráfico.
 
 ```tsx
-<TooltipContent>
-  <TooltipTitle>16 jul 2026</TooltipTitle>
-  <TooltipItem label="Gestão de risco" value="50" color="var(--color-primary)" />
-  <TooltipItem label="Análise de investimentos" value="30" color="var(--color-accent)" />
-</TooltipContent>
+<ChartTooltip title="12 mar 2026">
+  <TooltipItem label="Renda fixa" value="R$ 30.100" color="var(--midas-chart-1)" />
+  <TooltipItem label="Ações" value="R$ 12.400" color="var(--midas-chart-2)" />
+  <TooltipFooter><span>Total</span><span>R$ 42.500</span></TooltipFooter>
+</ChartTooltip>
+
+<ChartTooltip title="12 mar 2026">
+  <TooltipDelta value="R$ 48.320" change="12,4%" caption="vs. 12 fev 2026" />
+</ChartTooltip>
 ```
 
-### Indicador em linha ou sem indicador
-
-```tsx
-<TooltipItem label="Gestão de risco" value="100%" indicator="line" />
-<TooltipItem label="Gestão de risco" value="15%" indicator="none" />
-```
-
-### Com ícones
-
-```tsx
-import { IconCalendar, IconList } from "@t2-educacao/midas/icons";
-
-<TooltipItem icon={<IconCalendar />} label="Gestão de risco" value="380" />
-<TooltipItem icon={<IconList />} label="Análise de investimentos" value="420" />
-```
-
-### Com total
-
-```tsx
-<TooltipContent>
-  <TooltipItem label="Gestão de risco" value="1h" />
-  <TooltipItem label="Análise de investimentos" value="50 min" />
-  <TooltipFooter>
-    <span>Total</span>
-    <span>1h 50 min</span>
-  </TooltipFooter>
-</TooltipContent>
-```
-
-### Só texto, sem números
-
-```tsx
-<TooltipContent>
-  <TooltipTitle>Matérias</TooltipTitle>
-  <p className="text-muted-foreground">Ética, Sistema Financeiro, Investimentos</p>
-</TooltipContent>
-```
-
-## Tooltip em botão desabilitado
-
-Elementos `disabled` não recebem eventos do mouse, então o tooltip não abriria. O `TooltipTrigger` com `asChild` detecta o filho `disabled` (incluindo `Button` com `disabled`) e envolve o botão sozinho num `<span tabIndex={0}>`:
+## Exemplo
 
 ```tsx
 <Tooltip>
   <TooltipTrigger asChild>
-    <Button disabled>Publicar</Button>
+    <Button variant="outline" size="icon" aria-label="Salvar"><IconDeviceFloppy /></Button>
   </TooltipTrigger>
-  <TooltipContent>Preencha todos os campos para publicar</TooltipContent>
+  <TooltipContent>
+    Salvar <TooltipShortcut>⌘ S</TooltipShortcut>
+  </TooltipContent>
 </Tooltip>
 ```
 
-A detecção olha a prop `disabled` do filho direto. Se o botão fica desabilitado por outro motivo (ex.: `loading`, que o `Button` já converte em `disabled`), ele também é coberto. Quando o filho é um componente seu que repassa `disabled` por dentro, envolva você mesmo num `<span tabIndex={0} className="inline-flex">`.
-
-## Conflito de nome com o recharts
-
-O `recharts` também exporta um `Tooltip`. Em arquivos de gráfico que usam os dois, renomeie na importação:
-
-```tsx
-import { Tooltip as ChartTooltip } from "recharts";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@t2-educacao/midas";
-```
-
-Se preferir importar o Midas com outro nome, ele também exporta `MidasTooltip` (o mesmo componente):
-
-```tsx
-import { Tooltip } from "recharts";
-import { MidasTooltip, TooltipContent, TooltipTrigger } from "@t2-educacao/midas";
-```
+Botão desabilitado: `TooltipTrigger asChild` envolve o botão em um `span` focável automaticamente.
 
 ## Acessibilidade
 
-- Abre com mouse **e** com foco do teclado; fecha com `Esc`.
-- O conteúdo é ligado ao gatilho por `aria-describedby`.
-- Tooltip é complementar: a informação essencial precisa estar acessível sem ele (em telas de toque, ele não abre ao passar o dedo).
+`role="tooltip"` + `aria-describedby` no alvo (Radix). Em botão só de ícone o nome também vai em `aria-label`. Esc fecha; o mouse pode ir até o tooltip sem fechar. Sem elementos interativos dentro. Ofereça os valores do gráfico também por tabela/teclado.
 
 ## Não faça
 
-- Colocar botões ou links dentro do tooltip: ele some quando o mouse sai. Use um Popover.
-- Usar tooltip em elemento desabilitado: ele não recebe foco. Envolva-o num `<span tabIndex={0}>` ou mostre o motivo em texto.
+- Repetir o texto já visível; parágrafos longos; links ou botões dentro.
+- Misturar estilos na mesma interface (use Inverse).
+
+## Limitações
+
+O Figma usa tokens `tooltip/*` (sempre escuros). Eles ainda não existem em `theme.css`; o estilo inverse usa `action/primary` e, nos temas escuros, fica claro em vez de escuro.

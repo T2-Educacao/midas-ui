@@ -1,6 +1,6 @@
 ---
 title: "NativeSelect"
-description: "O <select> nativo do navegador com o visual do Midas. Ideal para formulários simples e mobile (abre o seletor do sistema). Tamanhos default e sm."
+description: "Select nativo do navegador com o visual do Input: size sm/md/lg (40/48/56), appearance outline/filled/glass, tone, shape e success. Melhor opção no mobile."
 ---
 
 ```tsx
@@ -43,3 +43,13 @@ Aceita todas as props de `<select>` mais:
 ## Acessibilidade
 
 - É o `<select>` do navegador: teclado e leitores de tela funcionam nativamente.
+
+## Variantes do Figma
+
+Aceita `size` (`"sm" | "md" | "lg"`; `"default"` = `md`), `appearance`, `tone`, `shape` e `success`, iguais às do [Input](./input.md).
+
+```tsx
+<NativeSelect aria-label="Estado" size="lg" shape="pill">
+  <option value="sp">São Paulo</option>
+</NativeSelect>
+```

@@ -1,6 +1,6 @@
 ---
 title: "DatePicker"
-description: "Campo que abre um calendário em popover. Data única ou período (range), formatação em pt-BR, dropdown de mês e ano (data de nascimento), dias desabilitados, estado inválido e input hidden com data ISO para formulários."
+description: "Campo de data (Date Field) que abre um calendário em popover (Date Picker). Data única, período ou presets, com appearance outline|filled|glass, tone brand|neutral, shape rounded|pill, rodapé Cancelar/Aplicar opcional, formatação pt-BR, dropdown de mês/ano e input hidden ISO. No mobile use DateSheet."
 ---
 
 ```tsx
@@ -33,6 +33,11 @@ Ao escolher um dia, o calendário fecha e o campo mostra a data formatada ("16 d
 | `numberOfMonths` | `number` | 1 (single) / 2 (range) | Meses no calendário |
 | `icon` | `ReactNode \| false` | ícone de calendário | Ícone do campo |
 | `disabled` / `invalid` | `boolean` | | Estados |
+| `size` / `appearance` / `tone` / `shape` | `sm|md|lg` / `outline|filled|glass` / `brand|neutral` / `rounded|pill` | `md` / `outline` / `brand` / `rounded` | Mesmos eixos do [Input](./input.md) (Date Field do Figma) |
+| `calendarSize` | `"md" | "lg"` | `"md"` | Célula do calendário |
+| `presets` | `{ label, description?, value: Date | DateRange }[]` | | Atalhos à esquerda (Hoje, Últimos 7 dias...) |
+| `confirm` | `boolean` | `false` | Mostra rodapé com resumo, Cancelar e Aplicar; a seleção só vale ao aplicar |
+| `cancelLabel` / `applyLabel` | `string` | Cancelar / Aplicar | Textos do rodapé |
 | `id` / `name` | `string` | | Label e formulário (`name` gera `<input type="hidden">` com `2026-07-16` ou `2026-01-20/2026-02-09`) |
 
 ## Exemplos
@@ -72,6 +77,20 @@ const [periodo, setPeriodo] = useState<DateRange | undefined>();
 </div>
 ```
 
+### Presets com confirmação
+
+```tsx
+const hoje = new Date();
+<DatePicker
+  mode="range"
+  confirm
+  presets={[
+    { label: "Hoje", value: { from: hoje, to: hoje } },
+    { label: "Últimos 7 dias", value: { from: new Date(Date.now() - 6 * 864e5), to: hoje } },
+  ]}
+/>
+```
+
 ### Linguagem natural
 
 Campo de texto que entende "amanhã", "próxima sexta", "em 3 dias", "15/05" ou "20 de maio", com o calendário como apoio. É uma composição de `InputGroup`, `Popover` e `Calendar`: o exemplo completo, com o interpretador de datas em português, está no site de docs (DatePicker → Linguagem natural).
@@ -86,3 +105,10 @@ Campo de texto que entende "amanhã", "próxima sexta", "em 3 dias", "15/05" ou 
 
 - O botão abre um diálogo "Calendário"; o foco vai para o dia selecionado (ou hoje).
 - `Esc` fecha e devolve o foco ao campo.
+
+
+## Acessibilidade e mobile
+
+- Setas navegam entre dias, Enter seleciona, Esc fecha. Hoje com contorno; indisponíveis riscados.
+- O popover tem nome "Calendário". Permita também digitar a data quando o fluxo exigir (veja Linguagem natural).
+- No mobile use [DateSheet](./date-sheet.md) (bottom sheet com calendário de 44px ou roleta).

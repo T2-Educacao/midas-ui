@@ -5,21 +5,41 @@ import { cn } from "../../lib/cn";
 
 export const buttonGroupVariants = cva(
   [
-    "flex w-fit items-stretch",
+    "flex items-stretch",
     "has-[>[data-slot=button-group]]:gap-2",
     "*:focus-visible:relative *:focus-visible:z-10",
     "[&>input]:flex-1",
   ],
   {
     variants: {
+      layout: {
+        joined: "w-fit",
+        attached:
+          "w-fit gap-0 rounded-overlay border border-border-default bg-surface-default p-0.5 shadow-elevation-control *:rounded-control [&>[data-slot=button-group-separator]]:self-center",
+        spaced: "w-fit gap-2",
+        stacked: "w-full gap-2 *:w-full",
+      },
       orientation: {
-        horizontal:
-          "[&>*:not(:first-child)]:rounded-s-none [&>*:not(:first-child)]:border-s-0 [&>*:not(:last-child)]:rounded-e-none",
-        vertical:
-          "flex-col [&>*:not(:first-child)]:rounded-t-none [&>*:not(:first-child)]:border-t-0 [&>*:not(:last-child)]:rounded-b-none",
+        horizontal: "",
+        vertical: "flex-col",
       },
     },
+    compoundVariants: [
+      {
+        layout: "joined",
+        orientation: "horizontal",
+        className:
+          "[&>*:not(:first-child)]:rounded-s-none [&>*:not(:first-child)]:border-s-0 [&>*:not(:last-child)]:rounded-e-none",
+      },
+      {
+        layout: "joined",
+        orientation: "vertical",
+        className:
+          "[&>*:not(:first-child)]:rounded-t-none [&>*:not(:first-child)]:border-t-0 [&>*:not(:last-child)]:rounded-b-none",
+      },
+    ],
     defaultVariants: {
+      layout: "joined",
       orientation: "horizontal",
     },
   },
@@ -30,16 +50,20 @@ export interface ButtonGroupProps
     VariantProps<typeof buttonGroupVariants> {}
 
 export const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
-  ({ className, orientation, ...props }, ref) => (
-    <div
-      ref={ref}
-      role="group"
-      data-slot="button-group"
-      data-orientation={orientation ?? "horizontal"}
-      className={cn(buttonGroupVariants({ orientation }), className)}
-      {...props}
-    />
-  ),
+  ({ className, orientation, layout, ...props }, ref) => {
+    const resolvedOrientation = layout === "stacked" ? "vertical" : (orientation ?? "horizontal");
+    return (
+      <div
+        ref={ref}
+        role="group"
+        data-slot="button-group"
+        data-orientation={resolvedOrientation}
+        data-layout={layout ?? "joined"}
+        className={cn(buttonGroupVariants({ layout, orientation: resolvedOrientation }), className)}
+        {...props}
+      />
+    );
+  },
 );
 ButtonGroup.displayName = "ButtonGroup";
 
@@ -55,8 +79,8 @@ export const ButtonGroupText = React.forwardRef<HTMLDivElement, ButtonGroupTextP
         ref={ref}
         data-slot="button-group-text"
         className={cn(
-          "flex items-center gap-2 rounded-lg border border-border bg-muted px-2.5 text-sm font-medium text-foreground",
-          "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
+          "flex items-center gap-1.5 rounded-control border border-border-default bg-surface-muted px-3 text-label-md text-content-primary",
+          "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-icon-sm",
           className,
         )}
         {...props}
@@ -75,7 +99,7 @@ export const ButtonGroupSeparator = React.forwardRef<
     data-slot="button-group-separator"
     orientation={orientation}
     className={cn(
-      "relative m-0! shrink-0 self-stretch bg-input",
+      "relative m-0! shrink-0 self-stretch bg-border-default",
       orientation === "vertical" ? "w-px" : "h-px",
       className,
     )}

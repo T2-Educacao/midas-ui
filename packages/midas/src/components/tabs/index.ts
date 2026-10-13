@@ -3,6 +3,13 @@ export {
   TabsContent,
   TabsList,
   type TabsListProps,
+  type TabsSize,
+  type TabsSurface,
+  type TabsTone,
   TabsTrigger,
+  type TabsTriggerProps,
+  type TabsType,
+  type TabsVariant,
   tabsListVariants,
+  tabsTriggerVariants,
 } from "./tabs";

@@ -45,7 +45,7 @@ export const ToggleGroup = React.forwardRef<
       orientation={orientation}
       style={{ "--midas-toggle-gap": `${spacing * 4}px`, ...style } as React.CSSProperties}
       className={cn(
-        "group/toggle-group flex w-fit items-center gap-(--midas-toggle-gap) rounded-lg",
+        "group/toggle-group flex w-fit items-center gap-(--midas-toggle-gap) rounded-control",
         orientation === "vertical" && "flex-col items-stretch",
         className,
       )}
@@ -78,8 +78,8 @@ export const ToggleGroupItem = React.forwardRef<
         toggleVariants({ variant: context.variant ?? variant, size: context.size ?? size }),
         "shrink-0 focus:z-10 focus-visible:z-10",
         attached && [
-          "group-data-[orientation=horizontal]/toggle-group:rounded-none group-data-[orientation=horizontal]/toggle-group:first:rounded-s-lg group-data-[orientation=horizontal]/toggle-group:last:rounded-e-lg",
-          "group-data-[orientation=vertical]/toggle-group:rounded-none group-data-[orientation=vertical]/toggle-group:first:rounded-t-lg group-data-[orientation=vertical]/toggle-group:last:rounded-b-lg",
+          "group-data-[orientation=horizontal]/toggle-group:rounded-none group-data-[orientation=horizontal]/toggle-group:first:rounded-s-control group-data-[orientation=horizontal]/toggle-group:last:rounded-e-control",
+          "group-data-[orientation=vertical]/toggle-group:rounded-none group-data-[orientation=vertical]/toggle-group:first:rounded-t-control group-data-[orientation=vertical]/toggle-group:last:rounded-b-control",
           "group-data-[variant=outline]/toggle-group:group-data-[orientation=horizontal]/toggle-group:border-s-0 group-data-[variant=outline]/toggle-group:group-data-[orientation=horizontal]/toggle-group:first:border-s",
           "group-data-[variant=outline]/toggle-group:group-data-[orientation=vertical]/toggle-group:border-t-0 group-data-[variant=outline]/toggle-group:group-data-[orientation=vertical]/toggle-group:first:border-t",
         ],

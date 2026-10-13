@@ -78,7 +78,7 @@ Texto e ícones. `content-primary` é o padrão; `content-secondary` apoia; `con
 
 | Token (variável) | Classes | Light | Dark | Dark Blue | Quando usar |
 |---|---|---|---|---|---|
-| `--midas-border-default` | `bg-border-default` `text-border-default` `border-border-default` | `#e5e5e5` | `#262626` | `#1e293b` | Limite de controles interativos: inputs, selects, checkbox, radio, switch desligado. Contraste ≥ 3:1 (WCAG 1.4.11). |
+| `--midas-border-default` | `bg-border-default` `text-border-default` `border-border-default` | `#737373` | `#737373` | `#64748b` | Limite de controles interativos: inputs, selects, checkbox, radio, switch desligado. Contraste ≥ 3:1 (WCAG 1.4.11). |
 | `--midas-border-strong` | `bg-border-strong` `text-border-strong` `border-border-strong` | `#525252` | `#a1a1a1` | `#94a3b8` | Borda em hover de controles e ênfase. |
 | `--midas-border-subtle` | `bg-border-subtle` `text-border-subtle` `border-border-subtle` | `#e5e5e5` | `#262626` | `#1e293b` | Divisores e contornos decorativos (cards, separadores). Não usar como limite de controle. |
 

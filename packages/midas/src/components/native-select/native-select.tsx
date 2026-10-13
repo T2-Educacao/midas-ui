@@ -1,20 +1,36 @@
 import { IconChevronDown } from "@tabler/icons-react";
 import * as React from "react";
 import { cn } from "../../lib/cn";
+import { type FieldControlVariantProps, fieldControlVariants } from "../../lib/field-styles";
 
 export interface NativeSelectProps
-  extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "size"> {
-  size?: "sm" | "default";
+  extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "size">,
+    Omit<FieldControlVariantProps, "size"> {
+  size?: "sm" | "md" | "lg" | "default";
   fullWidth?: boolean;
+  success?: boolean;
   wrapperClassName?: string;
 }
 
 export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProps>(
-  ({ className, wrapperClassName, size = "default", fullWidth = false, ...props }, ref) => (
+  (
+    {
+      className,
+      wrapperClassName,
+      size = "default",
+      appearance,
+      tone,
+      shape,
+      success,
+      fullWidth = false,
+      ...props
+    },
+    ref,
+  ) => (
     <div
       data-slot="native-select-wrapper"
       className={cn(
-        "group/native-select relative has-[select:disabled]:opacity-50",
+        "group/native-select relative",
         fullWidth ? "w-full" : "w-fit",
         wrapperClassName,
       )}
@@ -23,21 +39,18 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
         ref={ref}
         data-slot="native-select"
         data-size={size}
+        data-success={success ? "true" : undefined}
         className={cn(
-          "w-full min-w-0 appearance-none rounded-lg border border-input bg-transparent py-1 pe-8 ps-2.5 text-sm text-foreground outline-none select-none",
-          "transition-[color,border-color,box-shadow] duration-150 motion-reduce:transition-none",
-          "data-[size=default]:h-8 data-[size=sm]:h-7 data-[size=sm]:rounded-md",
-          "focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
-          "disabled:pointer-events-none disabled:cursor-not-allowed",
-          "aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20",
-          "dark:bg-input/30 dark:*:bg-popover",
+          fieldControlVariants({ size: size === "default" ? "md" : size, appearance, tone, shape }),
+          "appearance-none pe-10 select-none",
+          "*:bg-overlay-surface *:text-content-primary",
           className,
         )}
         {...props}
       />
       <IconChevronDown
         aria-hidden
-        className="pointer-events-none absolute top-1/2 end-2.5 size-4 -translate-y-1/2 text-muted-foreground"
+        className="pointer-events-none absolute top-1/2 end-3.5 size-icon-md -translate-y-1/2 text-content-secondary group-has-[select:disabled]/native-select:text-content-disabled"
       />
     </div>
   ),

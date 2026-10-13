@@ -3,10 +3,14 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import { expectNoA11yViolations } from "../../test/axe";
 import {
+  ChartTooltip,
   Tooltip,
   TooltipContent,
+  TooltipDelta,
+  TooltipDescription,
   TooltipFooter,
   TooltipItem,
+  TooltipShortcut,
   TooltipTitle,
   TooltipTrigger,
 } from "./tooltip";
@@ -93,5 +97,34 @@ describe("Tooltip", () => {
     expect(screen.getByRole("button", { name: "Ok" }).parentElement).not.toHaveAttribute(
       "tabindex",
     );
+  });
+});
+
+describe("Tooltip (Figma)", () => {
+  it("aplica o estilo e mostra atalho e conteúdo rico", async () => {
+    render(
+      <Tooltip defaultOpen>
+        <TooltipTrigger>Buscar</TooltipTrigger>
+        <TooltipContent appearance="light" rich>
+          <TooltipTitle>Rentabilidade</TooltipTitle>
+          <TooltipDescription>Quanto rendeu.</TooltipDescription>
+          <TooltipShortcut>⌘ K</TooltipShortcut>
+        </TooltipContent>
+      </Tooltip>,
+    );
+    const content = document.querySelector("[data-slot=tooltip-content]");
+    expect(content).toHaveAttribute("data-appearance", "light");
+    expect(content).toHaveClass("max-w-60");
+    expect(document.querySelector("[data-slot=tooltip-shortcut]")).not.toBeNull();
+  });
+
+  it("ChartTooltip e TooltipDelta mostram variação com seta", () => {
+    render(
+      <ChartTooltip title="12 mar 2026" appearance="glass">
+        <TooltipDelta value="R$ 48.320" change="12,4%" trend="down" caption="vs. 12 fev" />
+      </ChartTooltip>,
+    );
+    expect(screen.getByRole("tooltip")).toHaveAttribute("data-appearance", "glass");
+    expect(screen.getByText("▼")).toBeInTheDocument();
   });
 });

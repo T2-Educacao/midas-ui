@@ -48,7 +48,7 @@ toast.warning("A prova não pode começar antes das 8h.");
 toast.error("Não foi possível salvar.");
 ```
 
-No Midas todos os tipos usam o mesmo visual, como no Figma. A mensagem é que diz o que aconteceu.
+Cada tipo (success, info, warning, error e loading) mostra o ícone Tabler do status num tile colorido, com cor de status suave; o ícone carrega o significado junto com a cor. O toast sem tipo (`toast("...")`) não tem ícone.
 
 ### Promise
 
@@ -61,6 +61,32 @@ toast.promise(salvarCurso(), {
   error: "Não foi possível criar o curso",
 });
 ```
+
+## Estilos, posição e pilha
+
+```tsx
+<Toaster toastStyle="inverse" position="bottom-right" />
+```
+
+| Prop do `Toaster` | Tipo | Padrão | Descrição |
+|---|---|---|---|
+| `toastStyle` | `"subtle" | "surface" | "inverse" | "glass"` | `"surface"` | Subtle (fundo muted), Surface (padrão, sombra de overlay), Inverse (escuro, contrasta com páginas claras) e Glass (sobre Hero e mídia) |
+| `position` | `"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"` | `"bottom-right"` | Desktop: a 24px das bordas (`offset`). No mobile a margem é 16px (`mobileOffset`) e a largura é total |
+| `expand` | `boolean` | `false` | Pilha aberta. Recolhida: o mais recente na frente; no hover a pilha se abre |
+| `visibleToasts` | `number` | `3` | No máximo 3 visíveis |
+
+Largura de 400px, raio de container, ícone em tile de 32px, título em label-md e descrição em body-sm.
+
+### Recomendações
+
+- Desktop: bottom-right para confirmações; top-center para erros que bloqueiam. Mobile: base, acima da Bottom Navigation.
+- Uma ação no máximo. Para mais de uma decisão, use Dialog.
+- Erros ficam até a pessoa fechar (`duration: Infinity`); sucesso e info somem em 4 a 6 s.
+- Não use toast para conteúdo que a pessoa precisa encontrar depois: use o [Notification Center](./notification.md). Aviso persistente: [Banner](./banner.md).
+
+### Limitação
+
+O conteúdo "Progress" do Figma (barra do tempo até sumir com pausa no hover) não existe no Sonner; para upload use `toast.loading` ou `toast.custom` com [Progress](./progress.md).
 
 ## Opções
 

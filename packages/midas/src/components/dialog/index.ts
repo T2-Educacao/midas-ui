@@ -7,7 +7,10 @@ export {
   DialogFooter,
   DialogHeader,
   DialogOverlay,
+  type DialogOverlayProps,
   DialogPortal,
   DialogTitle,
   DialogTrigger,
+  dialogContentVariants,
+  dialogOverlayVariants,
 } from "./dialog";

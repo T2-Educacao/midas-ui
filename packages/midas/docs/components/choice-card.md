@@ -1,6 +1,6 @@
 ---
 title: "ChoiceCard"
-description: "Card de opção selecionável com título, descrição, ícone opcional e indicador. ChoiceCard (escolha única, dentro de ChoiceCardGroup) e ChoiceCardCheckbox (múltipla escolha)."
+description: "Cartão de escolha única (radio) ou múltipla (checkbox) com título, descrição, ícone ou ilustração e indicador. Layout horizontal ou vertical, estilos outline/filled/glass, tom brand/neutral, grade em colunas."
 ---
 
 ```tsx
@@ -89,3 +89,24 @@ Também exporta `choiceCardVariants` (cva do visual base).
 - Usar sem `title`: o controle ficaria sem nome acessível.
 - Usar `ChoiceCard` fora de um `ChoiceCardGroup`.
 - Usar para opções simples de uma linha: prefira [RadioGroup](./radio-group.md) ou [Checkbox](./checkbox.md).
+
+## Variantes do Figma
+
+| Prop | Em | Tipo | Padrão | Descrição |
+|---|---|---|---|---|
+| `layout` | Group ou Card | `"horizontal" \| "vertical"` | `"horizontal"` | Horizontal para listas; vertical para grade de 2 colunas |
+| `appearance` | Group ou Card | `"outline" \| "filled" \| "glass"` | `"outline"` | Estilo |
+| `tone` | Group ou Card | `"brand" \| "neutral"` | `"brand"` | Selecionado ciano ou neutro |
+| `columns` | Group | `1 \| 2 \| 3` | `1` | Colunas da grade (empilha no mobile) |
+| `icon` | Card | `ReactNode` | | Ícone Tabler em quadro de 40px |
+| `illustration` | Card | `ReactNode` | | Ilustração em quadro de 72px |
+
+O cartão inteiro é o alvo do clique. Selecionado: borda `selection-border`, fundo `selection-bg` e halo. Single usa `ChoiceCard` dentro de `ChoiceCardGroup`; Multiple usa `ChoiceCardCheckbox`.
+
+```tsx
+import { IconSchool } from "@t2-educacao/midas/icons";
+
+<ChoiceCardGroup aria-label="Perfil" columns={2} layout="vertical" defaultValue="estudante">
+  <ChoiceCard value="estudante" icon={<IconSchool />} title="Estudante" description="Quero aprender do zero." />
+</ChoiceCardGroup>
+```

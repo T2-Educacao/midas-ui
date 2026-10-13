@@ -6,44 +6,69 @@ import { Spinner } from "../spinner/spinner";
 
 export const buttonVariants = cva(
   [
-    "inline-flex shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-lg border border-transparent bg-clip-padding text-sm font-medium outline-none select-none",
-    "transition-[color,background-color,border-color,box-shadow,opacity] duration-150 motion-reduce:transition-none",
-    "focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
-    "disabled:pointer-events-none disabled:opacity-50",
-    "aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20",
-    "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+    "inline-flex shrink-0 items-center justify-center whitespace-nowrap border border-transparent bg-clip-padding outline-none select-none",
+    "transition-[color,background-color,border-color,box-shadow,filter] duration-150 motion-reduce:transition-none",
+    "focus-visible:focus-ring aria-invalid:focus-ring-danger",
+    "disabled:pointer-events-none disabled:opacity-disabled aria-disabled:pointer-events-none aria-disabled:opacity-disabled",
+    "[&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/80",
-        outline:
-          "border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground aria-expanded:bg-accent dark:border-input dark:bg-input/30 dark:hover:bg-accent",
+        default:
+          "bg-action-primary-bg text-action-primary-content hover:bg-action-primary-bg-hover active:bg-action-primary-bg-pressed",
+        primary:
+          "bg-action-primary-bg text-action-primary-content hover:bg-action-primary-bg-hover active:bg-action-primary-bg-pressed",
+        accent:
+          "bg-action-accent-bg text-action-accent-content hover:bg-action-accent-bg-hover active:bg-action-accent-bg-pressed",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary",
+          "material-raised-button border-action-secondary-border bg-action-secondary-bg text-action-secondary-content hover:bg-action-secondary-bg-hover active:bg-action-secondary-bg-pressed",
+        outline:
+          "border-border-default bg-surface-default text-content-primary shadow-elevation-control hover:border-border-strong hover:bg-state-hover active:bg-state-pressed aria-expanded:bg-state-hover",
         ghost:
-          "text-foreground hover:bg-accent hover:text-accent-foreground aria-expanded:bg-accent",
+          "text-content-primary hover:bg-state-hover active:bg-state-pressed aria-expanded:bg-state-hover",
         destructive:
-          "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30",
+          "bg-action-destructive-bg text-action-destructive-content hover:bg-action-destructive-bg-hover active:bg-action-destructive-bg-pressed focus-visible:focus-ring-danger",
         success:
-          "bg-success/10 text-success hover:bg-success/20 focus-visible:border-success/40 focus-visible:ring-success/20 dark:bg-success/20 dark:hover:bg-success/30",
+          "bg-status-success-subtle text-status-success-content hover:bg-status-success-fill/20 active:bg-status-success-fill/30",
         warning:
-          "bg-warning/10 text-warning hover:bg-warning/20 focus-visible:border-warning/40 focus-visible:ring-warning/20 dark:bg-warning/20 dark:hover:bg-warning/30",
-        info: "bg-info/10 text-info hover:bg-info/20 focus-visible:border-info/40 focus-visible:ring-info/20 dark:bg-info/20 dark:hover:bg-info/30",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-status-warning-subtle text-status-warning-content hover:bg-status-warning-fill/20 active:bg-status-warning-fill/30",
+        info: "bg-status-info-subtle text-status-info-content hover:bg-status-info-fill/20 active:bg-status-info-fill/30",
+        link: "text-content-link underline-offset-4 hover:underline",
+        glass: "material-glass text-content-primary hover:brightness-95 active:brightness-90",
+        "liquid-glass":
+          "material-liquid text-content-primary hover:brightness-95 active:brightness-90",
+        frosted:
+          "material-frosted border-material-scrim-border bg-material-scrim-bg text-material-on-media-content hover:brightness-110 active:brightness-125",
+        "frosted-accent":
+          "material-frosted border-material-tint-border bg-material-tint-bg text-material-on-media-content hover:brightness-110 active:brightness-125",
+        "on-media":
+          "material-raised-button bg-material-on-media-bg text-material-on-media-bg-content hover:brightness-95 active:brightness-90",
+        "gradient-accent":
+          "material-sheen bg-linear-to-b from-action-accent-gradient-top to-action-accent-gradient-bottom text-action-accent-content hover:bg-none hover:bg-action-accent-bg-hover active:bg-action-accent-bg-pressed",
+        "gradient-neutral":
+          "material-sheen bg-linear-to-b from-action-primary-gradient-top to-action-primary-gradient-bottom text-action-primary-content hover:bg-none hover:bg-action-primary-bg-hover active:bg-action-primary-bg-pressed",
       },
       size: {
-        xs: "h-6 rounded-md px-2 text-xs [&_svg:not([class*='size-'])]:size-3",
-        sm: "h-7 rounded-md px-2.5 text-xs",
-        default: "h-8 px-2.5",
-        lg: "h-9 px-2.5",
-        "icon-xs": "size-6 rounded-md [&_svg:not([class*='size-'])]:size-3",
-        "icon-sm": "size-7 rounded-md",
-        icon: "size-8",
-        "icon-lg": "size-9",
+        xs: "h-control-xs gap-1 px-2 text-label-sm [&_svg:not([class*='size-'])]:size-icon-sm",
+        sm: "h-control-sm gap-1.5 px-2.5 text-label-sm [&_svg:not([class*='size-'])]:size-icon-sm",
+        default:
+          "h-control-md gap-1.5 px-3 text-label-md [&_svg:not([class*='size-'])]:size-icon-sm",
+        md: "h-control-md gap-1.5 px-3 text-label-md [&_svg:not([class*='size-'])]:size-icon-sm",
+        lg: "h-control-lg gap-2 px-4 text-label-md [&_svg:not([class*='size-'])]:size-icon-md",
+        xl: "h-control-xl gap-2 px-5 text-label-lg [&_svg:not([class*='size-'])]:size-icon-md",
+        "2xl":
+          "h-control-2xl gap-2.5 px-8 text-label-lg [&_svg:not([class*='size-'])]:size-icon-lg",
+        "icon-xs": "size-control-xs text-label-sm [&_svg:not([class*='size-'])]:size-icon-sm",
+        "icon-sm": "size-control-sm text-label-sm [&_svg:not([class*='size-'])]:size-icon-sm",
+        icon: "size-control-md text-label-md [&_svg:not([class*='size-'])]:size-icon-sm",
+        "icon-md": "size-control-md text-label-md [&_svg:not([class*='size-'])]:size-icon-sm",
+        "icon-lg": "size-control-lg text-label-md [&_svg:not([class*='size-'])]:size-icon-md",
+        "icon-xl": "size-control-xl text-label-lg [&_svg:not([class*='size-'])]:size-icon-md",
+        "icon-2xl": "size-control-2xl text-label-lg [&_svg:not([class*='size-'])]:size-icon-lg",
       },
       rounded: {
-        true: "rounded-full",
+        true: "rounded-pill",
         false: "",
       },
       filled: {
@@ -52,29 +77,31 @@ export const buttonVariants = cva(
       },
     },
     compoundVariants: [
+      { rounded: false, size: ["xs", "sm", "icon-xs", "icon-sm"], className: "rounded-xs" },
       {
-        filled: true,
-        variant: "destructive",
-        className:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90 dark:bg-destructive dark:hover:bg-destructive/90",
+        rounded: false,
+        size: ["default", "md", "lg", "icon", "icon-md", "icon-lg"],
+        className: "rounded-control",
       },
+      { rounded: false, size: ["xl", "icon-xl"], className: "rounded-md" },
+      { rounded: false, size: ["2xl", "icon-2xl"], className: "rounded-lg" },
       {
         filled: true,
         variant: "success",
         className:
-          "bg-success text-success-foreground hover:bg-success/90 dark:bg-success dark:hover:bg-success/90",
+          "bg-status-success-fill text-status-success-on-fill hover:bg-status-success-fill/90 active:bg-status-success-fill/80",
       },
       {
         filled: true,
         variant: "warning",
         className:
-          "bg-warning text-warning-foreground hover:bg-warning/90 dark:bg-warning dark:hover:bg-warning/90",
+          "bg-status-warning-fill text-status-warning-on-fill hover:bg-status-warning-fill/90 active:bg-status-warning-fill/80",
       },
       {
         filled: true,
         variant: "info",
         className:
-          "bg-info text-info-foreground hover:bg-info/90 dark:bg-info dark:hover:bg-info/90",
+          "bg-status-info-fill text-status-info-on-fill hover:bg-status-info-fill/90 active:bg-status-info-fill/80",
       },
     ],
     defaultVariants: {

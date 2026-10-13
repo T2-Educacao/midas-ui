@@ -7,13 +7,13 @@ import { Chip } from "./chip";
 describe("Chip", () => {
   it("renderiza a variante default sem botão quando não é removível", () => {
     render(<Chip>React</Chip>);
-    expect(screen.getByText("React")).toHaveClass("bg-secondary", "rounded-full");
+    expect(screen.getByText("React")).toHaveClass("bg-surface-muted", "rounded-pill");
     expect(screen.queryByRole("button")).not.toBeInTheDocument();
   });
 
   it.each([
-    ["outline", "border-border"],
-    ["primary", "bg-primary"],
+    ["outline", "border-border-subtle"],
+    ["primary", "bg-action-accent-bg"],
   ] as const)("aplica a variante %s", (variant, cls) => {
     render(<Chip variant={variant}>Tag</Chip>);
     expect(screen.getByText("Tag")).toHaveClass(cls);
@@ -21,7 +21,7 @@ describe("Chip", () => {
 
   it("aplica o tamanho sm", () => {
     render(<Chip size="sm">Tag</Chip>);
-    expect(screen.getByText("Tag")).toHaveClass("h-6", "text-xs");
+    expect(screen.getByText("Tag")).toHaveClass("h-6", "text-label-sm");
   });
 
   it("chama onRemove ao clicar no botão com rótulo acessível", async () => {

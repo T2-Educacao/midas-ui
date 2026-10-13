@@ -1,65 +1,67 @@
 ---
 title: "Calendar"
-description: "Calendário em português (react-day-picker) com células de 28px. Seleção de um dia, vários ou intervalo; vários meses; dropdown de mês e ano; dias desabilitados. Base do DatePicker."
+description: "Calendário de escolha de data (react-day-picker, em português): single, multiple ou range, vários meses, dropdown de mês/ano. Células de 40px (md) ou 44px (lg, toque), tone brand|neutral e appearance plain|solid|glass. Estados do Calendar Day: hover, hoje (contorno), selecionado, faixa início/meio/fim, desabilitado (riscado) e fora do mês. Para agenda de eventos use EventCalendar."
 ---
 
 ```tsx
 import { Calendar } from "@t2-educacao/midas";
 ```
 
-## Uso
+## Quando usar
 
-```tsx
-const [data, setData] = useState<Date | undefined>(new Date());
+Escolher uma data ou período. Base do [DatePicker](./date-picker.md) e do [DateSheet](./date-sheet.md). Para provas, aulas e entregas: [EventCalendar](./event-calendar.md).
 
-<Calendar mode="single" selected={data} onSelect={setData} className="rounded-lg border" />
-```
-
-Para um campo que abre o calendário, use o [DatePicker](./date-picker.md).
-
-## Props principais
+## Props
 
 Aceita todas as props do [DayPicker](https://daypicker.dev/api) mais:
 
 | Prop | Tipo | Padrão | Descrição |
 |---|---|---|---|
-| `mode` | `"single" \| "multiple" \| "range"` | | Tipo de seleção |
-| `selected` / `onSelect` | | | Valor e mudança (`Date`, `Date[]` ou `DateRange`) |
+| `mode` | `"single" \| "multiple" \| "range"` | | Seleção |
+| `selected` / `onSelect` | | | Valor (`Date`, `Date[]` ou `DateRange`) |
+| `size` | `"md" \| "lg"` | `"md"` | Célula 40px ou 44px (mobile) |
+| `tone` | `"brand" \| "neutral"` | `"brand"` | Seleção em cyan ou preto/branco |
+| `appearance` | `"plain" \| "solid" \| "glass"` | `"plain"` | `plain` sem moldura (dentro de popover); `solid` com borda e sombra de overlay; `glass` sobre mídia |
 | `numberOfMonths` | `number` | `1` | Meses lado a lado |
-| `captionLayout` | `"label" \| "dropdown" \| "dropdown-months" \| "dropdown-years"` | `"label"` | Cabeçalho com dropdown de mês/ano |
-| `startMonth` / `endMonth` | `Date` | | Limites da navegação (necessários para o dropdown de ano) |
-| `disabled` | `Matcher` | | Dias desabilitados (ex.: `{ before: new Date() }`) |
-| `locale` | | `ptBR` | Idioma |
-| `showOutsideDays` | `boolean` | `true` | Mostra dias de outros meses esmaecidos |
+| `captionLayout` | `"label" \| "dropdown" \| ...` | `"label"` | Dropdown de mês/ano (exige `startMonth`/`endMonth`) |
+| `disabled` | `Matcher` | | Dias riscados e desabilitados |
+| `buttonVariant` | | | Obsoleta, ignorada |
+
+`calendarVariants` e `CalendarDayButton` são exportados.
+
+## Estados do dia
+
+| Estado | Visual |
+|---|---|
+| Hover | fundo `overlay-hover` |
+| Hoje | contorno (`selection-border`) e número em `selection-content` |
+| Selecionado / início / fim | círculo `selection-fill` (Brand) ou `action-primary` (Neutral) |
+| Meio da faixa | faixa suave `selection-bg` (Brand) ou `state-hover` (Neutral) |
+| Desabilitado | riscado |
+| Fora do mês | `content-secondary` |
 
 ## Exemplos
 
-### Intervalo em dois meses
+```tsx
+const [data, setData] = useState<Date | undefined>(new Date());
+<Calendar mode="single" selected={data} onSelect={setData} appearance="solid" />
+```
 
 ```tsx
 const [periodo, setPeriodo] = useState<DateRange | undefined>();
-
 <Calendar mode="range" numberOfMonths={2} selected={periodo} onSelect={setPeriodo} />
 ```
 
-### Data de nascimento (dropdown de mês e ano)
-
 ```tsx
-<Calendar
-  mode="single"
-  captionLayout="dropdown"
-  startMonth={new Date(1940, 0)}
-  endMonth={new Date()}
-/>
-```
-
-### Bloquear datas passadas
-
-```tsx
-<Calendar mode="single" disabled={{ before: new Date() }} />
+<Calendar mode="single" captionLayout="dropdown" startMonth={new Date(1940, 0)} endMonth={new Date()} />
+<Calendar mode="single" size="lg" tone="neutral" disabled={{ before: new Date() }} />
 ```
 
 ## Acessibilidade
 
-- Navegação completa por teclado: setas, `PageUp`/`PageDown` (mês), `Home`/`End`.
-- Os dias têm nomes completos em português para leitores de tela.
+Setas navegam entre dias, `PageUp`/`PageDown` mudam o mês, `Home`/`End` a semana; `Enter` seleciona. Hoje é marcado por contorno (não só cor); indisponíveis são riscados. Nomes completos em português para leitores de tela. No mobile use `size="lg"` (alvo 44px).
+
+## Não faça
+
+- Usar para agenda de eventos (use EventCalendar).
+- Deixar datas inválidas selecionáveis sem `disabled`.

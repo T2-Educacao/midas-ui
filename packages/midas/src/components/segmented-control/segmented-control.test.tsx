@@ -60,9 +60,9 @@ describe("SegmentedControl", () => {
 
   it("aplica tamanho sm e padrão", () => {
     const { rerender } = render(<Exemplo size="sm" />);
-    expect(screen.getByRole("radio", { name: "Dia" })).toHaveClass("h-7");
+    expect(screen.getByRole("radio", { name: "Dia" })).toHaveClass("h-control-sm");
     rerender(<Exemplo />);
-    expect(screen.getByRole("radio", { name: "Dia" })).toHaveClass("h-8");
+    expect(screen.getByRole("radio", { name: "Dia" })).toHaveClass("h-9");
   });
 
   it("mescla className no grupo", () => {

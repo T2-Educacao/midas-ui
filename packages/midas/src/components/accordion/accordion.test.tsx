@@ -108,6 +108,24 @@ describe("Accordion", () => {
     expect(ref.current?.closest("[data-slot=accordion-item]")).toHaveClass("border-primary");
   });
 
+  it.each(["faq", "cards", "filled", "glass", "module"] as const)("variante %s", (variant) => {
+    render(
+      <Accordion type="single" collapsible variant={variant} tone="neutral">
+        <AccordionItem value="a">
+          <AccordionTrigger icon={<svg aria-hidden="true" />} meta="3 aulas">
+            Módulo 2
+          </AccordionTrigger>
+          <AccordionContent>Texto</AccordionContent>
+        </AccordionItem>
+      </Accordion>,
+    );
+    const root = document.querySelector("[data-slot=accordion]");
+    expect(root).toHaveAttribute("data-variant", variant);
+    expect(root).toHaveAttribute("data-tone", "neutral");
+    expect(screen.getByText("3 aulas")).toHaveClass("text-mono-sm");
+    expect(document.querySelector("[data-slot=accordion-icon]")).toBeInTheDocument();
+  });
+
   it("não tem violações de acessibilidade", async () => {
     const { container } = render(<Exemplo />);
     await userEvent.click(screen.getByRole("button", { name: "Como funciona?" }));

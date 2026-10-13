@@ -29,7 +29,7 @@ Aceita as props do [ToggleGroup do Radix](https://www.radix-ui.com/primitives/do
 | `value` / `defaultValue` | `string` (single) ou `string[]` (multiple) | | Valor controlado / inicial |
 | `onValueChange` | `(value) => void` | | Chamado ao mudar |
 | `variant` | `"ghost" \| "outline"` | `"ghost"` | Aplicado a todos os itens |
-| `size` | `"sm" \| "default" \| "lg"` | `"default"` | Aplicado a todos os itens |
+| `size` | `"xs" \| "sm" \| "default" \| "md" \| "lg" \| "xl"` | `"default"` | Aplicado a todos os itens (alturas `size/control/*`: 24 a 48px) |
 | `spacing` | `number` | `0` | Espaço entre itens em unidades de 4px. `0` deixa os itens encostados |
 | `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Direção e navegação por setas |
 

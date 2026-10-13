@@ -1,6 +1,6 @@
 ---
 title: "Chip"
-description: "Tag compacta em formato pill, opcionalmente removível com botão X. Variantes default, outline e primary; tamanhos sm e default; suporta desabilitado."
+description: "Tag removível ou estática (default, outline, primary; sm e default) com tokens do Midas. Para pílulas de escolha (filtros, respostas curtas) use ChoiceChip."
 ---
 
 ```tsx
@@ -64,3 +64,7 @@ const [tags, setTags] = React.useState(["CPA", "CEA", "CFP"]);
 - Usar Chip como botão de ação geral. Use [Button](./button.md).
 - Usar Chip só para status estático. Para isso, use [Badge](./badge.md).
 - Aninhar elementos interativos dentro do `children` do Chip removível.
+
+## Figma
+
+Visual atualizado: fundo `surface-muted`, borda `border-subtle` (outline), `action-accent-bg` (primary), raio `pill`, foco `focus-ring`, texto `label-sm`/`label-md`. Para seleção única/múltipla use [ChoiceChip](./choice-chip.md).

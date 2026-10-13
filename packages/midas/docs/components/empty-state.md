@@ -1,6 +1,6 @@
 ---
-title: "Empty State"
-description: "Estado vazio centralizado: EmptyState, EmptyStateIcon (círculo muted), EmptyStateTitle, EmptyStateDescription e EmptyStateActions. Use quando uma lista, busca ou página não tem conteúdo."
+title: Empty State
+description: "Mostra que uma página ou lista não tem conteúdo e diz o que fazer a seguir: ilustração com ícone da página em tile com anéis, título, descrição e ações. Containers card, plain e glass; tons brand e neutral."
 ---
 
 ```tsx
@@ -16,56 +16,60 @@ import {
 ## Uso
 
 ```tsx
-<EmptyState>
+import { IconClipboardList } from "@t2-educacao/midas/icons";
+
+<EmptyState container="card">
   <EmptyStateIcon>
-    <Tray />
+    <IconClipboardList />
   </EmptyStateIcon>
-  <EmptyStateTitle>Nenhum curso ainda</EmptyStateTitle>
-  <EmptyStateDescription>Quando você se matricular, seus cursos aparecem aqui.</EmptyStateDescription>
+  <div className="flex flex-col gap-2">
+    <EmptyStateTitle>Nenhum simulado ainda</EmptyStateTitle>
+    <EmptyStateDescription>
+      Quando você fizer um simulado, suas notas e o resultado por módulo aparecem aqui.
+    </EmptyStateDescription>
+  </div>
   <EmptyStateActions>
-    <Button>Explorar cursos</Button>
+    <Button variant="outline">Ver trilha</Button>
+    <Button>Fazer primeiro simulado</Button>
   </EmptyStateActions>
 </EmptyState>
 ```
 
 ## Props
 
-Todas as partes aceitam as props do elemento HTML correspondente, `className` (mesclado, a sua vence) e `ref`.
+| Componente | Prop | Tipo | Padrão | Descrição |
+|---|---|---|---|---|
+| `EmptyState` | `container` | `"card" \| "plain" \| "glass"` | `"plain"` | Superfície |
+| `EmptyState` | `tone` | `"brand" \| "neutral"` | `"brand"` | Cor do ícone e dos detalhes |
+| `EmptyStateIcon` | `children` | `ReactNode` | | Ícone Tabler da página (26px), dentro do tile |
+| `EmptyStateTitle` / `EmptyStateDescription` / `EmptyStateActions` | | | | Texto e ações |
 
-| Parte | Elemento | Descrição |
-|---|---|---|
-| `EmptyState` | `div` | Contêiner centralizado |
-| `EmptyStateIcon` | `div` | Círculo muted de 48px; o `svg` filho recebe 24px. Decorativo (`aria-hidden`) |
-| `EmptyStateTitle` | `h3` | Título |
-| `EmptyStateDescription` | `p` | Texto de apoio com largura máxima |
-| `EmptyStateActions` | `div` | Linha de botões |
+Todos aceitam `className` (mesclada) e `ref`.
 
-## Variantes
+## Variantes: quando usar
 
-| Composição | Quando usar |
+| Container | Quando usar |
 |---|---|
-| Ícone + título + descrição + ação | Lista vazia com próximo passo claro |
-| Só título + descrição | Busca sem resultados |
-| Sem ícone | Áreas pequenas, como dentro de um popover |
+| `card` | Áreas soltas na página |
+| `plain` | Dentro de tabelas, listas e cards que já têm superfície |
+| `glass` | Sobre imagens/mídia |
 
-## Exemplos
+## Conteúdo por página (Figma)
 
-### Busca sem resultados
+O ícone é sempre o da página (Simulados: prancheta, Carteira: carteira, Busca: lupa, Notificações: sino...). Exemplos de texto: "Nenhum simulado ainda", "Você ainda não está em nenhum curso", "Sua carteira está vazia", "Nenhuma meta criada", "Nenhum resultado para “cripto”", "Nenhum item com esses filtros", "Tudo em dia", "Nenhum aluno nesta turma", "Nenhuma conquista ainda".
 
-```tsx
-<EmptyState>
-  <EmptyStateTitle>Nada encontrado</EmptyStateTitle>
-  <EmptyStateDescription>Tente outros termos ou remova os filtros.</EmptyStateDescription>
-</EmptyState>
-```
+## Regras
+
+- Título diz o que está vazio; descrição diz por quê ou o que acontece depois; botão leva à ação que resolve.
+- Uma ação principal; secundária opcional em Outline.
+- Busca e Filtros sem resultado: ofereça limpar.
+- Ícone sempre da página, nunca ilustração genérica.
 
 ## Acessibilidade
 
-- O ícone é decorativo e escondido de leitores de tela; a mensagem deve estar no título e na descrição.
-- O título é um `h3`: confira se o nível combina com a hierarquia de títulos da página.
+- O ícone é decorativo (`aria-hidden`). O título é um `h3`: ajuste a hierarquia da página se necessário (`EmptyStateTitle` aceita outras props, mas o elemento é fixo; use `asChild`-like wrapper se precisar de outro nível).
 
 ## Não faça
 
-- Não use para erros de carregamento; use `Alert`.
-- Não coloque mais de uma ação primária.
-- Não use só o ícone para comunicar a mensagem.
+- Usar sem ação quando existe uma ação óbvia.
+- Usar `card` dentro de outro card.

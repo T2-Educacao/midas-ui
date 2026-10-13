@@ -4,9 +4,12 @@ import { describe, expect, it, vi } from "vitest";
 import { expectNoA11yViolations } from "../../test/axe";
 import {
   ListItem,
+  ListItemActions,
   ListItemContent,
   ListItemDescription,
   ListItemGroup,
+  ListItemMeta,
+  ListItemSkeleton,
   ListItemTitle,
 } from "./list-item";
 
@@ -37,7 +40,38 @@ describe("ListItem", () => {
   it("interactive aplica estilos de hover e foco", () => {
     render(<ListItem interactive data-testid="item" />);
     const item = screen.getByTestId("item");
-    expect(item).toHaveClass("cursor-pointer", "hover:bg-accent");
+    expect(item).toHaveClass("cursor-pointer", "hover:bg-state-hover");
+  });
+
+  it("tamanho, orientação e tom", () => {
+    render(
+      <ListItem size="lg" orientation="vertical" tone="neutral" selected data-testid="item" />,
+    );
+    const item = screen.getByTestId("item");
+    expect(item).toHaveAttribute("data-size", "lg");
+    expect(item).toHaveClass("p-4", "flex-col", "data-[selected=true]:bg-surface-muted");
+  });
+
+  it("selecionado brand usa tokens de seleção", () => {
+    render(<ListItem selected data-testid="item" />);
+    expect(screen.getByTestId("item")).toHaveClass("data-[selected=true]:bg-selection-bg");
+  });
+
+  it("meta, ações e skeleton", () => {
+    render(
+      <div>
+        <ListItem>
+          <ListItemMeta>há 2h</ListItemMeta>
+          <ListItemActions>
+            <button type="button">Editar</button>
+          </ListItemActions>
+        </ListItem>
+        <ListItemSkeleton />
+      </div>,
+    );
+    expect(screen.getByText("há 2h")).toHaveClass("text-mono-sm");
+    expect(screen.getByRole("button", { name: "Editar" })).toBeInTheDocument();
+    expect(screen.getByRole("status", { name: "Carregando" })).toHaveAttribute("aria-busy", "true");
   });
 
   it("selected define data-selected", () => {
@@ -74,8 +108,8 @@ describe("ListItem", () => {
 
   it("mescla className e encaminha ref", () => {
     const ref = { current: null as HTMLElement | null };
-    render(<ListItem ref={ref} className="bg-muted" data-testid="item" />);
-    expect(screen.getByTestId("item")).toHaveClass("bg-muted");
+    render(<ListItem ref={ref} className="bg-surface-muted" data-testid="item" />);
+    expect(screen.getByTestId("item")).toHaveClass("bg-surface-muted");
     expect(ref.current).toBe(screen.getByTestId("item"));
   });
 

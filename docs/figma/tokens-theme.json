@@ -201,15 +201,15 @@
     "token": "border/default",
     "modes": {
       "Light": {
-        "hex": "#E5E5E5",
+        "hex": "#737373",
         "alias": "neutral/500"
       },
       "Dark": {
-        "hex": "#262626",
+        "hex": "#737373",
         "alias": "neutral/500"
       },
       "Dark Blue": {
-        "hex": "#1E293B",
+        "hex": "#64748B",
         "alias": "slate/500"
       }
     },

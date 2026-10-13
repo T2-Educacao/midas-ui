@@ -24,11 +24,15 @@ Aceita as props do [Toggle do Radix](https://www.radix-ui.com/primitives/docs/co
 | Prop | Tipo | Padrão | Descrição |
 |---|---|---|---|
 | `variant` | `"ghost" \| "outline"` | `"ghost"` | Estilo visual |
-| `size` | `"sm" \| "default" \| "lg"` | `"default"` | 28, 32 ou 36px de altura |
+| `size` | `"xs" \| "sm" \| "default" \| "md" \| "lg" \| "xl"` | `"default"` | 24, 28, 32 (`default` = `md`), 40 e 48px de altura (`size/control/*`) |
 | `pressed` | `boolean` | | Estado controlado |
 | `defaultPressed` | `boolean` | `false` | Estado inicial (não controlado) |
 | `onPressedChange` | `(pressed: boolean) => void` | | Chamado ao alternar |
 | `disabled` | `boolean` | `false` | Desabilita |
+
+## Estados
+
+Ligado usa `selection-bg` e `selection-content` (Cyan suave); hover e pressed usam `state-hover` e `state-pressed`; foco com `focus-ring`; desabilitado com `opacity-disabled`. Raios por tamanho: xs/sm 4, md/lg 6 (`rounded-control`), xl 8. Este é o botão de dois estados; o "Toggle" liga/desliga do Figma é o [Switch](./switch.md).
 
 ## Variantes
 

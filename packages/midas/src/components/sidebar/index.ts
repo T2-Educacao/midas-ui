@@ -1,6 +1,7 @@
 export {
   NavItem,
   type NavItemProps,
+  type NavItemType,
   navItemVariants,
   Sidebar,
   SidebarContent,
@@ -9,4 +10,6 @@ export {
   SidebarGroupLabel,
   SidebarHeader,
   type SidebarProps,
+  type SidebarSurface,
+  type SidebarType,
 } from "./sidebar";

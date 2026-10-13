@@ -3,21 +3,27 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 import { cn } from "../../lib/cn";
+import { fieldGroupVariants } from "../../lib/field-styles";
 import { Button, type ButtonProps } from "../button/button";
 
-export const InputGroup = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
+export const inputGroupVariants = fieldGroupVariants;
+
+export interface InputGroupProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof inputGroupVariants> {
+  success?: boolean;
+}
+
+export const InputGroup = React.forwardRef<HTMLDivElement, InputGroupProps>(
+  ({ className, size, appearance, tone, shape, success, ...props }, ref) => (
     <div
       ref={ref}
       role="group"
       data-slot="input-group"
+      data-success={success ? "true" : undefined}
       className={cn(
-        "group/input-group relative flex h-8 w-full min-w-0 items-center rounded-lg border border-input bg-transparent outline-none",
-        "transition-[color,border-color,box-shadow] duration-150 motion-reduce:transition-none dark:bg-input/30",
-        "has-[>textarea]:h-auto",
-        "has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50",
-        "has-[[data-slot][aria-invalid=true]]:border-destructive has-[[data-slot][aria-invalid=true]]:ring-3 has-[[data-slot][aria-invalid=true]]:ring-destructive/20",
-        "has-[[data-slot=input-group-control]:disabled]:bg-input/50 has-[[data-slot=input-group-control]:disabled]:opacity-50",
+        inputGroupVariants({ size, appearance, tone, shape }),
+        "group/input-group relative has-[>textarea]:h-auto",
         className,
       )}
       {...props}
@@ -28,15 +34,15 @@ InputGroup.displayName = "InputGroup";
 
 export const inputGroupAddonVariants = cva(
   [
-    "flex h-auto cursor-text select-none items-center justify-center gap-2 py-1.5 text-sm font-medium text-foreground",
-    "[&>svg]:text-muted-foreground [&>svg:not([class*='size-'])]:size-4",
-    "group-has-[[data-slot=input-group-control]:disabled]/input-group:opacity-50",
+    "flex h-auto cursor-text select-none items-center justify-center gap-2 py-1.5 text-label-md text-content-secondary",
+    "[&>svg]:text-content-secondary [&>svg:not([class*='size-'])]:size-icon-md",
+    "group-has-[[data-slot=input-group-control]:disabled]/input-group:text-content-disabled",
   ],
   {
     variants: {
       align: {
-        start: "order-first ps-2 has-[>button]:-ms-1",
-        end: "order-last pe-2 has-[>button]:-me-1",
+        start: "order-first pe-2 has-[>button]:-ms-1",
+        end: "order-last ps-2 has-[>button]:-me-1",
       },
     },
     defaultVariants: {
@@ -79,8 +85,8 @@ export const InputGroupInput = React.forwardRef<
     type={type}
     data-slot="input-group-control"
     className={cn(
-      "h-full min-w-0 flex-1 border-0 bg-transparent px-2 py-1.5 text-sm text-foreground outline-none",
-      "placeholder:text-muted-foreground disabled:cursor-not-allowed",
+      "h-full min-w-0 flex-1 border-0 bg-transparent p-0 text-[length:inherit] text-content-primary outline-none",
+      "placeholder:text-content-secondary disabled:cursor-not-allowed disabled:text-content-disabled",
       className,
     )}
     {...props}
@@ -96,8 +102,8 @@ export const InputGroupTextarea = React.forwardRef<
     ref={ref}
     data-slot="input-group-control"
     className={cn(
-      "field-sizing-content min-h-16 w-full flex-1 resize-none border-0 bg-transparent px-2.5 py-2 text-sm text-foreground outline-none",
-      "placeholder:text-muted-foreground disabled:cursor-not-allowed",
+      "field-sizing-content min-h-24 w-full flex-1 resize-none border-0 bg-transparent py-3 text-[length:inherit] text-content-primary outline-none",
+      "placeholder:text-content-secondary disabled:cursor-not-allowed disabled:text-content-disabled",
       className,
     )}
     {...props}
@@ -113,7 +119,7 @@ export const InputGroupText = React.forwardRef<
     ref={ref}
     data-slot="input-group-text"
     className={cn(
-      "flex items-center gap-2 text-sm text-muted-foreground [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
+      "flex items-center gap-2 text-body-sm text-content-secondary [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-icon-md",
       className,
     )}
     {...props}

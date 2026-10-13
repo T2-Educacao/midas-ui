@@ -26,7 +26,7 @@ describe("Toggle", () => {
         I
       </Toggle>,
     );
-    expect(screen.getByRole("button")).toHaveClass("border-input", "h-9");
+    expect(screen.getByRole("button")).toHaveClass("border-border-default", "h-control-lg");
   });
 
   it("não alterna quando desabilitado", async () => {

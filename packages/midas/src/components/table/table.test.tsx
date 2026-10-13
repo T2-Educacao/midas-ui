@@ -8,6 +8,7 @@ import {
   TableCaption,
   TableCell,
   TableFooter,
+  TableGroupRow,
   TableHead,
   TableHeader,
   TableRow,
@@ -58,11 +59,61 @@ describe("Table", () => {
     expect(screen.getByRole("table")).toHaveAttribute("data-size", "sm");
   });
 
+  it("densidade compact equivale a sm", () => {
+    render(<Exemplo density="compact" />);
+    expect(screen.getByRole("table")).toHaveAttribute("data-size", "sm");
+  });
+
+  it("superfície e tom aplicados ao container e à tabela", () => {
+    const { rerender } = render(<Exemplo />);
+    const container = screen.getByRole("table").parentElement;
+    expect(container).toHaveClass("rounded-container", "border-border-subtle");
+    rerender(<Exemplo surface="glass" tone="neutral" striped />);
+    expect(screen.getByRole("table").parentElement).toHaveClass("material-glass");
+    expect(screen.getByRole("table")).toHaveAttribute("data-tone", "neutral");
+    expect(screen.getByRole("table")).toHaveAttribute("data-striped", "true");
+    rerender(<Exemplo surface="plain" />);
+    expect(screen.getByRole("table").parentElement).not.toHaveClass("border");
+  });
+
+  it("célula numérica usa mono e alinha ao fim; cabeçalho alinhado ao fim", () => {
+    render(
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead align="end">Saldo</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow>
+            <TableCell numeric>R$ 12.480,00</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>,
+    );
+    expect(screen.getByRole("cell")).toHaveClass("text-mono-md", "text-end");
+    expect(screen.getByRole("columnheader")).toHaveClass("text-end");
+  });
+
+  it("linha de grupo ocupa as colunas", () => {
+    render(
+      <Table>
+        <TableBody>
+          <TableGroupRow colSpan={3}>Renda fixa</TableGroupRow>
+        </TableBody>
+      </Table>,
+    );
+    expect(screen.getByRole("columnheader", { name: "Renda fixa" })).toHaveAttribute(
+      "colspan",
+      "3",
+    );
+  });
+
   it("linha selecionada usa data-state", () => {
     render(<Exemplo />);
     const linha = screen.getByRole("cell", { name: "Ana" }).closest("tr");
     expect(linha).toHaveAttribute("data-state", "selected");
-    expect(linha).toHaveClass("data-[state=selected]:bg-muted");
+    expect(linha).toHaveClass("data-[state=selected]:bg-selection-bg");
   });
 
   it("mescla className e encaminha ref", () => {
