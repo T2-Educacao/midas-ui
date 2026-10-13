@@ -1,5 +1,39 @@
 # @t2-educacao/midas
 
+## 0.4.0
+
+### Minor Changes
+
+- f32b288: Campos, escolhas e avaliação alinhados ao Figma novo, só com tokens semânticos.
+  
+  Novos componentes: `SearchBar`, `TagInput`, `CodeInput`, `ChoiceChip`/`ChoiceChipGroup`, `AnswerOption`/`AnswerOptionGroup`, `Rating`/`RatingIcon`/`RatingSummary`, `FormLayout`/`FormLayoutItem`/`FormSection`/`FormActions`, `FileItem`, `FieldSuccess` e `FieldCounter`.
+  
+  Atualizados (variantes `size`, `appearance` outline/filled/glass, `tone` brand/neutral, `shape` rounded/pill): `Input`, `Textarea`, `InputGroup`, `Select`, `NativeSelect`, `Combobox`, `FileUpload`, `ChoiceCard` (layout, media, columns), `SegmentedControl`, `Slider` (`tone`), `Chip`.
+  
+  Quebras visuais (0.x, minor): a altura padrão de `Input`, `Select`, `NativeSelect` e `Combobox` passou de 32px para 48px (MD); SM = 40px, LG = 56px. `SegmentedControl` passou a ter trilho `surface-muted` com segmento elevado (padrão `md` = 36px, antes 32px) e o `size` aceita `sm | md` (`default` continua aceito). `inputClasses` deixou de ser exportado de `input.tsx` (use `inputVariants`). `FieldError` agora mostra um ícone antes do texto.
+- f32b288: Componentes redesenhados conforme o novo Figma do Midas, com tokens semânticos (funcionam nos temas Light, Dark e Dark Blue sem `dark:`).
+  
+  Atualizados: Button (variantes `primary`, `accent` e expressivas `glass`, `frosted`, `on-media`, `gradient-*`; tamanhos `xs` a `2xl`), ButtonGroup (`layout`), Toggle, Switch, Checkbox e Radio (`size`, `tone`), Input, Textarea, InputGroup, Select, NativeSelect, Combobox, Slider, FileUpload, ChoiceCard, SegmentedControl, Dialog (`appearance`, `size`, bottom sheet no mobile), Popover (seta), Tooltip (variantes e `ChartTooltip`), DropdownMenu, Calendar, DatePicker, Spinner, Progress, Skeleton (padrões prontos), Separator, Kbd, Badge (`type` label, count, dot), Avatar (tamanhos `xs` a `2xl`, `AvatarAdd`, `AvatarOption`), EmptyState, Toast, Alert, Tabs, Breadcrumb, Pagination, Stepper, Sidebar, Table, ListItem, Card, Accordion e Carousel.
+  
+  Novos: IconButton, Link, SocialButton, SelectionField, ButtonFeedback, SearchBar, TagInput, CodeInput, ChoiceChip, AnswerOption, Rating, FormLayout, Modal (success, error, status, share, permission), Drawer, BottomSheet, WheelPicker, DateSheet, EventCalendar, Tag, Banner, Notification, LoadingState, BottomNavigation, Header, TableToolbar, TablePagination, ListCard, AgendaItem, Chart (container, legenda, tooltip e bolhas de nota, sem dependência do recharts), Widget (stat, chart, message, filter, asset, image, alert), Hero, Quote, VideoPlayer, MiniPlayer e CourseCover.
+  
+  Quebras de visual e de API a conferir ao atualizar: altura padrão de Input, Select, NativeSelect e Combobox passou de 32 para 48px; `inputClasses` deixou de ser exportado (use `inputVariants`); `Spinner` agora é um `<span>` e não aceita props de SVG; `Button` `lg` e `icon-lg` passaram de 36 para 40px; `Checkbox` e `Radio` passam a 20px; Dialog tem largura padrão de 520px e vira bottom sheet no mobile; Tooltip abre após 400ms; Popover tem seta por padrão; tamanhos do Avatar (`sm` agora 32px, `lg` 48px); Table vem como card por padrão (`surface="plain"` para o visual antigo); Carousel com espaçamento de 24px.
+- 3b57703: Fundação do Midas alinhada ao novo Figma.
+  
+  Tokens: 86 tokens semânticos (`surface`, `overlay`, `content`, `border`, `field`, `action`, `state`, `selection`, `focus`, `disabled`, `status`, `material`, `brand`, `chart`) em três temas: Light, Dark e Dark Blue (`data-theme="dark-blue"`). Os nomes antigos (`background`, `primary`, `muted`, `border`...) continuam como alias dos novos, então o código existente não quebra. Utilitários novos: `bg-surface-canvas`, `text-content-secondary`, `border-border-subtle` etc.
+  
+  Tipografia: 15 text styles como utilitários (`text-heading-xl`, `text-body-md`, `text-label-sm`, `text-mono-sm`...). A fonte técnica passa a ser JetBrains Mono (variável `--font-jetbrains-mono`); quem usava `--font-geist-mono` precisa carregar a nova fonte.
+  
+  Escalas: alturas de controle (`h-control-xs` a `h-control-4xl`) e de ícone, raios por papel (`rounded-control`, `rounded-container`, `rounded-overlay`, `rounded-pill`), elevação (`shadow-elevation-*`), foco (`focus-ring`), materiais de vidro e variáveis de grid por breakpoint.
+  
+  Quebras de visual: `rounded-xl` passou de 14px para 12px e `rounded-2xl` de 18px para 14px, seguindo a escala do Figma. O preset do Tailwind v3 ganhou todos os novos nomes. Docs novas em `docs/fundamentos/*` (cores, tipografia, escalas, elevação e foco, grid).
+- 3b57703: Ícones: o Midas passa a usar só o Tabler Icons, igual à página Icons do Figma. Quebra de API (0.x, por isso minor).
+  
+  - `@t2-educacao/midas/icons` agora exporta os ícones do Tabler com os nomes originais (`IconArrowRight`, `IconSearch`...). Antes exportava o Phosphor (`ArrowRight`, `MagnifyingGlass`...): troque os nomes pelos equivalentes do Tabler (https://tabler.io/icons).
+  - `@t2-educacao/midas/icons/tabler` continua existindo como alias com o mesmo conteúdo.
+  - A dependência `@phosphor-icons/react` foi removida; os componentes internos usam o Tabler.
+  - Os tipos `IconWeight` e a prop `weight` deixam de existir: use `stroke` (traço) ou as variantes `Filled`.
+
 ## 0.3.0
 
 ### Minor Changes
