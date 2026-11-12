@@ -39,10 +39,23 @@ Um componente sem doc não está pronto. O `.md` do componente (formato em `docs
 
 - Toda mudança no pacote que afeta quem usa precisa de um changeset: `pnpm changeset` (patch = correção, minor = novo componente/prop, major = quebra de API).
 - Enquanto a versão for 0.x, quebras vão como minor, mas documente-as no changeset.
-- Publicar é automático: o merge do PR "chore: versiona @t2-educacao/midas", aberto pelo workflow `release.yml`, publica no npm (veja `docs/guias/publicar-no-npm.md`). Agentes de IA não publicam, não fazem merge desse PR e não rodam `npm publish`.
+- Publicar é automático: o merge do PR "chore: versiona @t2-educacao/midas", aberto pelo workflow `release.yml`, publica no npm (veja `docs/guias/publicar-no-npm.md`). O merge desse PR é humano. Bot ou agente de IA não roda `npm publish`. Aprovação, merge e deploy seguem [Padrão para bots e agentes de IA (PRs e commits)](#padrão-para-bots-e-agentes-de-ia-prs-e-commits).
 
 ## Não faça
 
 - Não adicione dependência nova ao pacote sem justificar (vira dependência de todos os projetos da T2).
 - Não mude nome de token, prop ou variante existente sem changeset `major`/aviso de quebra.
 - Não edite `dist/`, `llms.txt` (gerado) nem `CHANGELOG.md` (gerado pelo changesets).
+
+## Padrão para bots e agentes de IA (PRs e commits)
+
+Vale para qualquer bot ou agente de IA (Luca, Tati, Claude, Cursor, etc.) que modifique este repositório.
+
+1. **Nunca** commitar, dar push ou fazer merge direto em `main`. Todo trabalho sai em branch própria e chega via pull request.
+2. **Título do PR** começa com o nome do bot entre colchetes, seguido do título em Conventional Commits. Ex.: `[Luca] fix: redirect 301 de /cea-ainda-existe`.
+3. **Commits** saem no nome do titular da conta GitHub conectada. Sem `Co-Authored-By`, sem trailer ou assinatura de bot na mensagem do commit.
+4. **Corpo do PR** traz uma linha de origem: `Aberto por: <bot> (<função>), a pedido de <pessoa>`, além do que mudou, por quê e como testar.
+5. **Merge e deploy** são sempre humanos: o bot nunca aprova o próprio PR, não faz merge e não faz deploy sem OK explícito do Rafael ou do Tiago.
+6. Uma branch = um assunto. Não misturar mudanças não relacionadas no mesmo PR.
+
+A publicação no npm continua a do [Versionamento](#versionamento): o bot não roda `npm publish`; a versão sai no merge humano do PR `chore: versiona @t2-educacao/midas`.
